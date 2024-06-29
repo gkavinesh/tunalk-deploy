@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.navbar {
+    font-family: "Bebas Neue", sans-serif;
+    padding: 5px 20px; /* Adjust padding for smaller screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.navbar .logo {
+    height: auto; /* Allow logo height to adjust */
+    width: 160px;
+    padding: 5px; /* Simplify padding */
+}
+
+.navbar-menu {
+    
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Reduce gap between menu items */
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Reduce gap between items */
+}
+
+.navbar-right .search {
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-button {
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 20px; /* Increase padding for easier tapping on mobile */
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.navbar-button:hover {
+    background-color: #00A49B;
+    color: white;
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid white;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.navbar-search-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 4px;
+    min-height: 4px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+    top: 2px;
+    right: -8px;
+}
+
+@media (max-width: 1050px) {
+    .navbar .logo {
+        width: 100px;
+    }
+
+    .navbar-menu {
+        display: none; /* Hide menu on medium screens */
+    }
+
+    .navbar-right {
+        gap: 15px; /* Adjust gap */
+    }
+
+    .navbar-right img {
+        width: 22px;
+    }
+
+    .navbar-right button {
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 110px;
+        height: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar-right button {
+        padding: 7px 16px; /* Further adjust padding */
+        font-size: 14px; /* Decrease font size */
+    }
+}
+
+@media (max-width: 750px) {
+    .navbar {
+        padding: 10px; /* Adjust padding */
+    }
+
+    .navbar .logo {
+        height: 25px;
+        width: 110px; /* Adjust width */
+    }
+
+    .navbar-menu {
+        display: none; /* Hide menu completely */
+    }
+
+    .navbar-right {
+        margin-right: 1rem;
+        gap: 20px; /* Adjust gap */
+    }
+}
+
+
