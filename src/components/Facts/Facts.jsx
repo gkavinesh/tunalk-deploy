@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-import fishImage from "../../assets/fish.png";
-import crabImage from "../../assets/crab.png";
-import shrimpImage from "../../assets/shrimp.png";
-import lobsterImage from "../../assets/lobster.png";
+import Lottie from 'lottie-react';
+import fishAnimation from "..//..//assets/Fish.json";
+import Crab from "..//..//assets/crab.png";
+import Lobster from "..//..//assets/lobster2.png";
+
 
 const Example = () => {
   return (
@@ -12,6 +13,12 @@ const Example = () => {
       <br></br>
       <br/>
       <h1 className='heading'>The Seafood Pallete</h1>
+      <div className="flex justify-center my-4">
+        <Lottie 
+          animationData={fishAnimation} 
+          style={{ width: 150, height: 250, marginTop:-50 }}  // Adjust the size as needed
+        />
+      </div>
       <HorizontalScrollCarousel />
     </div>
   );
@@ -83,8 +90,8 @@ const Card = ({ card }) => {
       }}
       className="relative h-96 w-80 shrink-0 overflow-hidden rounded-xl bg-black text-white p-8"
       style={{
-        width: "900px", // Adjust the width of the card
-        height: "700px", // Adjust the height of the card
+        width: "750px", // Adjust the width of the card
+        height: "600px", // Adjust the height of the card
       }}
     >
       <div
@@ -175,37 +182,37 @@ export default Example;
 
 const cards = [
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Fish",
     id: 1,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Crab",
     id: 2,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Shrimps",
     id: 3,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Lobster",
     id: 4,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Clamps",
     id: 5,
   },
   {
-    url: "/imgs/abstract/6.jpg",
+    url: Crab,
     title: "Mussels",
     id: 6,
   },
   {
-    url: "/imgs/abstract/7.jpg",
+    url: Crab,
     title: "Octopus",
     id: 7,
   },

@@ -36,31 +36,28 @@ const Options = ({ votes, setVotes }) => {
 
   const handleIncrementVote = (vote) => {
     const newVote = { ...vote, votes: vote.votes + 1 };
-
     setVotes((pv) => pv.map((v) => (v.title === newVote.title ? newVote : v)));
   };
 
   return (
-    <div className="col-span-1 py-12">
-    <h1 className="heading-1">Time to have some fun ?</h1>
+    <div className="col-span-1 py-16"> {/* Adjusted padding here */}
+      <h1 className="heading-1">Time to have some fun?</h1>
       <h3 className="heading-2">
-      Which seafood is known for its delicate flavor and tender texture?
+        Which seafood is known for its delicate flavor and tender texture?
       </h3>
-      <br/>
+      <br />
       <div className="mb-6 space-y-2">
-        {votes.map((vote) => {
-          return (
-            <motion.button
-              whileHover={{ scale: 1.015 }}
-              whileTap={{ scale: 0.985 }}
-              onClick={() => handleIncrementVote(vote)}
-              key={vote.title}
-              className={`w-full rounded-md ${vote.color} py-2 font-medium text-white`}
-            >
-              {vote.title}
-            </motion.button>
-          );
-        })}
+        {votes.map((vote) => (
+          <motion.button
+            whileHover={{ scale: 1.015 }}
+            whileTap={{ scale: 0.985 }}
+            onClick={() => handleIncrementVote(vote)}
+            key={vote.title}
+            className={`w-full rounded-md ${vote.color} py-2 font-medium text-white`}
+          >
+            {vote.title}
+          </motion.button>
+        ))}
       </div>
       <div className="flex items-center justify-between">
         <span className="mb-2 italic text-slate-400">{totalVotes} votes</span>
@@ -78,6 +75,7 @@ const Options = ({ votes, setVotes }) => {
     </div>
   );
 };
+
 
 const Bars = ({ votes }) => {
   const totalVotes = votes.reduce((acc, cv) => (acc += cv.votes), 0);

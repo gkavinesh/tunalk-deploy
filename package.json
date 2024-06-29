@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
@@ -16,6 +16,7 @@
     "@gsap/react": "^2.1.1",
     "@react-hookz/web": "^24.0.4",
     "framer-motion": "^11.2.12",
+    "lottie-react": "^2.4.0",
     "node-sass": "^9.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
