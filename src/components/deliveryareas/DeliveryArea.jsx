@@ -18,7 +18,7 @@ export const DragCloseDrawerExample = () => {
                 onClick={() => setOpen(true)}
                 className="button"
             >
-                Open drawer
+                Delivery Areas
             </button>
 
             <DragCloseDrawer open={open} setOpen={setOpen}>
