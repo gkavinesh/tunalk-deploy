@@ -13,12 +13,7 @@ const Home = () => {
   return (
     <div>
       <Facts />
-      <About />
       <FoodDisplay category={category} />
-      <hr />
-      <Poll />
-      <hr />
-      <Step/>
       <AppDownload />
     </div>
   );
