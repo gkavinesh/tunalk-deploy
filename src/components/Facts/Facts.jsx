@@ -1,24 +1,25 @@
 import React from 'react';
-import { motion, useTransform, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import Lottie from 'lottie-react';
-import fishAnimation from "..//..//assets/Fish.json";
-import Crab from "..//..//assets/crab.png";
-import Lobster from "..//..//assets/lobster2.png";
+import { useScroll,useTransform } from 'framer-motion';
+import "./Facts.css"
+import Lottie from 'react-lottie';
+import animationData from '../../assets/Water.json'; // Adjust the path as per your project structure
+import animationData2 from "../../assets/splash.json";
+import fish from '../../assets/fishtest.png';
+import cuttle from '../../assets/cuttle.png';
+import scad from '../../assets/scad.png';
+import seer from '../../assets/seer.png';
+import prawns from '../../assets/prawns.png';
+import sail from '../../assets/sail.png';
+import trevally from '../../assets/trevally.png';
+
 
 
 const Example = () => {
   return (
-    <div className="bg-black">
-      <br></br>
-      <br/>
+    <div className="background">
       <h1 className='heading'>The Seafood Pallete</h1>
-      <div className="flex justify-center my-4">
-        <Lottie 
-          animationData={fishAnimation} 
-          style={{ width: 150, height: 250, marginTop:-50 }}  // Adjust the size as needed
-        />
-      </div>
       <HorizontalScrollCarousel />
     </div>
   );
@@ -33,9 +34,9 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[200vh] bg-black">
+    <section ref={targetRef} className="relative h-[350vh] bg-transparent">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex gap-20"> {/* Added gap-4 for spacing */}
+        <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
           })}
@@ -45,37 +46,7 @@ const HorizontalScrollCarousel = () => {
   );
 };
 
-
 const Card = ({ card }) => {
-  // Define different content for each card based on the title
-  let content = "";
-  switch (card.title) {
-    case "Fish":
-      content = "Fresh Fish Directly from the Ocean";
-      break;
-    case "Crab":
-      content = "Delicious Crab Ready to Cook";
-      break;
-    case "Shrimps":
-      content = "Tasty Shrimps for Your Favorite Dishes";
-      break;
-    case "Lobster":
-      content = "Premium Lobsters, Perfect for Special Occasions";
-      break;
-    case "Clamps":
-      content = "Exquisite Clams for Seafood Lovers";
-      break;
-    case "Mussels":
-      content = "Tender Mussels for a Rich Seafood Experience";
-      break;
-    case "Octopus":
-      content = "Fresh Octopus for Unique Seafood Recipes";
-      break;
-    default:
-      content = "Discover More Seafood Delights";
-      break;
-  }
-
   return (
     <motion.div
       whileHover="hover"
@@ -88,132 +59,122 @@ const Card = ({ card }) => {
           scale: 1.05,
         },
       }}
-      className="relative h-96 w-80 shrink-0 overflow-hidden rounded-xl bg-black text-white p-8"
-      style={{
-        width: "750px", // Adjust the width of the card
-        height: "600px", // Adjust the height of the card
-      }}
+      className="relative h-96 w-80 shrink-0 overflow-hidden rounded-xl bg-transparent p-8 border border-black"
     >
-      <div
-        style={{
-          backgroundImage: `url(${card.url})`,
-          backgroundSize: "cover", // Adjusts how the image fits within its container
-          backgroundPosition: "center", // Centers the background image
-          borderRadius: "100px", // Makes the image circular
-        }}
-        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
-      ></div>
-      <div className="absolute inset-0 flex items-center justify-center z-10 text-white text-center">
-        <div>
-          <h2 className="text-2xl font-bold mb-2">{card.title}</h2>
-          <p className="text-sm mb-4">{content}</p>
-          <button className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-colors duration-300">
-            Explore
-          </button>
-        </div>
+      <Background />
+      <div className="relative z-10 text-black">
+        <span className="mb-1 block w-fit rounded-full bg-white/30 px-3 py-0.5 text-sm font-light text-white">
+          {card.title}
+        </span>
+        <img
+          src={card.url} // Use card.url as the image source
+          alt={card.title} // Use card.title as the alt text
+          className="my-2 block object-cover h-64 w-full" // Example styling for image
+          style={{ width: '100%', height: '50%' }} // Inline style for width and height
+        />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, rem.
+        </p>
       </div>
+      <button className="absolute bottom-9 left-4 right-4 z-20 rounded border-2 border-black bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white hover:text-blue">
+        Add to cart
+      </button>
     </motion.div>
   );
 };
 
-
 const Background = () => {
+  const defaultOptions1 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData2,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   return (
-    <motion.svg
-      width="320"
-      height="384"
-      viewBox="0 0 320 384"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="absolute inset-0 z-0"
-      variants={{
-        hover: {
-          scale: 1.5,
-        },
-      }}
-      transition={{
-        duration: 1,
-        ease: "backInOut",
-      }}
-    >
-      <motion.circle
-        variants={{
-          hover: {
-            scaleY: 0.5,
-            y: -25,
-          },
-        }}
-        transition={{
-          duration: 1,
-          ease: "backInOut",
-          delay: 0.2,
-        }}
-        cx="160.5"
-        cy="114.5"
-        r="101.5"
-        fill="#262626"
-      />
-      <motion.ellipse
-        variants={{
-          hover: {
-            scaleY: 2.25,
-            y: -25,
-          },
-        }}
-        transition={{
-          duration: 1,
-          ease: "backInOut",
-          delay: 0.2,
-        }}
-        cx="160.5"
-        cy="265.5"
-        rx="101.5"
-        ry="43.5"
-        fill="#262626"
-      />
-    </motion.svg>
+    <div className="absolute inset-0 z-0 flex justify-center items-center">
+      <div className="relative h-96 w-80">
+        <div className="absolute inset-0 flex justify-center items-center">
+          <Lottie options={defaultOptions1} height={420} width={360} />
+        </div>
+      </div>
+    </div>
   );
 };
 
+
+const cards = [
+  {
+    url: fish,
+    title: "Fish",
+    id: 1,
+  },
+  {
+    url: seer,
+    title: "Seer",
+    id: 2,
+  },
+  {
+    url: scad,
+    title: "Scad",
+    id: 3,
+  },
+  {
+    url: seer,
+    title: "Seer",
+    id: 4,
+  },
+  {
+    url: trevally,
+    title: "Title 5",
+    id: 5,
+  },
+  {
+    url: sail,
+    title: "Sail",
+    id: 6,
+  },
+  {
+    url: trevally,
+    title: "Title 7",
+    id: 7,
+  },
+  {
+    url: trevally,
+    title: "Title 7",
+    id: 8,
+  },
+  {
+    url: trevally,
+    title: "Title 7",
+    id: 9,
+  },
+  {
+    url: trevally,
+    title: "Title 7",
+    id: 10,
+  },
+  {
+    url: trevally,
+    title: "Title 7",
+    id: 11,
+  },
+];
 
 export default Example;
 
 
 
-const cards = [
-  {
-    url: Crab,
-    title: "Fish",
-    id: 1,
-  },
-  {
-    url: Crab,
-    title: "Crab",
-    id: 2,
-  },
-  {
-    url: Crab,
-    title: "Shrimps",
-    id: 3,
-  },
-  {
-    url: Crab,
-    title: "Lobster",
-    id: 4,
-  },
-  {
-    url: Crab,
-    title: "Clamps",
-    id: 5,
-  },
-  {
-    url: Crab,
-    title: "Mussels",
-    id: 6,
-  },
-  {
-    url: Crab,
-    title: "Octopus",
-    id: 7,
-  },
-];
+
+

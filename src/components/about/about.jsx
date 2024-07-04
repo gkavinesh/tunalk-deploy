@@ -9,7 +9,7 @@ import DeliveryArea from '..//..//components/deliveryareas/DeliveryArea'
 
 export const RevealBento = () => {
   return (
-    <div className="min-h-screen bg-neutral-950 px-2 py-10 text-zinc-50" id='about'>
+    <div className="min-h-screen bg-white px-4 py-10 text-zinc-50" id='about'>
   <Logo />
   
   <motion.div
@@ -184,7 +184,7 @@ const EmailListBlock = () => (
 
 export const Logo = () => {
   return (
-    <h1 className="heading">
+    <h1 className="heading-2">
       About Us
       <br />
     </h1>

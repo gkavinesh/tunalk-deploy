@@ -1,8 +1,8 @@
 import tuna from './tuna.png';
-import basket_icon from './basket_icon.png';
+import basket_icon from './shopping-bag (3).png';
 import logo from './logo.png';
 import header_img from './header_img.png';
-import search_icon from './search_icon.png';
+import search_icon from './loupe.png';
 import menu_1 from './menu_1.png';
 import menu_2 from './menu_2.png';
 import menu_3 from './menu_3.png';
@@ -38,7 +38,6 @@ import food_28 from './food_28.png';
 import food_29 from './food_29.png';
 import food_30 from './food_30.png';
 import food_31 from './food_31.png';
-import food_32 from './food_32.png';
 import add_icon_white from './add_icon_white.png';
 import add_icon_green from './add_icon_green.png';
 import remove_icon_red from './remove_icon_red.png';
@@ -376,14 +375,6 @@ export const food_list = [
         image: food_31,
         price: 2000,
         description: "Fresh raw bluefish, perfect for grilling or smoking.",
-        category: "Fish"
-    },
-    {
-        _id: "32",
-        name: "Raw Skate",
-        image: food_32,
-        price: 2000,
-        description: "Fresh raw skate, great for frying or baking.",
         category: "Fish"
     }
 ];

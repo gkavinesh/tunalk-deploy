@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.heading {
+.heading-2{
     font-family: 'Bebas Neue', sans-serif;
     font-size: 5rem;
     font-weight: bold;
     text-align: center;
-    color: #ffffff; /* Example color */
+    color: #11484F; /* Example color */
     margin: 10px 0; /* Example margin */
 }

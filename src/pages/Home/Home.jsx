@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Home.css';
-import Header from '..//..//components/header/header';
 import FoodDisplay from '..//..//fooddisplay/FoodDisplay';
 import AppDownload from '..//..//components/AppDownload/AppDownload';
 import Facts from '..//..//components/Facts/Facts';
@@ -13,10 +12,9 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <Facts />
-      <FoodDisplay category={category} />
       <About />
+      <FoodDisplay category={category} />
       <hr />
       <Poll />
       <hr />
