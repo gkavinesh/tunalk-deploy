@@ -1,8 +1,8 @@
 import tuna from './tuna.png';
-import basket_icon from './shopping-bag (3).png';
+import basket_icon from './shopping-bag (4).png';
 import logo from './logo.png';
 import header_img from './header_img.png';
-import search_icon from './loupe.png';
+import search_icon from './search (4).png';
 import menu_1 from './menu_1.png';
 import menu_2 from './menu_2.png';
 import menu_3 from './menu_3.png';
@@ -64,7 +64,7 @@ import lobster from './lobster.png';
 import fish from './fishtest.png';
 import shrimp from './shrimp.png';
 import clamps from './clamps.png';
-import about from './about.png';
+import about from './aboutus.png';
 
 export const assets = {
     about,
@@ -142,7 +142,7 @@ export const food_list = [
     {
         _id: "2",
         name: "Raw Tuna Steak",
-        image: food_2,
+        image: fish,
         price: 2000,
         description: "Premium grade raw tuna steak, perfect for sushi and sashimi.",
         category: "Fish"
@@ -150,7 +150,7 @@ export const food_list = [
     {
         _id: "3",
         name: "Raw Shrimp",
-        image: food_3,
+        image: fish,
         price: 2000,
         description: "Fresh raw shrimp, ideal for grilling or boiling.",
         category: "Shellfish"
@@ -158,7 +158,7 @@ export const food_list = [
     {
         _id: "4",
         name: "Raw Scallops",
-        image: food_4,
+        image: fish,
         price: 2000,
         description: "Tender raw scallops, great for searing or baking.",
         category: "Shellfish"
@@ -166,7 +166,7 @@ export const food_list = [
     {
         _id: "5",
         name: "Raw Lobster Tail",
-        image: food_5,
+        image: fish,
         price: 2000,
         description: "Succulent raw lobster tail, perfect for a gourmet meal.",
         category: "Shellfish"
@@ -174,7 +174,7 @@ export const food_list = [
     {
         _id: "6",
         name: "Raw Crab Legs",
-        image: food_6,
+        image: fish,
         price: 2000,
         description: "Fresh raw crab legs, ideal for steaming or boiling.",
         category: "Shellfish"
@@ -182,7 +182,7 @@ export const food_list = [
     {
         _id: "7",
         name: "Raw Octopus",
-        image: food_7,
+        image: fish,
         price: 2000,
         description: "Fresh raw octopus, great for grilling or stewing.",
         category: "Mollusk"
@@ -190,7 +190,7 @@ export const food_list = [
     {
         _id: "8",
         name: "Raw Clams",
-        image: food_8,
+        image: fish,
         price: 2000,
         description: "Fresh raw clams, perfect for steaming or chowders.",
         category: "Shellfish"
@@ -198,7 +198,7 @@ export const food_list = [
     {
         _id: "9",
         name: "Raw Oysters",
-        image: food_9,
+        image: fish,
         price: 2000,
         description: "Fresh raw oysters, ideal for serving on the half shell.",
         category: "Shellfish"
@@ -206,7 +206,7 @@ export const food_list = [
     {
         _id: "10",
         name: "Raw Mussels",
-        image: food_10,
+        image: fish,
         price: 2000,
         description: "Fresh raw mussels, perfect for steaming or pasta dishes.",
         category: "Shellfish"
@@ -214,7 +214,7 @@ export const food_list = [
     {
         _id: "11",
         name: "Raw Squid",
-        image: food_11,
+        image: fish,
         price: 2000,
         description: "Fresh raw squid, great for frying or grilling.",
         category: "Mollusk"
@@ -222,7 +222,7 @@ export const food_list = [
     {
         _id: "12",
         name: "Raw Sea Urchin",
-        image: food_12,
+        image: fish,
         price: 2000,
         description: "Fresh raw sea urchin, perfect for sushi or gourmet dishes.",
         category: "Mollusk"
@@ -230,7 +230,7 @@ export const food_list = [
     {
         _id: "13",
         name: "Raw Red Snapper",
-        image: food_13,
+        image: fish,
         price: 2000,
         description: "Fresh raw red snapper, great for grilling or baking.",
         category: "Fish"
@@ -238,7 +238,7 @@ export const food_list = [
     {
         _id: "14",
         name: "Raw Halibut",
-        image: food_14,
+        image: fish,
         price: 2000,
         description: "Fresh raw halibut, ideal for grilling or roasting.",
         category: "Fish"
@@ -246,137 +246,9 @@ export const food_list = [
     {
         _id: "15",
         name: "Raw Mackerel",
-        image: food_15,
+        image: fish,
         price: 2000,
         description: "Fresh raw mackerel, perfect for grilling or smoking.",
-        category: "Fish"
-    },
-    {
-        _id: "16",
-        name: "Raw Cod",
-        image: food_16,
-        price: 2000,
-        description: "Fresh raw cod, great for frying or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "17",
-        name: "Raw King Crab",
-        image: food_17,
-        price: 2000,
-        description: "Premium raw king crab, ideal for steaming or boiling.",
-        category: "Shellfish"
-    },
-    {
-        _id: "18",
-        name: "Raw Swordfish",
-        image: food_18,
-        price: 2000,
-        description: "Fresh raw swordfish, great for grilling or searing.",
-        category: "Fish"
-    },
-    {
-        _id: "19",
-        name: "Raw Sea Bass",
-        image: food_19,
-        price: 2000,
-        description: "Fresh raw sea bass, perfect for grilling or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "20",
-        name: "Raw Flounder",
-        image: food_20,
-        price: 2000,
-        description: "Fresh raw flounder, great for frying or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "21",
-        name: "Raw Grouper",
-        image: food_21,
-        price: 2000,
-        description: "Fresh raw grouper, ideal for grilling or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "22",
-        name: "Raw Barramundi",
-        image: food_22,
-        price: 2000,
-        description: "Fresh raw barramundi, great for grilling or frying.",
-        category: "Fish"
-    },
-    {
-        _id: "23",
-        name: "Raw Catfish",
-        image: food_23,
-        price: 2000,
-        description: "Fresh raw catfish, perfect for frying or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "24",
-        name: "Raw Tilapia",
-        image: food_24,
-        price: 2000,
-        description: "Fresh raw tilapia, great for grilling or steaming.",
-        category: "Fish"
-    },
-    {
-        _id: "25",
-        name: "Raw Rainbow Trout",
-        image: food_25,
-        price: 2000,
-        description: "Fresh raw rainbow trout, perfect for grilling or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "26",
-        name: "Raw Mahi Mahi",
-        image: food_26,
-        price: 2000,
-        description: "Fresh raw mahi mahi, great for grilling or searing.",
-        category: "Fish"
-    },
-    {
-        _id: "27",
-        name: "Raw Haddock",
-        image: food_27,
-        price: 2000,
-        description: "Fresh raw haddock, ideal for frying or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "28",
-        name: "Raw Sardines",
-        image: food_28,
-        price: 2000,
-        description: "Fresh raw sardines, perfect for grilling or frying.",
-        category: "Fish"
-    },
-    {
-        _id: "29",
-        name: "Raw Anchovies",
-        image: food_29,
-        price: 2000,
-        description: "Fresh raw anchovies, great for frying or marinating.",
-        category: "Fish"
-    },
-    {
-        _id: "30",
-        name: "Raw Monkfish",
-        image: food_30,
-        price: 2000,
-        description: "Fresh raw monkfish, ideal for grilling or roasting.",
-        category: "Fish"
-    },
-    {
-        _id: "31",
-        name: "Raw Bluefish",
-        image: food_31,
-        price: 2000,
-        description: "Fresh raw bluefish, perfect for grilling or smoking.",
         category: "Fish"
     }
 ];
