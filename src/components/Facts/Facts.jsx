@@ -63,16 +63,13 @@ const Card = ({ card }) => {
       >
         <Background />
         <div className="relative z-10 text-black text-center">
-          <span className="mb-1 block w-fit rounded-full bg-white/30 px-3 py-0.5 text-sm font-light text-white">
-            {card.title}
-          </span>
           <img
             src={card.url} // Use card.url as the image source
             alt={card.title} // Use card.title as the alt text
-            className="my-1 block object-cover h-55 w-55 rounded-full mt-0"
+            className="my-1 block object-cover h-50 w-50 rounded-full mt-0"
             style={{ marginTop: '-50px' }} // Circular image styling with margin-top added
           />
-          <p className="text-sm mt-6">
+          <p className="text-b mt-5">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, rem.
           </p>
         </div>

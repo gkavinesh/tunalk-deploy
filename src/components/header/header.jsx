@@ -1,6 +1,7 @@
 import React from 'react';
 import Video from './tunalk.mp4';
 import './header.css'
+import Image1 from './line1.png'
 
 const Hero = () => {
   return (
@@ -8,9 +9,9 @@ const Hero = () => {
       <VideoBackground />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
         <h1 className="heading">Welcome to TunaLK</h1>
-        <p className="para">Your provider of fresh delights</p>
-        <div className="absolute bottom-8 text-center">
-          <p className="text-lg animate-bounce">Scroll Down</p>
+        <p className="para">Your provider of fresh seafood</p>
+        <div className="absolute bottom-0 text-center">
+          <img src={Image1} alt="" />
         </div>
       </div>
     </div>

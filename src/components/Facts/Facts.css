@@ -9,6 +9,11 @@
     color: #11484F;
     margin-top: 3rem;
     margin-bottom: -10rem;
+    background-image: url(..//..//assets/header_logo.png);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .background{
