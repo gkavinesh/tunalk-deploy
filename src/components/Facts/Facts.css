@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
-.heading {
+.head {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 6rem;
+    font-size: 7rem;
     font-weight: bold;
     text-align: center;
     color: #11484F;
-    margin-top: 4rem;
+    margin-top: 3rem;
     margin-bottom: -10rem;
 }
 
 .background{
     background-color: #ffffff;
-    margin-top: -3rem;
+    margin-top: 2rem;
 }
 
 

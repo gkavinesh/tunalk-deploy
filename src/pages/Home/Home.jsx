@@ -6,14 +6,20 @@ import Facts from '..//..//components/Facts/Facts';
 import About from '..//..//components/about/about';
 import Poll from '..//..//components/poll/poll';
 import Step from '..//..//components/steps/step';
-import DeliveryArea from '..//..//components/deliveryareas/DeliveryArea'
+import Header from '..//..//components/header/header'
 const Home = () => {
   const [category, setCategory] = useState("All");
 
   return (
     <div>
+      <Header/>
       <Facts />
+      <About />
       <FoodDisplay category={category} />
+      <hr />
+      <Poll />
+      <hr />
+      <Step/>
       <AppDownload />
     </div>
   );

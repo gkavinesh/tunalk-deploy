@@ -61,11 +61,13 @@ import managing from './managing.png';
 import delivery from './delivery.png';
 import crab from './crab.png';
 import lobster from './lobster.png';
-import fish from './fish.png';
+import fish from './fishtest.png';
 import shrimp from './shrimp.png';
 import clamps from './clamps.png';
+import about from './about.png';
 
 export const assets = {
+    about,
     crab,
     fish,
     clamps,
@@ -132,7 +134,7 @@ export const food_list = [
     {
         _id: "1",
         name: "Raw Salmon Fillet",
-        image: food_1,
+        image: fish,
         price: 2000,
         description: "Fresh raw salmon fillet, rich in omega-3 fatty acids.",
         category: "Fish"

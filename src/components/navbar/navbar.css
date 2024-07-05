@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #C6EDF4;
+    background-color: #000000;
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other elements */
@@ -23,7 +23,7 @@
     display: flex;
     list-style: none;
     gap: 20px; /* Reduce gap between menu items */
-    color: #11484F;
+    color: #ffffff;
     font-size: 16px;
 }
 
@@ -41,8 +41,8 @@
 .navbar-button {
     background: transparent;
     font-size: 16px;
-    color: #11484F;
-    border: 1px solid #11484F;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     padding: 8px 20px; /* Increase padding for easier tapping on mobile */
     border-radius: 50px;
     cursor: pointer;

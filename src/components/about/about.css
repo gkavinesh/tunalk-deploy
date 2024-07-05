@@ -1,10 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.wrapper,
+.content {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
 
-.heading-2{
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #11484F; /* Example color */
-    margin: 10px 0; /* Example margin */
+.content {
+  overflow-x: hidden;
+}
+
+.content .section {
+  width: 100%;
+  height: 100vh;
+}
+
+.content .section.hero {
+  background-image: url(..//..//assets/about.png);
+  margin-top: 6rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  width: 95%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  perspective: 500px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
