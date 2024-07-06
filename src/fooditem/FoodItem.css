@@ -1,11 +1,30 @@
 .food-item{
-    width: 350px;
+    background-color: white;
+    width: 400px;
     height: 400px;
     margin: auto;
     border-radius: 15px;
-    box-shadow: 0px 0px 10px #00000015;
     transition: 0.3s;
     animation: fadeIn 1s;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 10px solid;
+    border-image: repeating-linear-gradient(135deg,#000000 0 10px,#0C979C 0 20px,#14464F 0 30px) 8;
+    -webkit-mask: 
+      conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)
+       var(--_i,200%) 0  /200% var(--_i,8px) border-box no-repeat,
+      conic-gradient(at bottom 8px left  8px,  #0000 90deg,#000 0)
+       0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
+      linear-gradient(#000 0 0) padding-box no-repeat;
+    transition: .3s, -webkit-mask-position .3s .3s;
+}
+
+.food-item:hover{
+  --_i: 100%;
+  color: #CC333F;
+  transition: .3s, -webkit-mask-size .3s .3s;
 }
 
 .food-item-image{
@@ -32,7 +51,7 @@
 }
 
 .food-item-price{
-    color: rgb(0, 0, 0);
+    color: #11484F;
     font-size: 28px;
     font-weight: 500;
     margin:10px 0px
@@ -51,6 +70,7 @@
     right: 15px;
     cursor:pointer;
     border-radius: 50%;
+    border:2px solid #11484F;
 }
 
 .food-item-counter{
@@ -68,3 +88,46 @@
 .food-item-counter img{
     width: 30px;
 }
+
+@media (max-width: 768px) {
+    .head {
+      font-size: 4rem; /* Adjust font size for smaller screens */
+    }
+  
+    .container-products {
+      gap: 10px; /* Reduce gap between items for smaller screens */
+    }
+  
+    .food-item {
+      width: 300px; /* Full width for smaller screens */
+      height: 400px; /* Auto height for flexibility */
+      margin-top: 5rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  
+    .food-item-image {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+    }
+  
+    .food-item-info {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  
+    .food-item-desc {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+  
+    .food-item-price {
+      font-size: 24px; /* Adjust font size for smaller screens */
+    }
+  
+    .food-item-counter {
+      padding: 4px; /* Reduce padding for smaller screens */
+    }
+  
+    .food-item-counter img {
+      width: 25px; /* Adjust size for smaller screens */
+    }
+  }

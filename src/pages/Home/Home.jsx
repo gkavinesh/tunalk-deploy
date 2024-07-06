@@ -15,7 +15,6 @@ const Home = () => {
       <Header/>
       <Facts />
       <About />
-      <FoodDisplay category={category} />
       <hr />
       <Poll />
       <hr />

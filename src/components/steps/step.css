@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-
-.heading {
+.head {
+    font-size: 2rem; /* Adjust the font size as needed */
+    margin-top: 2rem; /* Adjust the spacing between the heading and the cards */
+    margin-bottom:1rem;
+    text-align: center;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: bold;
     text-align: center;
-    color: #ffffff; /* Example color */
-    margin: 20px 0; /* Example margin */
-}
+    color: #11484F;
+  }

@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="relative h-screen w-full overflow-hidden">
       <VideoBackground />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-        <h1 className="heading">Welcome to TunaLK</h1>
+        <h1 className="heading-hero">Welcome to TunaLK</h1>
         <p className="para">Your provider of fresh seafood</p>
         <div className="absolute bottom-0 text-center">
           <img src={Image1} alt="" />

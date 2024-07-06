@@ -2,9 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
-import Image1 from './line1.png';
-import Image2 from './line2.png';
 import { assets } from "../../assets/assets";
+import Image1 from './line1.png'
 
 const App = () => {
   const wrapperRef = useRef(null);
@@ -51,11 +50,12 @@ const App = () => {
   return (
     <div className="wrapper" ref={wrapperRef}>
       <div className="content">
-        <section className="section hero" ref={heroSectionRef}></section>
+        <section className="section hero" ref={heroSectionRef}>
+        </section>
       </div>
       <div className="image-container" style={{ willChange: 'transform' }}>
         <img
-          src={assets.about} // or {Image2}, depending on which image you want to use
+          src='https://assets-global.website-files.com/63ec206c5542613e2e5aa784/643312a6bc4ac122fc4e3afa_main%20home.webp' // or {Image2}, depending on which image you want to use
           alt="image"
           ref={imageRef}
         />
@@ -65,6 +65,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 

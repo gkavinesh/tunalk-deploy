@@ -1,6 +1,9 @@
-.heading {
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.heading-hero {
     font-size: 7rem; /* Adjust as needed */
     font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
   }
   
   .para {
