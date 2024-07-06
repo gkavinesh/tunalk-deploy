@@ -10,7 +10,7 @@
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    border: 10px solid;
+    border: 5px solid;
     border-image: repeating-linear-gradient(135deg,#000000 0 10px,#0C979C 0 20px,#14464F 0 30px) 8;
     -webkit-mask: 
       conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)

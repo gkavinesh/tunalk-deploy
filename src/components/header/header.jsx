@@ -1,15 +1,23 @@
 import React from 'react';
+import ReactTypingEffect from 'react-typing-effect';
 import Video from './tunalk.mp4';
-import './header.css'
-import Image1 from './line1.png'
+import './header.css';
+import Image1 from './line1.png';
 
 const Hero = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <VideoBackground />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-        <h1 className="heading-hero">Welcome to TunaLK</h1>
-        <p className="para">Your provider of fresh seafood</p>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <h2 className="welcome">
+          <ReactTypingEffect
+            text={['Welcome to TunaLK..','We bring fresh fish','From the ocean to your plate']}
+            speed={180}
+            eraseSpeed={100}
+            eraseDelay={2000}
+            typingDelay={1000}
+          />
+        </h2>
         <div className="absolute bottom-0 text-center">
           <img src={Image1} alt="" />
         </div>
@@ -33,6 +41,8 @@ const VideoBackground = () => {
 };
 
 export default Hero;
+
+
 
 
 

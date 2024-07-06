@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
 
-.heading-hero {
+.welcome{
     font-size: 7rem; /* Adjust as needed */
-    font-weight: bold;
-    font-family: 'Bebas Neue', sans-serif;
+    color: #ffffffca;
+    font-family: "Anton SC", sans-serif;
+    font-weight: 800;
+    font-style: normal;
   }
   
   .para {

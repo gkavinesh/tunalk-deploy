@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Home.css';
-import FoodDisplay from '..//..//fooddisplay/FoodDisplay';
 import AppDownload from '..//..//components/AppDownload/AppDownload';
 import Facts from '..//..//components/Facts/Facts';
 import About from '..//..//components/about/about';
