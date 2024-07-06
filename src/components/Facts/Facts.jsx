@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import FoodItem from '../../fooditem/FoodItem';
 import { StoreContext } from '../../context/StoreContext';
 import './Facts.css';
+import Bottom from '..//..//assets/bottom.png'
 
 const Example = () => {
   return (
@@ -36,7 +37,9 @@ const HorizontalScrollCarousel = () => {
           <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />
         ))}
       </motion.div>
-      <h1 className='products-2'>------------------------------------------------------------------------------------</h1>
+      <div className="absolute bottom-0 text-center">
+          <img src={Bottom} alt="" />
+        </div>
     </div>
   </section>
   );
