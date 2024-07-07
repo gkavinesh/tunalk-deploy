@@ -14,7 +14,7 @@ const Navbar = ({setShowLogin}) => {
         <Link to='/'><img src={assets.tuna} alt=""className='logo' /></Link>
         <ul className="navbar-menu">
             <Link to='/' onClick={()=>setMenu("home")}className={menu === "home" ? "active" : ""}>Home</Link>
-            <a href='#explore-menu' onClick={()=>setMenu("products")} className={menu === "products" ? "active" : ""}>Products</a>
+            <a href='#products' onClick={()=>setMenu("products")} className={menu === "products" ? "active" : ""}>Products</a>
             <a href='#about' onClick={()=>setMenu("about")} className={menu === "about" ? "active" : ""}>About us</a>
             <a href='#delivery-areas' onClick={()=>setMenu("delivery areas")} className={menu === "delivery areas" ? "active" : ""}>Delivery areas</a>
             <a href='#footer' onClick={()=>setMenu("contact")} className={menu === "contact" ? "active" : ""}>Contact</a>

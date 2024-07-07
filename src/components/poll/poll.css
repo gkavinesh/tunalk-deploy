@@ -2,6 +2,11 @@
 
 .heading-1{
     font-family: "Bebas Neue", sans-serif;
-    font-size: 50px;
-    color: black;
+    font-size: 4rem;
+    color: #11484F;
+    text-align: center; /* Center align the text */
+}
+
+.bottom{
+    margin-top: -3rem;
 }

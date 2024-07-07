@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Home.css';
-import AppDownload from '..//..//components/AppDownload/AppDownload';
 import Facts from '..//..//components/Facts/Facts';
 import About from '..//..//components/about/about';
 import Poll from '..//..//components/poll/poll';
 import Step from '..//..//components/steps/step';
 import Header from '..//..//components/header/header'
+import Recipes from '..//..//components/recipes/recipes'
+import Faq from '..//..//components/faq/faq';
 const Home = () => {
   const [category, setCategory] = useState("All");
 
@@ -14,11 +15,10 @@ const Home = () => {
       <Header/>
       <Facts />
       <About />
-      <hr />
       <Poll />
-      <hr />
       <Step/>
-      <AppDownload />
+      <Recipes/>
+      <Faq/>
     </div>
   );
 };

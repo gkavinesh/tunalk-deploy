@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import './poll.css'
+import Image2 from './line2.png'
+import Image1 from './line1.png'
 
 const BarPoll = () => {
   const [votes, setVotes] = useState([
@@ -22,10 +24,25 @@ const BarPoll = () => {
   ]);
 
   return (
-    <section className="bg-white px-4 py-12">
+    <section className="bg-cyan-100 px-4 py-12">
+      <div className="bottom absolute text-center">
+        <img src={Image2} alt="" />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <h1 className="heading-1">Time to have some fun?</h1>
+      <br></br>
+      <br></br>
       <div className="mx-auto grid max-w-4xl grid-cols-1 gap-2 md:grid-cols-[1fr_400px] md:gap-12">
         <Options votes={votes} setVotes={setVotes} />
         <Bars votes={votes} />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="up absolute text-center">
+        <img src={Image1} alt="" />
       </div>
     </section>
   );
@@ -41,7 +58,6 @@ const Options = ({ votes, setVotes }) => {
 
   return (
     <div className="col-span-1 py-16"> {/* Adjusted padding here */}
-      <h1 className="heading-1">Time to have some fun?</h1>
       <h3 className="heading-2">
         Which seafood is known for its delicate flavor and tender texture?
       </h3>

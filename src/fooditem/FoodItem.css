@@ -1,17 +1,17 @@
 .food-item{
+  font-family: "Outfit", sans-serif;
     background-color: white;
     width: 400px;
     height: 400px;
-    margin: auto;
     border-radius: 15px;
     transition: 0.3s;
     animation: fadeIn 1s;
-    margin-top: 1rem;
+    margin-top: 15rem;
     margin-bottom: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
     border: 5px solid;
-    border-image: repeating-linear-gradient(135deg,#000000 0 10px,#0C979C 0 20px,#14464F 0 30px) 8;
+    border-image: repeating-linear-gradient(135deg,#C6EDF4 0 10px,#C6EDF4 20px,#C6EDF4 30px) 8;
     -webkit-mask: 
       conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)
        var(--_i,200%) 0  /200% var(--_i,8px) border-box no-repeat,

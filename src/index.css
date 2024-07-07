@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
@@ -12,7 +12,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Outfit", "Bebas Neue", sans-serif;
   scroll-behavior: smooth;
 }
 

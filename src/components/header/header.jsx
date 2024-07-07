@@ -2,7 +2,7 @@ import React from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 import Video from './tunalk.mp4';
 import './header.css';
-import Image1 from './line1.png';
+import Image10 from './line1.png';
 
 const Hero = () => {
   return (
@@ -19,7 +19,7 @@ const Hero = () => {
           />
         </h2>
         <div className="absolute bottom-0 text-center">
-          <img src={Image1} alt="" />
+          <img src={Image10} alt="" />
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
 
 .welcome{
     font-size: 7rem; /* Adjust as needed */
     color: #ffffffca;
-    font-family: "Anton SC", sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-style: normal;
   }
