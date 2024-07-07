@@ -31,8 +31,8 @@ const HorizontalScrollCarousel = () => {
   return (
     <section ref={targetRef} className="relative h-[250vh] bg-white" id='products'>
       <div className="hero sticky top-0 flex h-screen items-center overflow-hidden py-4">
-        <h2>The seafood palette</h2>
-        <h2>The seafood palette</h2>
+        <h2>The super deal pallete</h2>
+        <h2>The super deal pallete</h2>
         <motion.div style={{ x }} className="container-products flex gap-4 p-0 custom-height">
           {food_list.map((item, index) => (
             <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image} />

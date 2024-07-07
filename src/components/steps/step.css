@@ -1,10 +1,10 @@
-.hero{
+.hero-about{
   height: 30vh;
 }
 
-  .hero h2 {
+  .hero-about h2 {
     position: absolute;
-    margin-left: 50rem;
+    margin-left: 40rem;
     margin-top: 8rem;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 7rem;
@@ -12,13 +12,13 @@
     transform: translate(-50%, -50%);
   }
   
-  .hero h2:nth-child(1) {
+  .hero-about h2:nth-child(1) {
     color: transparent;
     -webkit-text-stroke: 2px #0C979C;
   
   }
   
-  .hero h2:nth-child(2) {
+  .hero-about h2:nth-child(2) {
     color: #0C979C;
     animation: animate 4s ease-in-out infinite;
   }

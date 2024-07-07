@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+.back{
+    background: linear-gradient(to right, #31a1a5, #06755f);
+    width: 100%;
+
+}
+
 .navbar {
+    margin-left: 6rem;
     font-family: "Outfit", sans-serif;
-    padding: 5px 20px; /* Adjust padding for smaller screens */
+    padding: 15px 20px; /* Adjust padding for smaller screens */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #C6EDF4;
+    background: linear-gradient(to right, #31a1a5, #06755f);
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other elements */
@@ -19,15 +26,15 @@
 }
 
 .navbar-menu {
-    
     display: flex;
     list-style: none;
     gap: 20px; /* Reduce gap between menu items */
-    color: #11484F;
-    font-size: 16px;
+    color: #ffffff;
+    font-size: 20px;
 }
 
 .navbar-right {
+    margin-right: 6rem;
     display: flex;
     align-items: center;
     gap: 20px; /* Reduce gap between items */
@@ -40,11 +47,11 @@
 
 .navbar-button {
     background: transparent;
-    font-size: 16px;
-    color: #11484F;
+    font-size: 20px;
+    color: #ffffff;
     border: 1px solid #ffffff;
     padding: 8px 20px; /* Increase padding for easier tapping on mobile */
-    border-radius: 20px;
+    border-radius: 40px;
     cursor: pointer;
 }
 
@@ -56,7 +63,7 @@
 
 .navbar .active {
     padding-bottom: 2px;
-    border-bottom: 2px solid #11484F;
+    border-bottom: 2px solid #ffffff;
 }
 
 .navbar li {
@@ -138,4 +145,45 @@
     }
 }
 
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Off-screen by default */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Slide in when open */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.navbar-hamburger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.navbar-hamburger:hover {
+    opacity: 0.7;
+}
 

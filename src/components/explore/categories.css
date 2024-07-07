@@ -1,0 +1,37 @@
+/* categories.css */
+.categories-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #fff;
+  }
+  
+  .category-wrapper {
+    width: 150px; /* Adjust as needed */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-card {
+    border: 1px solid #ddd; /* Adding a border */
+    background-color: #fff;
+    height: 130px;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Ensure items stack vertically */
+    justify-content: center; /* Center content vertically */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  }
+  
+  
+  .category-card img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Center image horizontally */
+  }
+  
+  .category-title {
+    margin-top: 10px;
+  }  

@@ -1,36 +1,92 @@
-.hero{
-  height: 30vh;
+.wrapper,
+.content {
+    margin-top: 0rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
 }
 
-  .hero h2 {
-    position: absolute;
-    margin-left: 50rem;
-    margin-top: 8rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 7rem;
-    text-align: center;
-    transform: translate(-50%, -50%);
+.content {
+  overflow-x: hidden;
+  padding-bottom: 5rem;
+}
+
+.content .section {
+  width: 100%;
+  height: 100vh;
+}
+
+.content .section.hero {
+  background-image: url(..//..//assets/about.png);
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+.image-container {
+  margin-top: 0rem;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  perspective: 500px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h2 {
+  position: absolute;
+  margin-left: 50rem;
+  margin-top: 8rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 7rem;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.hero h2:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #0C979C;
+
+}
+
+.hero h2:nth-child(2) {
+  color: #0C979C;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+
+  0%,
+  100% {
+    clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
   }
-  
-  .hero h2:nth-child(1) {
-    color: transparent;
-    -webkit-text-stroke: 2px #0C979C;
-  
+
+  50% {
+    clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
   }
-  
-  .hero h2:nth-child(2) {
-    color: #0C979C;
-    animation: animate 4s ease-in-out infinite;
-  }
-  
-  @keyframes animate {
-  
-    0%,
-    100% {
-      clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
-    }
-  
-    50% {
-      clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
-    }
-  }
+}

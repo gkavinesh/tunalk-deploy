@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 
 .hero {
@@ -11,7 +11,7 @@
   position: absolute;
   margin-left: 50rem;
   margin-top: 8rem;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Tinos", serif;
   font-size: 7rem;
   text-align: center;
   transform: translate(-50%, -50%);

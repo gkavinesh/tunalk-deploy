@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.back-1{
+    background: white;
+}
+
+.banner {
+    margin-left: 6rem;
+    font-family: "Outfit", sans-serif;
+    padding: 7px 20px; /* Adjust padding for smaller screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.banner .logo {
+    height: auto; /* Allow logo height to adjust */
+    width: 160px;
+    padding: 5px; /* Simplify padding */
+}
+
+.banner-menu {
+    margin-left: 0.7rem;
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Reduce gap between menu items */
+    color: #0AAD5D;
+    font-size: 15px;
+}
+
+.banner-right {
+    margin-right: 6rem;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Reduce gap between items */
+}
+
+.banner-right .search {
+    width: 20px;
+    height: 20px;
+}
+
+.banner-button {
+    background: transparent;
+    font-size: 16px;
+    color: #197477;
+    border: 1px solid #197477;
+    padding: 8px 20px; /* Increase padding for easier tapping on mobile */
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.banner-button:hover {
+    background-color: #11484F;
+    color: white;
+    border: none;
+}
+
+.banner.active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #197477;
+}
+
+.banner li {
+    cursor: pointer;
+}
+
+.navbar-search-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 4px;
+    min-height: 4px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+    top: 2px;
+    right: -8px;
+}
+
+.download-link {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #000000;
+}
+
+.app-logo {
+    width: 25px; /* Adjust the size as needed */
+    height: auto;
+    margin-left: 5px;
+  }
+
+  .other-logo {
+    width: 30px; /* Adjust the size as needed */
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+
+  
+

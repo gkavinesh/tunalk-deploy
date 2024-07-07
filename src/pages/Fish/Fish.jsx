@@ -8,14 +8,12 @@ import Header from '..//..//components/header/header'
 import Recipes from '..//..//components/recipes/recipes'
 import Faq from '..//..//components/faq/faq';
 import SwipeCarousel from '../../components/carousel/carousel';
-import Shop from '..//..//components/Shopby/shop'
-const Home = () => {
+const Fish = () => {
   const [category, setCategory] = useState("All");
 
   return (
     <div>
       <SwipeCarousel/>
-      <Shop/>
       <Facts />
       <About />
       <Poll />
@@ -26,5 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
-
+export default Fish;

@@ -6,6 +6,8 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Cart from './pages/Cart/Cart'
 import Footer from './components/footer/footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
+import Banner from './components/banner/banner'
+import MainCat from './components/explore/maincat'
 
 const App = () => {
 
@@ -14,7 +16,9 @@ const App = () => {
     <>
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
     <div className='app'>
+      <Banner/>
       <Navbar setShowLogin= {setShowLogin}/>
+      <MainCat/>
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/cart' element={<Cart/>} />

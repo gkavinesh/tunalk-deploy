@@ -28,9 +28,9 @@ const StepsSection = () => {
 
     return (
         <section className="max-w-7xl mx-auto py-10 bg-white">
-            <div className="hero">
-                <h2>Why choose tuna lk</h2>
-                <h2>Why choose tuna lk</h2>
+            <div className="hero-about">
+                <h2>Why Tuna LK</h2>
+                <h2>Why Tuna LK</h2>
             </div>
             <div>
                 {/* Step 1 */}

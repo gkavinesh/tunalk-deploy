@@ -1,5 +1,5 @@
 import tuna from './tuna.png';
-import basket_icon from './shopping-bag (5).png';
+import basket_icon from './shopping-bag (8).png';
 import logo from './logo.png';
 import header_img from './header_img.png';
 import search_icon from './search (4).png';
@@ -37,8 +37,37 @@ import scad from './scad.png'
 import seer from './seer.png'
 import sail from './sail.png'
 import aboutsection from './about-section.png'
+import white from './white.png'
+import apple from './apple (1).png'
+import android from './android (1).png'
+import fastdelivery from './fast-delivery.png'
+import phone from './phone-call.png'
+import fishcat from './fish-cat.png'
+import crabcat from './crab-cat.png'
+import prawncat from './prawn-cat.png'
+import lobstercat from './lobster-cat.png'
+import slicecat from './slice-cat.png'
+import dealcat from './deal-cat.png'
+import back from './b1.jpg'
+import back2 from './b2.jpg'
+import shop from './shop.png'
 
 export const assets = {
+    shop,
+    back,
+    back2,
+    slicecat,
+    dealcat,
+    lobstercat,
+    prawncat,
+    crabcat,
+    fishcat,
+    phone,
+    fastdelivery,
+    apple,
+    android,
+    white,
+    about,
     sail,
     seer,
     scad,
