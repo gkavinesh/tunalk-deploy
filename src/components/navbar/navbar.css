@@ -7,9 +7,9 @@
 }
 
 .navbar {
-    margin-left: 6rem;
+    margin-left: 6.5rem;
     font-family: "Outfit", sans-serif;
-    padding: 15px 20px; /* Adjust padding for smaller screens */
+    padding: 8px 20px; /* Adjust padding for smaller screens */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,7 @@
 }
 
 .navbar-right {
-    margin-right: 6rem;
+    margin-right: 6.5rem;
     display: flex;
     align-items: center;
     gap: 20px; /* Reduce gap between items */

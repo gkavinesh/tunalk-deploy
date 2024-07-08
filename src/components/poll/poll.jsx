@@ -41,9 +41,6 @@ const BarPoll = () => {
       <br></br>
       <br></br>
       <br></br>
-      <div className="up absolute text-center">
-        <img src={Image1} alt="" />
-      </div>
     </section>
   );
 };

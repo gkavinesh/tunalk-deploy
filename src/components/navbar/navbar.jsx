@@ -20,7 +20,7 @@ const Navbar = ({ setShowLogin }) => {
         <div className='back'>
             <div className='navbar' id='navbar'>
                 <a href="/">
-                    <img src={assets.white} alt="" className="logo" style={{ width: '250px', height: 'auto' }} />
+                    <img src={assets.white} alt="" className="logo" style={{ width: '230px', height: 'auto' }} />
                 </a>
 
 

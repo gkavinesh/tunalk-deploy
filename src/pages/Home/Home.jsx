@@ -17,10 +17,10 @@ const Home = () => {
       <SwipeCarousel/>
       <Shop/>
       <Facts />
-      <About />
       <Poll />
-      <Step/>
+      <About />
       <Recipes/>
+      <Step/>
       <Faq/>
     </div>
   );
