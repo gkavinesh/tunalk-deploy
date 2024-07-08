@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .back{
-    background: linear-gradient(to right, #31a1a5, #06755f);
+    background: linear-gradient(to right, #048676, #00b6a1);;
     width: 100%;
 
 }
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #31a1a5, #06755f);
+    background: linear-gradient(to right, #048676, #00b6a1);;
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other elements */
