@@ -50,7 +50,7 @@ import slicecat from './slice-cat.png'
 import dealcat from './deal-cat.png'
 import back from './b1.jpg'
 import back2 from './b2.jpg'
-import shop from './shop.png'
+import shop from './shop1.png'
 
 export const assets = {
     shop,
