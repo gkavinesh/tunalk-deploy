@@ -7,7 +7,7 @@
   }
   
   .category-wrapper {
-    width: 150px; /* Adjust as needed */
+    width: 180px; /* Adjust as needed */
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -15,7 +15,7 @@
   .category-card {
     border: 1px solid #ddd; /* Adding a border */
     background-color: #fff;
-    height: 130px;
+    height: 110px;
     border-radius: 5px;
     padding: 10px;
     text-align: center;

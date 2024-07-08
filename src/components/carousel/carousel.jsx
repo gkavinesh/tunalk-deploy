@@ -12,7 +12,7 @@ const Carousel = () => {
   const autoSlide = () => {
     setInterval(() => {
       slide(getItemActiveIndex() + 1);
-    }, 3000); // slide speed = 3s
+    }, 2000); // slide speed = 3s
   };
 
   const slide = (toIndex) => {
