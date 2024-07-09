@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.back-1{
+/* Base styles */
+.back-1 {
     background: white;
 }
 
@@ -96,14 +97,80 @@
     width: 25px; /* Adjust the size as needed */
     height: auto;
     margin-left: 5px;
-  }
+}
 
-  .other-logo {
+.other-logo {
     width: 30px; /* Adjust the size as needed */
     height: auto;
     margin-left: 10px;
     margin-right: 10px;
-  }
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 1200px) {
+    .banner {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .banner {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 7px 10px;
+    }
+
+    .banner .logo {
+        width: 120px;
+    }
+
+    .download-link{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .banner-menu {
+        margin-left: 0;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .banner-right {
+        margin-right: 0;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .banner-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .app-logo {
+        width: 20px;
+    }
+
+    .other-logo {
+        width: 25px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
 
 
   

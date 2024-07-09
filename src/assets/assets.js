@@ -40,7 +40,7 @@ import aboutsection from './example.png'
 import white from './white.png'
 import apple from './apple (1).png'
 import android from './android (1).png'
-import fastdelivery from './fast-delivery.png'
+import fastdelivery from './deliveryicon.jpeg'
 import phone from './phone-call.png'
 import fishcat from './fish-cat.png'
 import crabcat from './crab-cat.png'
@@ -65,8 +65,16 @@ import comboexplore from './7.jpg'
 import lobsterexplore from './4.jpg'
 import dealexplore from './3.jpg'
 import fishy from './fishy.jpg'
+import pomfret from './pomfret.jpg'
+import cubes from './cubes.jpg'
+import slice from './slice.jpg'
+import currycut from './currycut.jpg'
 
 export const assets = {
+    cubes,
+    slice,
+    currycut,
+    pomfret,
     fishexplore,
     crabexplore,
     prawnexplore,
@@ -164,124 +172,58 @@ export const menu_list = [
 
 export const food_list = [
     {
-        _id: "1",
-        name: "Raw Salmon Fillet",
-        image: fish,
+        _id: 1,
+        name: "Seer Fish / Vanjaram / Nei Meen",
         price: 2000,
-        description: "Fresh raw salmon fillet, rich in omega-3 fatty acids.",
-        category: "Fish"
+        description: "Net Weight: 500-480 gms",
+        image: fishy, // Replace with actual image path
+        offer: 16
     },
     {
         _id: "2",
         name: "Raw Tuna Steak",
-        image: sail,
         price: 2000,
-        description: "Premium grade raw tuna steak, perfect for sushi and sashimi.",
-        category: "Fish"
+        description: "Net Weight: 500-480 gms",
+        category: "Fish",
+        image: pomfret, // Replace with actual image path
+        offer: 16
     },
     {
         _id: "3",
         name: "Raw Shrimp",
-        image: seer,
         price: 2000,
-        description: "Fresh raw shrimp, ideal for grilling or boiling.",
-        category: "Shellfish"
+        description: "Net Weight: 500-480 gms",
+        category: "Shellfish",
+        image: fishy, // Replace with actual image path
+        offer: 16
     },
     {
         _id: "4",
         name: "Raw Scallops",
-        image: scad,
         price: 2000,
-        description: "Tender raw scallops, great for searing or baking.",
-        category: "Shellfish"
+        description: "Net Weight: 500-480 gms",
+        category: "Shellfish",
+        image: pomfret, // Replace with actual image path
+        offer: 16
     },
     {
         _id: "5",
         name: "Raw Lobster Tail",
-        image: fish,
         price: 2000,
-        description: "Succulent raw lobster tail, perfect for a gourmet meal.",
-        category: "Shellfish"
+        description: "Net Weight: 500-480 gms",
+        category: "Shellfish",
+        image: fishy, // Replace with actual image path
+        offer: 16
     },
     {
         _id: "6",
         name: "Raw Crab Legs",
-        image: fish,
         price: 2000,
-        description: "Fresh raw crab legs, ideal for steaming or boiling.",
-        category: "Shellfish"
-    },
-    {
-        _id: "7",
-        name: "Raw Octopus",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw octopus, great for grilling or stewing.",
-        category: "Mollusk"
-    },
-    {
-        _id: "8",
-        name: "Raw Clams",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw clams, perfect for steaming or chowders.",
-        category: "Shellfish"
-    },
-    {
-        _id: "9",
-        name: "Raw Oysters",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw oysters, ideal for serving on the half shell.",
-        category: "Shellfish"
-    },
-    {
-        _id: "10",
-        name: "Raw Mussels",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw mussels, perfect for steaming or pasta dishes.",
-        category: "Shellfish"
-    },
-    {
-        _id: "11",
-        name: "Raw Squid",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw squid, great for frying or grilling.",
-        category: "Mollusk"
-    },
-    {
-        _id: "12",
-        name: "Raw Sea Urchin",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw sea urchin, perfect for sushi or gourmet dishes.",
-        category: "Mollusk"
-    },
-    {
-        _id: "13",
-        name: "Raw Red Snapper",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw red snapper, great for grilling or baking.",
-        category: "Fish"
-    },
-    {
-        _id: "14",
-        name: "Raw Halibut",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw halibut, ideal for grilling or roasting.",
-        category: "Fish"
-    },
-    {
-        _id: "15",
-        name: "Raw Mackerel",
-        image: fish,
-        price: 2000,
-        description: "Fresh raw mackerel, perfect for grilling or smoking.",
-        category: "Fish"
+        description: "Net Weight: 500-480 gms",
+        category: "Shellfish",
+        image: pomfret, // Replace with actual image path
+        offer: 16
     }
 ];
+
 

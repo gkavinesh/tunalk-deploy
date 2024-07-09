@@ -1,130 +1,189 @@
-.food-item{
+.food-item {
   font-family: "Outfit", sans-serif;
-    background-color: white;
-    width: 450px;
-    height: 400px;
-    border-radius: 15px;
-    transition: 0.3s;
-    animation: fadeIn 1s;
-    border: 5px solid;
-    border-image: repeating-linear-gradient(135deg,#C6EDF4 0 10px,#C6EDF4 20px,#C6EDF4 30px) 8;
-    -webkit-mask: 
-      conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)
-       var(--_i,200%) 0  /200% var(--_i,8px) border-box no-repeat,
-      conic-gradient(at bottom 8px left  8px,  #0000 90deg,#000 0)
-       0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
-      linear-gradient(#000 0 0) padding-box no-repeat;
-    transition: .3s, -webkit-mask-position .3s .3s;
+  background-color: white;
+  width: 300px; /* Adjusted width */
+  height: 500px; /* Adjusted height */
+  border-radius: 10px; /* Simplified border-radius */
+  transition: 0.3s;
+  animation: fadeIn 1s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */
+  position: relative;
+  margin-bottom: 20px; /* Adjust margin bottom to create spacing */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-.food-item:hover{
-  --_i: 100%;
+
+.food-item:hover {
   color: #CC333F;
   transition: .3s, -webkit-mask-size .3s .3s;
 }
 
-.food-item-image{
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    height: auto;
-    border-radius: 15px 15px 15px 15px;
-
+.food-item-offer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 300;
+  z-index: 1; /* Ensure the offer is above other content */
 }
 
-.food-item-info{
-    padding: 20px;
-
+.food-item-image-container {
+  width: auto;
+  height: 350px;
+  position: relative;
 }
 
-
-
-.food-item-desc{
-  margin-top: 2rem;
-    color: #767676;
-    font-size: 16px;
-
+.food-item-image {
+  width: 100%; /* Ensures the image fills its container */
+  height: 100%; /* Ensures the image fills its container */
+  object-fit: cover; /* Ensures the image maintains aspect ratio and covers the container */
 }
 
-.food-item-price{
-    color: #11484F;
-    font-size: 28px;
-    font-weight: 500;
-    margin:10px 0px
+.food-item-image-container .add {
+  width: 35px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #11484F;
+  background-color: white;
+  margin-right: -2rem;
 }
 
-.food-item-image-container{
-    width: auto;
-    height: 200px;
-    position: relative;
+.food-item-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 50px;
+  background-color: white;
 }
 
-.food-item-image-container .add{
-    width: 35px;
-    position:absolute;
-    bottom: 15px;
-    right: 15px;
-    cursor:pointer;
-    border-radius: 50%;
-    border:2px solid #11484F;
-    margin-top: -5rem;
+.food-item-counter img {
+  width: 30px;
 }
 
-.food-item-counter{
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px;
-    border-radius: 50px;
-    background-color: white;
+.food-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
-.food-item-counter img{
-    width: 30px;
+.food-item-details {
+  flex-grow: 1;
+}
+
+.food-item-name {
+  color:#0C979C;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.food-item-desc {
+  color: #767676;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.food-item-price {
+  color: #11484F;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.food-item-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.food-item-action img{
+  display: none;
+}
+
+.customize-button {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #F48712;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.customize-button .cart-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
-    .head {
+  .head {
       font-size: 4rem; /* Adjust font size for smaller screens */
-    }
-  
-    .container-products {
+  }
+
+  .container-products {
       gap: 10px; /* Reduce gap between items for smaller screens */
-    }
-  
-    .food-item {
+  }
+
+  .food-item {
       width: 300px; /* Full width for smaller screens */
       height: 400px; /* Auto height for flexibility */
       margin-top: 5rem;
       margin-left: 1rem;
       margin-right: 1rem;
-    }
-  
-    .food-item-image {
+  }
+
+  .food-item-image {
       width: 100%;
       height: auto; /* Maintain aspect ratio */
-    }
-  
-    .food-item-info {
-      padding: 10px; /* Reduce padding for smaller screens */
-    }
-  
-    .food-item-desc {
-      font-size: 14px; /* Adjust font size for smaller screens */
-    }
-  
-    .food-item-price {
-      font-size: 24px; /* Adjust font size for smaller screens */
-    }
-  
-    .food-item-counter {
-      padding: 4px; /* Reduce padding for smaller screens */
-    }
-  
-    .food-item-counter img {
-      width: 25px; /* Adjust size for smaller screens */
-    }
   }
+
+  .food-item-info {
+      padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .food-item-desc {
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .food-item-price {
+      font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  .food-item-counter {
+      padding: 4px; /* Reduce padding for smaller screens */
+  }
+
+  .food-item-counter img {
+      width: 25px; /* Adjust size for smaller screens */
+  }
+
+  .customize-button {
+      padding: 8px 16px; /* Adjust padding for smaller screens */
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .customize-button .cart-icon {
+      width: 18px; /* Adjust size for smaller screens */
+      height: 18px; /* Adjust size for smaller screens */
+      margin-right: 8px; /* Adjust margin for smaller screens */
+  }
+}
+

@@ -1,38 +1,22 @@
-.fish h2{
-    position: relative;
-    margin-left: 16.5rem;
-    margin-top: 3rem;
-    margin-bottom: -3rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    text-align: center;
-    transform: translate(-50%, -50%);
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap');
+
+.fish h2 {
+  position: relative;
+  margin-left: 17.5rem;
+  margin-top: 1rem;
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: #00b6a1a1;
 }
 
-.fish h2:nth-child(1) {
-    color: transparent;
-    -webkit-text-stroke: 2px #0C979C;
-  
-  }
-  
-.fish h2:nth-child(2) {
-    color: #00b6a1;
-    animation: animate 4s ease-in-out infinite;
-  }
-  
-  @keyframes animate {
-  
-    0%,
-    100% {
-      clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
-    }
-  
-    50% {
-      clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
-    }
-  }
 
-  hr{
-    width: 90%;
-    margin-left: 9rem;
-  }
+
+.fish hr {
+  width: 1450px; /* Set the width as needed */
+  margin: 0 auto; /* Center align horizontally */
+  height: 2px;
+  background-color: #ccc;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import CategoryCard from './categories'; // Assuming CategoryCard component is properly imported
-import './categories.css'; // Assuming you have a CSS file for styling
 import { assets } from '../../assets/assets';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
@@ -12,6 +11,7 @@ const categories = [
   { image: assets.icon4, title: 'LOBSTERS' },
   { image: assets.icon5, title: 'TODAY DEALS' },
   { image: assets.icon4, title: 'LOBSTERS' },
+  { image: assets.icon6, title: 'SLICES' },
   { image: assets.icon6, title: 'SLICES' }
 ];
 
@@ -23,18 +23,18 @@ const scroll = (direction) => {
 
 const Categories = () => {
   return (
-    <div className="categories-container-wrapper">
-      <div className="arrow-icon left-arrow" onClick={() => scroll('left')}>
+    <div className="relative flex items-center py-5">
+      <div className="absolute left-0 ml-16 z-10 p-2 cursor-pointer text-2xl text-gray-500" onClick={() => scroll('left')}>
         <FaArrowLeft />
       </div>
-      <div className="categories-container">
+      <div className="flex gap-2 bg-white overflow-x-auto scroll-smooth px-12 ml-28 flex-1 whitespace-nowrap">
         {categories.map((category, index) => (
-          <div key={index} className="category-wrapper">
+          <div key={index} className="inline-block w-40 my-4"> {/* Updated width */}
             <CategoryCard image={category.image} title={category.title} />
           </div>
         ))}
       </div>
-      <div className="arrow-icon right-arrow" onClick={() => scroll('right')}>
+      <div className="absolute right-0 mr-16 z-10 p-2 cursor-pointer text-2xl text-gray-500" onClick={() => scroll('right')}>
         <FaArrowRight />
       </div>
     </div>
@@ -42,6 +42,8 @@ const Categories = () => {
 };
 
 export default Categories;
+
+
 
 
 

@@ -60,7 +60,8 @@ const ComponentName = () => {
         <section className="py-12 bg-white sm:py-16 lg:py-20" id='shop'>
             <div className="shop px-4 mx-auto sm:px-6 lg:px-8 max-w-full">
             <div className="bubble">
-                    <h2>Shop by Category</h2>
+                    <h2>Category</h2>
+                    <h2>Category</h2>
             </div>
                 <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
                     {items.map(item => (

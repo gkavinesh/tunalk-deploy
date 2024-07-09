@@ -15,7 +15,7 @@ const FoodDisplay = ({ category }) => {
   return (
     <div className='food-display' id='food-display'>
       <div className="food-display-list">
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (category === "All" || category === item.category) {
             return (
               <FoodItem
@@ -25,6 +25,7 @@ const FoodDisplay = ({ category }) => {
                 description={item.description}
                 price={item.price}
                 image={item.image}
+                offer={item.offer} // Include the offer prop
               />
             );
           }
@@ -36,6 +37,7 @@ const FoodDisplay = ({ category }) => {
 };
 
 export default FoodDisplay;
+
 
 
 

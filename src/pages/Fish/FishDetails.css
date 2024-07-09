@@ -1,0 +1,19 @@
+.bubu{
+    margin-bottom: 4rem;
+    margin-left: 15rem;
+}
+
+.bubuish{
+    margin-left: 3rem;
+    margin-top: 4rem;
+}
+
+.centered-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bubbist{
+    margin-left: -3rem;
+}

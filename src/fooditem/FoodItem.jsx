@@ -1,36 +1,51 @@
 import React, { useContext } from 'react';
 import './FoodItem.css';
-import { assets } from '../assets/assets'; // Ensure this import is correct based on your actual file structure
-import { StoreContext } from '../context/StoreContext'; // Correct the import path if needed
+import { StoreContext } from '../context/StoreContext';
+import { FaShoppingCart } from 'react-icons/fa';
+import { assets } from '../assets/assets';
+import { Link } from 'react-router-dom';
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, price, description, image, offer }) => {
     const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
 
     return (
         <div className='food-item'>
+            {offer && <div className="food-item-offer">{offer}% Offer</div>}
+            
             <div className="food-item-image-container">
-                <img className='food-item-image' src={image} alt='' />
-                {!cartItems[id] ? (
-                    <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt='' />
-                ) : (
-                    <div className='food-item-counter'>
-                        <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt='' />
-                        <p>{cartItems[id]}</p>
-                        <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt='' />
-                    </div>
-                )}
+                <Link to='/fishdetails'>
+                <img className='food-item-image' src={image} alt={name} />
+                </Link>
+                
             </div>
             <div className="food-item-info">
-                <p className="food-item-desc">
-                    {description}
-                </p>
-                <p className='food-item-price'>
-                    LKR {price}
-                </p>
+                <div className="food-item-details">
+                    <p className="food-item-name">{name}</p>
+                    <p className="food-item-desc">{description}</p>
+                    <p className='food-item-price'>Starts from LKR {price}</p>
+                </div>
+                <div className="food-item-action">
+                    {!cartItems[id] ? (
+                        <img className='add' onClick={(e) => {e.stopPropagation(); e.preventDefault(); addToCart(id)}} src={assets.add_icon_white} alt='Add' />
+                    ) : (
+                        <div className='food-item-counter'>
+                            <img onClick={(e) => {e.stopPropagation(); e.preventDefault(); removeFromCart(id)}} src={assets.remove_icon_red} alt='Remove' />
+                            <p>{cartItems[id]}</p>
+                            <img onClick={(e) => {e.stopPropagation(); e.preventDefault(); addToCart(id)}} src={assets.add_icon_green} alt='Add' />
+                        </div>
+                    )}
+                    <button className="customize-button">
+                        <FaShoppingCart className="cart-icon" />
+                        Customize
+                    </button>
+                </div>
             </div>
         </div>
     );
 }
 
 export default FoodItem;
+
+
+
 

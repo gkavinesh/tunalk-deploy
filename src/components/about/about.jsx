@@ -2,9 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
-import { assets } from "../../assets/assets";
-import Image10 from './line2.png'
-import About from '..//..//assets/expo (2).png'
+
+import About from '..//..//assets/aboutusnewpng (2).png'
 
 const App = () => {
   const wrapperRef = useRef(null);
@@ -27,7 +26,7 @@ const App = () => {
     timeline
       .to(imageRef.current, {
         scale: 2,
-        z: 350,
+        z: 370,
         transformOrigin: "center center",
         ease: "power1.inOut",
       })

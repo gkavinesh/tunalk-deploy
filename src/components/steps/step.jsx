@@ -27,10 +27,12 @@ const StepsSection = () => {
 
     return (
         <section className="max-w-4xl mx-auto py-10 bg-white">
-            <div className="hero-about">
+            <div className="bubbly">
                 <h2>Why Tuna LK</h2>
                 <h2>Why Tuna LK</h2>
             </div>
+            <br></br>
+            <br></br>
             <div>
                 {/* Step 1 */}
                 <div ref={refStep1} className={`flex flex-row ${inViewStep1 ? 'animate-appear' : 'opacity-0'}`}>
@@ -54,7 +56,12 @@ const StepsSection = () => {
                                 </div>
                             </div>
                             <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.sourcing} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                                <img
+                                    src={assets.sourcing}
+                                    alt="step 1"
+                                    style={{ height: '100px', marginLeft: '9rem' }}
+                                    className="object-scale-down hover-transform"
+                                />
                             </div>
                         </div>
                     </div>
@@ -86,7 +93,7 @@ const StepsSection = () => {
                     <div className="w-full flex-auto border rounded border-gray-300">
                         <div className="flex md:flex-row flex-col items-center justify-between">
                             <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.quality} alt="step 1" style={{ height: '100px' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                                <img src={assets.quality} alt="step 1" style={{ height: '100px' }} className="object-scale-down hover-transform" />
                             </div>
                             <div className="flex-auto">
                                 <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
@@ -131,7 +138,7 @@ const StepsSection = () => {
                                 </div>
                             </div>
                             <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.packaging} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                                <img src={assets.packaging} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down hover-transform" />
                             </div>
                         </div>
                     </div>
@@ -162,7 +169,7 @@ const StepsSection = () => {
                     <div className="w-full flex-auto border rounded border-gray-300">
                         <div className="flex md:flex-row flex-col items-center justify-between">
                             <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.managing} alt="step 1" style={{ height: '100px' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                                <img src={assets.managing} alt="step 1" style={{ height: '100px' }} className="object-scale-down hover-transform" />
                             </div>
                             <div className="flex-auto">
                                 <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
@@ -204,7 +211,7 @@ const StepsSection = () => {
                                 </div>
                             </div>
                             <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.delivery} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                                <img src={assets.delivery} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down hover-transform" />
                             </div>
                         </div>
                     </div>
