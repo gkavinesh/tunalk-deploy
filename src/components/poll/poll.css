@@ -1,12 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.heading-1{
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 4rem;
-    color: #11484F;
-    text-align: center; /* Center align the text */
+
+.poll{
+    margin-top: -10rem;
 }
 
-.bottom{
+.buby h1{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 7rem;
+  text-align: center;
+}
+
+h1:nth-child(1){
+    color: transparent;
+    -webkit-text-stroke: 1.5px #0C979C;
+}
+
+.up{
     margin-top: -3rem;
+}
+
+.down{
+    margin-bottom: -3rem;
 }

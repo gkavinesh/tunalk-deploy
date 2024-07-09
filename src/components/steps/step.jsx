@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import './step.css';
 import { assets } from '../../assets/assets';
-
 
 const StepsSection = () => {
     const [refStep1, inViewStep1] = useInView({
@@ -27,7 +26,7 @@ const StepsSection = () => {
     });
 
     return (
-        <section className="max-w-7xl mx-auto py-10 bg-white">
+        <section className="max-w-4xl mx-auto py-10 bg-white">
             <div className="hero-about">
                 <h2>Why Tuna LK</h2>
                 <h2>Why Tuna LK</h2>
@@ -44,16 +43,22 @@ const StepsSection = () => {
                             <div className="border-l-4 ml-0 mr-2 h-full border-gray-300 border-dashed"></div>
                         </div>
                     </div>
-                    <div className="flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center">
+                    <div className="w-full flex-auto border rounded border-gray-300">
+                        <div className="flex md:flex-row flex-col items-center justify-between">
                             <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span className="font-black">Step 1</span> - Idea</div>
-                                <div className="p-3 text-3xl text-gray-800 font">High-quality selection of seafood.</div>
-                                <div className="px-3 pb-6">Our shop is dedicated to sourcing the finest seafood available. We partner with trusted suppliers who prioritize sustainable practices, ensuring our selection of fish and shellfish is both fresh and responsibly harvested. Each product is chosen meticulously to meet our high standards for quality and taste.</div>
+                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
+                                    <span className="font-black">Step 1</span> - Idea
+                                </div>
+                                <div className="p-2 text-3xl text-gray-800 title">
+                                    <p>High-quality selection of seafood</p>
+                                </div>
                             </div>
-                            <div className="md:w-96 w-full p-5"><img src={assets.sourcing} alt="step 1" className="object-scale-down" /></div>
+                            <div className="md:w-80 p-2 relative group flex-shrink-0">
+                                <img src={assets.sourcing} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 {/* Divider */}
@@ -78,14 +83,17 @@ const StepsSection = () => {
                             <div className="border-l-4 ml-4 h-full border-gray-300 border-dashed"></div>
                         </div>
                     </div>
-                    <div className="flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center">
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span className="font-black">Step 2</span> - Collaboration</div>
-                                <div className="p-3 text-3xl text-gray-800 font">Professional quality checks</div>
-                                <div className="px-3 pb-6">Quality is our top priority. Before reaching our shelves, every piece of seafood undergoes rigorous professional checks. Our experts inspect each item to guarantee freshness, appearance, and flavor, ensuring that every purchase meets our exacting standards.</div>
+                    <div className="w-full flex-auto border rounded border-gray-300">
+                        <div className="flex md:flex-row flex-col items-center justify-between">
+                            <div className="md:w-80 p-2 relative group flex-shrink-0">
+                                <img src={assets.quality} alt="step 1" style={{ height: '100px' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
                             </div>
-                            <div className="md:w-96 w-full p-5"><img src={assets.quality} alt="step 2" className="object-scale-down" /></div>
+                            <div className="flex-auto">
+                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
+                                    <span className="font-black">Step 1</span> - Idea
+                                </div>
+                                <div className="p-2 text-3xl text-gray-800 title-2"><p>Professional quality checks</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,14 +120,19 @@ const StepsSection = () => {
                             <div className="border-l-4 mr-4 h-full border-gray-300 border-dashed"></div>
                         </div>
                     </div>
-                    <div className="flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center">
+                    <div className="w-full flex-auto border rounded border-gray-300">
+                        <div className="flex md:flex-row flex-col items-center justify-between">
                             <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span className="font-black">Step 3</span> - Planification</div>
-                                <div className="p-3 text-3xl text-gray-800 font">State-of-the-art facilities to preserve its freshness</div>
-                                <div className="px-3 pb-6">Using advanced facilities, we employ state-of-the-art packaging techniques to preserve seafood freshness. Our methods maintain optimal conditions for each product, extending shelf life while retaining natural flavors and textures. From vacuum-sealed fillets to carefully iced shellfish, our packaging ensures peak quality upon delivery.</div>
+                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
+                                    <span className="font-black">Step 1</span> - Idea
+                                </div>
+                                <div className="p-2 text-3xl text-gray-800 title">
+                                    <p>Facilities to preserve its freshness</p>
+                                </div>
                             </div>
-                            <div className="md:w-96 w-full p-5"><img src={assets.packaging} alt="step 3" className="object-scale-down" /></div>
+                            <div className="md:w-80 p-2 relative group flex-shrink-0">
+                                <img src={assets.packaging} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,14 +159,17 @@ const StepsSection = () => {
                             <div className="border-l-4 ml-4 h-full border-gray-300 border-dashed"></div>
                         </div>
                     </div>
-                    <div className="flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center">
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span className="font-black">Step 4</span> - Implementation</div>
-                                <div className="p-3 text-3xl text-gray-800 font">Browse the wide variety of seafood available</div>
-                                <div className="px-3 pb-6">Explore our diverse seafood range with confidence. Our knowledgeable staff is here to assist, offering insights into flavors, cooking methods, and recommendations tailored to your preferences. We strive to make your shopping experience informative and enjoyable, helping you make informed choices.</div>
+                    <div className="w-full flex-auto border rounded border-gray-300">
+                        <div className="flex md:flex-row flex-col items-center justify-between">
+                            <div className="md:w-80 p-2 relative group flex-shrink-0">
+                                <img src={assets.managing} alt="step 1" style={{ height: '100px' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
                             </div>
-                            <div className="md:w-96 w-full p-5"><img src={assets.managing} alt="step 4" className="object-scale-down" /></div>
+                            <div className="flex-auto">
+                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
+                                    <span className="font-black">Step 1</span> - Idea
+                                </div>
+                                <div className="p-2 text-3xl text-gray-800 title-2"><p>Explore wide range of sea food</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,14 +193,19 @@ const StepsSection = () => {
                             <div className="text-gray-500 text-sm">Delivery</div>
                         </div>
                     </div>
-                    <div className="flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center">
+                    <div className="w-full flex-auto border rounded border-gray-300">
+                        <div className="flex md:flex-row flex-col items-center justify-between">
                             <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-3 pl-3 text-gray-500"><span className="font-black">Step 5</span> - Reflection</div>
-                                <div className="p-3 text-3xl text-gray-800 font">Quick and reliable delivery through a network of refrigerated vehicles</div>
-                                <div className="px-3 pb-6">Enjoy prompt and reliable delivery through our network of refrigerated vehicles. Whether stocking up for an event or weekly meals, we ensure your seafood arrives fresh and ready to enjoy, prioritizing your satisfaction with every order.</div>
+                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
+                                    <span className="font-black">Step 1</span> - Idea
+                                </div>
+                                <div className="p-2 text-3xl text-gray-800 title">
+                                    <p>High-quality selection of seafood</p>
+                                </div>
                             </div>
-                            <div className="md:w-96 w-full p-5"><img src={assets.delivery} alt="step 5" className="object-scale-down" /></div>
+                            <div className="md:w-80 p-2 relative group flex-shrink-0">
+                                <img src={assets.delivery} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down transform transition-transform duration-300 ease-in-out group-hover:scale-150" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,6 +218,7 @@ const StepsSection = () => {
 };
 
 export default StepsSection;
+
 
 
 

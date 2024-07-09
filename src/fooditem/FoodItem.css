@@ -1,15 +1,11 @@
 .food-item{
   font-family: "Outfit", sans-serif;
     background-color: white;
-    width: 400px;
+    width: 450px;
     height: 400px;
     border-radius: 15px;
     transition: 0.3s;
     animation: fadeIn 1s;
-    margin-top: 15rem;
-    margin-bottom: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
     border: 5px solid;
     border-image: repeating-linear-gradient(135deg,#C6EDF4 0 10px,#C6EDF4 20px,#C6EDF4 30px) 8;
     -webkit-mask: 
@@ -28,11 +24,10 @@
 }
 
 .food-item-image{
-    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    height: 120px;
+    height: auto;
     border-radius: 15px 15px 15px 15px;
 
 }
@@ -45,6 +40,7 @@
 
 
 .food-item-desc{
+  margin-top: 2rem;
     color: #767676;
     font-size: 16px;
 
@@ -71,6 +67,7 @@
     cursor:pointer;
     border-radius: 50%;
     border:2px solid #11484F;
+    margin-top: -5rem;
 }
 
 .food-item-counter{

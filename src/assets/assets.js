@@ -36,7 +36,7 @@ import about from './aboutus.png';
 import scad from './scad.png'
 import seer from './seer.png'
 import sail from './sail.png'
-import aboutsection from './about-section.png'
+import aboutsection from './example.png'
 import white from './white.png'
 import apple from './apple (1).png'
 import android from './android (1).png'
@@ -51,8 +51,35 @@ import dealcat from './deal-cat.png'
 import back from './b1.jpg'
 import back2 from './b2.jpg'
 import shop from './shop1.png'
+import icon1 from './fishicon.jpg'
+import icon2 from './crabicon.png'
+import icon3 from './prawnicon.jpg'
+import icon4 from './lobstericon.png'
+import icon5 from './dealicon.jpg'
+import icon6 from './icon_fillet.jpg'
+import fishexplore from  './8.jpg'
+import crabexplore from './5.jpg'
+import prawnexplore from './6.jpg'
+import sliceexplore from './2.jpg'
+import comboexplore from './7.jpg'
+import lobsterexplore from './4.jpg'
+import dealexplore from './3.jpg'
+import fishy from './fishy.jpg'
 
 export const assets = {
+    fishexplore,
+    crabexplore,
+    prawnexplore,
+    lobsterexplore,
+    sliceexplore,
+    comboexplore,
+    dealexplore,
+    icon6,
+    icon5,
+    icon4,
+    icon3,
+    icon2,
+    icon1,
     shop,
     back,
     back2,
@@ -103,6 +130,7 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon,
+    fishy,
 };
 
 export const menu_list = [

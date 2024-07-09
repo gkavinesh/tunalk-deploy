@@ -6,7 +6,6 @@
   .carousel_inner {
     width: 100%;
     overflow: hidden;
-    border-radius: 1rem;
   }
   
   .carousel_inner::after {

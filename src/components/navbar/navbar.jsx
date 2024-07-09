@@ -3,8 +3,7 @@ import './navbar.css'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
-import { FaBars, FaTimes } from 'react-icons/fa';
-
+import { FaBars, FaTimes, FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa';
 
 const Navbar = ({ setShowLogin }) => {
 
@@ -23,20 +22,22 @@ const Navbar = ({ setShowLogin }) => {
                     <img src={assets.white} alt="" className="logo" style={{ width: '230px', height: 'auto' }} />
                 </a>
 
-
                 <div className="navbar-right">
-                    <ul className="navbar-menu">
-                        <a href='#products' onClick={() => setMenu("products")} className={menu === "products" ? "active" : ""}>Products</a>
-                        <a href='#about' onClick={() => setMenu("about")} className={menu === "about" ? "active" : ""}>About </a>
-                        <a href='#footer' onClick={() => setMenu("contact")} className={menu === "contact" ? "active" : ""}>Contact</a>
-                    </ul>
-                    <div className="navbar-search-icon">
-                        <Link to="/cart"><img src={assets.basket_icon} alt='' /></Link>
-                        <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
-                    </div>
+                    <button onClick={() => setShowLogin(true)} className='navbar-button-2'>
+                        <FaSearch style={{ marginRight: '10px', marginTop: '4px' }} />
+                        Search
+                    </button>
                     <button onClick={() => setShowLogin(true)} className='navbar-button'>
+                        <FaUser style={{ marginRight: '10px', marginTop: '4px' }} />
                         Sign in
                     </button>
+                    <div className="navbar-search-icon">
+                        <Link to="/cart" className="navbar-cart-link">
+                            <FaShoppingCart size={24} />
+                            <span className="navbar-cart-text">Cart</span>
+                            <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+                        </Link>
+                    </div>
                     <div className='navbar-hamburger' onClick={toggleSidebar}>
                         {isSidebarOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </div>
@@ -54,3 +55,4 @@ const Navbar = ({ setShowLogin }) => {
 }
 
 export default Navbar
+

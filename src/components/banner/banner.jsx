@@ -19,7 +19,6 @@ const Banner = ({ setShowLogin }) => {
           </a>
           <a href='#products' >Support</a>
           <a href='#about' >Offers</a>
-          <a href='#footer'>Store Locator</a>
           <a href='#footer'>Order Tracking</a>
         </ul>
         <div className="banner-right">

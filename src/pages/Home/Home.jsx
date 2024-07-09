@@ -9,6 +9,7 @@ import Recipes from '..//..//components/recipes/recipes'
 import Faq from '..//..//components/faq/faq';
 import SwipeCarousel from '../../components/carousel/carousel';
 import Shop from '..//..//components/Shopby/shop'
+import FoodDisplay from '../../fooddisplay/FoodDisplay';
 const Home = () => {
   const [category, setCategory] = useState("All");
 
@@ -16,11 +17,9 @@ const Home = () => {
     <div>
       <SwipeCarousel/>
       <Shop/>
-      <Facts />
-      <Poll />
-      <About />
-      <Recipes/>
       <Step/>
+      <About />
+      <Poll />
       <Faq/>
     </div>
   );

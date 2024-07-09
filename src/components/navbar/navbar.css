@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #048676, #00b6a1);;
+    background: linear-gradient(to right, #048676, #00b6a1);
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other elements */
@@ -30,7 +30,7 @@
     list-style: none;
     gap: 20px; /* Reduce gap between menu items */
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .navbar-right {
@@ -46,45 +46,60 @@
 }
 
 .navbar-button {
+    display: flex;
     background: transparent;
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 8px 20px; /* Increase padding for easier tapping on mobile */
+    padding: 0px 20px; /* Increase padding for easier tapping on mobile */
     border-radius: 40px;
     cursor: pointer;
+    margin-right: -1rem;
 }
 
-.navbar-button:hover {
-    background-color: #11484F;
-    color: white;
-    border: none;
-}
-
-.navbar .active {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #ffffff;
-}
-
-.navbar li {
+.navbar-button-2 {
+    display: flex;
+    background: transparent;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 0px 20px; /* Increase padding for easier tapping on mobile */
+    border-radius: 40px;
     cursor: pointer;
+    margin-right: -2rem;
 }
+
 
 .navbar-search-icon {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    color: white;
     position: relative;
-    width: 20px;
-    height: 20px;
+    font-size: 18px;
+    margin-right: 3rem;
 }
 
 .navbar-search-icon .dot {
     position: absolute;
-    min-width: 4px;
-    min-height: 4px;
+    width: 10px;
+    height: 10px;
     background-color: rgb(255, 0, 0);
-    border-radius: 10px;
-    top: 2px;
+    border-radius: 20px;
+    top: 3px;
     right: -8px;
+    margin-top: -5px;
 }
+
+.navbar-cart-link {
+    display: flex; /* Ensure link behaves like a flex container */
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove default underline */
+    color: white; /* Set text color */
+    margin-right: 20px; /* Adjust spacing between icon and text */
+}
+
+.navbar-cart-text {
+    margin-left: 8px; /* Space between icon and text */
+}
+
 
 @media (max-width: 1050px) {
     .navbar .logo {

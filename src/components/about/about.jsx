@@ -3,8 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
 import { assets } from "../../assets/assets";
-import Image1 from './line1.png'
-import About from '..//..//assets/aboutus.png'
+import Image10 from './line2.png'
+import About from '..//..//assets/expo (2).png'
 
 const App = () => {
   const wrapperRef = useRef(null);
@@ -55,11 +55,13 @@ const App = () => {
         </section>
       </div>
       <div className="image-container" style={{ willChange: 'transform' }}>
-        <img
+      <img
           src={About} // or {Image2}, depending on which image you want to use
           alt="image"
           ref={imageRef}
-        />
+          width="3016px" // Adjust width as needed
+          height="1697px" // Adjust height as needed
+      />
       </div>
     </div>
   );

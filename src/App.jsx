@@ -8,6 +8,7 @@ import Footer from './components/footer/footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Banner from './components/banner/banner'
 import MainCat from './components/explore/maincat'
+import Fish from './pages/Fish/Fish'
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
+        <Route path='/fish' element={<Fish/>} />
       </Routes>
     </div>
     <Footer/>
