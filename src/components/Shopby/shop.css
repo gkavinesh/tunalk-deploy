@@ -28,7 +28,7 @@
 .bubble h2 {
   position: absolute;
   font-family: "Merriweather", serif;
-  font-size: 28px;
+  font-size: 24px;
   text-align: left;
   left: 10px; /* Adjust this value as needed to place the text on the left */
   transform: translateY(-50%); /* Vertically center the text */
