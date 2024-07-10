@@ -6,7 +6,7 @@
 }
 
 .banner {
-    margin-left: 7rem;
+    margin-left: 9rem;
     font-family: "Outfit", sans-serif;
     padding: 7px 20px; /* Adjust padding for smaller screens */
     display: flex;
@@ -34,7 +34,7 @@
 }
 
 .banner-right {
-    margin-right: 7rem;
+    margin-right: 9rem;
     display: flex;
     align-items: center;
     gap: 20px; /* Reduce gap between items */

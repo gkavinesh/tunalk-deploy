@@ -26,7 +26,6 @@ const App = () => {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
         <Route path='/fish' element={<Fish/>} />
-        <Route path='/fishdetails' element={<FishDetails/>} />
         <Route path='/policy' element={<Policy/>} />
       </Routes>
     </div>

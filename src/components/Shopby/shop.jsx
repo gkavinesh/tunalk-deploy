@@ -60,10 +60,9 @@ const ComponentName = () => {
         <section className="py-12 bg-white sm:py-16 lg:py-20" id='shop'>
             <div className="shop px-0 mx-auto sm:px-6 lg:px-8 max-w-full" id='Category'>
             <div className="bubble">
-                    <h2>Category</h2>
-                    <h2>Category</h2>
+                    <h2>Shop by Category</h2>
             </div>
-                <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-6 mt-5 lg:mt-5 lg:gap-4 lg:grid-cols-4">
                     {items.map(item => (
                         <Link key={item.id} to={item.link} className="relative group"> {/* Wrap the card with Link */}
                             <div className="bg-white rounded-lg overflow-hidden shadow-2xl border-solid border-1 border-inherit">
