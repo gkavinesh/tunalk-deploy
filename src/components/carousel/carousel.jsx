@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import "./carousel.css";
 import { assets } from "../../assets/assets";
+import Categories from "../explore/maincat";
 import Image1 from './b1.jpg';
 import Image2 from './b2.jpg';
+import Image3 from './aboutus3.jpg'
 
 const Carousel = () => {
   useEffect(() => {
@@ -12,8 +14,9 @@ const Carousel = () => {
   const autoSlide = () => {
     setInterval(() => {
       slide(getItemActiveIndex() + 1);
-    }, 2000); // slide speed = 3s
+    }, 4000); // slide speed = 4s
   };
+  
 
   const slide = (toIndex) => {
     const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
@@ -52,12 +55,16 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
+      <Categories/>
       <div className="carousel_inner">
         <div className="carousel_item carousel_item__active">
           <img src={Image1} alt="" className="carousel_img" />
         </div>
         <div className="carousel_item">
           <img src={Image2} alt="" className="carousel_img" />
+        </div>
+        <div className="carousel_item">
+          <img src={Image3} alt="" className="carousel_img" />
         </div>
       </div>
     </div>

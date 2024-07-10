@@ -9,14 +9,12 @@ import Recipes from '..//..//components/recipes/recipes'
 import Faq from '..//..//components/faq/faq';
 import SwipeCarousel from '../../components/carousel/carousel';
 import Shop from '..//..//components/Shopby/shop'
-import Explore from '..//..//components/explore/maincat'
 
 const Home = () => {
   const [category, setCategory] = useState("All");
 
   return (
     <div>
-      <Explore/>
       <SwipeCarousel/>
       <Shop/>
       <Step/>

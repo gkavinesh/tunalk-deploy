@@ -33,25 +33,21 @@ const Categories = () => {
   };
 
   return (
-    <div className="relative flex items-center py-5">
-      <div className="absolute left-0 ml-16 z-10 p-2 cursor-pointer text-2xl text-gray-500" onClick={() => scroll('left')}>
-        <FaArrowLeft />
-      </div>
-      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto px-12 ml-28 flex-1 whitespace-nowrap">
+    <div className="relative flex items-center py-5 w-full">
+      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto md:px-12 flex-1 whitespace-nowrap">
         {categories.map((category, index) => (
-          <div key={index} className="inline-block w-40 my-4">
+          <div key={index} className="inline-block w-36 md:w-40">
             <CategoryCard image={category.image} title={category.title} />
           </div>
         ))}
       </div>
-      <div className="absolute right-0 mr-16 z-10 p-2 cursor-pointer text-2xl text-gray-500" onClick={() => scroll('right')}>
-        <FaArrowRight />
-      </div>
     </div>
-  );
+  ); 
 };
 
 export default Categories;
+
+
 
 
 
