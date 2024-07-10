@@ -22,7 +22,7 @@ const ProductPage = () => {
         <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
             <div className='flex flex-col gap-6 lg:w-2/4 bubuish'>
                 <div className='centered-image-container'>
-                    <img src={activeImg} alt="" className='w-2/3 h-full aspect-square object-cover rounded-xl biggy' />
+                    <img src={activeImg} alt="" className='w-1/3 h-full aspect-square object-cover rounded-xl biggy' />
                 </div>
 
                 <div className='flex flex-row h-16 bubu' style={{ gap: '1rem' }}>

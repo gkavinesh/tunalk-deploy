@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 15vh; /* Ensure the container takes up the full viewport height */
+  height: 5vh; /* Ensure the container takes up the full viewport height */
 }
 
 .bubbly h2 {
@@ -67,7 +67,7 @@
   }
   
   .hover-transform:hover {
-    transform: scale(2.5);
+    transform: scale(1.2);
   }
 
 

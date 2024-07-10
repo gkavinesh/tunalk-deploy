@@ -1,223 +1,93 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import './step.css';
+import Lottie from 'react-lottie'; // Import Lottie
+import animationDataStep2 from '..//..//assets/quality.json';
+import animationDataStep3 from '..//..//assets/packaging.json';
+import animationDataStep4 from '..//..//assets/delivery.json';// Import animation data for Step 2
 import { assets } from '../../assets/assets';
 
 const StepsSection = () => {
-    const [refStep1, inViewStep1] = useInView({
-        triggerOnce: true,
-        threshold: 0.5, // Trigger animation when 50% of the component is in view
-    });
-    const [refStep2, inViewStep2] = useInView({
-        triggerOnce: true,
-        threshold: 0.5,
-    });
-    const [refStep3, inViewStep3] = useInView({
-        triggerOnce: true,
-        threshold: 0.5,
-    });
-    const [refStep4, inViewStep4] = useInView({
-        triggerOnce: true,
-        threshold: 0.5,
-    });
-    const [refStep5, inViewStep5] = useInView({
-        triggerOnce: true,
-        threshold: 0.5,
-    });
+    // Configure options for Lottie animations
+    const defaultOptionsStep2 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationDataStep2,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
+    const defaultOptionsStep3 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationDataStep3,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
+    const defaultOptionsStep4 = {
+        loop: true,
+        autoplay: true,
+        animationData: animationDataStep4,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
 
     return (
-        <section className="max-w-4xl mx-auto py-10 bg-white">
-            <div className="bubbly">
-                <h2>Why Tuna LK</h2>
-                <h2>Why Tuna LK</h2>
-            </div>
-            <br></br>
-            <br></br>
-            <div>
-                {/* Step 1 */}
-                <div ref={refStep1} className={`flex flex-row ${inViewStep1 ? 'animate-appear' : 'opacity-0'}`}>
-                    <div className="hidden md:flex flex-col items-center">
-                        <div className="w-32 py-5 border border-gray-300 rounded mr-4 uppercase flex flex-col items-center justify-center">
-                            <div className="text-3xl font-black text-gray-500">Step 1</div>
-                            <div className="text-gray-500 text-sm">Sourcing</div>
-                        </div>
-                        <div className="h-full border-r-4 border-transparent">
-                            <div className="border-l-4 ml-0 mr-2 h-full border-gray-300 border-dashed"></div>
-                        </div>
-                    </div>
-                    <div className="w-full flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center justify-between">
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
-                                    <span className="font-black">Step 1</span> - Idea
-                                </div>
-                                <div className="p-2 text-3xl text-gray-800 title">
-                                    <p>High-quality selection of seafood</p>
-                                </div>
-                            </div>
-                            <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img
-                                    src={assets.sourcing}
-                                    alt="step 1"
-                                    style={{ height: '100px', marginLeft: '9rem' }}
-                                    className="object-scale-down hover-transform"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
+        <section className="py-10 bg-white sm:py-16 lg:py-24">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="bubbly">
+                    <h2>Why Tuna LK</h2>
+                    <h2>Why Tuna LK</h2>
                 </div>
 
-                {/* Divider */}
-                <div className="flex items-start flex-row">
-                    <div className="border-t-4 border-r-4 border-transparent">
-                        <div className="w-16 ml-16 h-16 border-l-4 border-gray-300 border-dashed border-b-4 rounded-bl-full"></div>
+                <div className="relative mt-12 lg:mt-20">
+                    <div className="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
+                        <img className="w-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg" alt="" />
                     </div>
-                    <div className="border-t-4 border-transparent flex-auto">
-                        <div className="h-16 border-b-4 border-gray-300 border-dashed"></div>
-                    </div>
-                    <div className="w-16 mt-16 mr-16 h-16 border-r-4 border-gray-300 border-dashed border-t-4 rounded-tr-full"></div>
-                </div>
 
-                {/* Step 2 */}
-                <div ref={refStep2} className={`flex flex-row-reverse ${inViewStep2 ? 'animate-appear' : 'opacity-0'}`}>
-                    <div className="hidden md:flex flex-col items-center">
-                        <div className="w-32 py-5 border border-gray-300 rounded ml-4 uppercase flex flex-col items-center justify-center">
-                            <div className="text-3xl font-black text-gray-500">Step 2</div>
-                            <div className="text-gray-500 text-sm">Quality</div>
-                        </div>
-                        <div className="h-full border-r-4 border-transparent">
-                            <div className="border-l-4 ml-4 h-full border-gray-300 border-dashed"></div>
-                        </div>
-                    </div>
-                    <div className="w-full flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center justify-between">
-                            <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.quality} alt="step 1" style={{ height: '100px' }} className="object-scale-down hover-transform" />
+                    <div className="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
+                        {/* Step 1 */}
+                        <div>
+                            <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                                <span className="text-xl font-semibold text-gray-700">1</span>
                             </div>
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
-                                    <span className="font-black">Step 1</span> - Idea
-                                </div>
-                                <div className="p-2 text-3xl text-gray-800 title-2"><p>Professional quality checks</p></div>
+                            <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Sourcing and Testing our fish</h3>
+                            <p className="mt-4 text-base text-gray-600">At TunaLK, we prioritize sustainable sourcing and rigorous quality checks to deliver the freshest and safest seafood, ensuring a premium experience for our customers.</p>
+                            <div className="mt-4 mx-auto">
+                                <Lottie options={defaultOptionsStep2} height={200} width={200} />
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                {/* Divider */}
-                <div className="flex items-start flex-row-reverse">
-                    <div className="border-t-4 border-l-4 border-transparent">
-                        <div className="w-16 mr-16 h-16 border-r-4 border-gray-300 border-dashed border-b-4 rounded-br-full"></div>
-                    </div>
-                    <div className="border-t-4 border-transparent flex-auto">
-                        <div className="h-16 border-b-4 border-gray-300 border-dashed"></div>
-                    </div>
-                    <div className="w-16 mt-16 ml-16 h-16 border-l-4 border-gray-300 border-dashed border-t-4 rounded-tl-full"></div>
-                </div>
-
-                {/* Step 3 */}
-                <div ref={refStep3} className={`flex flex-row ${inViewStep3 ? 'animate-appear' : 'opacity-0'}`}>
-                    <div className="hidden md:flex flex-col items-center">
-                        <div className="w-32 py-5 border border-gray-300 rounded mr-4 uppercase flex flex-col items-center justify-center">
-                            <div className="text-3xl font-black text-gray-500">Step 3</div>
-                            <div className="text-gray-500 text-sm">Packaging</div>
-                        </div>
-                        <div className="h-full border-l-4 border-transparent">
-                            <div className="border-l-4 mr-4 h-full border-gray-300 border-dashed"></div>
-                        </div>
-                    </div>
-                    <div className="w-full flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center justify-between">
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
-                                    <span className="font-black">Step 1</span> - Idea
-                                </div>
-                                <div className="p-2 text-3xl text-gray-800 title">
-                                    <p>Facilities to preserve its freshness</p>
-                                </div>
+                        {/* Step 2 */}
+                        <div>
+                            <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                                <span className="text-xl font-semibold text-gray-700">2</span>
                             </div>
-                            <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.packaging} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down hover-transform" />
+                            <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Packing the seafood</h3>
+                            <p className="mt-4 text-base text-gray-600">At TunaLK, we meticulously package our fish to preserve its freshness and quality, maintaining our commitment to delivering a superior seafood experience.</p>
+                            <div className="mt-4 mx-auto">
+                                <Lottie options={defaultOptionsStep3} height={200} width={200} />
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                {/* Divider */}
-                <div className="flex items-start flex-row">
-                    <div className="border-t-4 border-r-4 border-transparent">
-                        <div className="w-16 ml-16 h-16 border-l-4 border-gray-300 border-dashed border-b-4 rounded-bl-full"></div>
-                    </div>
-                    <div className="border-t-4 border-transparent flex-auto">
-                        <div className="h-16 border-b-4 border-gray-300 border-dashed"></div>
-                    </div>
-                    <div className="w-16 mt-16 mr-16 h-16 border-r-4 border-gray-300 border-dashed border-t-4 rounded-tr-full"></div>
-                </div>
-
-                {/* Step 4 */}
-                <div ref={refStep4} className={`flex flex-row-reverse ${inViewStep4 ? 'animate-appear' : 'opacity-0'}`}>
-                    <div className="hidden md:flex flex-col items-center">
-                        <div className="w-32 py-5 border border-gray-300 rounded ml-4 uppercase flex flex-col items-center justify-center">
-                            <div className="text-3xl font-black text-gray-500">Step 4</div>
-                            <div className="text-gray-500 text-sm">Managing</div>
-                        </div>
-                        <div className="h-full border-r-4 border-transparent">
-                            <div className="border-l-4 ml-4 h-full border-gray-300 border-dashed"></div>
-                        </div>
-                    </div>
-                    <div className="w-full flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center justify-between">
-                            <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.managing} alt="step 1" style={{ height: '100px' }} className="object-scale-down hover-transform" />
+                        {/* Step 3 */}
+                        <div>
+                            <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                                <span className="text-xl font-semibold text-gray-700">3</span>
                             </div>
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
-                                    <span className="font-black">Step 1</span> - Idea
-                                </div>
-                                <div className="p-2 text-3xl text-gray-800 title-2"><p>Explore wide range of sea food</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Divider */}
-                <div className="flex items-start flex-row-reverse">
-                    <div className="border-t-4 border-l-4 border-transparent">
-                        <div className="w-16 mr-16 h-16 border-r-4 border-gray-300 border-dashed border-b-4 rounded-br-full"></div>
-                    </div>
-                    <div className="border-t-4 border-transparent flex-auto">
-                        <div className="h-16 border-b-4 border-gray-300 border-dashed"></div>
-                    </div>
-                    <div className="w-16 mt-16 ml-16 h-16 border-l-4 border-gray-300 border-dashed border-t-4 rounded-tl-full"></div>
-                </div>
-
-                {/* Step 5 */}
-                <div ref={refStep5} className={`flex flex-row ${inViewStep5 ? 'animate-appear' : 'opacity-0'}`}>
-                    <div className="hidden md:flex flex-col items-center">
-                        <div className="w-32 py-5 border border-gray-300 rounded mr-4 uppercase flex flex-col items-center justify-center">
-                            <div className="text-3xl font-black text-gray-500">Step 5</div>
-                            <div className="text-gray-500 text-sm">Delivery</div>
-                        </div>
-                    </div>
-                    <div className="w-full flex-auto border rounded border-gray-300">
-                        <div className="flex md:flex-row flex-col items-center justify-between">
-                            <div className="flex-auto">
-                                <div className="md:hidden text-sm font-normal uppercase pt-1 pl-2 text-gray-500">
-                                    <span className="font-black">Step 1</span> - Idea
-                                </div>
-                                <div className="p-2 text-3xl text-gray-800 title">
-                                    <p>High-quality selection of seafood</p>
-                                </div>
-                            </div>
-                            <div className="md:w-80 p-2 relative group flex-shrink-0">
-                                <img src={assets.delivery} alt="step 1" style={{ height: '100px', marginLeft: '9rem' }} className="object-scale-down hover-transform" />
+                            <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Delivering the fish to you</h3>
+                            <p className="mt-4 text-base text-gray-600">At TunaLK, we prioritize efficient delivery to ensure our seafood arrives fresh and on time, reflecting our commitment to quality service.</p>
+                            <div className="mt-4 mx-auto">
+                                <Lottie options={defaultOptionsStep4} height={200} width={250} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <br></br>
             <br></br>
             <br></br>
         </section>
@@ -225,6 +95,8 @@ const StepsSection = () => {
 };
 
 export default StepsSection;
+
+
 
 
 

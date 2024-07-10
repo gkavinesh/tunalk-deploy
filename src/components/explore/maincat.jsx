@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import CategoryCard from './categories'; // Assuming CategoryCard component is properly imported
 import { assets } from '../../assets/assets';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -15,21 +15,31 @@ const categories = [
   { image: assets.icon6, title: 'SLICES' }
 ];
 
-const scroll = (direction) => {
-  const container = document.querySelector('.categories-container');
-  const scrollAmount = direction === 'left' ? -200 : 200; // Adjust scroll amount as needed
-  container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-};
-
 const Categories = () => {
+  const containerRef = useRef(null);
+
+  const scroll = (direction) => {
+    const container = containerRef.current;
+    if (!container) return;
+    const scrollAmount = direction === 'left' ? -200 : 200; // Adjust scroll amount as needed
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+    // Implement logic for looping carousel
+    if (direction === 'left' && container.scrollLeft === 0) {
+      container.scrollLeft = container.scrollWidth;
+    } else if (direction === 'right' && container.scrollLeft + container.clientWidth === container.scrollWidth) {
+      container.scrollLeft = 0;
+    }
+  };
+
   return (
     <div className="relative flex items-center py-5">
       <div className="absolute left-0 ml-16 z-10 p-2 cursor-pointer text-2xl text-gray-500" onClick={() => scroll('left')}>
         <FaArrowLeft />
       </div>
-      <div className="flex gap-2 bg-white overflow-x-auto scroll-smooth px-12 ml-28 flex-1 whitespace-nowrap">
+      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto px-12 ml-28 flex-1 whitespace-nowrap">
         {categories.map((category, index) => (
-          <div key={index} className="inline-block w-40 my-4"> {/* Updated width */}
+          <div key={index} className="inline-block w-40 my-4">
             <CategoryCard image={category.image} title={category.title} />
           </div>
         ))}
@@ -42,6 +52,8 @@ const Categories = () => {
 };
 
 export default Categories;
+
+
 
 
 

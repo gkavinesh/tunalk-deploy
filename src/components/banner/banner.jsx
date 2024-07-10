@@ -22,11 +22,11 @@ const Banner = ({ setShowLogin }) => {
           <a href='#footer'>Order Tracking</a>
         </ul>
         <div className="banner-right">
-        <a href='#' className='download-link'>
+        <a href='#' className='download-link-2'>
             <img src={assets.phone} alt='iOS' className='other-logo' />
             077-777-7777
         </a>
-        <a href='#' className='download-link'>
+        <a href='#' className='download-link-2'>
             <img src={assets.fastdelivery} alt='iOS' className='other-logo' />
              Delivery in 1 Hour
         </a>

@@ -48,12 +48,12 @@ const App = () => {
   }, []);
 
   return (
-    <div className="wrapper" ref={wrapperRef}>
+    <div className="wrapper" ref={wrapperRef} >
       <div className="content">
         <section className="section hero" ref={heroSectionRef}>
         </section>
       </div>
-      <div className="image-container" style={{ willChange: 'transform' }}>
+      <div className="image-container" style={{ willChange: 'transform' }} id='about'>
       <img
           src={About} // or {Image2}, depending on which image you want to use
           alt="image"

@@ -35,10 +35,10 @@ const Footer = () => {
                         <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Company</p>
                         <ul className="mt-6 space-y-4">
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
+                                <a href="#about" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
                             </li>
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Products </a>
+                                <a href="#Category" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Products </a>
                             </li>
                             <li>
                                 <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Contact </a>

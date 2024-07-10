@@ -9,17 +9,17 @@ const BarPoll = () => {
     {
       title: "Tuna",
       votes: 1,
-      color: "bg-indigo-500",
+      color: "bg-teal-400",
     },
     {
       title: "Salmon",
       votes: 2,
-      color: "bg-fuchsia-500",
+      color: "bg-amber-500",
     },
     {
       title: "Lobster",
       votes: 3,
-      color: "bg-violet-500",
+      color: "bg-rose-700",
     },
   ]);
 
