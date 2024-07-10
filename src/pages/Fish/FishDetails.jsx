@@ -1,6 +1,7 @@
 import './FishDetails.css';
 import React, { useState } from 'react';
 import { StoreContext } from '../../context/StoreContext';
+import HeaderCarousel from '../../components/headercarousel/headercarousel';
 import { assets } from '../../assets/assets';
 
 const ProductPage = () => {
@@ -49,6 +50,10 @@ const ProductPage = () => {
     };
 
     return (
+        <>
+        <div className='carousel-2'>
+            <HeaderCarousel/>
+        </div>
         <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
             <div className='flex flex-col gap-6 lg:w-2/4 my-16 bubbish'>
                 <div className='centered-image-container'>
@@ -116,8 +121,8 @@ const ProductPage = () => {
                 </div>
                 <button className='bg-teal-500 text-white font-semibold py-3 px-5 rounded-xl h-full w-2/3'>Add to Cart</button>
             </div>
-
         </div>
+        </>
     );
 };
 
