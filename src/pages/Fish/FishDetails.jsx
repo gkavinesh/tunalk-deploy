@@ -41,7 +41,7 @@ const ProductPage = () => {
 
     return (
         <div className='flex flex-col lg:flex-row gap-16 items-center'>
-            <div className='lg:w-2/5 flex flex-col gap-6 my-7 ml-32'>
+            <div className='lg:w-2/6 flex flex-col gap-6 my-10 ml-32'>
                 <img src={activeImg} alt="" className='w-full h-full aspect-square object-cover rounded-xl' />
                 <div className='flex justify-center gap-4'>
                     <img
@@ -109,5 +109,6 @@ const ProductPage = () => {
 }
 
 export default ProductPage;
+
 
 

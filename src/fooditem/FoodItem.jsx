@@ -14,9 +14,8 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
             
             <div className="food-item-image-container">
                 <Link to='/fishdetails'>
-                <img className='food-item-image' src={image} alt={name} />
+                    <img className='food-item-image' src={image} alt={name} />
                 </Link>
-                
             </div>
             <div className="food-item-info">
                 <div className="food-item-details">
@@ -34,10 +33,12 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
                             <img onClick={(e) => {e.stopPropagation(); e.preventDefault(); addToCart(id)}} src={assets.add_icon_green} alt='Add' />
                         </div>
                     )}
-                    <button className="customize-button">
-                        <FaShoppingCart className="cart-icon" />
-                        Customize
-                    </button>
+                    <Link to='/fishdetails'>
+                        <button className="customize-button">
+                            <FaShoppingCart className="cart-icon" />
+                            Customize
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -45,6 +46,7 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
 }
 
 export default FoodItem;
+
 
 
 

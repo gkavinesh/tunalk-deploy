@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./carousel.css";
 import { assets } from "../../assets/assets";
 import Categories from "../explore/maincat";
-import Image1 from './b1.jpg';
+import Image1 from './bannernew.jpg';
 import Image2 from './b2.jpg';
 import Image3 from './aboutus3.jpg'
 
