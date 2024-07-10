@@ -34,7 +34,7 @@ const Categories = () => {
 
   return (
     <div className="relative flex items-center py-5 w-full">
-      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto md:px-12 flex-1 whitespace-nowrap">
+      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto md:px-8 flex-1 whitespace-nowrap">
         {categories.map((category, index) => (
           <div key={index} className="inline-block w-36 md:w-40">
             <CategoryCard image={category.image} title={category.title} />

@@ -131,11 +131,6 @@ const Navbar = ({ setShowLogin }) => {
                             <div className="sidebarlogo">
                                 <img src={assets.tunamain} alt="Logo" className="sidebar-logo-img" />
                             </div>
-                            <button onClick={toggleSidebar} className="text-teal-500 hover:text-gray-800 close-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
                         </div>
                         <ul className="menu-list p-4">
                             <div className='icons'>
@@ -161,6 +156,14 @@ const Navbar = ({ setShowLogin }) => {
                             <FaShieldAlt className="menu-icon" />
                                 <a href='#footer'>Privacy Policy</a></div>
                         </ul>
+                        <div className="flex justify-between items-center p-4">
+                            <div className="downloadlogo">
+                                <img src={assets.app_store} alt="Logo" className="sidebar-logo-img" />
+                            </div>
+                            <div className="downloadlogo">
+                                <img src={assets.play_store} alt="Logo" className="sidebar-logo-img" />
+                            </div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

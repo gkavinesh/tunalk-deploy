@@ -58,7 +58,7 @@ const ComponentName = () => {
 
     return (
         <section className="py-12 bg-white sm:py-16 lg:py-20" id='shop'>
-            <div className="shop px-4 mx-auto sm:px-6 lg:px-8 max-w-full" id='Category'>
+            <div className="shop px-0 mx-auto sm:px-6 lg:px-8 max-w-full" id='Category'>
             <div className="bubble">
                     <h2>Category</h2>
                     <h2>Category</h2>

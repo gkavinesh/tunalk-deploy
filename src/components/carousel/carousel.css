@@ -1,12 +1,13 @@
 .carousel {
-    width: 83%; /* Adjust width as needed */
-    margin: 0 auto; /* Center the carousel */
+    width: 100%; /* Adjust width as needed */
   }
   
   .carousel_inner {
-    width: 100%;
+    width: 98%;
     overflow: hidden;
+    margin: 0 auto; /* This centers the element */
   }
+  
   
   .carousel_inner::after {
     content: "";

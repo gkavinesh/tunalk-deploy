@@ -1,21 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@100..900&display=swap');
 
+.fish {
+  margin-left: 7rem;
+  margin-right: 7rem;
+}
+
 .fish h2 {
   position: relative;
-  margin-left: 17.5rem;
   margin-top: 1rem;
+  margin-left: 2rem;
   font-family: "Roboto Slab", serif;
   font-weight: 500;
   font-size: 2rem;
-  text-align: center;
-  transform: translate(-50%, -50%);
+  text-align: left;
   color: #00b6a1a1;
 }
 
-
-
 .fish hr {
-  width: 1450px; /* Set the width as needed */
+  width: 95%; /* Set the width to 100% of the container */
   margin: 0 auto; /* Center align horizontally */
   height: 2px;
   background-color: #ccc;
