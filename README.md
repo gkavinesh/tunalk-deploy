@@ -1,6 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a prototype for a full stack E-Commerce Website using React, Express, MongoDB, NodeJS. Primary objective of developing this website is for a brand in Sri Lanka known as TunaLK who specializes in selling seafood.
 
 Currently, two official plugins are available:
 
