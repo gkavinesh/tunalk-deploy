@@ -58,8 +58,8 @@ const App = () => {
           src={About} // or {Image2}, depending on which image you want to use
           alt="image"
           ref={imageRef}
-          width="3016px" // Adjust width as needed
-          height="1697px" // Adjust height as needed
+          width="2617px" // Adjust width as needed
+          height="1500px" // Adjust height as needed
       />
       </div>
     </div>

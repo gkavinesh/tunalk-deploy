@@ -173,7 +173,7 @@ export const menu_list = [
 export const food_list = [
     {
         _id: 1,
-        name: "Seer Fish / Vanjaram / Nei Meen",
+        name: "Seer Fish",
         price: 2000,
         description: "Net Weight: 500-480 gms",
         image: fishy, // Replace with actual image path
