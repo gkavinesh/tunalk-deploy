@@ -85,7 +85,8 @@ const ProductPage = () => {
                         The Seer Fish, also known as Vanjaram or Nei Meen, is a highly prized saltwater fish found in the Indian Ocean and the western Pacific Ocean. Renowned for its firm texture and rich, oily flesh, it's a favorite in various cuisines for its distinctive taste and nutritional benefits, including being high in protein and omega-3 fatty acids. Its versatile nature makes it suitable for a wide range of preparations, from grilling to currying.
                     </p>
                 </div>
-                <h6 className='text-2xl font-semibold'>LKR 2000</h6>
+                <br></br>
+                <h6 className='text-2xl font-semibold text-red-500'>LKR 2000</h6>
                 <div className='flex flex-row items-center gap-12'>
                     <div className='flex flex-row items-center'>
                         <button className='bg-gray-200 py-2 px-5 rounded-lg text-black text-3xl' onClick={() => setAmount((prev) => Math.max(prev - 1, 1))}>-</button>
@@ -103,8 +104,8 @@ const ProductPage = () => {
                         <option value="2kg">2 KG</option>
                         <option value="3kg">3 KG</option>
                     </select>
-                    <button className='bg-teal-500 text-white font-semibold py-3 px-16 rounded-xl h-full'>Add to Cart</button>
                 </div>
+                <button className='bg-teal-500 text-white font-semibold py-3 px-5 rounded-xl h-full w-2/3'>Add to Cart</button>
             </div>
 
         </div>
