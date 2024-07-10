@@ -33,7 +33,7 @@
 
 .food-item-image-container {
   width: auto;
-  height: 350px;
+  height: 350px; /* Set a fixed height for the container */
   position: relative;
 }
 
