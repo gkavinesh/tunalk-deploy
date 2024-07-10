@@ -40,39 +40,42 @@ const ProductPage = () => {
     };
 
     return (
-        <div className='flex flex-col lg:flex-row gap-16 items-center'>
-            <div className='lg:w-2/6 flex flex-col gap-6 my-10 ml-32'>
-                <img src={activeImg} alt="" className='w-full h-full aspect-square object-cover rounded-xl' />
-                <div className='flex justify-center gap-4'>
+        <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
+            <div className='flex flex-col gap-6 lg:w-2/4 my-16 bubuish'>
+                <div className='centered-image-container'>
+                    <img src={activeImg} alt="" className='w-2/5 h-full aspect-square object-cover rounded-xl biggy' />
+                </div>
+
+                <div className='flex flex-row justify-center items-center h-16' style={{ gap: '1rem' }}>
                     <img
                         src={images.img1}
                         alt=""
-                        className='w-16 h-16 rounded-md cursor-pointer'
+                        className='w-20 h-20 rounded-md cursor-pointer'
                         onClick={() => setActiveImage(images.img1)}
                     />
                     <img
                         src={images.img2}
                         alt=""
-                        className='w-16 h-16 rounded-md cursor-pointer'
+                        className='w-20 h-20 rounded-md cursor-pointer'
                         onClick={() => setActiveImage(images.img2)}
                     />
                     <img
                         src={images.img3}
                         alt=""
-                        className='w-16 h-16 rounded-md cursor-pointer'
+                        className='w-20 h-20 rounded-md cursor-pointer'
                         onClick={() => setActiveImage(images.img3)}
                     />
                     <img
                         src={images.img4}
                         alt=""
-                        className='w-16 h-16 rounded-md cursor-pointer'
+                        className='w-20 h-20 rounded-md cursor-pointer'
                         onClick={() => setActiveImage(images.img4)}
                     />
                 </div>
             </div>
 
             {/* ABOUT */}
-            <div className='lg:w-3/5 flex flex-col gap-4 text-left'>
+            <div className='flex flex-col gap-4 lg:w-2/4 text-left bubbist'>
                 <div>
                     <span className='text-teal-500 font-semibold'>Fresh Fish</span>
                     <h1 className='text-3xl font-l'>Seer Fish</h1>
@@ -83,11 +86,11 @@ const ProductPage = () => {
                     </p>
                 </div>
                 <h6 className='text-2xl font-semibold'>LKR 2000</h6>
-                <div className='flex items-center gap-4'>
-                    <div className='flex items-center'>
-                        <button className='bg-gray-200 py-2 px-4 rounded-lg text-black text-xl' onClick={() => setAmount((prev) => Math.max(prev - 1, 1))}>-</button>
-                        <span className='py-2 px-4 rounded-lg'>{amount}</span>
-                        <button className='bg-gray-200 py-2 px-4 rounded-lg text-black text-xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
+                <div className='flex flex-row items-center gap-12'>
+                    <div className='flex flex-row items-center'>
+                        <button className='bg-gray-200 py-2 px-5 rounded-lg text-black text-3xl' onClick={() => setAmount((prev) => Math.max(prev - 1, 1))}>-</button>
+                        <span className='py-4 px-6 rounded-lg'>{amount}</span>
+                        <button className='bg-gray-200 py-2 px-4 rounded-lg text-black text-3xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
                     </div>
                     <select className='bg-gray-200 py-2 px-4 rounded-lg text-black text-xl' value={cutType} onChange={(e) => handleCutTypeChange(e.target.value)}>
                         <option value="Fresh">Fresh</option>
@@ -100,7 +103,7 @@ const ProductPage = () => {
                         <option value="2kg">2 KG</option>
                         <option value="3kg">3 KG</option>
                     </select>
-                    <button className='bg-teal-500 text-white font-semibold py-2 px-8 rounded-xl'>Add to Cart</button>
+                    <button className='bg-teal-500 text-white font-semibold py-3 px-16 rounded-xl h-full'>Add to Cart</button>
                 </div>
             </div>
 
@@ -109,6 +112,4 @@ const ProductPage = () => {
 }
 
 export default ProductPage;
-
-
 
