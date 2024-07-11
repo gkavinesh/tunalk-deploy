@@ -96,7 +96,7 @@ const ProductPage = () => {
                 </div>
                 <div className='w-10/12'>
                     <p className='text-gray-700'>
-                        The Seer Fish, also known as Vanjaram or Nei Meen, is a highly prized saltwater fish found in the Indian Ocean and the western Pacific Ocean. Renowned for its firm texture and rich, oily flesh, it's a favorite in various cuisines for its distinctive taste and nutritional benefits, including being high in protein and omega-3 fatty acids. Its versatile nature makes it suitable for a wide range of preparations, from grilling to currying.
+                        The Seer Fish is a highly prized saltwater fish found in the Indian Ocean and the western Pacific Ocean. Renowned for its firm texture and rich, oily flesh, it's a favorite in various cuisines for its distinctive taste and nutritional benefits, including being high in protein and omega-3 fatty acids. Its versatile nature makes it suitable for a wide range of preparations, from grilling to currying.
                     </p>
                 </div>
                 <br></br>
