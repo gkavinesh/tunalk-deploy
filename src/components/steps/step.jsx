@@ -55,7 +55,7 @@ const StepsSection = () => {
                             <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
                                 <span className="text-xl font-semibold text-gray-700">1</span>
                             </div>
-                            <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Sourcing and Testing our fish</h3>
+                            <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">Sourcing and testing our fish</h3>
                             <p className="mt-4 text-base text-gray-600">At TunaLK, we prioritize sustainable sourcing and rigorous quality checks to deliver the freshest and safest seafood, ensuring a premium experience for our customers.</p>
                             <div className="mt-4 mx-auto">
                                 <Lottie options={defaultOptionsStep2} height={200} width={200} />

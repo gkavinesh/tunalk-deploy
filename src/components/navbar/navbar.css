@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-.back{
-    background: linear-gradient(to right, #048676, #00b6a1);;
-    width: 100%;
 
-}
 
 .navbar {
-    margin-left: 9rem;
+    width: 100%;
     font-family: "Outfit", sans-serif;
     padding: 8px 20px; /* Adjust padding for smaller screens */
     display: flex;
@@ -16,10 +12,10 @@
     background: linear-gradient(to right, #048676, #00b6a1);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure it stays above other elements */
 }
 
 .navbar .logo {
+    margin-left: 9rem;
     height: auto; /* Allow logo height to adjust */
     width: 160px;
     padding: 5px; /* Simplify padding */
@@ -74,7 +70,7 @@
     color: white;
     position: relative;
     font-size: 18px;
-    margin-right: 3rem;
+    margin-right: 1.5rem;
 }
 
 .navbar-search-icon .dot {

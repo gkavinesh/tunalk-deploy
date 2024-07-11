@@ -90,7 +90,6 @@ const Navbar = ({ setShowLogin }) => {
     };
 
     return (
-        <div className='back'>
             <div className='navbar' id='navbar'>
                 <a href="/">
                     <img src={assets.white} alt="" className="logo" />
@@ -116,7 +115,7 @@ const Navbar = ({ setShowLogin }) => {
                         <AnimatedHamburgerButton />
                     </div>
                 </div>
-            </div>
+
 
             <AnimatePresence>
                 {isSidebarOpen && (
