@@ -69,8 +69,10 @@ import pomfret from './pomfret.jpg'
 import cubes from './cubes.jpg'
 import slice from './slice.jpg'
 import currycut from './currycut.jpg'
+import title from './title.png'
 
 export const assets = {
+    title,
     cubes,
     slice,
     currycut,
