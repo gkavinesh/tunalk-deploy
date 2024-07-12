@@ -38,12 +38,13 @@ const StepsSection = () => {
 
     return (
         <section className="py-10 bg-white sm:py-16 lg:py-24">
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" id='why'>
                 <div className="bubbly">
                     <h2>Why Tuna LK</h2>
                     <h2>Why Tuna LK</h2>
                 </div>
-
+                <br></br>
+                <br></br>
                 <div className="relative mt-12 lg:mt-20">
                     <div className="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
                         <img className="w-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg" alt="" />

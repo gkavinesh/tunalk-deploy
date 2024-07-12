@@ -91,7 +91,7 @@ const Navbar = ({ setShowLogin }) => {
 
     return (
             <div className='navbar' id='navbar'>
-                <a href="/">
+                <a href="/home">
                     <img src={assets.white} alt="" className="logo" />
                 </a>
 

@@ -130,7 +130,7 @@ const Footer = () => {
                                 <a href="#Category" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Products </a>
                             </li>
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Contact </a>
+                                <a href="/home#why" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Why Tuna LK </a>
                             </li>
                         </ul>
                     </div>
@@ -156,6 +156,7 @@ const Footer = () => {
                             <img src={assets.play_store} alt="Play Store" />
                         </div>
                     </div>
+                    
                 </div>
                 <hr className="mt-16 mb-10 border-gray-200" />
                 <p className="text-sm text-center text-gray-600">© Copyright 2024, All Rights Reserved by <b>TunaLK</b> | Designed by <a href="#">12BK Pvt Ltd</a></p>

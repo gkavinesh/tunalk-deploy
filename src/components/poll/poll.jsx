@@ -25,16 +25,9 @@ const BarPoll = () => {
 
   return (
     <section className="bg-cyan-100 px-4 py-12 poll">
-      <div className="up">
-          <img src={Image2} alt="" />
-        </div>
-      <br></br>
-      <br></br>
-      <br></br>
       <div className="buby">
       <h1 className="heading-1">Time to have some fun?</h1>
       </div>
-      
       <br></br>
       <br></br>
       <div className="mx-auto grid max-w-4xl grid-cols-1 gap-2 md:grid-cols-[1fr_400px] md:gap-12">
@@ -43,10 +36,7 @@ const BarPoll = () => {
       </div>
       <br></br>
       <br></br>
-      <br></br>
-      <div className="down">
-          <img src={Image1} alt="" />
-        </div>
+
     </section>
   );
 };

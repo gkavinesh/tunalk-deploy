@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* Base styles */
-.back-1 {
-    background: white;
-}
 
 .banner {
-    margin-left: 9rem;
+    width: 100%;
     font-family: "Outfit", sans-serif;
     padding: 7px 20px; /* Adjust padding for smaller screens */
     display: flex;
@@ -15,6 +12,7 @@
     background-color: white;
     position: sticky;
     top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
 }
 
 .banner .logo {
@@ -24,7 +22,7 @@
 }
 
 .banner-menu {
-    margin-left: 0.7rem;
+    margin-left: 9rem;
     display: flex;
     list-style: none;
     gap: 20px; /* Reduce gap between menu items */

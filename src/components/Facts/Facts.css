@@ -1,29 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-.hero {
+.took {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  height: 15vh; /* or any desired height */
 }
 
-.hero h2 {
+.took h2 {
   position: absolute;
-  margin-left: 50rem;
-  margin-top: 8rem;
-  font-family: "Tinos", serif;
-  font-size: 7rem;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-top: 6rem;
+  font-size: 6rem;
   text-align: center;
   transform: translate(-50%, -50%);
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
 }
 
-.hero h2:nth-child(1) {
+.took h2:nth-child(1) {
   color: transparent;
   -webkit-text-stroke: 2px #0C979C;
-
 }
 
-.hero h2:nth-child(2) {
+.took h2:nth-child(2) {
   color: #00b6a1;
   animation: animate 4s ease-in-out infinite;
 }
@@ -42,27 +46,3 @@
 
 
 
-.container-products {
-  display: flex;
-  gap: 20px;
-  /* Adjust the gap between the cards as needed */
-  padding: 0;
-}
-
-.custom-height {
-  height: 70vh;
-  /* Adjust the height as needed */
-  margin-bottom: -20rem;
-}
-
-@media (max-width: 768px) {
-  .head {
-    font-size: 4rem;
-    /* Adjust font size for smaller screens */
-  }
-
-  .container-products {
-    gap: 10px;
-    /* Reduce gap between items for smaller screens */
-  }
-}
