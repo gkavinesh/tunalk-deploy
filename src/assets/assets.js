@@ -69,10 +69,20 @@ import pomfret from './pomfret.jpg'
 import cubes from './cubes.jpg'
 import slice from './slice.jpg'
 import currycut from './currycut.jpg'
-import title from './title.png'
+import wallpaper from './wallpaper.png'
+import card1 from './american-express.png'
+import card2 from './visa.png'
+import card3 from './mastercard.png'
+import cod from './cash-on-delivery.png'
+import bank from './symbols.png'
 
 export const assets = {
-    title,
+    wallpaper,
+    cod,
+    bank,
+    card1,
+    card2,
+    card3,
     cubes,
     slice,
     currycut,

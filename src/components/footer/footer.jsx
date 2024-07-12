@@ -148,14 +148,38 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Get the App for a better experience</p>
-                        <div className="mt-6">
-                            <img src={assets.app_store} alt="App Store" />
-                            <br />
-                            <img src={assets.play_store} alt="Play Store" />
-                        </div>
-                    </div>
+                    <div className="col-span-2 md:col-span-3 lg:col-span-2">
+            <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Accepted Payment Methods</p>
+
+            <ul className="flex items-center space-x-3 mt-6">
+              <li>
+                <img src={assets.card2} alt="Visa" className="w-12 h-auto" />
+              </li>
+              <li>
+                <img src={assets.card3} alt="MasterCard" className="w-12 h-auto" />
+              </li>
+              <li>
+                <img src={assets.card1} alt="American Express" className="w-12 h-auto" />
+              </li>
+              <li>
+                <img src={assets.cod} alt="Cash on Delivery" className="w-12 h-auto" />
+              </li>
+              <li>
+                <img src={assets.bank} alt="Bank Transfer" className="w-12 h-auto" />
+              </li>
+            </ul>
+
+            <button
+              onClick={() => setOpen(true)}
+              title=""
+              className="inline-flex items-center text-base font-semibold text-gray-600 transition-all duration-200 hover:text-blue-600 focus:text-blue-600 mt-7"
+            >
+              More payment methods
+              <svg className="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" d="M5.707 4.707a1 1 0 010-1.414l8-8a1 1 0 011.414 0l8 8a1 1 0 01-1.414 1.414L15 4.414V20a1 1 0 11-2 0V4.414L7.121 5.121a1 1 0 01-1.414-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
                     
                 </div>
                 <hr className="mt-16 mb-10 border-gray-200" />

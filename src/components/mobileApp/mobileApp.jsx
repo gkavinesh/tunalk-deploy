@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { FiBatteryCharging, FiWifi } from "react-icons/fi";
+import { assets } from "../../assets/assets";
 
 const Example = () => {
   return (
-    <section className="grid place-content-center bg-neutral-900 p-12">
-      <FloatingPhone />
+    <section className="flex items-center justify-center min-h-screen bg-white p-12">
+      <div className="flex items-center justify-between w-full max-w-screen-lg mx-auto">
+        <FloatingPhone />
+        <div className="ml-4 flex-shrink-0"> {/* Adjust the margin and add flex-shrink-0 */}
+          <DownloadMessage />
+        </div>
+      </div>
     </section>
   );
 };
@@ -16,7 +22,7 @@ const FloatingPhone = () => {
         transformStyle: "preserve-3d",
         transform: "rotateY(-30deg) rotateX(15deg)",
       }}
-      className="rounded-[24px] bg-violet-500"
+      className="rounded-[24px] bg-black mb-8"
     >
       <motion.div
         initial={{
@@ -31,7 +37,7 @@ const FloatingPhone = () => {
           duration: 2,
           ease: "easeInOut",
         }}
-        className="relative h-96 w-56 rounded-[24px] border-2 border-b-4 border-r-4 border-white border-l-neutral-200 border-t-neutral-200 bg-neutral-900 p-1 pl-[3px] pt-[3px]"
+        className="relative h-72 w-44 rounded-[24px] border-2 border-b-4 border-r-4 border-white border-l-neutral-200 border-t-neutral-200 bg-neutral-900 p-1 pl-[3px] pt-[3px]"
       >
         <HeaderBar />
         <Screen />
@@ -55,33 +61,39 @@ const HeaderBar = () => {
 const Screen = () => {
   return (
     <div className="relative z-0 grid h-full w-full place-content-center overflow-hidden rounded-[20px] bg-white">
-      {/* Example logo from logoispum */}
-      <svg
-        width="50"
-        height="39"
-        viewBox="0 0 50 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="fill-violet-500"
-      >
-        <path
-          d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-          stopColor="#000000"
-        ></path>
-        <path
-          d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
-          stopColor="#000000"
-        ></path>
-      </svg>
+      <img src={assets.tunamain} alt="Logo" className="w-24 h-auto" /> {/* Your logo here */}
 
-      <button className="absolute bottom-4 left-4 right-4 z-10 rounded-lg border-[1px] bg-white py-2 text-sm font-medium text-violet-500 backdrop-blur">
+      <button className="absolute bottom-4 left-4 right-4 z-10 rounded-lg border-[1px] bg-white py-2 text-sm font-medium text-teal-500 backdrop-blur">
         Get Started
       </button>
 
       {/* <div className="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-violet-500" /> */}
-      <div className="absolute -bottom-72 left-[50%] h-96 w-96 -translate-x-[50%] rounded-full bg-violet-500" />
+      <div className="absolute -bottom-72 left-[80%] h-96 w-96 -translate-x-[50%] rounded-full bg-teal-500" />
+    </div>
+  );
+};
+
+const DownloadMessage = () => {
+  return (
+    <div className="w-2/4 flex flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold text-teal-500 mb-4">
+        Download the app for a much better experience
+      </h2>
+      <p className="text-center text-neutral-600">
+        Available on iOS and Android.
+      </p>
+      <div className="flex justify-center gap-4 mt-4">
+        <img src={assets.app_store} alt="App Store" className="w-32" />
+        <img src={assets.play_store} alt="Play Store" className="w-32" />
+      </div>
     </div>
   );
 };
 
 export default Example;
+
+
+
+
+
+
