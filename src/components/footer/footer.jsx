@@ -121,7 +121,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div>
-                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Company</p>
+                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Shop</p>
                         <ul className="mt-6 space-y-4">
                             <li>
                                 <a href="#about" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>

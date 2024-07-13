@@ -73,8 +73,8 @@ import wallpaper from './wallpaper.png'
 import card1 from './american-express.png'
 import card2 from './visa.png'
 import card3 from './mastercard.png'
-import cod from './cash-on-delivery.png'
-import bank from './symbols.png'
+import cod from './cash-on-delivery (1).png'
+import bank from './bank-transfer.png'
 
 export const assets = {
     wallpaper,

@@ -7,6 +7,7 @@ import Step from '..//..//components/steps/step';
 import Header from '..//..//components/header/header'
 import Faq from '..//..//components/faq/faq';
 import MobileApp from '..//..//components/mobileApp/mobileApp'
+import Testimonial from '..//..//components/testimonial/testimonial'
 
 const Home = () => {
   const [category, setCategory] = useState("All");
@@ -19,6 +20,7 @@ const Home = () => {
       <Facts />
       <Faq/>
       <MobileApp/>
+      <Testimonial/>
     </div>
   );
 };

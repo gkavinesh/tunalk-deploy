@@ -4,10 +4,10 @@ import { assets } from "../../assets/assets";
 
 const Example = () => {
   return (
-    <section className="flex items-center justify-center min-h-screen bg-white p-12">
+    <section className="flex items-center justify-center min-h-screen bg-white py-8"> {/* Adjusted padding */}
       <div className="flex items-center justify-between w-full max-w-screen-lg mx-auto">
         <FloatingPhone />
-        <div className="ml-4 flex-shrink-0"> {/* Adjust the margin and add flex-shrink-0 */}
+        <div className="ml-8 flex-shrink-0"> {/* Added margin-left and flex-shrink-0 */}
           <DownloadMessage />
         </div>
       </div>
@@ -67,7 +67,6 @@ const Screen = () => {
         Get Started
       </button>
 
-      {/* <div className="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-violet-500" /> */}
       <div className="absolute -bottom-72 left-[80%] h-96 w-96 -translate-x-[50%] rounded-full bg-teal-500" />
     </div>
   );
@@ -91,6 +90,7 @@ const DownloadMessage = () => {
 };
 
 export default Example;
+
 
 
 
