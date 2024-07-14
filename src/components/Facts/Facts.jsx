@@ -6,8 +6,6 @@ import { assets } from "../../assets/assets";
 const Example = () => {
   return (
     <div className="bg-white back">
-      <br></br>
-      <br></br>
       <HorizontalScrollCarousel />
     </div>
   );
@@ -19,11 +17,15 @@ const HorizontalScrollCarousel = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-47%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["30%", "-30%"]);
 
   return (
     <section ref={targetRef} className="relative h-[200vh] bg-white">
-      <div className="sticky top-[40vh] flex h-[60vh] items-center overflow-hidden">
+      <div className="sticky top-[30vh] flex flex-col h-[75vh] items-center overflow-hidden sugar">
+        <div className="took-2 w-full">
+          <h2>About US</h2>
+          <h2>About US</h2>
+        </div>
         <motion.div style={{ x }} className="flex">
           {cards.map((card) => {
             return <Card card={card} key={card.id} />;
@@ -61,6 +63,7 @@ const cards = [
     id: 1,
   }
 ];
+
 
 
 

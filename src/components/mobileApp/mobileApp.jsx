@@ -4,13 +4,9 @@ import { assets } from "../../assets/assets";
 
 const Example = () => {
   return (
-    <section className="flex items-center justify-center min-h-screen bg-white py-8"> {/* Adjusted padding */}
-      <div className="flex items-center justify-between w-full max-w-screen-lg mx-auto">
-        <FloatingPhone />
-        <div className="ml-8 flex-shrink-0"> {/* Added margin-left and flex-shrink-0 */}
-          <DownloadMessage />
-        </div>
-      </div>
+    <section className="flex flex-col items-center justify-center min-h-[80vh] bg-white py-4"> {/* Adjusted padding and height */}
+      <FloatingPhone />
+      <DownloadMessage />
     </section>
   );
 };
@@ -22,7 +18,7 @@ const FloatingPhone = () => {
         transformStyle: "preserve-3d",
         transform: "rotateY(-30deg) rotateX(15deg)",
       }}
-      className="rounded-[24px] bg-black mb-8"
+      className="rounded-[24px] bg-black"
     >
       <motion.div
         initial={{
@@ -62,20 +58,17 @@ const Screen = () => {
   return (
     <div className="relative z-0 grid h-full w-full place-content-center overflow-hidden rounded-[20px] bg-white">
       <img src={assets.tunamain} alt="Logo" className="w-24 h-auto" /> {/* Your logo here */}
-
-      <button className="absolute bottom-4 left-4 right-4 z-10 rounded-lg border-[1px] bg-white py-2 text-sm font-medium text-teal-500 backdrop-blur">
+      <button className="absolute bottom-4 left-4 right-4 z-10 rounded-lg bg-white py-2 text-sm font-medium text-teal-500 backdrop-blur">
         Get Started
       </button>
-
-      <div className="absolute -bottom-72 left-[80%] h-96 w-96 -translate-x-[50%] rounded-full bg-teal-500" />
     </div>
   );
 };
 
 const DownloadMessage = () => {
   return (
-    <div className="w-2/4 flex flex-col items-center justify-center">
-      <h2 className="text-2xl font-bold text-teal-500 mb-4">
+    <div className="mt-8 flex flex-col items-center justify-center"> {/* Added margin-top to create space */}
+      <h2 className="text-2xl font-bold text-teal-500 mb-4 text-center">
         Download the app for a much better experience
       </h2>
       <p className="text-center text-neutral-600">

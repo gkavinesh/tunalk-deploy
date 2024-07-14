@@ -8,7 +8,7 @@ import './header.css'
 
 const header = () => {
   return (
-    <div className='tuna'>
+    <div className='tuna-lk'>
         <Carousel/>
         <Shopby/>
     </div>
