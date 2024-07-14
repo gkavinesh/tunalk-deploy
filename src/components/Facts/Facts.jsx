@@ -5,7 +5,7 @@ import { assets } from "../../assets/assets";
 
 const Example = () => {
   return (
-    <div className="bg-white back">
+    <div className="bg-white back" id="about">
       <HorizontalScrollCarousel />
     </div>
   );

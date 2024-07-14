@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from './components/navbar/navbar'
 import { Route, Routes, useActionData } from 'react-router-dom'
+import DeliveryArea from './pages/DeliveryArea/DeliveryArea'
 import Home from './pages/Home/Home'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Cart from './pages/Cart/Cart'
@@ -25,8 +26,9 @@ const App = () => {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
         <Route path='/fish' element={<Fish/>} />
-        <Route path='/fishdetails' element={<FishDetails/>} />
+        <Route path='/fish-overview' element={<FishDetails/>} />
         <Route path='/faq' element={<FAQ/>} />
+        <Route path='/delivery-area' element={<DeliveryArea/>} />
       </Routes>
     </div>
     <Footer/>

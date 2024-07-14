@@ -53,7 +53,7 @@ const App = () => {
         <section className="section hero" ref={heroSectionRef}>
         </section>
       </div>
-      <div className="image-container" style={{ willChange: 'transform' }} id='about'>
+      <div className="image-container" style={{ willChange: 'transform' }}>
       <img
           src={About} // or {Image2}, depending on which image you want to use
           alt="image"

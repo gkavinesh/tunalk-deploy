@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Home.css';
-import Delivery from '..//..//components/deliveryarea/deliveryarea'
 import About from '..//..//components/about/about';
 import Facts from '..//..//components/Facts/Facts'
 import Poll from '..//..//components/poll/poll';
