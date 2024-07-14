@@ -4,8 +4,7 @@ import { assets } from "../../assets/assets";
 
 const Example = () => {
   return (
-    <section className="flex flex-col items-center justify-center min-h-[80vh] bg-white py-4"> {/* Adjusted padding and height */}
-      <FloatingPhone />
+    <section className="flex flex-col items-center justify-center h-[30vh] bg-white"> {/* Adjusted padding and height */}
       <DownloadMessage />
     </section>
   );
@@ -67,7 +66,7 @@ const Screen = () => {
 
 const DownloadMessage = () => {
   return (
-    <div className="mt-8 flex flex-col items-center justify-center"> {/* Added margin-top to create space */}
+    <div className="flex flex-col items-center justify-center"> {/* Added margin-top to create space */}
       <h2 className="text-2xl font-bold text-teal-500 mb-4 text-center">
         Download the app for a much better experience
       </h2>

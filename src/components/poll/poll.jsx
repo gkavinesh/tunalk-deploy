@@ -24,7 +24,7 @@ const BarPoll = () => {
   ]);
 
   return (
-    <section className="bg-cyan-100 px-4 py-12 poll">
+    <section className="bg-cyan-50 px-4 py-12 poll">
       <div className="buby">
       <h1 className="heading-1">Time to have some fun?</h1>
       </div>

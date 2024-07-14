@@ -138,10 +138,10 @@ const Footer = () => {
                         <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
                         <ul className="mt-6 space-y-4">
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
+                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">Delivery Areas</a>
                             </li>
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
+                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> FAQ </a>
                             </li>
                             <li>
                                 <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600" onClick={() => setOpen(true)}> Privacy Policy </a>
@@ -174,7 +174,7 @@ const Footer = () => {
               title=""
               className="inline-flex items-center text-base font-semibold text-gray-600 transition-all duration-200 hover:text-blue-600 focus:text-blue-600 mt-7"
             >
-              More payment methods
+              Customer Support
               <svg className="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fillRule="evenodd" d="M5.707 4.707a1 1 0 010-1.414l8-8a1 1 0 011.414 0l8 8a1 1 0 01-1.414 1.414L15 4.414V20a1 1 0 11-2 0V4.414L7.121 5.121a1 1 0 01-1.414-1.414z" clipRule="evenodd" />
               </svg>

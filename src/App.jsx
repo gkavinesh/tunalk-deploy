@@ -7,7 +7,7 @@ import Cart from './pages/Cart/Cart'
 import Footer from './components/footer/footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Banner from './components/banner/banner'
-import MainCat from './components/explore/maincat'
+import FAQ from './pages/FAQ/faq'
 import Fish from './pages/Fish/Fish'
 import FishDetails from './pages/Fish/FishDetails'
 
@@ -26,6 +26,7 @@ const App = () => {
         <Route path='/order' element={<PlaceOrder/>} />
         <Route path='/fish' element={<Fish/>} />
         <Route path='/fishdetails' element={<FishDetails/>} />
+        <Route path='/faq' element={<FAQ/>} />
       </Routes>
     </div>
     <Footer/>

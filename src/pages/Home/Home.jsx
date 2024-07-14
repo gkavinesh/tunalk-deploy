@@ -19,8 +19,8 @@ const Home = () => {
       <Step/>
       <Poll />
       <Facts />
-      <Faq/>
       <Testimonial/>
+      <MobileApp/>
     </div>
   );
 };

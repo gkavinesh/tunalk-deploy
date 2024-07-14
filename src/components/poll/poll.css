@@ -4,13 +4,13 @@
 
 .buby h1{
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 7rem;
-  text-align: center;
+  font-size: 5rem;
+  text-align:center;
 }
 
 h1:nth-child(1){
     color: transparent;
-    -webkit-text-stroke: 1.5px #0C979C;
+    -webkit-text-stroke: 2px #0C979C;
 }
 
 .up{
@@ -19,4 +19,8 @@ h1:nth-child(1){
 
 .down{
     margin-bottom: -3rem;
+}
+
+.poll{
+    margin-top: -2rem;
 }
