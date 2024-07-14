@@ -13,7 +13,7 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
             {offer && <div className="food-item-offer">{offer}% Offer</div>}
             
             <div className="food-item-image-container">
-                <Link to='/fishdetails'>
+                <Link to='/fish-overview'>
                     <img className='food-item-image' src={image} alt={name} />
                 </Link>
             </div>
@@ -24,15 +24,6 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
                     <p className='food-item-price'>Starts from LKR {price}</p>
                 </div>
                 <div className="food-item-action">
-                    {!cartItems[id] ? (
-                        <img className='add' onClick={(e) => {e.stopPropagation(); e.preventDefault(); addToCart(id)}} src={assets.add_icon_white} alt='Add' />
-                    ) : (
-                        <div className='food-item-counter'>
-                            <img onClick={(e) => {e.stopPropagation(); e.preventDefault(); removeFromCart(id)}} src={assets.remove_icon_red} alt='Remove' />
-                            <p>{cartItems[id]}</p>
-                            <img onClick={(e) => {e.stopPropagation(); e.preventDefault(); addToCart(id)}} src={assets.add_icon_green} alt='Add' />
-                        </div>
-                    )}
                     <Link to='/fishdetails'>
                         <button className="customize-button">
                             <FaShoppingCart className="cart-icon" />

@@ -24,8 +24,7 @@ const FoodDisplay = ({ category }) => {
                 name={item.name}
                 description={item.description}
                 price={item.price}
-                image={item.image}
-                offer={item.offer} // Include the offer prop
+                image={item.image} // Include the offer prop
               />
             );
           }

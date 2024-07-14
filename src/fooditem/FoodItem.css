@@ -1,15 +1,21 @@
 .food-item {
   font-family: "Outfit", sans-serif;
   background-color: white;
-  width: 400px; /* Adjusted width */
-  height: 500px; /* Adjusted height */
-  border-radius: 10px; /* Simplified border-radius */
+  width: 400px;
+  /* Adjusted width */
+  height: 500px;
+  /* Adjusted height */
+  border-radius: 10px;
+  /* Simplified border-radius */
   transition: 0.3s;
   animation: fadeIn 1s;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow here */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow here */
   position: relative;
-  margin-bottom: 20px; /* Adjust margin bottom to create spacing */
-  box-sizing: border-box; /* Ensure padding and border are included in width */
+  margin-bottom: 20px;
+  /* Adjust margin bottom to create spacing */
+  box-sizing: border-box;
+  /* Ensure padding and border are included in width */
 }
 
 
@@ -28,19 +34,24 @@
   border-radius: 4px;
   font-size: 16px;
   font-weight: 300;
-  z-index: 1; /* Ensure the offer is above other content */
+  z-index: 1;
+  /* Ensure the offer is above other content */
 }
 
 .food-item-image-container {
   width: auto;
-  height: 350px; /* Set a fixed height for the container */
+  height: 350px;
+  /* Set a fixed height for the container */
   position: relative;
 }
 
 .food-item-image {
-  width: 100%; /* Ensures the image fills its container */
-  height: 100%; /* Ensures the image fills its container */
-  object-fit: cover; /* Ensures the image maintains aspect ratio and covers the container */
+  width: 100%;
+  /* Ensures the image fills its container */
+  height: 100%;
+  /* Ensures the image fills its container */
+  object-fit: cover;
+  /* Ensures the image maintains aspect ratio and covers the container */
 }
 
 .food-item-image-container .add {
@@ -83,7 +94,7 @@
 }
 
 .food-item-name {
-  color:#0C979C;
+  color: #0C979C;
   font-size: 18px;
   font-weight: 300;
   margin: 0;
@@ -109,8 +120,10 @@
   justify-content: flex-end;
 }
 
-.food-item-action img{
-  display: none;
+.food-item-action img {
+  height: 30px;
+  width: 30px;
+
 }
 
 .customize-button {
@@ -135,55 +148,69 @@
 
 @media (max-width: 768px) {
   .head {
-      font-size: 4rem; /* Adjust font size for smaller screens */
+    font-size: 4rem;
+    /* Adjust font size for smaller screens */
   }
 
   .container-products {
-      gap: 10px; /* Reduce gap between items for smaller screens */
+    gap: 10px;
+    /* Reduce gap between items for smaller screens */
   }
 
   .food-item {
-      width: 300px; /* Full width for smaller screens */
-      height: 400px; /* Auto height for flexibility */
-      margin-top: 5rem;
-      margin-left: 1rem;
-      margin-right: 1rem;
+    width: 300px;
+    /* Full width for smaller screens */
+    height: 400px;
+    /* Auto height for flexibility */
+    margin-top: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .food-item-image {
-      width: 100%;
-      height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+    /* Maintain aspect ratio */
   }
 
   .food-item-info {
-      padding: 10px; /* Reduce padding for smaller screens */
+    padding: 10px;
+    /* Reduce padding for smaller screens */
   }
 
   .food-item-desc {
-      font-size: 14px; /* Adjust font size for smaller screens */
+    font-size: 14px;
+    /* Adjust font size for smaller screens */
   }
 
   .food-item-price {
-      font-size: 24px; /* Adjust font size for smaller screens */
+    font-size: 24px;
+    /* Adjust font size for smaller screens */
   }
 
   .food-item-counter {
-      padding: 4px; /* Reduce padding for smaller screens */
+    padding: 4px;
+    /* Reduce padding for smaller screens */
   }
 
   .food-item-counter img {
-      width: 25px; /* Adjust size for smaller screens */
+    width: 25px;
+    /* Adjust size for smaller screens */
   }
 
   .customize-button {
-      padding: 8px 16px; /* Adjust padding for smaller screens */
-      font-size: 14px; /* Adjust font size for smaller screens */
+    padding: 8px 16px;
+    /* Adjust padding for smaller screens */
+    font-size: 14px;
+    /* Adjust font size for smaller screens */
   }
 
   .customize-button .cart-icon {
-      width: 18px; /* Adjust size for smaller screens */
-      height: 18px; /* Adjust size for smaller screens */
-      margin-right: 8px; /* Adjust margin for smaller screens */
+    width: 18px;
+    /* Adjust size for smaller screens */
+    height: 18px;
+    /* Adjust size for smaller screens */
+    margin-right: 8px;
+    /* Adjust margin for smaller screens */
   }
 }
-
