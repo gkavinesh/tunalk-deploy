@@ -15,20 +15,21 @@ const FoodDisplay = ({ category }) => {
   return (
     <div className='food-display' id='food-display'>
       <div className="food-display-list">
-        {food_list.map((item) => {
+        {food_list.map((item, index) => {
+          console.log(category, item.category); // Check for logging
           if (category === "All" || category === item.category) {
             return (
               <FoodItem
-                key={item._id} // Ensure a unique key
+                key={index}
                 id={item._id}
                 name={item.name}
                 description={item.description}
                 price={item.price}
-                image={item.image} // Include the offer prop
+                image={item.image}
               />
             );
           }
-          return null; // Handle cases where no items match the category
+          return null;
         })}
       </div>
     </div>
@@ -36,7 +37,4 @@ const FoodDisplay = ({ category }) => {
 };
 
 export default FoodDisplay;
-
-
-
 

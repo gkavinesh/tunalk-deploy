@@ -1,35 +1,47 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './FoodItem.css';
-import { StoreContext } from '../context/StoreContext';
-import { FaShoppingCart } from 'react-icons/fa';
-import { assets } from '../assets/assets';
-import { Link } from 'react-router-dom';
+import { assets } from '../assets/assets'; // Ensure this import is correct based on your actual file structure
+import { StoreContext } from '../context/StoreContext'; // Correct the import path if needed
 
-const FoodItem = ({ id, name, price, description, image, offer }) => {
+const FoodItem = ({ id, name, price, description, image }) => {
     const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+    const navigate = useNavigate();
+
+    const handleCustomizeClick = () => {
+        navigate('/fish-overview');
+    };
 
     return (
         <div className='food-item'>
-            {offer && <div className="food-item-offer">{offer}% Offer</div>}
-            
             <div className="food-item-image-container">
-                <Link to='/fish-overview'>
-                    <img className='food-item-image' src={image} alt={name} />
-                </Link>
+                <img className='food-item-image' src={image} alt={name} />
+                {!cartItems[id] ? (
+                    <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt='Add to cart' />
+                ) : (
+                    <div className='food-item-counter'>
+                        <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt='Remove from cart' />
+                        <p>{cartItems[id]}</p>
+                        <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt='Add more' />
+                    </div>
+                )}
             </div>
             <div className="food-item-info">
                 <div className="food-item-details">
-                    <p className="food-item-name">{name}</p>
-                    <p className="food-item-desc">{description}</p>
-                    <p className='food-item-price'>From : රු {price}</p>
+                    <div className="food-item-name-rating">
+                        <p>{name}</p>
+                    </div>
+                    <p className="food-item-desc">
+                        {description}
+                    </p>
+                    <p className='food-item-price'>
+                        From: රු {price}
+                    </p>
                 </div>
-                <div className="food-item-action">
-                    <Link to='/fish-overview'>
-                        <button className="customize-button">
-                            <FaShoppingCart className="cart-icon" />
-                            Customize
-                        </button>
-                    </Link>
+                <div>
+                <button className='customize-button' onClick={handleCustomizeClick}>
+                    Customize
+                </button>
                 </div>
             </div>
         </div>
@@ -37,8 +49,6 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
 }
 
 export default FoodItem;
-
-
 
 
 

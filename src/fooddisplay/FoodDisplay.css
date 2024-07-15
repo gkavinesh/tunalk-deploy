@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-
 .food-display {
     margin-top: 30px;
+    margin-bottom: 5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
 }
 
 .food-display h2 {
@@ -15,14 +17,7 @@
 .food-display-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Ensure exactly 3 columns */
-    gap: 10px; /* Adjust gap between items */
     margin-top: 30px;
-    justify-items: center;
-    padding: 0; /* Ensure no padding on the container */
-}
-
-.food-display-list > * {
-    padding: 0;
-    width: 100%; /* Ensure each item spans the full width of its grid cell */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    gap: 30px;
+    row-gap: 50px;
 }

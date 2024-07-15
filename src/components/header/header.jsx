@@ -10,7 +10,6 @@ const header = () => {
   return (
     <div className='tuna-lk'>
         <Carousel/>
-        <Shopby/>
     </div>
   )
 }
