@@ -21,10 +21,10 @@ const FoodItem = ({ id, name, price, description, image, offer }) => {
                 <div className="food-item-details">
                     <p className="food-item-name">{name}</p>
                     <p className="food-item-desc">{description}</p>
-                    <p className='food-item-price'>Starts from LKR {price}</p>
+                    <p className='food-item-price'>From : රු {price}</p>
                 </div>
                 <div className="food-item-action">
-                    <Link to='/fishdetails'>
+                    <Link to='/fish-overview'>
                         <button className="customize-button">
                             <FaShoppingCart className="cart-icon" />
                             Customize

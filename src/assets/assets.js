@@ -155,88 +155,55 @@ export const assets = {
     fishy,
 };
 
-export const menu_list = [
-    {
-        menu_name: "Fish",
-        menu_image: menu_1
-    },
-    {
-        menu_name: "Shellfish",
-        menu_image: menu_2
-    },
-    {
-        menu_name: "Mollusk",
-        menu_image: menu_3
-    },
-    {
-        menu_name: "Crab",
-        menu_image: crab
-    },
-    {
-        menu_name: "Shrimps",
-        menu_image: shrimp
-    },
-    {
-        menu_name: "Lobster",
-        menu_image: lobster
-    }
-];
-
-
 
 export const food_list = [
     {
         _id: 1,
         name: "Seer Fish",
-        price: 2000,
-        description: "Net Weight: 500-480 gms",
+        price: 1490,
+        description: "Net Weight: 500g",
+        category: "Fish",
         image: fishy, // Replace with actual image path
-        offer: 16
     },
     {
         _id: "2",
         name: "Raw Tuna Steak",
         price: 2000,
-        description: "Net Weight: 500-480 gms",
+        description: "Net Weight: 500g",
         category: "Fish",
         image: pomfret, // Replace with actual image path
-        offer: 16
     },
     {
         _id: "3",
         name: "Raw Shrimp",
         price: 2000,
-        description: "Net Weight: 500-480 gms",
-        category: "Shellfish",
+        description: "Net Weight: 500g",
+        category: "Fish",
         image: fishy, // Replace with actual image path
-        offer: 16
     },
     {
         _id: "4",
         name: "Raw Scallops",
         price: 2000,
-        description: "Net Weight: 500-480 gms",
-        category: "Shellfish",
+        description: "Net Weight: 500g",
+        category: "Fish",
         image: pomfret, // Replace with actual image path
-        offer: 16
     },
     {
         _id: "5",
         name: "Raw Lobster Tail",
         price: 2000,
-        description: "Net Weight: 500-480 gms",
-        category: "Shellfish",
+        description: "Net Weight: 500g",
+        category: "Fish",
         image: fishy, // Replace with actual image path
-        offer: 16
     },
     {
         _id: "6",
         name: "Raw Crab Legs",
         price: 2000,
-        description: "Net Weight: 500-480 gms",
-        category: "Shellfish",
+        description: "Net Weight: 500g",
+        category: "Fish",
         image: pomfret, // Replace with actual image path
-        offer: 16
     }
 ];
 

@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
 const Banner = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount } = useContext(StoreContext);
 
   return (
     <div className='back-1'>
@@ -19,7 +17,6 @@ const Banner = ({ setShowLogin }) => {
           </a>
           <a href='#products' >Support</a>
           <a href='#about' >Offers</a>
-          <a href='#footer'>Order Tracking</a>
         </ul>
         <div className="banner-right">
         <a href='#' className='download-link-2'>

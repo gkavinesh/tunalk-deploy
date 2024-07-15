@@ -96,7 +96,7 @@ const Navbar = ({ setShowLogin }) => {
                 </a>
 
                 <div className="navbar-right">
-                    <button onClick={() => setShowLogin(true)} className='navbar-button-2'>
+                    <button className='navbar-button-2'>
                         <FaSearch style={{ marginRight: '10px', marginTop: '4px' }} />
                         Search
                     </button>
