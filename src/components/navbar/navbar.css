@@ -315,7 +315,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #048676, #00b6a1);
+    background:#048676;
     color: #fff;
     border: none;
     border-radius: 0;

@@ -157,11 +157,11 @@ const Navbar = ({ setShowLogin }) => {
                                 <a href='#privacy-policy'>Privacy Policy</a>
                             </div>
                         </ul>
-                        <button className="call-button-2">
-                            Download our App
-                        </button>
                         <button className="call-button">
                             Contact US
+                        </button>
+                        <button className="call-button-2">
+                            Download our App
                         </button>
                     </motion.div>
                 )}
