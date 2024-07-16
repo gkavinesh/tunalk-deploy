@@ -16,11 +16,25 @@ const addProduct = async (req,res) => {
     })
     try{
         await product.save();
-        res.json({success:true,message:"Food Added"})
+        res.json({success:true,message:"Product Added"})
     }catch (error){
         console.log(error)
         res.json({success:false,message:"Error"})
     }
 }
 
-export {addProduct}
+//all product list
+const listProduct = async (req,res) => {
+    try{
+        const products = await productModel.find({});
+        res.json({success:true,data:foods})
+    }catch(error){
+        console.log(error);
+        res.json({success:false,message:"ERROR"})
+
+    }
+
+}
+
+export {addProduct,listProduct}
+
