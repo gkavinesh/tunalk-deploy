@@ -4,8 +4,14 @@ import order_icon from './order_icon.png'
 import profile_image from './profile_image.png'
 import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.png'
+import delete_icon from './delete.png'
+import update_icon from './refresh.png'
+import list_icon from './clipboard.png'
 
 export const assets ={
+    list_icon,
+    update_icon,
+    delete_icon,
     logo,
     add_icon,
     order_icon,
