@@ -41,6 +41,7 @@ const Categories = () => {
           </div>
         ))}
       </div>
+      <br></br>
     </div>
   ); 
 };
