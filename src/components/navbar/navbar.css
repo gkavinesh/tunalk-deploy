@@ -94,81 +94,6 @@
     margin-right: 20px; /* Adjust spacing between icon and text */
 }
 
-    
-
-
-@media (max-width: 1050px) {
-    .navbar .logo {
-        width: 100px;
-    }
-
-    .navbar-menu {
-        display: none; /* Hide menu on medium screens */
-    }
-
-    .navbar-right {
-        gap: 15px; /* Adjust gap */
-    }
-
-    .navbar-right img {
-        width: 22px;
-    }
-
-    .navbar-right button {
-        padding: 8px 20px;
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 900px) {
-    .navbar .logo {
-        width: 110px;
-        height: 20px;
-    }
-
-    .navbar-right img {
-        width: 20px;
-    }
-
-    .navbar-right button {
-        padding: 7px 16px; /* Further adjust padding */
-        font-size: 14px; /* Decrease font size */
-    }
-}
-
-@media (max-width: 750px) {
-    .navbar {
-        padding: 10px; /* Adjust padding */
-    }
-
-    .navbar .logo {
-        height: 20px;
-        width: 410px; /* Adjust width */
-    }
-
-
-    .navbar-right {
-        margin-right: 1rem;
-        gap: 20px; /* Adjust gap */
-    }
-
-    .navbar-button-2{
-        display: none;
-    }
-
-    .navbar-button{
-        font-size: 16px;
-    }
-
-    .navbar-search-icon{
-        font-size: 14px;
-        margin-right: 2rem;
-
-    }
-
-
-}
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -329,6 +254,89 @@
 
 .call-button-2:hover {
     transform: scale(1.05); /* Slightly increase the size to create a pop-out effect */
+}
+
+@media (max-width: 1050px) {
+    .navbar .logo {
+        width: 100px;
+    }
+
+    .navbar-menu {
+        display: none; /* Hide menu on medium screens */
+    }
+
+    .navbar-right {
+        gap: 15px; /* Adjust gap */
+    }
+
+    .navbar-right img {
+        width: 22px;
+    }
+
+    .navbar-right button {
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 110px;
+        height: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar-right button {
+        padding: 7px 16px; /* Further adjust padding */
+        font-size: 14px; /* Decrease font size */
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px; /* Adjust padding */
+    }
+
+    .navbar .logo {
+        height: 30px;
+        width: 150px; /* Adjust width */
+        margin-left: 0.5rem;
+    }
+
+
+    .navbar-right {
+        margin-right: 1rem;
+        gap: 20px; /* Adjust gap */
+    }
+
+    .navbar-button-2{
+        display: none;
+    }
+
+    .navbar-button{
+        font-size: 16px;
+    }
+
+    .navbar-search-icon{
+        font-size: 14px;
+
+    }
+
+    .hide-text {
+        display: none; /* Hide the text */
+    }
+
+    .navbar-cart-text{
+        display: none;
+    }
+
+    .navbar-hamburger{
+        display: none;
+    }
+
 }
 
 

@@ -98,11 +98,11 @@ const Footer = () => {
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <img className="w-auto h-9" src={assets.tuna} alt="" />
+            <img className="w-auto h-9 image" src={assets.tuna} alt="" />
 
-            <p className="text-base leading-relaxed text-gray-600 mt-7">Tunalk provides the finest fresh seafood, sourced daily for unmatched freshness and taste. From shrimp to fish fillets, trust Tunalk for quality and excellence in every bite.</p>
+            <p className="text-base leading-relaxed text-gray-600 mt-7 cub">Tunalk provides the finest fresh seafood, sourced daily for unmatched freshness and taste. From shrimp to fish fillets, trust Tunalk for quality and excellence in every bite.</p>
 
-            <ul className="flex items-center space-x-3 mt-9">
+            <ul className="flex items-center space-x-3 mt-9 social">
               <li>
                 <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-blue-600 focus:bg-blue-600">
                   <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -184,7 +184,7 @@ const Footer = () => {
 
         </div>
         <hr className="mt-16 mb-10 border-gray-200" />
-        <p className="text-sm text-center text-gray-600">© Copyright 2024, All Rights Reserved by <b>TunaLK</b> | Designed by <a href="#">12BK Pvt Ltd</a></p>
+        <p className="text-sm text-center text-gray-600 end">© Copyright 2024, All Rights Reserved by <b>TunaLK</b> | Designed by <a href="#">12BK Pvt Ltd</a></p>
       </div>
       <DragCloseDrawer open={open} setOpen={setOpen}>
         <div className="mx-auto max-w-5xl space-y-4 text-neutral-400">

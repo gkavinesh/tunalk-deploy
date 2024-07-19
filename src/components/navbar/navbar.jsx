@@ -98,16 +98,16 @@ const Navbar = ({ setShowLogin }) => {
 
             <div className="navbar-right">
                 <button className='navbar-button-2'>
-                    <FaSearch style={{ marginRight: '10px', marginTop: '4px' }} />
+                    <FaSearch style={{ marginRight: '10px',marginTop: '4px' }} className='search'/>
                     Search
                 </button>
                 <button onClick={() => setShowLogin(true)} className='navbar-button'>
-                    <FaUser style={{ marginRight: '10px', marginTop: '4px' }} />
-                    Sign in
+                    <FaUser style={{ marginRight: '10px', marginTop: '4px' }} className='user'/>
+                    <span className="hide-text">Sign in</span>
                 </button>
                 <div className="navbar-search-icon">
                     <Link to="/cart" className="navbar-cart-link">
-                        <FaShoppingCart style={{ marginRight: '10px', marginTop: '4px' }} />
+                        <FaShoppingCart style={{ marginRight: '10px',marginTop: '4px' }} className='cart-shopping'/>
                         <span className="navbar-cart-text">Cart</span>
                         <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
                     </Link>
