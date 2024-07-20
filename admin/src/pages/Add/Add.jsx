@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Add.css';
 import { assets } from '../../assets/assets';
 
@@ -19,9 +19,14 @@ const Add = () => {
   }
 
   const onSubmitHandler = async (event) => {
-
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("name",data.name)
+    formData.append("description",data.description)
+    formData.append("price",Number(data.price))
+    formData.append("category",data.category)
+    formData.append("image",image)
   }
-
 
 
   return (
@@ -55,7 +60,7 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>Product Price</p>
-            <input onChange={onChangeHandler} value={data.price} type="Number" name="price" placeholder="$20"/>
+            <input onChange={onChangeHandler} value={data.price} type="Number" name="price" placeholder="LKR 2000"/>
           </div>
         </div>
         <button type="submit" className="add-btn">ADD</button>
