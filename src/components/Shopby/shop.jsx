@@ -60,7 +60,7 @@ const ComponentName = () => {
         <section className="py-12 bg-white sm:py-16 lg:py-20" id='shop'>
             <div className="shop px-0 mx-auto sm:px-6 lg:px-8 max-w-full" id='Category'>
             <div className="bubble">
-                    <h2>SHOP BY CATEGORY</h2>
+                    <h2>Shop by category</h2>
                     <br></br>
             </div>
                 <div className="grid grid-cols-2 gap-6 mt-5 lg:mt-5 lg:gap-4 lg:grid-cols-4">
