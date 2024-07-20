@@ -1,4 +1,6 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
 import {Routes,Route} from 'react-router-dom'
@@ -9,6 +11,7 @@ import List from "./pages/List/List"
 const App = () => {
   return (
     <div>
+      <ToastContainer/>
       <Navbar/>
       <hr></hr>
       <div className='app-content'>
