@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
 
-import About from '..//..//assets/About_wall.png'
+import About from '..//..//assets/About_wallpaper.png'
 
 const App = () => {
   const wrapperRef = useRef(null);
