@@ -17,12 +17,11 @@
 }
 
 .content .section.hero {
-  background-image: url(..//..//assets/abbb.png);
+  background-image: url(..//..//assets/about_wall.png);
   margin-top: 6rem;
-  margin-bottom: 6rem;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 100%;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
