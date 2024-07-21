@@ -19,10 +19,9 @@ const Home = () => {
       <Header/>
       <Shopby/>
       <Step/>
-      <Poll />
       <About />
+      <Poll />
       <Testimonial/>
-      <MobileApp/>
     </div>
   );
 };
