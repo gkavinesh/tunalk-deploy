@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 5vh; /* Ensure the container takes up the full viewport height */
+  height: 5vh;
+  /* Ensure the container takes up the full viewport height */
 }
 
 .bubbly h2 {
@@ -30,7 +31,7 @@
 }
 
 @keyframes animate {
-  
+
   0%,
   100% {
     clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
@@ -42,33 +43,75 @@
 }
 
 
-  
-  .title p{
-    font-size: 25px;
-    text-align: center;
-    font-family: "Raleway", sans-serif;
-    margin-top:-3rem;
-    font-weight: 400;
-  }
 
-  
-  .title-2 p{
-    width: 100%;
-    font-size: 25px;
-    text-align: center;
-    font-family: "Raleway", sans-serif;
-    margin-top:-3rem;
-    font-weight: 400;
-    margin-left: 1rem;
-  }
-
-  .hover-transform {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .hover-transform:hover {
-    transform: scale(1.2);
-  }
+.title p {
+  font-size: 25px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  margin-top: -3rem;
+  font-weight: 400;
+}
 
 
+.title-2 p {
+  width: 100%;
+  font-size: 25px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  margin-top: -3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.hover-transform {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-transform:hover {
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 1024px) {
+  .bubbly h2 {
+    font-size: 4rem;
+  }
+
+  .title p,
+  .title-2 p {
+    font-size: 20px;
+    margin-top: -2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bubbly h2 {
+    font-size: 4rem;
+  }
+
+  .title p,
+  .title-2 p {
+    font-size: 18px;
+    margin-top: -1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+    .bubbly h2 {
+      width: max-content;
+      font-size: 4rem;
+    }
+
+    .bubbly h2:nth-child(1) {
+      color: transparent;
+      -webkit-text-stroke: 1px #0C979C;
+    }
+
+
   
+    .title p, .title-2 p {
+      font-size: 16px;
+      margin-top: -1rem;
+    }
+}
