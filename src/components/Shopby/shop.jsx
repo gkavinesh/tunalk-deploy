@@ -25,33 +25,9 @@ const ComponentName = () => {
         },
         {
             id: 4,
-            image: assets.lobsterexplore,
-            title: "Lobster",
-            link: "/lobster", // Add link for redirection
-        },
-        {
-            id: 5,
-            image: assets.sliceexplore,
-            title: "Slice Fish",
-            link: "/slice-fish", // Add link for redirection
-        },
-        {
-            id: 6,
             image: assets.dealexplore,
-            title: "Today Deals",
-            link: "/today-deals", // Add link for redirection
-        },
-        {
-            id: 7,
-            image: assets.dealexplore,
-            title: "Today Deals",
-            link: "/today-deals", // Add link for redirection
-        },
-        {
-            id: 8,
-            image: assets.comboexplore,
-            title: "Combos",
-            link: "/combos", // Add link for redirection
+            title: "Hot Deals",
+            link: "/hot-deals", // Add link for redirection
         },
         // Add more items as needed
     ]);

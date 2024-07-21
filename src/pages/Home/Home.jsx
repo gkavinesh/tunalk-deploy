@@ -8,6 +8,7 @@ import ExploreProducts from '..//..//components/ExploreProducts/ExploreProducts'
 import MobileApp from '..//..//components/mobileApp/mobileApp'
 import Testimonial from '..//..//components/testimonial/testimonial'
 import FoodDisplay from '..//../fooddisplay/FoodDisplay';
+import Shopby from '..//..//components/Shopby/shop'
 
 const Home = () => {
   const [category, setCategory] = useState("All");
@@ -15,8 +16,7 @@ const Home = () => {
   return (
     <div>
       <Header/>
-      <ExploreProducts category={category} setCategory={setCategory}/>
-      <FoodDisplay category={category}/>
+      <Shopby/>
       <Step/>
       <Poll />
       <Facts />
