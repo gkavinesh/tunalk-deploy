@@ -6,9 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 
 
-const Add = () => {
+const Add = ({url}) => {
 
-  const url = "http://localhost:4000"
 
   const [image,setImage] = useState(false)
   const [data,setData] = useState({
@@ -45,11 +44,8 @@ const Add = () => {
 
     }else {
       toast.error(response.data.message)
-
-
     }
   }
-
 
   return (
     <div className='add'>
@@ -57,9 +53,9 @@ const Add = () => {
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
-            <img src={image?URL.createObjectURL(image):assets.upload_area} alt=''/>
+            <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt=''/>
           </label>
-          <input onChange={(e)=>setImage(e.target.files[0])} type='file' id='image' hidden required/>
+          <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image' hidden required/>
         </div>
         <div className="add-product-name flex-col">
           <p>Product Name</p>
@@ -72,12 +68,12 @@ const Add = () => {
         <div className="add-category-price">
           <div className='add-category flex-col'>
             <p>Product Category</p>
-            <select name="Category">
-            <option value="Fish">Fish</option>
-            <option value="Prawns">Prawns</option>
-            <option value="Crab">Crab</option>
-            <option value="Hot Deals">Hot Deals</option>
-            <option value="Combo Offers">Combo Offers</option>
+            <select name="category" onChange={onChangeHandler} value={data.category}>
+              <option value="Fish">Fish</option>
+              <option value="Prawns">Prawns</option>
+              <option value="Crab">Crab</option>
+              <option value="Hot Deals">Hot Deals</option>
+              <option value="Combo Offers">Combo Offers</option>
             </select>
           </div>
           <div className="add-price flex-col">
@@ -86,11 +82,10 @@ const Add = () => {
           </div>
         </div>
         <button type="submit" className="add-btn">ADD</button>
-
       </form>
-      
     </div>
   )
 }
 
 export default Add
+
