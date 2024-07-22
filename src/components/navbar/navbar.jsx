@@ -3,10 +3,8 @@ import './navbar.css'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
-import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa';
 import { MotionConfig, motion, AnimatePresence } from "framer-motion";
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaHome, FaInfoCircle, FaProductHunt, FaEnvelope, FaQuestionCircle, FaShieldAlt } from 'react-icons/fa'
+
 
 const AnimatedHamburgerButton = () => {
     const [active, setActive] = useState(false);
@@ -83,7 +81,8 @@ const VARIANTS = {
 
 
 const Navbar = ({ setShowLogin }) => {
-    const { getTotalCartAmount } = useContext(StoreContext);
+
+    const { getTotalCartAmount,token, setToken } = useContext(StoreContext);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -97,20 +96,21 @@ const Navbar = ({ setShowLogin }) => {
             </a>
 
             <div className="navbar-right">
-                <button className='navbar-button-2'>
-                    <FaSearch style={{ marginRight: '10px',marginTop: '4px' }} className='search'/>
-                    Search
-                </button>
-                <button onClick={() => setShowLogin(true)} className='navbar-button'>
-                    <FaUser style={{ marginRight: '10px', marginTop: '4px' }} className='user'/>
+                {!token?<button onClick={() => setShowLogin(true)} className='transition duration-700 ease-in-out navbar-button'>
                     <span className="hide-text">Sign in</span>
-                </button>
+                </button>:<div className='navbar-profile'>
+                    <img src={assets.profile_icon} alt=''/>
+                    <ul className="nav-profile-dropdown">
+                        <li><img src={assets.bag_icon}/><p>Orders</p></li>
+                        <hr></hr>
+                        <li><img src={assets.logout_icon}/><p>Logout</p></li>
+                    </ul>
+                </div>}
                 <div className="navbar-search-icon">
-                    <Link to="/cart" className="navbar-cart-link">
-                        <FaShoppingCart style={{ marginRight: '10px',marginTop: '4px' }} className='cart-shopping'/>
-                        <span className="navbar-cart-text">Cart</span>
-                        <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+                    <Link to="/cart" >
+                       <img src={assets.basket_icon} alt=''/>
                     </Link>
+                    <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
                 </div>
                 <div className='navbar-hamburger' onClick={toggleSidebar}>
                     <AnimatedHamburgerButton />

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { connectDB } from "./config/db.js"
 import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
+import 'dotenv/config'
 
 //app config
 

@@ -7,13 +7,13 @@ const ComponentName = () => {
     const [items, setItems] = useState([
         {
             id: 1,
-            image: assets.fishexplore,
+            image: assets.fishy,
             title: "Fish",
             link: "/fish", // Add link for redirection
         },
         {
             id: 2,
-            image: assets.crabexplore,
+            image: assets.crab,
             title: "Crab",
             link: "/crab", // Add link for redirection
         },
@@ -43,7 +43,7 @@ const ComponentName = () => {
                     {items.map(item => (
                         <Link key={item.id} to={item.link} className="relative group"> {/* Wrap the card with Link */}
                             <div className="bg-white rounded-lg overflow-hidden shadow-2xl border-solid border-1 border-inherit">
-                                <div className="bubby bg-cyan-50 py-4 px-5 text-white text-center ">
+                                <div className="bubby bg-cyan-50 py-4 px-5 text-white text-center transition duration-700 ease-in-out">
                                     <h3 className="text-lg font-light text-slate-500">{item.title}</h3>
                                 </div>
                                 <div className="overflow-hidden aspect-w-1 aspect-h-1">
