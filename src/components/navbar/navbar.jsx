@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
 import { MotionConfig, motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 
 const AnimatedHamburgerButton = () => {
@@ -84,6 +85,14 @@ const Navbar = ({ setShowLogin }) => {
 
     const { getTotalCartAmount,token, setToken } = useContext(StoreContext);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken("");
+        navigate("/")
+    }
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -103,7 +112,7 @@ const Navbar = ({ setShowLogin }) => {
                     <ul className="nav-profile-dropdown">
                         <li><img src={assets.bag_icon}/><p>Orders</p></li>
                         <hr></hr>
-                        <li><img src={assets.logout_icon}/><p>Logout</p></li>
+                        <li onClick={logout}><img src={assets.logout_icon}/><p>Logout</p></li>
                     </ul>
                 </div>}
                 <div className="navbar-search-icon">
