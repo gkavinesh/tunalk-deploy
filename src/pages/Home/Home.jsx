@@ -9,7 +9,7 @@ import ExploreProducts from '..//..//components/ExploreProducts/ExploreProducts'
 import MobileApp from '..//..//components/mobileApp/mobileApp'
 import Testimonial from '..//..//components/testimonial/testimonial'
 import FoodDisplay from '..//../fooddisplay/FoodDisplay';
-import ShopBy from '..//..//components/Shopby/shop';
+import ShopBy from '..//..//components/Shopby/shop'
 
 const Home = () => {
   const [category, setCategory] = useState("All");
@@ -22,6 +22,7 @@ const Home = () => {
       <About />
       <Poll />
       <Testimonial/>
+
     </div>
   );
 };

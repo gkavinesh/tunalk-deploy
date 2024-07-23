@@ -5,6 +5,14 @@
   margin-right: 7rem;
 }
 
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .fish {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .fish h2 {
   position: relative;
   margin-top: 1rem;
@@ -22,3 +30,4 @@
   height: 2px;
   background-color: #ccc;
 }
+

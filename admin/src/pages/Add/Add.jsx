@@ -62,7 +62,7 @@ const Add = ({url}) => {
           <input onChange={onChangeHandler} value={data.name} type='text' name='name' placeholder='Type here'/>
         </div>
         <div className='add-product-description flex-col'>
-          <p>Product Description</p>
+          <p>Net Weight : Use this format - " Net Weight : XXXgms to XXXgms "</p>
           <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder="Write content here"/>
         </div>
         <div className="add-category-price">

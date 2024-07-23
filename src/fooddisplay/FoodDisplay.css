@@ -3,8 +3,8 @@
 .food-display {
     margin-top: 30px;
     margin-bottom: 5rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .food-display h2 {
@@ -21,3 +21,32 @@
     gap: 30px;
     row-gap: 50px;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+    .food-display-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .food-display-list {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+
+    .food-display {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .food-display h2 {
+        font-size: max(6vw, 20px); /* Adjust font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .food-display h2 {
+        font-size: max(8vw, 18px); /* Further adjust font size for smaller screens */
+    }
+}
+

@@ -81,5 +81,32 @@
     margin-top: 0.75rem;
     line-height: 150%;
   }
+
+  /* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .carousel_caption {
+    padding: 1rem;
+  }
+  
+  .carousel_title {
+    font-size: 1rem;
+  }
+
+  .carousel_description {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel_title {
+    font-size: 0.875rem;
+  }
+
+  .carousel_description {
+    font-size: 0.625rem;
+    margin-top: 0.25rem;
+  }
+}
   
   
