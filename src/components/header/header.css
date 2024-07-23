@@ -1,4 +1,15 @@
-.tuna-lk{
+.tuna-lk {
     margin-left: 9rem;
     margin-right: 9rem;
-}
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 768px) {
+    .tuna-lk {
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  
+

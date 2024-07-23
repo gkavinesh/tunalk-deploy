@@ -383,7 +383,7 @@
     }
 
     .hide-text {
-        display: none; /* Hide the text */
+        font-size: 15px;
     }
 
     .navbar-cart-text{
