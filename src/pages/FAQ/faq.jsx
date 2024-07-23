@@ -5,22 +5,22 @@ const Faq = () => {
     const [faq, setFaq] = useState([
         {
             question: 'How to track my orders?',
-            answer: 'Amet minim mollit non deserunt ullamco est sit <a href="#" title="" class="text-blue-600 transition-all duration-200 hover:underline">aliqua dolor</a> do amet sint. Velit officia consequat duis enim velit mollit.',
+            answer: 'Once signed in, go to your profile icon and click on orders. In the orders tab, you can view the status of the order such as "Order processing" ',
             open: false
         },
         {
             question: 'How can I make payment using Credit/Debit Cards?',
-            answer: 'Amet minim mollit non deserunt ullamco est sit <a href="#" title="" class="text-blue-600 transition-all duration-200 hover:underline">aliqua dolor</a> do amet sint. Velit officia consequat duis enim velit mollit.',
+            answer: 'Once you click proceed to payment, it will redirect you to a payment merchant to make card payments.',
             open: false
         },
         {
             question: 'Can I cancel my order?',
-            answer: 'Amet minim mollit non deserunt ullamco est sit <a href="#" title="" class="text-blue-600 transition-all duration-200 hover:underline">aliqua dolor</a> do amet sint. Velit officia consequat duis enim velit mollit.',
+            answer: 'Yes, you can contact us through our contact details provided here. Make sure the status of the order is not "Out for delivery"',
             open: false
         },
         {
             question: 'How can I reach to support if my delivery is not on time?',
-            answer: 'Amet minim mollit non deserunt ullamco est sit <a href="#" title="" class="text-blue-600 transition-all duration-200 hover:underline">aliqua dolor</a> do amet sint. Velit officia consequat duis enim velit mollit.',
+            answer: 'You can contact the dispatch team via contact details here',
             open: false
         }
     ]);
