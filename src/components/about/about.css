@@ -125,6 +125,9 @@
 
 /* Phones in landscape mode (typically 576px to 767px) */
 @media (min-width: 576px) and (max-width: 767px) {
+  .wrapper{
+    display: none;
+  }
   .tunabubu{
     display: none;
   }
@@ -133,6 +136,9 @@
 
 /* Phones in portrait mode (typically 575px and down) */
 @media (max-width: 575px) {
+  .wrapper{
+    display: none;
+  }
   .tunabubu{
     display: none;
   }
