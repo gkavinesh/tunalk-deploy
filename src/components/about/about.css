@@ -78,6 +78,8 @@
   animation: animate 4s ease-in-out infinite;
 }
 
+
+
 @keyframes animate {
 
   0%,
@@ -95,3 +97,46 @@
   width: 1600px;
   height: 10px;
 }
+
+/* Large desktop screens (typically 1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS rules for large desktop screens */
+  .tunabub{
+    display: none;
+  }
+}
+
+/* Standard desktop screens (typically 992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .tunabub{
+    display: none;
+  }
+
+  /* CSS rules for standard desktop screens */
+}
+
+/* Tablets and small desktops (typically 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* CSS rules for tablets and small desktops */
+  .tunabubu{
+    display: none;
+  }
+}
+
+/* Phones in landscape mode (typically 576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .tunabubu{
+    display: none;
+  }
+  /* CSS rules for phones in landscape mode */
+}
+
+/* Phones in portrait mode (typically 575px and down) */
+@media (max-width: 575px) {
+  .tunabubu{
+    display: none;
+  }
+  /* CSS rules for phones in portrait mode */
+}
+
+
