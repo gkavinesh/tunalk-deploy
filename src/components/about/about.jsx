@@ -30,7 +30,7 @@ const App = () => {
     timeline
       .to(imageRef.current, {
         scale: 2,
-        z: 370,
+        z: 390,
         transformOrigin: "center center",
         ease: "power1.inOut",
       })
@@ -139,8 +139,6 @@ const App = () => {
           src={About} // or {Image2}, depending on which image you want to use
           alt="image"
           ref={imageRef}
-          width="2617px" // Adjust width as needed
-          height="1500px" // Adjust height as needed
       />
       </div>
     </div>
