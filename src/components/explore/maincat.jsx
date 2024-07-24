@@ -2,16 +2,25 @@ import React from "react";
 import Slider from "react-slick";
 import './maincat.css';
 import { assets } from "../../assets/assets";
+import { TbArrowBadgeLeft,TbArrowBadgeRight } from "react-icons/tb";
 
-// Arrow Components
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", background: "#048978" }}
+      className={`${className} custom-arrow custom-arrow-next`} // Add custom classes for styling
+      style={{
+        ...style,
+        display: 'block',
+        color: '#048978', // Set arrow color
+        fontSize: '30px', // Adjust font size as needed
+        background: 'none', // Remove background
+        cursor: 'pointer', // Add cursor pointer for better UX
+      }}
       onClick={onClick}
-    />
+    >
+      <TbArrowBadgeRight />{/* Right arrow icon */}
+    </div>
   );
 }
 
@@ -19,12 +28,23 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className={className}
-      style={{ ...style, display: "block", background: "#048978" }}
+      className={`${className} custom-arrow custom-arrow-prev`} // Add custom classes for styling
+      style={{
+        ...style,
+        display: 'block',
+        color: '#048978', // Set arrow color
+        fontSize: '30px', // Adjust font size as needed
+        background: 'none', // Remove background
+        cursor: 'pointer', // Add cursor pointer for better UX
+      }}
       onClick={onClick}
-    />
+    >
+      <TbArrowBadgeLeft /> {/* Left arrow icon */}
+    </div>
   );
 }
+
+
 
 function SwipeToSlide() {
   const settings = {

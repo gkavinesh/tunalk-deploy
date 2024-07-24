@@ -25,22 +25,25 @@
   
   /* Arrow styles */
   .slick-prev, .slick-next {
-    font-size: 24px;
-    color: #ffffff; /* Color of the arrow icon */
-    z-index: 1;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background: #11484D; /* Background color of the arrow container */
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    transform: translate(0, -50%);
     cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
   }
   
   /* Positioning of the arrows */
   .slick-prev {
-    left: 10px; /* Adjust as needed */
+    left: 10px ;
   }
   
   .slick-next {
@@ -49,20 +52,14 @@
   
   /* Custom arrow content */
   .slick-prev:before, .slick-next:before {
+    display: none;
     content: ''; /* Default content */
     font-size: 24px;
-    color: #000000; /* Arrow icon color */
+    color: #ff0000; /* Arrow icon color */
     line-height: 40px; /* Center the icon vertically */
   }
   
-  /* Arrow symbols */
-  .slick-prev:before {
-    content: '<'; /* Left arrow symbol */
-  }
-  
-  .slick-next:before {
-    content: '>'; /* Right arrow symbol */
-  }
+
   
   /* Custom styling for the slider */
   .center {
@@ -77,6 +74,25 @@
   .slick-slide {
     padding: 0 10px;
   }
+
+
+  .custom-arrow {
+    /* Ensure no background or border is applied */
+    background: none !important;
+    border: none;
+    outline: none;
+  }
+  
+  .custom-arrow-next {
+    /* Additional styles for the next arrow if needed */
+    margin-top: -0.5rem;
+  }
+  
+  .custom-arrow-prev {
+    margin-top: -0.5rem;
+    /* Additional styles for the previous arrow if needed */
+  }
+  
   
   
   
