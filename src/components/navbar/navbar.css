@@ -358,9 +358,9 @@
     }
 
     .navbar .logo {
-        height: 30px;
-        width: 150px; /* Adjust width */
-        margin-left: 0.5rem;
+        height: 23px;
+        width: 100px; /* Adjust width */
+        margin-left: 0.2rem;
     }
 
 
@@ -387,10 +387,6 @@
     }
 
     .navbar-cart-text{
-        display: none;
-    }
-
-    .navbar-hamburger{
         display: none;
     }
 
