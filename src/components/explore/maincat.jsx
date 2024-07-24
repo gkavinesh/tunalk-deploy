@@ -1,52 +1,87 @@
-import React, { useRef } from 'react';
-import CategoryCard from './categories'; // Assuming CategoryCard component is properly imported
-import { assets } from '../../assets/assets';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import React from "react";
+import Slider from "react-slick";
+import './maincat.css';
+import { assets } from "../../assets/assets";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const categories = [
-  { image: assets.icon1, title: 'FISH' },
-  { image: assets.icon2, title: 'CRABS' },
-  { image: assets.icon3, title: 'PRAWNS' },
-  { image: assets.icon2, title: 'CRABS' },
-  { image: assets.icon4, title: 'LOBSTERS' },
-  { image: assets.icon5, title: 'TODAY DEALS' },
-  { image: assets.icon4, title: 'LOBSTERS' },
-  { image: assets.icon6, title: 'SLICES' },
-  { image: assets.icon6, title: 'SLICES' }
-];
+// Arrow Components
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "#048978" }}
+      onClick={onClick}
+    />
+  );
+}
 
-const Categories = () => {
-  const containerRef = useRef(null);
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "#048978" }}
+      onClick={onClick}
+    />
+  );
+}
 
-  const scroll = (direction) => {
-    const container = containerRef.current;
-    if (!container) return;
-    const scrollAmount = direction === 'left' ? -200 : 200; // Adjust scroll amount as needed
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
-    // Implement logic for looping carousel
-    if (direction === 'left' && container.scrollLeft === 0) {
-      container.scrollLeft = container.scrollWidth;
-    } else if (direction === 'right' && container.scrollLeft + container.clientWidth === container.scrollWidth) {
-      container.scrollLeft = 0;
+function SwipeToSlide() {
+  const settings = {
+    className: "center",
+    infinite: true,
+    centerPadding: "30px",
+    slidesToShow: 8,
+    swipeToSlide: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    afterChange: function(index) {
+      console.log(
+        `Slider Changed to: ${index + 1}`
+      );
     }
   };
 
   return (
-    <div className="relative flex items-center py-5 w-full">
-      <div ref={containerRef} className="flex gap-2 bg-white overflow-x-auto md:px-8 flex-1 whitespace-nowrap">
-        {categories.map((category, index) => (
-          <div key={index} className="inline-block w-36 md:w-40">
-            <CategoryCard image={category.image} title={category.title} />
-          </div>
-        ))}
-      </div>
-      <br></br>
+    <div className="slider-container">
+      <Slider {...settings}>
+        <div className="slide">
+          <img src={assets.tunamini} className='slide-img' alt="Image 1"/>
+        </div>
+        <div className="slide">
+          <img src={assets.scadmini} className='slide-img' alt="Image 2" />
+        </div>
+        <div className="slide">
+          <img src={assets.sailmini} className='slide-img' alt="Image 3" />
+        </div>
+        <div className="slide">
+          <img src={assets.tunamini} className='slide-img' alt="Image 4" />
+        </div>
+        <div className="slide">
+          <img src={assets.scadmini} className='slide-img' alt="Image 5" />
+        </div>
+        <div className="slide">
+          <img src={assets.sailmini} className='slide-img' alt="Image 6" />
+        </div>
+        <div className="slide">
+          <img src={assets.tunamini} className='slide-img' alt="Image 7" />
+        </div>
+        <div className="slide">
+          <img src={assets.scadmini} className='slide-img' alt="Image 8" />
+        </div>
+        <div className="slide">
+          <img src={assets.sailmini} className='slide-img' alt="Image 9" />
+        </div>
+      </Slider>
     </div>
-  ); 
-};
+  );
+}
 
-export default Categories;
+export default SwipeToSlide;
+
+
 
 
 

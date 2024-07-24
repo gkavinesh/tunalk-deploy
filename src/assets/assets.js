@@ -83,9 +83,15 @@ import bank from './bank-transfer.png'
 import map from './map.png'
 import prawnm from './prawns-m.jpg'
 import prawnl from './prawns-l.jpg'
+import tunamini from './1.jpg'
+import scadmini from './2.jpg'
+import sailmini from './3.jpg'
 
 
 export const assets = {
+    tunamini,
+    scadmini,
+    sailmini,
     prawnm,
     prawnl,
     map,
@@ -99,55 +105,17 @@ export const assets = {
     slice,
     currycut,
     pomfret,
-    fishexplore,
-    crabexplore,
-    prawnexplore,
-    lobsterexplore,
-    sliceexplore,
-    comboexplore,
-    dealexplore,
-    icon6,
-    icon5,
-    icon4,
-    icon3,
-    icon2,
-    icon1,
     shop,
-    back,
-    back2,
-    slicecat,
-    dealcat,
-    lobstercat,
-    prawncat,
-    crabcat,
-    fishcat,
     phone,
     fastdelivery,
     apple,
     android,
     white,
-    about,
-    sail,
-    seer,
-    scad,
-    aboutsection,
-    crab,
-    fish,
-    clamps,
-    shrimp,
-    lobster,
-    sourcing,
-    quality,
-    packaging,
-    managing,
-    delivery,
     tunamain,
     tuna,
     logo,
     basket_icon,
-    header_img,
     search_icon,
-    rating_starts,
     add_icon_green,
     add_icon_white,
     remove_icon_red,
@@ -162,29 +130,28 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon,
-    fishy,
 };
 
 export const menu_list = [
     {
         menu_name: "Fish",
-        menu_image: fishexplore
+        menu_image: "hello"
     },
     {
         menu_name: "Prawns",
-        menu_image: prawnexplore
+        menu_image: "hello"
     },
     {
         menu_name: "Crab",
-        menu_image: crabexplore
+        menu_image: "hello"
     },
     {
         menu_name: "Hot Deals",
-        menu_image: dealexplore
+        menu_image: "hello"
     },
     {
         menu_name: "Combo Offers",
-        menu_image: comboexplore
+        menu_image: "hello"
     }
 ]
 

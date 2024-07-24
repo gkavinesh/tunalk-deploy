@@ -1,0 +1,88 @@
+/* maincat.css */
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    margin: 10px auto;
+  }
+  
+  .slide {
+    text-align: center;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
+  
+  .slide-img {
+    max-width: 100%; /* Ensure the image does not overflow its container */
+    max-height: 100%; /* Ensure the image fits within its container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 8px;
+  }
+  
+  /* Arrow styles */
+  .slick-prev, .slick-next {
+    font-size: 24px;
+    color: #ffffff; /* Color of the arrow icon */
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #11484D; /* Background color of the arrow container */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  
+  /* Positioning of the arrows */
+  .slick-prev {
+    left: 10px; /* Adjust as needed */
+  }
+  
+  .slick-next {
+    right: 10px; /* Adjust as needed */
+  }
+  
+  /* Custom arrow content */
+  .slick-prev:before, .slick-next:before {
+    content: ''; /* Default content */
+    font-size: 24px;
+    color: #000000; /* Arrow icon color */
+    line-height: 40px; /* Center the icon vertically */
+  }
+  
+  /* Arrow symbols */
+  .slick-prev:before {
+    content: '←'; /* Left arrow symbol */
+  }
+  
+  .slick-next:before {
+    content: '→'; /* Right arrow symbol */
+  }
+  
+  /* Custom styling for the slider */
+  .center {
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .slick-track {
+    display: flex;
+  }
+  
+  .slick-slide {
+    padding: 0 10px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
