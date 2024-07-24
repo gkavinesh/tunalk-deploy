@@ -47,31 +47,31 @@ function SwipeToSlide() {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.tunamini} className='slide-img' alt="Image 1"/>
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.scadmini} className='slide-img' alt="Image 2" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.sailmini} className='slide-img' alt="Image 3" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.tunamini} className='slide-img' alt="Image 4" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.scadmini} className='slide-img' alt="Image 5" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.sailmini} className='slide-img' alt="Image 6" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.tunamini} className='slide-img' alt="Image 7" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.scadmini} className='slide-img' alt="Image 8" />
         </div>
-        <div className="slide">
+        <div className="border-gray-200 slide">
           <img src={assets.sailmini} className='slide-img' alt="Image 9" />
         </div>
       </Slider>
