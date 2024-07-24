@@ -30,8 +30,7 @@ const Testimonial = () => {
                                     </div>
 
                                     <div className="flex items-center mt-8">
-                                        <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png" alt="" />
-                                        <div className="ml-4">
+                                        <div className="ml-0">
                                             <p className="text-base font-bold text-gray-900 font-pj">Pratham Manoj</p>
                                         </div>
                                     </div>
@@ -55,8 +54,8 @@ const Testimonial = () => {
                                     </div>
 
                                     <div className="flex items-center mt-8">
-                                        <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png" alt="" />
-                                        <div className="ml-4">
+                                        
+                                        <div className="ml-0">
                                             <p className="text-base font-bold text-gray-900 font-pj">Kasun De Silva</p>
                                         </div>
                                     </div>
@@ -80,8 +79,7 @@ const Testimonial = () => {
                                     </div>
 
                                     <div className="flex items-center mt-8">
-                                        <img className="flex-shrink-0 object-cover rounded-full w-11 h-11" src="https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-1.png" alt="" />
-                                        <div className="ml-4">
+                                        <div className="ml-0">
                                             <p className="text-base font-bold text-gray-900 font-pj">Pathum Silva</p>
                                         </div>
                                     </div>

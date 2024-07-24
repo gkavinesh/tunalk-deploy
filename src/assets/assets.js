@@ -1,7 +1,6 @@
 import tuna from './tuna.png';
 import basket_icon from './shopping-cart (1).png';
 import logo from './logo.png';
-import header_img from './header_img.png';
 import search_icon from './search (4).png';
 import menu_1 from './menu_1.png'
 import menu_2 from './menu_2.png'
@@ -54,54 +53,21 @@ import facebook_icon from './facebook_icon.png';
 import twitter_icon from './twitter_icon.png';
 import cross_icon from './cross_icon.png';
 import selector_icon from './selector_icon.png';
-import rating_starts from './rating_starts.png';
 import profile_icon from './user (2).png';
 import bag_icon from './box (2).png';
 import logout_icon from './logout.png';
 import parcel_icon from './parcel_icon.png';
 import tunamain from './tunamain.png';
-import sourcing from './sourcing.png';
-import quality from './quality.png';
-import packaging from './packaging.png';
-import managing from './managing.png';
-import delivery from './delivery.png';
-import crab from './craby.jpg';
-import lobster from './lobster.png';
-import fish from './fishtest.png';
-import shrimp from './shrimp.png';
-import clamps from './clamps.png';
-import about from './aboutus.png';
-import scad from './scad.png'
-import seer from './seer.png'
-import sail from './sail.png'
-import aboutsection from './example.png'
+
 import white from './white.png'
 import apple from './apple (1).png'
 import android from './android (1).png'
 import fastdelivery from './deliveryicon.jpeg'
 import phone from './phone-call.png'
-import fishcat from './fish-cat.png'
-import crabcat from './crab-cat.png'
-import prawncat from './prawn-cat.png'
-import lobstercat from './lobster-cat.png'
-import slicecat from './slice-cat.png'
-import dealcat from './deal-cat.png'
-import back from './b1.jpg'
-import back2 from './b2.jpg'
+
 import shop from './shop1.png'
 import icon1 from './fishicon.jpg'
-import icon2 from './crabicon.png'
 import icon3 from './prawnicon.jpg'
-import icon4 from './lobstericon.png'
-import icon5 from './dealicon.jpg'
-import icon6 from './icon_fillet.jpg'
-import fishexplore from  './8-modified.png'
-import crabexplore from './5-modified.png'
-import prawnexplore from './6-modified.png'
-import sliceexplore from './2.jpg'
-import comboexplore from './7-modified.png'
-import lobsterexplore from './4.jpg'
-import dealexplore from './3-modified.png'
 import fishy from './fishy.jpg'
 import pomfret from './pomfret.jpg'
 import craby from './craby.jpg'
