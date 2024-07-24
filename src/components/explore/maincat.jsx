@@ -2,8 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import './maincat.css';
 import { assets } from "../../assets/assets";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 // Arrow Components
 function SampleNextArrow(props) {
@@ -22,7 +20,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#048978" }}
+      style={{ ...style, display: "block", background: "#048978", zIndex: 1000 }}
       onClick={onClick}
     />
   );

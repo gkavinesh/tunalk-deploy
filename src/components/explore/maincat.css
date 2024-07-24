@@ -17,7 +17,7 @@
   
   .slide-img {
     height: 80px;
-    width: 100px;
+    width: 110px;
     object-fit: cover; /* Maintain aspect ratio and cover the container */
     border-radius: 8px;
     margin: 0 auto;
@@ -57,11 +57,11 @@
   
   /* Arrow symbols */
   .slick-prev:before {
-    content: '←'; /* Left arrow symbol */
+    content: '<'; /* Left arrow symbol */
   }
   
   .slick-next:before {
-    content: '→'; /* Right arrow symbol */
+    content: '>'; /* Right arrow symbol */
   }
   
   /* Custom styling for the slider */
