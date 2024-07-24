@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
-import {  EyeIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { EyeIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 import Image from './bg-fish.png'
 import { FaBook } from "react-icons/fa";
 import { RiMedalLine } from "react-icons/ri";
@@ -52,8 +52,23 @@ const App = () => {
   }, []);
 
   return (
-    <div className="wrapper" ref={wrapperRef} >
-       <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0 tunabub">
+    <div>
+      <div className="wrapper" ref={wrapperRef} >
+        <div className="tunabubu">
+          <div className="content">
+            <section className="section hero" ref={heroSectionRef}>
+            </section>
+          </div>
+          <div className="image-container" style={{ willChange: 'transform' }}>
+            <img
+              src={About} // or {Image2}, depending on which image you want to use
+              alt="image"
+              ref={imageRef}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0 tunabub">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg
           aria-hidden="true"
@@ -127,19 +142,6 @@ const App = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className="tunabubu">
-      <div className="content">
-        <section className="section hero" ref={heroSectionRef}>
-        </section>
-      </div>
-      <div className="image-container" style={{ willChange: 'transform' }}>
-      <img
-          src={About} // or {Image2}, depending on which image you want to use
-          alt="image"
-          ref={imageRef}
-      />
       </div>
     </div>
     </div>

@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import "./carousel.css";
 import { assets } from "../../assets/assets";
 import Categories from "../explore/maincat";
-import Image1 from './bannernew.jpg';
-import Image2 from './b2.jpg';
-import Image3 from './aboutus3.jpg'
+import Image1 from './Fish.jpg';
+import Image2 from './Fresh.jpg';
+import Image3 from './isso.jpg'
+import Image4 from './package.jpg'
 
 const Carousel = () => {
   useEffect(() => {
@@ -65,6 +66,9 @@ const Carousel = () => {
         </div>
         <div className="carousel_item">
           <img src={Image3} alt="" className="carousel_img" />
+        </div>
+        <div className="carousel_item">
+          <img src={Image4} alt="" className="carousel_img" />
         </div>
       </div>
     </div>
