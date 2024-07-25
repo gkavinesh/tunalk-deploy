@@ -49,7 +49,7 @@ function SwipeToSlide() {
     className: "center",
     infinite: true,
     centerPadding: "30px",
-    slidesToShow: 9,
+    slidesToShow: 10,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -75,6 +75,7 @@ function SwipeToSlide() {
   };
 
   return (
+    <div className="carousel-container">
     <div className="slider-container">
       <Slider {...settings}>
         <div className="border-gray-200 slide">
@@ -117,6 +118,7 @@ function SwipeToSlide() {
           <img src={assets.thirteen} className='slide-img' alt="Image 13" />
         </div>
       </Slider>
+    </div>
     </div>
   );
 }

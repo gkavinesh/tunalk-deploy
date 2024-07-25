@@ -3,7 +3,7 @@
   }
   
   .carousel_inner {
-    width: 98%;
+    width: 100%;
     overflow: hidden;
     margin: 0 auto; /* This centers the element */
   }

@@ -100,10 +100,10 @@ const Navbar = ({ setShowLogin }) => {
 
     return (
         <div className='navbar' id='navbar'>
+            <div className="nav-content">
             <a href="/">
                 <img src={assets.white} alt="" className="logo" />
             </a>
-
             <div className="navbar-right">
                 {!token?<button onClick={() => setShowLogin(true)} className='transition duration-700 ease-in-out navbar-button'>
                     <span className="hide-text">Sign in</span>
@@ -123,6 +123,7 @@ const Navbar = ({ setShowLogin }) => {
                 </div>
                 <div className='navbar-hamburger' onClick={toggleSidebar}>
                     <AnimatedHamburgerButton />
+                </div>
                 </div>
             </div>
 

@@ -56,7 +56,6 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
-      <Categories/>
       <div className="carousel_inner">
         <div className="carousel_item carousel_item__active">
           <img src={Image1} alt="" className="carousel_img" />

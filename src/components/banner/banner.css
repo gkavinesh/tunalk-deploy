@@ -3,7 +3,7 @@
 /* Base styles */
 
 .banner {
-    width: 100%;
+    width: 80%;
     font-family: "Outfit", sans-serif;
     padding: 7px 20px; /* Adjust padding for smaller screens */
     display: flex;
@@ -13,7 +13,9 @@
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure it stays above other elements */
+    margin: 0 auto; /* Center the banner horizontally */
 }
+
 
 .banner .logo {
     height: auto; /* Allow logo height to adjust */
@@ -22,7 +24,6 @@
 }
 
 .banner-menu {
-    margin-left: 9rem;
     display: flex;
     list-style: none;
     gap: 20px; /* Reduce gap between menu items */
@@ -31,7 +32,6 @@
 }
 
 .banner-right {
-    margin-right: 9rem;
     display: flex;
     align-items: center;
     gap: 20px; /* Reduce gap between items */

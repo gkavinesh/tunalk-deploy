@@ -1,97 +1,103 @@
-/* maincat.css */
+.carousel-container {
+  width: 100%; /* Ensure the carousel container is full width */
+  padding: 0 25px; /* Optional: Add padding to avoid touching the edges of the screen */
+  box-sizing: border-box; /* Include padding in the element's total width */
+}
 
 .slider-container {
-    position: relative;
-    width: 100%;
-    margin: 10px auto;
-  }
-  
-  .slide {
-    text-align: center;
-    display: flex;
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    border-radius: 7px;
-    border: 1px solid;
-  }
-  
-  .slide-img {
-    height: 75px;
-    width: 130px;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    border-radius: 8px;
-    margin: 0 auto;
-  }
-  
-  /* Arrow styles */
-  .slick-prev, .slick-next {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    transform: translate(0, -50%);
-    cursor: pointer;
-    color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-  }
-  
-  /* Positioning of the arrows */
-  .slick-prev {
-    left: 10px ;
-  }
-  
-  .slick-next {
-    right: 10px; /* Adjust as needed */
-  }
-  
-  /* Custom arrow content */
-  .slick-prev:before, .slick-next:before {
-    display: none;
-    content: ''; /* Default content */
-    font-size: 24px;
-    color: #ff0000; /* Arrow icon color */
-    line-height: 40px; /* Center the icon vertically */
-  }
-  
+  position: relative;
+  width: 80%; /* Set width to 80% of its parent container */
+  margin: 0 auto; /* Center the slider container */
+}
 
-  
-  /* Custom styling for the slider */
-  .center {
-    margin: 0 auto;
-    padding: 20px 0;
-  }
-  
-  .slick-track {
-    display: flex;
-  }
-  
-  .slick-slide {
-    padding: 0 4px;
-  }
+.slide {
+  text-align: center;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  border-radius: 7px;
+  border: 1px solid;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
 
 
-  .custom-arrow {
-    /* Ensure no background or border is applied */
-    background: none !important;
-    border: none;
-    outline: none;
-  }
-  
-  .custom-arrow-next {
-    /* Additional styles for the next arrow if needed */
-    margin-top: -0.5rem;
-  }
-  
-  .custom-arrow-prev {
-    margin-top: -0.5rem;
-    /* Additional styles for the previous arrow if needed */
-  }
+.slide-img {
+  height: 75px;
+  max-width: 125px;
+  width: 100%; /* Adjust width to be responsive */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+/* Arrow styles */
+.slick-prev, .slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Positioning of the arrows */
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+/* Custom arrow content */
+.slick-prev:before, .slick-next:before {
+  display: none;
+  content: ''; /* Default content */
+  font-size: 24px;
+  color: #ff0000; /* Arrow icon color */
+  line-height: 40px; /* Center the icon vertically */
+}
+
+/* Custom styling for the slider */
+.center {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slick-slide {
+  padding: 0 4px;
+}
+
+.custom-arrow {
+  /* Ensure no background or border is applied */
+  background: none !important;
+  border: none;
+  outline: none;
+}
+
+.custom-arrow-next {
+  /* Additional styles for the next arrow if needed */
+  margin-right: 0.4rem;
+  margin-top: -0.5rem;
+}
+
+.custom-arrow-prev {
+  margin-top: -0.5rem;
+  /* Additional styles for the previous arrow if needed */
+}
+
 
   /* Media Queries for responsiveness */
 @media (max-width: 1024px) {
