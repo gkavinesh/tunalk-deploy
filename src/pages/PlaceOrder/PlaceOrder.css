@@ -10,8 +10,7 @@
 }
 
 .place-order-left{
-    width: 100%;
-    max-width: max(30%,500px);
+    width: 600px;
 }
 
 .place-order-left .title{
@@ -30,6 +29,7 @@
 }
 
 .place-order-left .multi-fields{
+    width: 600px;
     display: flex;
     gap: 10px;
 

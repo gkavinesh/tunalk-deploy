@@ -1,62 +1,80 @@
+import axios from "axios";
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
-import Stripe from "stripe"
+import crypto from "crypto";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-const placeOrder = async (req,res) => {
 
-    const frontend_url = "http://localhost:5173"
+const placeOrder = async (req, res) => {
+    const frontend_url = "http://localhost:5173";
+    const onepayBaseUrl = "<ONEPAY_BASE_URL>"; // Replace with your actual onepay base URL
+    const onepayAppId = "FYUZ118E58041E1505AA3";
+    const onepayHashSalt = "OSFA118E58041E1505AC9";
+    const onepayToken = "600a2bffbbbfa7782822add71cc80d91b4bec3ac28ee74eb0128f01c05aa569fef28ed5dddeff754.R11F118E58041E1505ADE";
 
     try {
+        const { userId, items, amount, address } = req.body;
+
+        if (!userId || !items || !amount || !address) {
+            return res.status(400).json({ success: false, message: "Missing required fields" });
+        }
+
         const newOrder = new orderModel({
-            userId:req.body.userId,
-            items:req.body.items,
-            amount:req.body.amount,
-            address:req.body.address
-        })
+            userId: userId,
+            items: items,
+            amount: amount,
+            address: address
+        });
 
         await newOrder.save();
+        await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
-        await userModel.findByIdAndUpdate(req.body.userId,{cartData:{}});
-
-        const line_items = req.body.items.map((item)=>({
-            price_data:{
-                currency:"lkr",
-                product_data:{
-                    name:item.name
-                },
-                unit_amount:item.price
-            },
-            quantity:item.quantity
-        }))
+        const line_items = items.map((item) => ({
+            name: item.name,
+            price: item.price * 100 * 80, // Adjust the multiplier as necessary
+            quantity: item.quantity
+        }));
 
         line_items.push({
-            price_data:{
-                currency:"lkr",
-                product_data:{
-                    name:"Delivery Charges"
-                },
-                unit_amount:200
-            },
-            quantity:1
-        })
+            name: "Delivery Charges",
+            price: 200 * 100 * 80, // Adjust the delivery charges as necessary
+            quantity: 1
+        });
 
-        const session = await stripe.checkout.sessions.create({
-            line_items:line_items,
-            mode:'payment',
-            success_url:`${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
-            cancel_url:`${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
+        const transactionDetails = {
+            amount: amount * 100 * 80, // Convert to appropriate unit
+            app_id: onepayAppId,
+            reference: newOrder._id.toString(),
+            customer_first_name: "", // Placeholder, replace as needed
+            customer_last_name: "", // Placeholder, replace as needed
+            customer_phone_number: "", // Placeholder, replace as needed
+            customer_email: "", // Placeholder, replace as needed
+            transaction_redirect_url: `${frontend_url}/verify`,
+            currency: "LKR"
+        };
 
-        })
+        const hashString = JSON.stringify(transactionDetails) + onepayHashSalt;
+        const hash = crypto.createHash('sha256').update(hashString).digest('hex');
 
-        res.json({success:true,session_url:session.url})
+        const response = await axios.post(`${onepayBaseUrl}/single-transaction/?hash=${hash}`, transactionDetails, {
+            headers: {
+                'Authorization': onepayToken,
+                'Content-Type': 'application/json'
+            }
+        });
 
+        if (response.data.status === 1000) {
+            res.json({ success: true, session_url: response.data.data.gateway.redirect_url });
+        } else {
+            throw new Error(response.data.message);
+        }
 
     } catch (error) {
-        console.log(error);
-        res.json({success:false,message:"Error"})
+        console.error("Error creating order:", error);
+        res.status(500).json({ success: false, message: error.message });
     }
-}
+};
 
-export {placeOrder}
+export { placeOrder };
+
+

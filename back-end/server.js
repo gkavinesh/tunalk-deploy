@@ -1,40 +1,39 @@
-import express from "express"
-import cors from "cors"
+import express from "express";
+import cors from "cors";
 import mongoose from "mongoose";
-import { connectDB } from "./config/db.js"
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
 import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
-import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
-//app config
+// Load environment variables from .env file
+dotenv.config();
 
-const app = express()
-const port = 4000
+// app config
+const app = express();
+const port = process.env.PORT || 4000;
 
-//middleware
+// middleware
+app.use(express.json());
+app.use(cors());
 
-app.use(express.json())
-app.use(cors())
-
-//db connection
-
+// db connection
 connectDB();
 
-//api endpoint
-app.use("/api/product",productRouter)
-app.use("/images",express.static("uploads"))
-app.use("/api/user",userRouter)
-app.use("/api/cart",cartRouter)
-app.use("/api/order",orderRouter)
+// api endpoint
+app.use("/api/product", productRouter);
+app.use("/images", express.static("uploads"));
+app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
-app.get('/',(req,res)=>{
-    res.send('API Working')
-})
+app.get('/', (req, res) => {
+    res.send('API Working');
+});
 
-app.listen(port,()=>{
-    console.log(`Server Started on http://localhost:${port}`)
-})
+app.listen(port, () => {
+    console.log(`Server Started on http://localhost:${port}`);
+});
 
-//mongodb+srv://flickerintwitter:<password>@cluster0.zyqpyyz.mongodb.net/?

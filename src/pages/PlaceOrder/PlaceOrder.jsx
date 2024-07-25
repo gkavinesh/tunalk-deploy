@@ -1,53 +1,103 @@
-import React, { useContext } from 'react'
-import './PlaceOrder.css'
-import { StoreContext } from '../../context/StoreContext'
+import React, { useContext, useState, useEffect } from 'react';
+import './PlaceOrder.css';
+import { StoreContext } from '../../context/StoreContext';
+import axios from 'axios';
 
 const PlaceOrder = () => {
+  const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
 
-  const {getTotalCartAmount,token,product_list,cartItems,url} = useContext(StoreContext);
-  
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    type: "",
+    postcode: "",
+    email: "",
+    phone: ""
+  });
+
+  const onChangeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setData(data => ({ ...data, [name]: value }));
+  };
+
+  const placeOrder = async (event) => {
+    event.preventDefault();
+    let orderItems = [];
+    food_list.forEach((item) => {
+      if (cartItems[item._id]) {
+        let itemInfo = { ...item, quantity: cartItems[item._id] };
+        orderItems.push(itemInfo);
+      }
+    });
+
+    let orderData = {
+      address: data,
+      items: orderItems,
+      amount: getTotalCartAmount() + 200,
+    };
+
+    try {
+      let response = await axios.post(url + "/api/order/place", orderData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.data.success) {
+        const { session_url } = response.data;
+        window.location.replace(session_url);
+      } else {
+        alert("Error placing order");
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("Error placing order");
+    }
+  };
 
   return (
-    <form  className="place-order">
+    <form onSubmit={placeOrder} className="place-order">
       <div className="place-order-left">
         <p className='title'> Delivery Information</p>
         <div className="multi-fields">
-          <input type="text" placeholder='First Name' />
-          <input type="text" placeholder='Last Name' />
+          <input required name='firstName' onChange={onChangeHandler} value={data.firstName} type="text" placeholder='First Name' />
+          <input required name='lastName' onChange={onChangeHandler} value={data.lastName} type="text" placeholder='Last Name' />
         </div>
-        <input type="text" placeholder='Email Address' />
-        <input type="text" placeholder='Street' />
+        <input required name='address' onChange={onChangeHandler} value={data.address} type="text" placeholder='Address' />
         <div className="multi-fields">
-          <input type="text" placeholder='City' />
-          <input type="text" placeholder='State' />
+          <input required name='type' onChange={onChangeHandler} value={data.type} type="text" placeholder='Landmark, Apartment, suite, etc.' />
+          <input required name='postcode' onChange={onChangeHandler} value={data.postcode} type="text" placeholder='Post Code' />
         </div>
-        <input type='text' placeholder='Phone'/>
+        <input required name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Email Address' />
+        <input required name='phone' onChange={onChangeHandler} value={data.phone} type='text' placeholder='Phone' />
       </div>
       <div className="place-order-right">
-      <div className="cart-total">
+        <div className="cart-total">
           <h2>Cart Total</h2>
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
               <p>LKR {getTotalCartAmount()}</p>
             </div>
-            <hr/>
+            <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>LKR {getTotalCartAmount()===0?0:200}</p>
+              <p>LKR {getTotalCartAmount() === 0 ? 0 : 200}</p>
             </div>
-            <hr/>
+            <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>LKR {getTotalCartAmount()===0?0:getTotalCartAmount()+ 200}</b>
+              <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200}</b>
             </div>
           </div>
-          <button>PROCEED TO PAYMENT </button>
+          <button type='submit'>PROCEED TO PAYMENT</button>
         </div>
-
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default PlaceOrder
+export default PlaceOrder;
+
