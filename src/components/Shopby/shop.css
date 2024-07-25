@@ -12,12 +12,12 @@
 }
 
 .bubby:hover{
-    background-color: #7DD5E9;
-    color: white;
+    background-color: #a3eefffd;
+    color: rgb(0, 142, 128);
 }
 
 .bubby:hover h3{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .bubble {

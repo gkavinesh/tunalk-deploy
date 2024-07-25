@@ -8,43 +8,62 @@ const ComponentName = () => {
         {
             id: 1,
             image: assets.thumb1,
-            title: "Fish",
+            title: "Cuttle Fish",
             link: "/fish", // Add link for redirection
         },
         {
             id: 2,
             image: assets.thumb2,
-            title: "Crab",
-            link: "/crab", // Add link for redirection
+            title: "Prawns",
+            link: "/fish", // Add link for redirection
         },
         {
             id: 3,
             image: assets.thumb3,
-            title: "Prawns",
-            link: "/prawns", // Add link for redirection
+            title: "Scad",
+            link: "/fish", // Add link for redirection
         },
         {
             id: 4,
             image: assets.thumb4,
             title: "Hot Deals",
-            link: "/hot-deals", // Add link for redirection
+            link: "/fish", // Add link for redirection
         },
-        // Add more items as needed
+        {
+            id: 5,
+            image: assets.thumb5,
+            title: "Tuna",
+            link: "/fish", // Add link for redirection
+        },
+        {
+            id: 6,
+            image: assets.thumb6,
+            title: "Seer",
+            link: "/fish", // Add link for redirection
+        },
+        {
+            id: 7,
+            image: assets.thumb7,
+            title: "Crab",
+            link: "/fish", // Add link for redirection
+        },
+        {
+            id: 8,
+            image: assets.thumb8,
+            title: "Anchovy",
+            link: "/fish", // Add link for redirection
+        },
     ]);
 
     return (
         <section className="py-12 bg-white sm:py-16 lg:py-20" id='shop'>
             <div className="shop px-0 mx-auto sm:px-6 lg:px-8 max-w-full" id='Category'>
-                <div className="bubble">
-                    <h2>Shop by category</h2>
-                    <br></br>
-                </div>
-                <div className="grid grid-cols-2 gap-6 mt-5 lg:mt-5 lg:gap-4 lg:grid-cols-4">
+                <div className="grid grid-cols-2 gap-6 mt-0 lg:mt-0 lg:gap-4 lg:grid-cols-4">
                     {items.map(item => (
                         <Link key={item.id} to={item.link} className="relative group"> {/* Wrap the card with Link */}
                             <div className="bg-white rounded-lg overflow-hidden shadow-2xl border-solid border-1 border-inherit">
                                 <div className="bubby bg-cyan-100 py-1 px-5 text-white text-center transition duration-700 ease-in-out">
-                                    <h3 className="text-lg font-light text-slate-600">{item.title}</h3>
+                                    <h3 className="text-lg font-light text-slate-700">{item.title}</h3>
                                 </div>
                                 <div className="overflow-hidden aspect-w-3 aspect-h-2">
                                     <img className="object-cover w-full h-full transition-all duration-300" src={item.image} alt={item.title} />

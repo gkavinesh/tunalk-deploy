@@ -96,14 +96,18 @@ import ten from './10.jpg';
 import eleven from './11.jpg';
 import twelve from './12.jpg';
 import thirteen from './13.jpg';
-import thumb1 from './fishmain.jpg';
+import thumb1 from './cuttle.jpg';
 import thumb2 from './prawnmain.jpg';
-import thumb3 from './crabmain.jpg';
+import thumb3 from './scad.jpg';
 import thumb4 from './dealicon.png';
+import thumb5 from './tuna.jpg';
+import thumb6 from './seer.jpg';
+import thumb7 from './crabmain.jpg';
+import thumb8 from './anchovy.jpg';
 import circle1 from './fish_circle.png';
 import circle2 from './prawns_circle.png';
 import circle3 from './crab_circle.png';
-import circle4 from './deal_circle.png';
+import circle4 from './deal_circle.png'; 
 
 export const assets = {
     circle1,
@@ -114,6 +118,10 @@ export const assets = {
     thumb2,
     thumb3,
     thumb4,
+    thumb5,
+    thumb6,
+    thumb7,
+    thumb8,
     one,
     two,
     three,
