@@ -7,7 +7,7 @@ import crypto from "crypto";
 
 const placeOrder = async (req, res) => {
     const frontend_url = "http://localhost:5173";
-    const onepayBaseUrl = "<ONEPAY_BASE_URL>"; // Replace with your actual onepay base URL
+    const onepayBaseUrl = "https://merchant-api-live-v2.onepay.lk/api/ipg/gateway/request-transaction/?hash="; // Replace with your actual onepay base URL
     const onepayAppId = "FYUZ118E58041E1505AA3";
     const onepayHashSalt = "OSFA118E58041E1505AC9";
     const onepayToken = "600a2bffbbbfa7782822add71cc80d91b4bec3ac28ee74eb0128f01c05aa569fef28ed5dddeff754.R11F118E58041E1505ADE";

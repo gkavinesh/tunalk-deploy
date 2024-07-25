@@ -1,13 +1,20 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
-    name: {type:String,required:true},
-    description: {type:String,reuired:true},
-    price: {type:Number,reuired:true},
-    image: {type:String,required:true},
-    category:{type:String,required:true}
-})
+const typeSchema = new mongoose.Schema({
+    type: { type: String, required: true },
+    price: { type: Number, required: true }
+});
 
-const productModel = mongoose.models.food || mongoose.model("Product",productSchema);
+const productSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    images: [{ type: String, required: true }],
+    category: { type: String, required: true },
+    types: [typeSchema]  // Add the types subdocument array
+});
+
+const productModel = mongoose.models.Product || mongoose.model("Product", productSchema);
 
 export default productModel;
+
+
