@@ -4,7 +4,8 @@ import { StoreContext } from '../../context/StoreContext'
 
 const PlaceOrder = () => {
 
-  const {getTotalCartAmount} = useContext(StoreContext);
+  const {getTotalCartAmount,token,product_list,cartItems,url} = useContext(StoreContext);
+  
 
   return (
     <form  className="place-order">

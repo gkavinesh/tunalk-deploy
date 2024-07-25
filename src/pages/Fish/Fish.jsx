@@ -11,7 +11,7 @@ const Fish = () => {
   return (
     <div>
       <div className='fish'>
-      <ExploreProducts category={category} setCategory={setCategory}/>
+      <Categories/>
       <FoodDisplay category={category} />
       </div>
     </div>
