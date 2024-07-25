@@ -6,7 +6,6 @@ import { StoreContext } from '../../context/StoreContext'
 import { MotionConfig, motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
-
 const AnimatedHamburgerButton = () => {
     const [active, setActive] = useState(false);
     return (
@@ -80,10 +79,8 @@ const VARIANTS = {
     },
 };
 
-
 const Navbar = ({ setShowLogin }) => {
-
-    const { getTotalCartAmount,token, setToken } = useContext(StoreContext);
+    const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     
     const navigate = useNavigate();
@@ -91,8 +88,8 @@ const Navbar = ({ setShowLogin }) => {
     const logout = () => {
         localStorage.removeItem("token");
         setToken("");
-        navigate("/")
-    }
+        navigate("/");
+    };
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -101,86 +98,91 @@ const Navbar = ({ setShowLogin }) => {
     return (
         <div className='navbar' id='navbar'>
             <div className="nav-content">
-            <a href="/">
-                <img src={assets.white} alt="" className="logo" />
-            </a>
-            <div className="navbar-right">
-                {!token?<button onClick={() => setShowLogin(true)} className='transition duration-700 ease-in-out navbar-button'>
-                    <span className="hide-text">Sign in</span>
-                </button>:<div className='navbar-profile'>
-                    <img src={assets.profile_icon} alt=''/>
-                    <ul className="nav-profile-dropdown">
-                        <li><img src={assets.bag_icon}/><p>Orders</p></li>
-                        <hr></hr>
-                        <li onClick={logout}><img src={assets.logout_icon}/><p>Logout</p></li>
-                    </ul>
-                </div>}
-                <div className="navbar-search-icon">
-                    <Link to="/cart" >
-                       <img src={assets.basket_icon} alt=''/>
-                    </Link>
-                    <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
-                </div>
-                <div className='navbar-hamburger' onClick={toggleSidebar}>
-                    <AnimatedHamburgerButton />
-                </div>
+                <a href="/">
+                    <img src={assets.white} alt="" className="logo" />
+                </a>
+                <div className="navbar-right">
+                    {!token ? (
+                        <button onClick={() => setShowLogin(true)} className='transition duration-700 ease-in-out navbar-button'>
+                            <span className="hide-text">Sign in</span>
+                        </button>
+                    ) : (
+                        <div className='navbar-profile'>
+                            <img src={assets.profile_icon} alt='' />
+                            <ul className="nav-profile-dropdown">
+                                <li><img src={assets.bag_icon} /><p>Orders</p></li>
+                                <hr></hr>
+                                <li onClick={logout}><img src={assets.logout_icon} /><p>Logout</p></li>
+                            </ul>
+                        </div>
+                    )}
+                    <div className="navbar-search-icon">
+                        <Link to="/cart" >
+                            <img src={assets.basket_icon} alt='' />
+                        </Link>
+                        <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+                    </div>
+                    <div className='navbar-hamburger' onClick={toggleSidebar}>
+                        <AnimatedHamburgerButton />
+                    </div>
                 </div>
             </div>
 
-
             <AnimatePresence>
-                {isSidebarOpen && (
-                    <motion.div
-                        initial={{ x: '-100%' }}
-                        animate={{ x: 0 }}
-                        exit={{ x: '-100%' }}
-                        transition={{ duration: 0.5 }}
-                        className="sidebar"
-                    >
-                        <div className="flex justify-between items-center">
-                            <div className="sidebarlogo">
-                                <h2>TunaLK</h2>
-                            </div>
-                        </div>
-                        <ul className="menu-list p-4">
-                            <div className='icons'>
-                                <a href='#home'>Home</a>
-                            </div>
-                            <br></br>
-                            <div className='icons'>
-                                <a href='#about'>About</a>
-                            </div>
-                            <br></br>
-                            <div className='icons'>
-                                <a href='#products'>Products</a>
-                            </div>
-                            <br></br>
-                            <div className='icons'>
-                                <a href='#contact'>Contact</a>
-                            </div>
-                            <br></br>
-                            <div className='icons'>
-                                <a href='#faq'>FAQ</a>
-                            </div>
-                            <br></br>
-                            <div className='icons'>
-                                <a href='#privacy-policy'>Privacy Policy</a>
-                            </div>
-                        </ul>
-                        <button className="call-button">
-                            Contact US
-                        </button>
-                        <button className="call-button-2">
-                            Download our App
-                        </button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+    {isSidebarOpen && (
+        <motion.div
+            initial={{ x: '100%' }} // Start off-screen to the right
+            animate={{ x: 0 }} // Slide in from the right
+            exit={{ x: '100%' }} // Slide back to the right
+            transition={{ duration: 0.5 }} // Animation duration
+            className="sidebar"
+        >
+            <div className="flex justify-between items-center">
+                <div className="sidebarlogo">
+                    <h2>TunaLK</h2>
+                </div>
+            </div>
+            <ul className="menu-list p-4">
+                <div className='icons'>
+                    <a href='#home'>Home</a>
+                </div>
+                <br></br>
+                <div className='icons'>
+                    <a href='#about'>About</a>
+                </div>
+                <br></br>
+                <div className='icons'>
+                    <a href='#products'>Products</a>
+                </div>
+                <br></br>
+                <div className='icons'>
+                    <a href='#contact'>Contact</a>
+                </div>
+                <br></br>
+                <div className='icons'>
+                    <a href='#faq'>FAQ</a>
+                </div>
+                <br></br>
+                <div className='icons'>
+                    <a href='#privacy-policy'>Privacy Policy</a>
+                </div>
+            </ul>
+            <button className="call-button">
+                Contact US
+            </button>
+            <button className="call-button-2">
+                Download our App
+            </button>
+        </motion.div>
+    )}
+</AnimatePresence>
+
 
         </div>
     );
-}
+};
 
 export default Navbar;
+
 
 
