@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import './maincat.css';
 import { assets } from "../../assets/assets";
-import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -44,8 +44,6 @@ function SamplePrevArrow(props) {
   );
 }
 
-
-
 function SwipeToSlide() {
   const settings = {
     className: "center",
@@ -59,14 +57,28 @@ function SwipeToSlide() {
       console.log(
         `Slider Changed to: ${index + 1}`
       );
-    }
+    },
+    responsive: [
+      {
+        breakpoint: 1024, // Tablet breakpoint
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 768, // Mobile breakpoint
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
   };
 
   return (
     <div className="slider-container">
       <Slider {...settings}>
         <div className="border-gray-200 slide">
-          <img src={assets.one} className='slide-img' alt="Image 1"/>
+          <img src={assets.one} className='slide-img' alt="Image 1" />
         </div>
         <div className="border-gray-200 slide">
           <img src={assets.two} className='slide-img' alt="Image 2" />
@@ -110,6 +122,7 @@ function SwipeToSlide() {
 }
 
 export default SwipeToSlide;
+
 
 
 
