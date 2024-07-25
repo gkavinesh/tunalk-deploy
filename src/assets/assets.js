@@ -177,10 +177,6 @@ export const menu_list = [
     {
         menu_name: "Hot Deals",
         menu_image: "hello"
-    },
-    {
-        menu_name: "Combo Offers",
-        menu_image: "hello"
     }
 ]
 
