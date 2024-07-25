@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import './maincat.css';
 import { assets } from "../../assets/assets";
-import { TbArrowBadgeLeft,TbArrowBadgeRight } from "react-icons/tb";
+import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -19,7 +19,7 @@ function SampleNextArrow(props) {
       }}
       onClick={onClick}
     >
-      <TbArrowBadgeRight />{/* Right arrow icon */}
+      <IoIosArrowForward />{/* Right arrow icon */}
     </div>
   );
 }
@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
       }}
       onClick={onClick}
     >
-      <TbArrowBadgeLeft /> {/* Left arrow icon */}
+      <IoIosArrowBack /> {/* Left arrow icon */}
     </div>
   );
 }
@@ -51,7 +51,7 @@ function SwipeToSlide() {
     className: "center",
     infinite: true,
     centerPadding: "30px",
-    slidesToShow: 8,
+    slidesToShow: 9,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -66,31 +66,43 @@ function SwipeToSlide() {
     <div className="slider-container">
       <Slider {...settings}>
         <div className="border-gray-200 slide">
-          <img src={assets.tunamini} className='slide-img' alt="Image 1"/>
+          <img src={assets.one} className='slide-img' alt="Image 1"/>
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.scadmini} className='slide-img' alt="Image 2" />
+          <img src={assets.two} className='slide-img' alt="Image 2" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.sailmini} className='slide-img' alt="Image 3" />
+          <img src={assets.three} className='slide-img' alt="Image 3" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.tunamini} className='slide-img' alt="Image 4" />
+          <img src={assets.four} className='slide-img' alt="Image 4" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.scadmini} className='slide-img' alt="Image 5" />
+          <img src={assets.five} className='slide-img' alt="Image 5" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.sailmini} className='slide-img' alt="Image 6" />
+          <img src={assets.six} className='slide-img' alt="Image 6" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.tunamini} className='slide-img' alt="Image 7" />
+          <img src={assets.seven} className='slide-img' alt="Image 7" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.scadmini} className='slide-img' alt="Image 8" />
+          <img src={assets.eight} className='slide-img' alt="Image 8" />
         </div>
         <div className="border-gray-200 slide">
-          <img src={assets.sailmini} className='slide-img' alt="Image 9" />
+          <img src={assets.nine} className='slide-img' alt="Image 9" />
+        </div>
+        <div className="border-gray-200 slide">
+          <img src={assets.ten} className='slide-img' alt="Image 10" />
+        </div>
+        <div className="border-gray-200 slide">
+          <img src={assets.eleven} className='slide-img' alt="Image 11" />
+        </div>
+        <div className="border-gray-200 slide">
+          <img src={assets.twelve} className='slide-img' alt="Image 12" />
+        </div>
+        <div className="border-gray-200 slide">
+          <img src={assets.thirteen} className='slide-img' alt="Image 13" />
         </div>
       </Slider>
     </div>
