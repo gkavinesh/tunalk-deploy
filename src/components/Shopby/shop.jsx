@@ -7,25 +7,25 @@ const ComponentName = () => {
     const [items, setItems] = useState([
         {
             id: 1,
-            image: assets.fishy,
+            image: assets.thumb1,
             title: "Fish",
             link: "/fish", // Add link for redirection
         },
         {
             id: 2,
-            image: assets.crab,
+            image: assets.thumb2,
             title: "Crab",
             link: "/crab", // Add link for redirection
         },
         {
             id: 3,
-            image: assets.prawnexplore,
+            image: assets.thumb3,
             title: "Prawns",
             link: "/prawns", // Add link for redirection
         },
         {
             id: 4,
-            image: assets.dealexplore,
+            image: assets.thumb4,
             title: "Hot Deals",
             link: "/hot-deals", // Add link for redirection
         },

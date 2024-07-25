@@ -96,10 +96,18 @@ import ten from './10.jpg'
 import eleven from './11.jpg'
 import twelve from './12.jpg'
 import thirteen from './13.jpg'
+import thumb1 from './fishmain.jpg'
+import thumb2 from './prawnmain.jpg'
+import thumb3 from './crabmain.jpg'
+import thumb4 from './dealicon.jpg'
 
 
 
 export const assets = {
+    thumb1,
+    thumb2,
+    thumb3,
+    thumb4,
     one,
     two,
     three,

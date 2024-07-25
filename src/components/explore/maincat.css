@@ -16,8 +16,8 @@
   }
   
   .slide-img {
-    height: 80px;
-    width: 110px;
+    height: 90px;
+    width: 130px;
     object-fit: cover; /* Maintain aspect ratio and cover the container */
     border-radius: 8px;
     margin: 0 auto;
@@ -72,7 +72,7 @@
   }
   
   .slick-slide {
-    padding: 0 3px;
+    padding: 0 4px;
   }
 
 
