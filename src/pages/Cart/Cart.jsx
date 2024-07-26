@@ -8,10 +8,10 @@ const Cart = () => {
   const { cartItems, food_list, removeFromCart, updateItemQuantity, getTotalCartAmount, url } = useContext(StoreContext);
   const navigate = useNavigate();
 
-  const handleQuantityChange = (itemId, event) => {
+  const handleQuantityChange = (itemId, type, event) => {
     const newQuantity = parseInt(event.target.value, 10);
     if (newQuantity >= 0) {
-      updateItemQuantity(itemId, newQuantity); // Update quantity in context
+      updateItemQuantity(`${itemId}-${type}`, newQuantity); // Update quantity in context
     }
   };
 
@@ -31,12 +31,13 @@ const Cart = () => {
         <br />
         <hr />
         {food_list.map((item) => {
-          if (cartItems[item._id]) {
-            const { amount, type, price, weight } = cartItems[item._id];
+          const itemKeys = Object.keys(cartItems).filter(key => key.startsWith(item._id));
+          return itemKeys.map((key) => {
+            const { amount, type, price, weight } = cartItems[key];
             const firstImage = item.images && item.images.length > 0 ? item.images[0] : 'default-image-url'; // Replace with a default image URL if needed
 
             return (
-              <div key={item._id}>
+              <div key={key}>
                 <div className='cart-items-title cart-items-item'>
                   <img src={url + "/images/" + firstImage} alt={item.name} />
                   <p>{item.name}</p>
@@ -47,19 +48,18 @@ const Cart = () => {
                     type='number'
                     min='0'
                     value={amount}
-                    onChange={(e) => handleQuantityChange(item._id, e)} // Update quantity when changed
+                    onChange={(e) => handleQuantityChange(item._id, type, e)} // Update quantity when changed
                     className='quantity-input'
                   />
                   <p>LKR {price * amount}</p> {/* Display updated total price */}
-                  <p onClick={() => removeFromCart(item._id)} className='cross'>
+                  <p onClick={() => removeFromCart(key)} className='cross'>
                     <FaTrash /> {/* Use the Trash icon */}
                   </p>
                 </div>
                 <hr />
               </div>
             );
-          }
-          return null;
+          });
         })}
       </div>
       <div className="cart-bottom">
@@ -98,6 +98,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
 
 

@@ -24,44 +24,50 @@ const PlaceOrder = () => {
 
   const placeOrder = async (event) => {
     event.preventDefault();
-    
-    // Prepare order items from cart
-    const orderItems = Object.keys(cartItems).map((itemId) => {
-      const item = food_list.find(item => item._id === itemId);
+  
+    const orderItems = Object.keys(cartItems).map((key) => {
+      const [itemId, type] = key.split('-');
+      const item = food_list.find(food => food._id === itemId);
       if (item) {
         return {
-          ...item,
-          quantity: cartItems[itemId].amount,
-          type: cartItems[itemId].type,
-          price: cartItems[itemId].price,
-          weight: cartItems[itemId].weight
+          itemId: item._id,
+          name: item.name,
+          type,
+          price: cartItems[key].price,
+          weight: cartItems[key].weight,
+          amount: cartItems[key].amount,
         };
       }
       return null;
     }).filter(item => item !== null);
-
+  
     const orderData = {
+      userId: token.userId,
       address: {
-        ...data,
-        // If you have a separate field for `type`, include it here
+        address: data.address,
         type: data.type,
+        postcode: data.postcode
       },
       items: orderItems,
-      amount: getTotalCartAmount() + 200,
+      total: getTotalCartAmount() + 200,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone
     };
-
+  
     try {
-      let response = await axios.post(url + "/api/order/place", orderData, {
+      let response = await axios.post(url + '/api/order/place', orderData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-
+  
       if (response.data.success) {
         const { session_url } = response.data;
         window.location.replace(session_url);
       } else {
-        alert("Error placing order");
+        alert("Error making payment");
       }
     } catch (error) {
       console.error("Error placing order:", error);
@@ -112,5 +118,7 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
+
+
 
 

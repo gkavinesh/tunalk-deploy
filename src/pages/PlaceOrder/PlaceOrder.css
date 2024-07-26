@@ -1,44 +1,165 @@
+/* Container for the entire form */
 .place-order {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 50px;
     margin: 100px auto 10rem auto; /* Centering the form */
     width: 75%; /* Setting the width to 75% */
 }
 
-.place-order-left{
+/* Style for the left side of the form */
+.place-order-left {
     width: 600px;
 }
 
-.place-order-left .title{
+/* Title styling */
+.place-order-left .title {
     font-size: 30px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 30px; /* Reduced margin for a tighter look */
+    color: #11484D; /* Dark teal color for the title */
 }
 
-.place-order-left input{
+/* General input styling */
+.place-order-left input {
     margin-bottom: 15px;
     width: 100%;
-    padding:10px;
+    padding: 12px; /* Increased padding for better readability */
     border: 1px solid #c5c5c5;
-    border-radius: 4px;
-    outline-color: #00A49B
+    border-radius: 8px; /* Rounded corners */
+    outline-color: #01B1A8; /* Teal outline color on focus */
+    font-size: 16px; /* Increased font size for better readability */
 }
 
-.place-order-left .multi-fields{
-    width: 600px;
+/* Style for multiple input fields aligned horizontally */
+.place-order-left .multi-fields {
     display: flex;
-    gap: 10px;
-
+    gap: 15px; /* Increased gap for better spacing */
 }
 
-.place-order-right{
+/* Style for the right side of the form */
+.place-order-right {
     width: 100%;
-    max-width: max(40%,500px);
-
+    max-width: 500px; /* Ensuring a maximum width */
 }
 
-.place-order .cart-total button{
+/* Styling for cart total section */
+.place-order .cart-total {
+    background-color: #f9f9f9; /* Light background for better contrast */
+    padding: 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Cart total section headings and details */
+.cart-total h2 {
+    font-size: 24px;
+    color: #11484D; /* Dark teal color */
+    margin-bottom: 20px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.cart-total-details p {
+    margin: 0; /* Removing default margin */
+}
+
+.cart-total-details b {
+    font-size: 20px; /* Slightly larger font size for totals */
+}
+
+/* Payment method section styling */
+.payment-method {
     margin-top: 30px;
+    background-color: #f2f2f2; /* Light grey background for the section */
+    padding: 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+.payment-method .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #11484D;
+    margin-bottom: 20px;
+}
+
+/* Payment options styling */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap for better spacing */
+}
+
+.payment-options label {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Increased gap between radio button and text */
+    font-size: 16px;
+    padding: 10px; /* Padding around each option */
+    border-radius: 8px; /* Rounded corners for the options */
+    background-color: #ffffff; /* White background for each option */
+    border: 1px solid #c5c5c5; /* Border for the options */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.payment-options label:hover {
+    background-color: #e6f9f0; /* Light teal background on hover */
+    border-color: #01B1A8; /* Teal border on hover */
+}
+
+.payment-options input {
+    margin-right: 10px; /* Space between radio button and text */
+}
+
+/* Submit button styling */
+.place-order .cart-total button {
+    width: 100%;
+    padding: 15px;
+    background-color: #01B1A8; /* Teal background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.place-order .cart-total button:hover {
+    background-color: #018f88; /* Darker teal on hover */
+    transform: scale(1.02); /* Slightly larger button on hover */
+}
+
+/* Button styling */
+.proceed {
+    width: 100%; /* Full width for consistency with the container */
+    padding: 15px; /* Ample padding for better clickability */
+    background-color: #01B1A8; /* Teal background color */
+    color: #fff; /* White text color */
+    border: none; /* No border for a cleaner look */
+    border-radius: 8px; /* Rounded corners for a modern appearance */
+    font-size: 18px; /* Larger font size for better readability */
+    font-weight: 600; /* Slightly bold text for emphasis */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.proceed:hover {
+    background-color: #018f88; /* Darker teal for hover effect */
+    transform: scale(1.02); /* Slightly larger button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+}
+
+.proceed:active {
+    background-color: #017a6f; /* Even darker teal for active state */
+    transform: scale(0.98); /* Slightly smaller button when clicked */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
+}
+

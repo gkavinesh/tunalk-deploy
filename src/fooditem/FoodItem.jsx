@@ -38,7 +38,7 @@ const FoodItem = ({ id, name, description }) => {
                         {description}
                     </p>
                     <p className='food-item-price'>
-                        From: රු {lowestPrice}
+                        Starting from: රු {lowestPrice}
                     </p>
                 </div>
                 <div>
@@ -46,7 +46,7 @@ const FoodItem = ({ id, name, description }) => {
                         className='customize-button' 
                         onClick={handleCustomizeClick}
                     >
-                        Customize
+                        More Details
                     </button>
                 </div>
             </div>

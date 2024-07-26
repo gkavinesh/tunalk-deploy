@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useContext } from 'react';
-import { StoreContext } from '../../context/StoreContext'; // Adjust the import path if needed
-import Categories from '../../components/explore/maincat'; // Adjust the import path if needed
+import React, { useState, useEffect, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
+import Categories from '../../components/explore/maincat';
+import LoginPopup from '../../components/LoginPopup/LoginPopup'; // Adjust the import path if needed
 
 const ProductPage = () => {
     const { state } = useLocation();
-    const { item } = state || {}; // Ensure item is defined
-    const { addToCart, url } = useContext(StoreContext);
-
+    const { item } = state || {};
+    const { addToCart, url, token } = useContext(StoreContext);
     const [activeImg, setActiveImage] = useState(item ? `${url}/images/${item.images[0]}` : '');
     const [amount, setAmount] = useState(1);
     const [selectedType, setSelectedType] = useState(item && item.types.length > 0 ? item.types[0] : { type: '', price: 0 });
     const [selectedWeight, setSelectedWeight] = useState(1);
     const [price, setPrice] = useState(selectedType.price);
+    const [showLogin, setShowLogin] = useState(false); // State for showing login popup
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (selectedType && selectedType.price) {
@@ -36,6 +37,14 @@ const ProductPage = () => {
         const selectedTypeName = e.target.value;
         const newType = item.types.find(type => type.type === selectedTypeName) || { type: '', price: 0 };
         setSelectedType(newType);
+    };
+
+    const handleAddToCart = () => {
+        if (!token) {
+            setShowLogin(true); // Show login popup if not logged in
+        } else {
+            addToCart(item._id, amount, selectedType.type, price, selectedWeight);
+        }
     };
 
     if (!item) {
@@ -70,7 +79,7 @@ const ProductPage = () => {
                             ))}
                         </div>
                     </div>
-                    <div className='flex flex-col gap-4 lg:w-2/4'>
+                    <div className='flex flex-col gap-4 lg:w-2/4 -mt-32'>
                         <div>
                             <span className='text-teal-600 font-semibold'>{item.category}</span>
                             <h1 className='text-3xl font-bold'>{item.name}</h1>
@@ -97,45 +106,54 @@ const ProductPage = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div className='flex flex-col gap-2'>
-                                <label htmlFor='weight-select' className='font-semibold'>Select Weight</label>
-                                <select
-                                    id='weight-select'
-                                    value={selectedWeight}
-                                    onChange={(e) => setSelectedWeight(Number(e.target.value))}
-                                    className='p-2 border rounded'
+                            <div className='flex items-center gap-6'>
+                                <div className='flex flex-col gap-2 w-32'>
+                                    <label htmlFor='weight-select' className='font-semibold'>Select Weight</label>
+                                    <select
+                                        id='weight-select'
+                                        value={selectedWeight}
+                                        onChange={(e) => setSelectedWeight(Number(e.target.value))}
+                                        className='p-2 border rounded'
+                                    >
+                                        <option value={0.5}>0.5 kg</option>
+                                        <option value={1}>1 kg</option>
+                                        <option value={2}>2 kg</option>
+                                        <option value={3}>3 kg</option>
+                                    </select>
+                                </div>
+                                <div className='flex flex-col justify-center'>
+                                    <span className='text-xl font-semibold mt-8'>Price: රු {price.toFixed(2)}</span>
+                                </div>
+                            </div>
+                            <div className='flex items-center gap-4'>
+                                <div className='flex flex-row items-center gap-2'>
+                                    <button className='bg-gray-200 py-1 px-2 rounded-lg text-teal-800 text-lg' onClick={() => setAmount((prev) => prev > 1 ? prev - 1 : 1)}>-</button>
+                                    <span className='py-2 px-4 rounded-lg text-lg'>{amount}</span>
+                                    <button className='bg-gray-200 py-1 px-2 rounded-lg text-teal-800 text-lg' onClick={() => setAmount((prev) => prev + 1)}>+</button>
+                                </div>
+                                <button
+                                    className='transition ease-in-out delay-150 bg-teal-700 text-white font-semibold py-2 px-8 rounded-xl'
+                                    onClick={handleAddToCart} // Call the handler
                                 >
-                                    <option value={0.5}>0.5 kg</option>
-                                    <option value={1}>1 kg</option>
-                                    <option value={2}>2 kg</option>
-                                    <option value={3}>3 kg</option>
-                                </select>
+                                    Add to Cart
+                                </button>
                             </div>
-                        </div>
-                        <div>
-                            <span className='text-xl font-semibold'>Price: රු {price.toFixed(2)}</span>
-                        </div>
-                        <div className='flex flex-row items-center gap-12'>
-                            <div className='flex flex-row items-center'>
-                                <button className='bg-gray-200 py-2 px-5 rounded-lg text-teal-800 text-3xl' onClick={() => setAmount((prev) => prev > 1 ? prev - 1 : 1)}>-</button>
-                                <span className='py-4 px-6 rounded-lg'>{amount}</span>
-                                <button className='bg-gray-200 py-2 px-4 rounded-lg text-teal-800 text-3xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
-                            </div>
-                            <button
-                                className='transition ease-in-out delay-150 bg-teal-700 text-white font-semibold py-3 px-16 rounded-xl h-full'
-                                onClick={() => addToCart(item._id, amount, selectedType.type, price, selectedWeight)}
-                            >
-                                Add to Cart
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Login Popup */}
+            {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
         </div>
     );
 };
 
 export default ProductPage;
+
+
+
+
 
 
 

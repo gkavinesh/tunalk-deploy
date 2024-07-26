@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div>
-            <Categories/>
+      <Categories/>
       <Header/>
       <ShopBy/>
       <Step/>

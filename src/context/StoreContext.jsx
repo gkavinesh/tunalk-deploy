@@ -27,44 +27,35 @@ const StoreContextProvider = (props) => {
             price,
             weight
         };
-    
-        if (!cartItems[itemId]) {
-            setCartItems(prev => ({ ...prev, [itemId]: itemDetails }));
+
+        // Create a unique key based on item ID and type
+        const cartKey = `${itemId}-${type}`;
+
+        if (!cartItems[cartKey]) {
+            setCartItems(prev => ({ ...prev, [cartKey]: itemDetails }));
         } else {
             setCartItems(prev => ({
                 ...prev,
-                [itemId]: {
-                    ...prev[itemId],
-                    amount: prev[itemId].amount + amount
+                [cartKey]: {
+                    ...prev[cartKey],
+                    amount: prev[cartKey].amount + amount
                 }
             }));
         }
-        if (token) {
-            await axios.post(url + "/api/cart/add", { itemId, ...itemDetails }, { headers: { token } });
-        }
-    };
-
-    const removeFromCart = async (itemId) => {
-        setCartItems(prev => {
-            const updatedItems = { ...prev };
-            delete updatedItems[itemId];
-            return updatedItems;
-        });
 
         if (token) {
-            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { Authorization: `Bearer ${token}` } });
+            await axios.post(url + "/api/cart/add", { itemId, ...itemDetails }, { headers: { Authorization: `Bearer ${token}` } });
         }
     };
 
     const getTotalCartAmount = () => {
-        return Object.keys(cartItems).reduce((total, itemId) => {
-            const item = food_list.find(item => item._id === itemId);
-            if (item) {
-                const { amount, price } = cartItems[itemId];
-                return total + (price * amount);
-            }
-            return total;
-        }, 0);
+        let total = 0;
+        for (const key in cartItems) {
+            const item = cartItems[key];
+            total += item.price * item.amount;
+        }
+        console.log("Calculated Total Amount:", total); // Debugging
+        return total;
     };
 
     const fetchFoodList = async () => {
@@ -73,8 +64,47 @@ const StoreContextProvider = (props) => {
     };
 
     const loadCartData = async (token) => {
-        const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } });
-        setCartItems(response.data.cartData);
+        try {
+            const response = await axios.post(url + "/api/cart/get", {}, { headers: { Authorization: `Bearer ${token}` } });
+            
+            // Log the response to understand its structure
+            console.log("Cart Data Response:", response.data);
+            
+            const cartData = response.data.cartData;
+
+            if (cartData && typeof cartData === 'object' && !Array.isArray(cartData)) {
+                const fetchedCartItems = Object.entries(cartData).reduce((acc, [key, item]) => {
+                    acc[key] = {
+                        amount: item.amount,
+                        type: item.type,
+                        price: item.price,
+                        weight: item.weight
+                    };
+                    return acc;
+                }, {});
+                setCartItems(fetchedCartItems);
+            } else {
+                console.error("cartData is not an object:", cartData);
+            }
+        } catch (error) {
+            console.error("Error loading cart data:", error);
+        }
+    };
+
+    const removeFromCart = async (cartKey) => {
+        try {
+            setCartItems(prev => {
+                const updatedItems = { ...prev };
+                delete updatedItems[cartKey];
+                return updatedItems;
+            });
+
+            if (token) {
+                await axios.post(url + "/api/cart/remove", { cartKey }, { headers: { Authorization: `Bearer ${token}` } });
+            }
+        } catch (error) {
+            console.error("Error removing item from cart:", error);
+        }
     };
 
     useEffect(() => {
@@ -97,7 +127,7 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        updateItemQuantity // Include this in the context
+        updateItemQuantity
     };
 
     return (
@@ -108,4 +138,7 @@ const StoreContextProvider = (props) => {
 };
 
 export default StoreContextProvider;
+
+
+
 
