@@ -1,12 +1,10 @@
-.place-order{
+.place-order {
     display: flex;
     align-items: start;
     justify-content: space-between;
     gap: 50px;
-    margin-top: 100px;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-bottom: 10rem;
+    margin: 100px auto 10rem auto; /* Centering the form */
+    width: 75%; /* Setting the width to 75% */
 }
 
 .place-order-left{

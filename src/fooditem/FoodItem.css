@@ -27,7 +27,7 @@
 }
 
 .food-item-name-rating p {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -38,12 +38,12 @@
 .food-item-desc {
     font-weight: 600;
     color: #F48613;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .food-item-price {
     color: rgb(0, 0, 0);
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
     margin: 10px 0px;
 }

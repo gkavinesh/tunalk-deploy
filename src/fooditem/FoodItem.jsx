@@ -4,12 +4,13 @@ import './FoodItem.css';
 import { assets } from '../assets/assets'; // Ensure this import is correct based on your actual file structure
 import { StoreContext } from '../context/StoreContext'; // Correct the import path if needed
 
-const FoodItem = ({ id, name, description }) => { 
+const FoodItem = ({ id, name, description }) => {
     const { cartItems, addToCart, removeFromCart, url, food_list } = useContext(StoreContext);
     const navigate = useNavigate();
 
     const handleCustomizeClick = () => {
-        navigate('/fish-overview');
+        const item = food_list.find((product) => product._id === id);
+        navigate('/fish-overview', { state: { item } });
     };
 
     // Find the item in the food list
@@ -27,28 +28,6 @@ const FoodItem = ({ id, name, description }) => {
                     src={displayImage} 
                     alt={name} 
                 />
-                {!cartItems[id] ? (
-                    <img 
-                        className='add' 
-                        onClick={() => addToCart(id)} 
-                        src={assets.add_icon_white} 
-                        alt='Add to cart' 
-                    />
-                ) : (
-                    <div className='food-item-counter'>
-                        <img 
-                            onClick={() => removeFromCart(id)} 
-                            src={assets.remove_icon_red} 
-                            alt='Remove from cart' 
-                        />
-                        <p>{cartItems[id]}</p>
-                        <img 
-                            onClick={() => addToCart(id)} 
-                            src={assets.add_icon_green} 
-                            alt='Add more' 
-                        />
-                    </div>
-                )}
             </div>
             <div className="food-item-info">
                 <div className="food-item-details">
@@ -76,6 +55,7 @@ const FoodItem = ({ id, name, description }) => {
 }
 
 export default FoodItem;
+
 
 
 

@@ -1,30 +1,46 @@
-.bubu{
-    margin-bottom: 4rem;
-    margin-left: 9rem;
+/* Custom styles for carousel thumbnails and arrows */
+
+.thumbnail-image {
+    width: 80px; /* Adjust width as needed */
+    height: 80px; /* Adjust height as needed */
+    object-fit: cover;
+    border-radius: 8px; /* Optional: for rounded corners */
 }
 
-.bubuish{
-    margin-left: 3rem;
-    margin-top: 4rem;
+.slick-dots {
+    bottom: -40px; /* Adjust position if needed */
 }
 
-.centered-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.slick-dots .slick-active a {
+    opacity: 1; /* Make active dot more visible */
 }
 
-.bubbist{
-    margin-left: -3rem;
+.slick-prev, .slick-next {
+    color: black; /* Change arrow color to black */
+    font-size: 24px; /* Adjust size if needed */
+    z-index: 1; /* Ensure arrows are above other content */
 }
 
-.bubb{
-    margin-right: 9rem;
-    margin-left: 9rem;
-
+.slick-prev {
+    left: 10px; /* Position arrow on the left */
 }
 
-.carousel-2{
-    margin-left: 9rem;
-    margin-right: 9rem;
+.slick-next {
+    right: 10px; /* Position arrow on the right */
 }
+
+/* Ensure dropdown and options are visible */
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    color: #000000;
+}
+
+option {
+    padding: 0.5rem;
+}
+
+

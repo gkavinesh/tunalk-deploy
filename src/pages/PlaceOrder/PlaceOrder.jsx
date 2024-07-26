@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
@@ -24,16 +24,28 @@ const PlaceOrder = () => {
 
   const placeOrder = async (event) => {
     event.preventDefault();
-    let orderItems = [];
-    food_list.forEach((item) => {
-      if (cartItems[item._id]) {
-        let itemInfo = { ...item, quantity: cartItems[item._id] };
-        orderItems.push(itemInfo);
+    
+    // Prepare order items from cart
+    const orderItems = Object.keys(cartItems).map((itemId) => {
+      const item = food_list.find(item => item._id === itemId);
+      if (item) {
+        return {
+          ...item,
+          quantity: cartItems[itemId].amount,
+          type: cartItems[itemId].type,
+          price: cartItems[itemId].price,
+          weight: cartItems[itemId].weight
+        };
       }
-    });
+      return null;
+    }).filter(item => item !== null);
 
-    let orderData = {
-      address: data,
+    const orderData = {
+      address: {
+        ...data,
+        // If you have a separate field for `type`, include it here
+        type: data.type,
+      },
       items: orderItems,
       amount: getTotalCartAmount() + 200,
     };
@@ -100,4 +112,5 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
+
 

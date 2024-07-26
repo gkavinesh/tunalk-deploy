@@ -8,6 +8,9 @@ export default {
       gridTemplateRows: {
         '[auto,auto,1fr]': 'auto auto 1fr',
       },
+      width: {
+        'custom': '75%', // Define a custom width
+      }
     },
   },
   colors: {
