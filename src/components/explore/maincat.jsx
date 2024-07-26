@@ -49,7 +49,7 @@ function SwipeToSlide() {
     className: "center",
     infinite: true,
     centerPadding: "30px",
-    slidesToShow: 10,
+    slidesToShow: 9,
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,

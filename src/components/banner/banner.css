@@ -3,7 +3,7 @@
 /* Base styles */
 
 .banner {
-    width: 80%;
+    width: 75%;
     font-family: "Outfit", sans-serif;
     padding: 7px 20px; /* Adjust padding for smaller screens */
     display: flex;
