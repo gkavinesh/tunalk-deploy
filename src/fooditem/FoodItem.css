@@ -9,6 +9,7 @@
 
 .food-item-image {
     width: 100%;
+    height: 250px;
 }
 
 .food-item-info {
@@ -26,7 +27,7 @@
 }
 
 .food-item-name-rating p {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
 }
 
