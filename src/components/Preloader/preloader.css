@@ -25,8 +25,8 @@
   flex-direction: column; /* Stack elements vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
-  width: 400px; /* Use 100% of the container width */
-  height: 400px; /* Use 100% of the container height */
+  width: 600px; /* Use 100% of the container width */
+  height: 600px; /* Use 100% of the container height */
 }
 
 .logo-loader {
