@@ -41,7 +41,7 @@ const Faq = () => {
         <section className="py-10 bg-white sm:py-16 lg:py-24 ">
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div className="flex justify-center items-center">
-                    <h2 className="text-teal-900 text-5xl font-semibold mb-4">FAQ</h2>
+                    <h2 className="text-teal-500 text-7xl font-semibold mb-3">FAQ</h2>
                 </div>
 
 
@@ -63,7 +63,7 @@ const Faq = () => {
                     ))}
                 </div>
 
-                <p className="text-center text-gray-600 textbase mt-9">Didn’t find the answer you are looking for? <a href="#" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact our support</a></p>
+                <p className="text-center text-gray-600 textbase mt-9">Didn’t find the answer you are looking for? <a href="#footer" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact our support</a></p>
             </div>
         </section>
     );

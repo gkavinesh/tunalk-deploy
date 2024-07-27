@@ -1,6 +1,6 @@
 .list-table-format {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 2fr 0.5fr;
+    grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr 0.5fr; /* Added columns for Edit and Remove */
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
@@ -23,12 +23,7 @@
     padding: 5px 0;
 }
 
-.edit-buttons {
-    display: flex;
-    gap: 10px; /* Space between buttons */
-}
-
-.edit-buttons button {
+.list-table-format button {
     border: 2px solid #01B1A8;
     background-color: transparent;
     color: #01B1A8;
@@ -39,14 +34,14 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.edit-buttons button:hover {
+.list-table-format button:hover {
     background-color: #01B1A8;
     color: #ffffff;
 }
 
 @media (max-width: 600px) {
     .list-table-format {
-        grid-template-columns: 1fr 2fr 1fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr 1fr 1fr; /* Adjust for mobile */
         gap: 15px;
     }
 
@@ -54,9 +49,10 @@
         font-size: 12px;
     }
 
-    .edit-buttons button {
+    .list-table-format button {
         padding: 4px 8px; /* Adjust padding for mobile */
     }
 }
+
 
 

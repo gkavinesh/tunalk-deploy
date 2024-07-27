@@ -147,12 +147,12 @@ const Navbar = ({ setShowLogin }) => {
                         initial={{ x: '100%' }} // Start off-screen to the right
                         animate={{ x: 0 }} // Slide in from the right
                         exit={{ x: '100%' }} // Slide back to the right
-                        transition={{ duration: 1 }} // Animation duration
+                        transition={{ duration: 0.5 }} // Animation duration
                         className="sidebar"
                     >
                         <div className="flex justify-between items-center">
                             <div className="sidebarlogo">
-                                <img src={assets.tunamain} alt='' width={85} height={85} />
+                                <img src={assets.tunamain} alt='' width={90} height={90} />
                             </div>
                         </div>
                         <ul className="menu-list p-4">

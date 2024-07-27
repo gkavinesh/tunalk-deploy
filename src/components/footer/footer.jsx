@@ -184,7 +184,6 @@ const Footer = () => {
               title=""
               className="inline-flex items-center text-base font-semibold text-gray-600 transition-all duration-200 hover:text-blue-600 focus:text-blue-600 mt-7"
             >
-              <a href="tel:077-529-1291">Contact us now at 077-529-1291</a>
             </button>
           </div>
 
@@ -194,86 +193,83 @@ const Footer = () => {
       </div>
       <DragCloseDrawer open={open} setOpen={setOpen}>
         <div className="mx-auto max-w-5xl space-y-4 text-neutral-400">
-          <br></br>
+          <br />
           <h2 className="text-4xl font-bold text-teal-400">
             Privacy Policy & Terms of Condition
           </h2>
+          <h3 className="text-2xl font-bold text-teal-400 mt-6">Terms and Conditions</h3>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima
-            laboriosam quos deleniti veniam est culpa quis nihil enim suscipit
-            nulla aliquid iure optio quaerat deserunt, molestias quasi facere
-            aut quidem reprehenderit maiores.
+            <strong>Introduction</strong><br />
+            Welcome to TunaLK. By using our website, you agree to the following terms and conditions. Please read them carefully.
           </p>
           <p>
-            Laudantium corrupti neque rerum labore tempore sapiente. Quos, nobis
-            dolores. Esse fuga, cupiditate rerum soluta magni numquam nemo
-            aliquid voluptate similique deserunt!
+            <strong>Products and Services</strong><br />
+            We provide high-quality seafood products. All product descriptions, prices, and availability are subject to change without notice.
           </p>
           <p>
-            Rerum inventore provident laboriosam quo facilis nisi voluptatem
-            quam maxime pariatur. Velit reiciendis quasi sit magni numquam quos
-            itaque ratione, fugit adipisci atque est, tenetur officiis explicabo
-            id molestiae aperiam? Expedita quidem inventore magni? Doloremque
-            architecto mollitia, dicta, fugit minima velit explicabo sapiente
-            beatae fugiat accusamus voluptatum, error voluptatem ab asperiores
-            quo modi possimus.
+            <strong>Orders and Payments</strong><br />
+            Orders are processed once payment is confirmed. We accept various payment methods including credit/debit cards and cash on delivery.
           </p>
           <p>
-            Sit laborum molestias ex quisquam molestiae cum fugiat praesentium!
-            Consequatur excepturi quod nemo harum laudantium accusantium nisi
-            odio?
+            <strong>Shipping and Delivery</strong><br />
+            We strive to deliver your products as quickly as possible. Delivery times may vary depending on your location.
           </p>
           <p>
-            Deleniti, animi maiores officiis quos eaque neque voluptas omnis
-            quia error a dolores, pariatur ad obcaecati, vitae nisi perspiciatis
-            fugiat sapiente accusantium. Magnam, a nihil soluta eos vero illo ab
-            sequi, dolores culpa, quia hic?
+            <strong>Returns and Refunds</strong><br />
+            If you are not satisfied with your purchase, please contact us within 1 days for a refund or exchange. The product must be returned in its original condition.
           </p>
           <p>
-            Eos in saepe dignissimos tempore. Laudantium cumque eius, et
-            distinctio illum magnam molestiae doloribus. Fugiat voluptatum
-            necessitatibus vero eligendi quae, similique non debitis qui veniam
-            praesentium rerum labore libero architecto tempore nesciunt est
-            atque animi voluptatibus. Aliquam repellendus provident tempora
-            sequi officia sint voluptates eaque minima suscipit, cum maiores
-            quos possimus. Vero ex porro asperiores voluptas voluptatibus?
+            <strong>Liability</strong><br />
+            TunaLK is not liable for any damages or losses resulting from the use of our website or products.
           </p>
           <p>
-            Debitis eos aut ullam odit fuga. Numquam deleniti libero quas sunt?
-            Exercitationem earum odio aliquam necessitatibus est accusamus
-            consequuntur nisi natus dolore libero voluptatibus odit doloribus
-            laudantium iure, dicta placeat molestias porro quasi amet? Sint,
-            reiciendis tenetur distinctio eaque delectus, maiores, nihil
-            voluptas dolorem necessitatibus consequatur aliquid?
+            <strong>Governing Law</strong><br />
+            These terms are governed by the laws of Sri Lanka. Any disputes will be resolved in the courts of Sri Lanka.
           </p>
           <p>
-            Sunt ex, cum culpa vel odio dicta expedita omnis amet debitis
-            inventore necessitatibus quaerat est molestias delectus. Dolorem,
-            eius? Quae, itaque ipsa incidunt nobis repellendus, sunt dolorum
-            aliquam ad culpa repudiandae impedit omnis, expedita illum voluptas
-            delectus similique ducimus saepe pariatur. Molestias similique quam
-            dolore provident doloremque maiores autem ab blanditiis voluptatum
-            dignissimos culpa sed nesciunt laboriosam, in dicta consectetur.
+            <strong>Changes to Terms</strong><br />
+            We may update these terms from time to time. Your continued use of our website constitutes acceptance of any changes.
           </p>
           <p>
-            Voluptates ea, aspernatur possimus, iusto temporibus non laudantium
-            neque molestias rem tempore eligendi earum nisi dolorum asperiores
-            at rerum!
+            <strong>Contact Us</strong><br />
+            For any questions, please contact us at 077-529-1291.
+          </p>
+          <h3 className="text-2xl font-bold text-teal-400 mt-6">Privacy Policy</h3>
+          <p>
+            <strong>Introduction</strong><br />
+            At TunaLK, we value your privacy. This policy outlines how we collect, use, and protect your personal information.
           </p>
           <p>
-            Eaque totam error quia, ut eius perspiciatis unde velit temporibus
-            mollitia. Aperiam ad tempora aliquam est molestias commodi
-            cupiditate quos impedit nostrum accusantium quo fugit eveniet
-            temporibus quam cumque autem porro, id ut debitis itaque et nemo
-            exercitationem voluptatibus? Aspernatur corrupti quas iusto dolores
-            nemo pariatur debitis quae dolorem! Nemo, eius? Dolorem quam nemo
-            magnam ratione deserunt aperiam. Voluptatum ipsa, molestias
-            aspernatur quas distinctio numquam qui laboriosam id ab totam
-            commodi laborum tempora error natus vitae eligendi reiciendis
-            maiores ex illo? Tempore at animi earum vitae enim sunt,
-            dignissimos, mollitia corrupti officia obcaecati error iure vero
-            repudiandae nihil magni molestias quibusdam dolorem aperiam modi.
-            Harum, fugit.
+            <strong>Information Collection</strong><br />
+            We collect information you provide directly, such as your name, email address, and payment details. We also collect information about your interactions with our website.
+          </p>
+          <p>
+            <strong>Use of Information</strong><br />
+            We use your information to process orders, communicate with you, and improve our services. We may also use your information for marketing purposes with your consent.
+          </p>
+          <p>
+            <strong>Data Protection</strong><br />
+            We implement security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.
+          </p>
+          <p>
+            <strong>Cookies</strong><br />
+            Our website uses cookies to enhance your browsing experience. You can control cookie settings through your browser.
+          </p>
+          <p>
+            <strong>Third-Party Services</strong><br />
+            We may share your information with third-party service providers to perform functions on our behalf, such as payment processing and delivery.
+          </p>
+          <p>
+            <strong>Your Rights</strong><br />
+            You have the right to access, correct, or delete your personal information. Please contact us if you wish to exercise these rights.
+          </p>
+          <p>
+            <strong>Changes to Privacy Policy</strong><br />
+            We may update this policy from time to time. Your continued use of our website constitutes acceptance of any changes.
+          </p>
+          <p>
+            <strong>Contact Us</strong><br />
+            If you have any questions about this policy, please contact us at 077-529-1291.
           </p>
         </div>
       </DragCloseDrawer>

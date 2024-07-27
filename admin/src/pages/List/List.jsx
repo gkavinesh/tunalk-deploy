@@ -73,7 +73,7 @@ const List = ({ url }) => {
   }, []);
 
   return (
-    <div className='list add flex-col'>
+    <div className="list add flex-col">
       <p>Product List</p>
       <div className="list-table">
         <div className="list-table-format title">
@@ -81,7 +81,8 @@ const List = ({ url }) => {
           <b>Name</b>
           <b>Category</b>
           <b>Types and Prices</b>
-          <b>Action</b>
+          <b>Edit</b>
+          <b>Remove</b>
         </div>
         {list.map((item, index) => (
           <div key={index} className='list-table-format'>
@@ -109,22 +110,24 @@ const List = ({ url }) => {
                 ))
               )}
             </div>
-            {item._id === editing ? (
-              <div>
+            <div>
+              {item._id === editing ? (
                 <button onClick={() => savePrices(item._id)}>Save</button>
-                <button onClick={() => setEditing(null)}>Cancel</button>
-              </div>
-            ) : (
-              <div>
+              ) : (
                 <button onClick={() => startEditing(item)}>Edit Prices</button>
+              )}
+            </div>
+            <div>
+              {item._id !== editing && (
                 <button onClick={() => removeProduct(item._id)}>❌</button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         ))}
       </div>
       <ToastContainer />
     </div>
+
   );
 };
 
