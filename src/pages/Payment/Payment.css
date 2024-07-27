@@ -1,0 +1,74 @@
+.payment {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .image-upload-section {
+    text-align: center;
+  }
+
+  .image-upload-section p{
+    font-size: 14px;
+    margin-bottom: 2rem;
+  }
+  
+  .image-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .receipt-preview {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    background-color: #029A87;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .submit-btn:hover:enabled {
+    background-color: #45a049;
+  }
+  
+  .upload_area {
+    max-width: 100px;
+    max-height: 100px;
+    opacity: 0.7;
+  }
+  
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  

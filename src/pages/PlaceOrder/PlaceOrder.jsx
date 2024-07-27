@@ -1,10 +1,15 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 
+// Import images for payment methods
+import { assets } from '../../assets/assets';
+
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
+  const navigate = useNavigate(); // For navigation
 
   const [data, setData] = useState({
     firstName: "",
@@ -13,7 +18,8 @@ const PlaceOrder = () => {
     type: "",
     postcode: "",
     email: "",
-    phone: ""
+    phone: "",
+    paymentMethod: "" // New state for payment method
   });
 
   const onChangeHandler = (event) => {
@@ -24,7 +30,8 @@ const PlaceOrder = () => {
 
   const placeOrder = async (event) => {
     event.preventDefault();
-  
+    console.log('Placing order with data:', data);
+
     const orderItems = Object.keys(cartItems).map((key) => {
       const [itemId, type] = key.split('-');
       const item = food_list.find(food => food._id === itemId);
@@ -40,9 +47,9 @@ const PlaceOrder = () => {
       }
       return null;
     }).filter(item => item !== null);
-  
+
     const orderData = {
-      userId: token.userId,
+      userId: token.userId, // Make sure token.userId is available
       address: {
         address: data.address,
         type: data.type,
@@ -55,23 +62,32 @@ const PlaceOrder = () => {
       email: data.email,
       phone: data.phone
     };
-  
+
+    console.log('Order data to be sent:', orderData);
+
     try {
-      let response = await axios.post(url + '/api/order/place', orderData, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      if (data.paymentMethod === 'bankTransfer') {
+        navigate('/payment', { state: { orderData } });
+      } else if (data.paymentMethod === 'cashOnDelivery') {
+        navigate('/myorders');
+      } else if (data.paymentMethod === 'onePay') {
+        const response = await axios.post(`${url}/api/order/place`, orderData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        console.log('Response from backend:', response.data);
+
+        if (response.data && response.data.session_url) {
+          window.location.replace(response.data.session_url);
+        } else {
+          console.error('No session URL found in response.');
         }
-      });
-  
-      if (response.data.success) {
-        const { session_url } = response.data;
-        window.location.replace(session_url);
-      } else {
-        alert("Error making payment");
       }
     } catch (error) {
-      console.error("Error placing order:", error);
-      alert("Error placing order");
+      console.error('Error placing order:', error);
+      // Optionally, you can show a user-friendly error message here
     }
   };
 
@@ -92,6 +108,46 @@ const PlaceOrder = () => {
         <input required name='phone' onChange={onChangeHandler} value={data.phone} type='text' placeholder='Phone' />
       </div>
       <div className="place-order-right">
+        <div className="payment-method">
+          <p className='title'>Payment Method</p>
+          <div className="payment-options">
+            <label>
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="onePay"
+                onChange={onChangeHandler}
+                checked={data.paymentMethod === 'onePay'}
+              />
+              OnePay
+              <img src={assets.card1} alt="Bank Transfer" />
+              <img src={assets.card2} alt="Bank Transfer" />
+              <img src={assets.card3} alt="Bank Transfer" />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="bankTransfer"
+                onChange={onChangeHandler}
+                checked={data.paymentMethod === 'bankTransfer'}
+              />
+              Bank Transfer
+              <img src={assets.bank} alt="Bank Transfer" />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="paymentMethod"
+                value="cashOnDelivery"
+                onChange={onChangeHandler}
+                checked={data.paymentMethod === 'cashOnDelivery'}
+              />
+              Cash on Delivery
+              <img src={assets.cod} alt="Cash on Delivery" />
+            </label>
+          </div>
+        </div>
         <div className="cart-total">
           <h2>Cart Total</h2>
           <div>
@@ -118,6 +174,10 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
+
+
+
+
 
 
 

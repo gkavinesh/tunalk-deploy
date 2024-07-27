@@ -11,6 +11,8 @@ import Banner from './components/banner/banner'
 import FAQ from './pages/FAQ/faq'
 import Fish from './pages/Fish/Fish'
 import FishDetails from './pages/Fish/FishDetails'
+import Orders from './pages/Orders/Orders'
+import Payment from './pages/Payment/Payment'
 
 const App = () => {
 
@@ -29,6 +31,8 @@ const App = () => {
         <Route path='/fish-overview' element={<FishDetails/>} />
         <Route path='/faq' element={<FAQ/>} />
         <Route path='/delivery-area' element={<DeliveryArea/>} />
+        <Route path='/payment' element={<Payment/>} />
+        <Route path='/myorders' element={<Orders/>} />
       </Routes>
     </div>
     <Footer/>

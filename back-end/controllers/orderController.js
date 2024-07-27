@@ -17,19 +17,17 @@ const placeOrder = async (req, res) => {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        // Create a new order
+        // Create and save a new order
         const newOrder = new orderModel({
-            userId: userId,
-            address: address,
-            items: items,
-            total: total,
-            firstName:firstName,
-            lastName:lastName,
-            email:email,
-            phone:phone
+            userId,
+            address,
+            items,
+            total,
+            firstName,
+            lastName,
+            email,
+            phone
         });
-
-        // Save the new order
         await newOrder.save();
 
         // Clear the user's cart
@@ -37,14 +35,14 @@ const placeOrder = async (req, res) => {
 
         // Transaction details for Onepay
         const transactionDetails = {
-            amount: total, // Total amount including delivery fee
+            amount: total,
             app_id: onepayAppId,
             reference: newOrder._id.toString(),
             customer_first_name: firstName,
             customer_last_name: lastName,
             customer_phone_number: phone,
             customer_email: email,
-            transaction_redirect_url: `${frontend_url}/verify`, // Ensure this matches your frontend route
+            transaction_redirect_url: `${frontend_url}/verify`,
             currency: "LKR"
         };
 
@@ -53,27 +51,27 @@ const placeOrder = async (req, res) => {
         const hash = crypto.createHash('sha256').update(hashString).digest('hex');
 
         // Request to Onepay API
-        const response = await axios.get(`${onepayBaseUrl}${hash}`, {
+        const response = await axios.post(`${onepayBaseUrl}${hash}`, transactionDetails, {
             headers: {
                 'Authorization': onepayToken,
                 'Content-Type': 'application/json'
             }
         });
 
-        // Handle response from Onepay API
-        if (response.data.status === 1000) {
+        // Handle the response from Onepay
+        if (response.data && response.data.data && response.data.data.gateway && response.data.data.gateway.redirect_url) {
             res.json({ success: true, session_url: response.data.data.gateway.redirect_url });
         } else {
-            throw new Error(response.data.message);
+            res.status(500).json({ success: false, message: "Failed to get redirect URL from Onepay" });
         }
-
     } catch (error) {
-        console.error("Error creating order:", error);
-        res.status(500).json({ success: false, message: error.message });
+        console.error("Error processing payment:", error);
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
 
 export { placeOrder };
+
 
 
 

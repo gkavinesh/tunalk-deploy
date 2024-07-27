@@ -7,6 +7,7 @@ import productRouter from "./routes/productRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+import paymentRouter from './routes/paymentRoute.js';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -28,6 +29,8 @@ app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
+app.use('/api/payment', paymentRouter);
+app.use('/receipt', express.static('receipts'));
 
 app.get('/', (req, res) => {
     res.send('API Working');

@@ -40,6 +40,7 @@
 
 /* Style for the right side of the form */
 .place-order-right {
+    margin-top: -4rem;
     width: 100%;
     max-width: 500px; /* Ensuring a maximum width */
 }
@@ -162,4 +163,53 @@
     transform: scale(0.98); /* Slightly smaller button when clicked */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
 }
+
+/* Payment method section styling */
+.payment-method {
+    margin-top: 30px;
+    background-color: #f2f2f2; /* Light grey background for the section */
+    padding: 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Title styling */
+.payment-method .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #11484D;
+    margin-bottom: 20px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap for better spacing */
+}
+
+/* Style for payment method labels with images */
+.payment-options label {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 15px; /* Space between the radio button and text */
+    font-size: 16px;
+    padding: 10px; /* Padding around each option */
+    border-radius: 8px; /* Rounded corners for the options */
+    background-color: #ffffff; /* White background for each option */
+    border: 1px solid #c5c5c5; /* Border for the options */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+.payment-options label:hover {
+    background-color: #e6f9f0; /* Light teal background on hover */
+    border-color: #01B1A8; /* Teal border on hover */
+}
+
+.payment-options img {
+    width: 40px; /* Size of the images */
+    height: 40px; /* Size of the images */
+}
+
+
 
