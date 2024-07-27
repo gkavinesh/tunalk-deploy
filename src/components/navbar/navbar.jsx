@@ -147,7 +147,7 @@ const Navbar = ({ setShowLogin }) => {
                         initial={{ x: '100%' }} // Start off-screen to the right
                         animate={{ x: 0 }} // Slide in from the right
                         exit={{ x: '100%' }} // Slide back to the right
-                        transition={{ duration: 0.5 }} // Animation duration
+                        transition={{ duration: 1 }} // Animation duration
                         className="sidebar"
                     >
                         <div className="flex justify-between items-center">
