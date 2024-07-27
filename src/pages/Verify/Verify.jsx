@@ -13,7 +13,6 @@ const Verify = () => {
   return (
     <div className='verify'>
       
-      
     </div>
   )
 }

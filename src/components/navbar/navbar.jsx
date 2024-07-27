@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './navbar.css';
 import { assets } from '../../assets/assets';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import { MotionConfig, motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
 
-const AnimatedHamburgerButton = () => {
-    const [active, setActive] = useState(false);
+const AnimatedHamburgerButton = ({ isActive }) => {
     return (
         <MotionConfig
             transition={{
@@ -17,8 +16,7 @@ const AnimatedHamburgerButton = () => {
         >
             <motion.button
                 initial={false}
-                animate={active ? 'open' : 'closed'}
-                onClick={() => setActive((pv) => !pv)}
+                animate={isActive ? 'open' : 'closed'}
                 className="relative h-12 w-12 rounded-full bg-white/0 transition-colors hover:bg-white/20"
             >
                 <motion.span
@@ -44,10 +42,6 @@ const AnimatedHamburgerButton = () => {
             </motion.button>
         </MotionConfig>
     );
-};
-
-const goToAboutSection = () => {
-    navigate('/#about');
 };
 
 const VARIANTS = {
@@ -84,14 +78,18 @@ const VARIANTS = {
 };
 
 const Navbar = ({ setShowLogin }) => {
-    const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+    const { getTotalCartAmount, token, setToken, clearCart } = useContext(StoreContext);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [loading, setLoading] = useState(false); // Add loading state
 
     const navigate = useNavigate();
 
-    const logout = () => {
+    const logout = async () => {
+        setLoading(true); // Show preloader
         localStorage.removeItem('token');
         setToken('');
+        await clearCart(); // Clear cart items on logout
+        setLoading(false); // Hide preloader
         navigate('/');
     };
 
@@ -130,13 +128,13 @@ const Navbar = ({ setShowLogin }) => {
                         </div>
                     )}
                     <div className="navbar-search-icon">
-                        <Link to="/cart">
+                        <Link to="/cart" className="cart-link">
                             <img src={assets.basket_icon} alt="" />
                         </Link>
                         <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
                     </div>
                     <div className="navbar-hamburger" onClick={toggleSidebar}>
-                        <AnimatedHamburgerButton />
+                        <AnimatedHamburgerButton isActive={isSidebarOpen} />
                     </div>
                 </div>
             </div>
@@ -144,15 +142,20 @@ const Navbar = ({ setShowLogin }) => {
             <AnimatePresence>
                 {isSidebarOpen && (
                     <motion.div
-                        initial={{ x: '100%' }} // Start off-screen to the right
-                        animate={{ x: 0 }} // Slide in from the right
-                        exit={{ x: '100%' }} // Slide back to the right
-                        transition={{ duration: 0.5 }} // Animation duration
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ duration: 0.5 }}
                         className="sidebar"
                     >
-                        <div className="flex justify-between items-center">
-                            <div className="sidebarlogo">
-                                <img src={assets.tunamain} alt='' width={90} height={90} />
+                        <div className="sidebar-header">
+                            <button className="sidebar-close" onClick={toggleSidebar}>
+                                <MdClose /> 
+                            </button>
+                            <div className="flex justify-between items-center">
+                                <div className="sidebarlogo">
+                                    <img src={assets.tunamain} alt='' width={90} height={90} />
+                                </div>
                             </div>
                         </div>
                         <ul className="menu-list p-4">
@@ -175,16 +178,27 @@ const Navbar = ({ setShowLogin }) => {
                         <div className="sidebar-bottom">
                             <a href="https://ibb.co/Pc4sjdb" className="call-button" target="_blank" rel="noopener noreferrer">Download our App</a>
                             <a href="tel:077-529-1291" className="call-button-2" target="_blank" rel="noopener noreferrer">Contact Us</a>
-
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {loading && (
+                <div className="preloader">
+                    <div className="spinner"></div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default Navbar;
+
+
+
+
+
+
 
 
 

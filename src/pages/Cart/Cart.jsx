@@ -30,36 +30,37 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item) => {
-          const itemKeys = Object.keys(cartItems).filter(key => key.startsWith(item._id));
-          return itemKeys.map((key) => {
-            const { amount, type, price, weight } = cartItems[key];
-            const firstImage = item.images && item.images.length > 0 ? item.images[0] : 'default-image-url'; // Replace with a default image URL if needed
+        {Object.keys(cartItems).map((cartKey) => {
+          const { amount, type, price, weight } = cartItems[cartKey];
+          const itemId = cartKey.split('-')[0];
+          const item = food_list.find(item => item._id === itemId);
+          if (!item) return null;
 
-            return (
-              <div key={key}>
-                <div className='cart-items-title cart-items-item'>
-                  <img src={url + "/images/" + firstImage} alt={item.name} />
-                  <p>{item.name}</p>
-                  <p>{type}</p>
-                  <p>{weight} kg</p>
-                  <p>LKR {price}</p>
-                  <input
-                    type='number'
-                    min='0'
-                    value={amount}
-                    onChange={(e) => handleQuantityChange(item._id, type, e)} // Update quantity when changed
-                    className='quantity-input'
-                  />
-                  <p>LKR {price * amount}</p> {/* Display updated total price */}
-                  <p onClick={() => removeFromCart(key)} className='cross'>
-                    <FaTrash /> {/* Use the Trash icon */}
-                  </p>
-                </div>
-                <hr />
+          const firstImage = item.images && item.images.length > 0 ? item.images[0] : 'default-image-url'; // Replace with a default image URL if needed
+
+          return (
+            <div key={cartKey}>
+              <div className='cart-items-title cart-items-item'>
+                <img src={url + "/images/" + firstImage} alt={item.name} />
+                <p>{item.name}</p>
+                <p>{type}</p>
+                <p>{weight} kg</p>
+                <p>LKR {price}</p>
+                <input
+                  type='number'
+                  min='0'
+                  value={amount}
+                  onChange={(e) => handleQuantityChange(itemId, type, e)} // Update quantity when changed
+                  className='quantity-input'
+                />
+                <p>LKR {price * amount}</p> {/* Display updated total price */}
+                <p onClick={() => removeFromCart(cartKey)} className='cross'>
+                  <FaTrash /> {/* Use the Trash icon */}
+                </p>
               </div>
-            );
-          });
+              <hr />
+            </div>
+          );
         })}
       </div>
       <div className="cart-bottom">
@@ -98,6 +99,8 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
 
 
 
