@@ -40,9 +40,10 @@ const Faq = () => {
     return (
         <section className="py-10 bg-white sm:py-16 lg:py-24 ">
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-                <div className="bubbly">
-                    <h2>FAQ</h2>
+                <div className="flex justify-center items-center">
+                    <h2 className="text-teal-900 text-5xl font-semibold mb-4">FAQ</h2>
                 </div>
+
 
                 <div className="max-w-3xl mx-auto mt-8 space-y-4 md:mt-16">
                     {faq.map((item, index) => (

@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
 .navbar {
     width: 100%;
     font-family: "Outfit", sans-serif;
-    padding: 8px 20px; /* Adjust padding for smaller screens */
+    padding: 5px 20px; /* Adjust padding for smaller screens */
     display: flex;
     justify-content: center; /* Center the content */
     background: linear-gradient(to right, #048676, #00b6a1);
@@ -59,7 +58,7 @@
     border: 1px solid rgba(255, 255, 255, 0.463);
 }
 
-.navbar-button:hover{
+.navbar-button:hover {
     background-color: rgba(255, 255, 255, 0.792);
     color: #000000;
 }
@@ -75,7 +74,6 @@
     margin-right: -2rem;
 }
 
-
 .navbar-search-icon {
     display: flex;
     align-items: center; /* Center items vertically */
@@ -83,9 +81,8 @@
     position: relative;
     font-size: 30px;
     margin-left: 1rem;
-    margin-right: 1 rem;
+    margin-right: 1rem;
 }
-
 
 .navbar-search-icon .dot {
     position: absolute;
@@ -106,174 +103,117 @@
     margin-right: 20px; /* Adjust spacing between icon and text */
 }
 
+/* Sidebar Styles */
 .sidebar {
     position: fixed;
     top: 0;
-    left: 300px;
-    width: 250px; /* Adjust width as needed */
+    right: 0; /* Position the sidebar on the right side */
+    width: 200px; /* Adjust width as needed */
     height: 100%;
-    background-color: #fff; /* Adjust background color as needed */
-    box-shadow: -2px 0 5px rgba(0,0,0,0.3); /* Optional shadow for better visual */
-    overflow-y: auto;
-    transform: translateX(100%); /* Start hidden off-screen */
+    background-color: #fff; /* Background color */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Shadow for better visual */
+    overflow: hidden; /* Hide scrollbars */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    transform: translateX(100%); /* Start hidden off-screen to the right */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
 }
-
 
 .sidebar.open {
     transform: translateX(0); /* Slide in when open */
 }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 20px;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-}
-
-.navbar-hamburger {
+/* Sidebar Logo Styles */
+.sidebarlogo {
+    background: #fff; /* White background */
     display: flex;
-    align-items: center;
-    cursor: pointer;
-    color: white;
-}
-
-.navbar-hamburger:hover {
-    opacity: 0.7;
-}
-
-.back {
-    position: relative;
-  }
-  
- 
-  
-  
-  .navbar-hamburger {
-    cursor: pointer;
-  }
-  
-  .dot {
-    width: 8px;
-    height: 8px;
-    background-color: red;
-    border-radius: 50%;
-    margin-left: 4px;
-  }
-
-  .sidebarlogo {
-    background:linear-gradient(to right, #048676, #00b6a1);
-    display: flex;
-    justify-content: flex-start; /* Aligns content to the left */
-    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
     width: 100%;
-    height: 8vh;
-    padding-left: 1.2rem; /* Adds padding to ensure the content isn't flush against the edge */
+    height: 13.7vh; /* Adjust height as needed */
+    padding: 0 1.2rem; /* Padding on sides */
+    border-bottom: 2px solid #00b6a1; /* Bottom border with color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted effect */
 }
 
-.sidebarlogo h2 {
-    margin-top: 0; /* Reset margin-top if necessary */
-    text-align: left;
-    margin: 0; /* Ensure no margin around the text */
-    color: white;
-    font-size: 20px;
-    font-family: "Outfit", sans-serif;
-}
-  
-
-  .icons{
-    display: flex;
-    gap: 60px;
-    margin-bottom: 4rem;
-  }
-
-  .icons .menu-icon{
-    font-size: 30px;
-    right: 0;
-  }
-
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px; /* Adjust the width as needed */
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-
+/* Main Content Area */
 .menu-list {
-    flex-grow: 1;
+    flex-grow: 1; /* Take up available space */
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
+/* Bottom Container */
+.sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between buttons */
+    padding: 16px; /* Padding around the buttons */
+}
+
+/* Icons Styles */
 .icons {
     margin-bottom: 16px;
 }
 
 .icons a {
     text-decoration: none;
-    color: #000;
+    color: #333; /* Darker color for better readability */
     font-size: 18px;
+    display: block; /* Block display for better spacing */
+    padding: 10px; /* Padding for clickable area */
+    border-radius: 4px; /* Rounded corners for the items */
+    transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+}
+
+.icons a:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    color: #00b6a1; /* Change text color on hover */
+}
+
+/* Call Button Styles */
+.call-button, .call-button-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transform: scale(1.05);
 }
 
 .call-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F48613;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    padding: 15px;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    font-size: 18px;
-    transition: transform 0.2s ease-in-out;
+    background-color: #F48613; /* Orange background */
+    color: #fff; /* White text */
 }
 
 .call-button:hover {
-    transform: scale(1.05); /* Slightly increase the size to create a pop-out effect */
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
 }
 
 .call-button-2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:#048676;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    padding: 15px;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    font-size: 18px;
-    transition: transform 0.2s ease-in-out;
+    background: #048676; /* Teal background */
+    color: #fff; /* White text */
 }
 
 .call-button-2:hover {
-    transform: scale(1.05); /* Slightly increase the size to create a pop-out effect */
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
 }
+
 
 /* Styles for the profile section in the navbar */
 .navbar-profile {
     position: relative;
 }
 
-.navbar-profile img{
+.navbar-profile img {
     width: 20px;
 }
 
@@ -303,11 +243,11 @@
     cursor: pointer;
 }
 
-.nav-profile-dropdown img{
+.nav-profile-dropdown img {
     width: 20px;
 }
 
-.nav-profile-dropdown li:hover{
+.nav-profile-dropdown li:hover {
     color: #00b6a1;
 }
 
@@ -316,7 +256,7 @@
     display: flex;
 }
 
-
+/* Responsive styles */
 @media (max-width: 1050px) {
     .navbar .logo {
         width: 100px;
@@ -367,34 +307,32 @@
         margin-left: 0.2rem;
     }
 
-
     .navbar-right {
         margin-right: 1rem;
         gap: 20px; /* Adjust gap */
     }
 
-    .navbar-button-2{
+    .navbar-button-2 {
         display: none;
     }
 
-    .navbar-button{
+    .navbar-button {
         font-size: 16px;
     }
 
-    .navbar-search-icon{
+    .navbar-search-icon {
         font-size: 14px;
-
     }
 
     .hide-text {
         font-size: 15px;
     }
 
-    .navbar-cart-text{
+    .navbar-cart-text {
         display: none;
     }
-
 }
+
 
 
 

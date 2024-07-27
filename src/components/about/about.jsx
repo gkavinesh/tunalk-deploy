@@ -53,7 +53,7 @@ const App = () => {
 
   return (
     <div>
-      <div className="wrapper" ref={wrapperRef} >
+      <div className="wrapper" ref={wrapperRef} id="about">
         <div className="tunabubu">
           <div className="content">
             <section className="section hero" ref={heroSectionRef}>

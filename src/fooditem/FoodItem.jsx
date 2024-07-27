@@ -46,7 +46,7 @@ const FoodItem = ({ id, name, description }) => {
                         className='customize-button' 
                         onClick={handleCustomizeClick}
                     >
-                        More Details
+                        Customize
                     </button>
                 </div>
             </div>
