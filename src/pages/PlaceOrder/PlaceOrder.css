@@ -10,6 +10,7 @@
 
 /* Style for the left side of the form */
 .place-order-left {
+    margin-top: -2rem;
     width: 600px;
 }
 
