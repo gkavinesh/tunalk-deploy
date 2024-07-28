@@ -52,12 +52,12 @@ const ProductPage = () => {
     }
 
     return (
-        <div className='flex flex-col min-h-screen bg-gray-100'>
+        <div className='flex flex-col min-h-screen bg-white'>
             {/* Categories Component */}
             <Categories />
 
             {/* Product Container */}
-            <div className='w-11/12 md:w-9/12 p-8 bg-white rounded-lg shadow-lg mt-6 mx-auto'>
+            <div className='w-11/12 md:w-9/12 p-8 bg-gray-100 rounded-lg shadow-lg mt-6 mx-auto'>
                 <div className='flex flex-col lg:flex-row gap-16 lg:items-center'>
                     <div className='flex flex-col gap-6 lg:w-2/4'>
                         {/* Active Image */}
@@ -158,6 +158,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <br></br>
 
             {/* Login Popup */}
             {showLogin && <LoginPopup setShowLogin={setShowLogin} />}

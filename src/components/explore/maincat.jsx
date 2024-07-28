@@ -68,7 +68,7 @@ function SwipeToSlide() {
       {
         breakpoint: 768, // Mobile breakpoint
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
         }
       }
     ]

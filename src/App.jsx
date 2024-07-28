@@ -15,6 +15,7 @@ import Orders from './pages/Orders/Orders';
 import Payment from './pages/Payment/Payment';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import Preloader from './components/Preloader/preloader';
+import Verify from './pages/Verify/Verify';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -51,6 +52,7 @@ const App = () => {
           <Route path='/delivery-area' element={<DeliveryArea />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/myorders' element={<Orders />} />
+          <Route path='/verify' element={<Verify />} />
         </Routes>
       </div>
       <Footer />

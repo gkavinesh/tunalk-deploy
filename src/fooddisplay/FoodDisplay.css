@@ -46,6 +46,10 @@
 }
 
 @media (max-width: 480px) {
+    .food-display{
+        margin-right: auto;
+        margin-left: auto;
+    }
     .food-display h2 {
         font-size: max(8vw, 18px); /* Further adjust font size for smaller screens */
     }
