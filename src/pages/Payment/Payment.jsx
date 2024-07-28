@@ -85,15 +85,12 @@ const Payment = () => {
     <div className="payment">
       <form className="payment-form" onSubmit={handleSubmit}>
         <div className="order-summary">
-          <h3>Order Summary</h3>
+          <h3>Your Details</h3>
           <p>
             <b>Name:</b> {orderData?.firstName} {orderData?.lastName}
           </p>
           <p>
             <b>Address:</b> {orderData?.address.address}, {orderData?.address.type}, {orderData?.address.postcode}
-          </p>
-          <p>
-            <b>Email:</b> {orderData?.email}
           </p>
           <p>
             <b>Phone:</b> {orderData?.phone}

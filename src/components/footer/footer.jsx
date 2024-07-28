@@ -98,7 +98,7 @@ const Footer = () => {
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-            <img className="w-auto h-9 image" src={assets.tuna} alt="" />
+            <Link to="/"><img className="w-auto h-9 image" src={assets.tuna} alt="" /></Link>
 
             <p className="text-base leading-relaxed text-gray-600 mt-7 cub">Tunalk provides the finest fresh seafood, sourced daily for unmatched freshness and taste. From shrimp to fish fillets, trust Tunalk for quality and excellence in every bite.</p>
 
@@ -134,13 +134,13 @@ const Footer = () => {
             <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Shop</p>
             <ul className="mt-6 space-y-4">
               <li>
-                <a href="#about" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
+                <a href="#about" title="" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600"> About </a>
               </li>
               <li>
-                <a href="#Category" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Products </a>
+                <a href="#Category" title="" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600"> Products </a>
               </li>
               <li>
-                <a href="#why" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Why Tuna LK </a>
+                <a href="#why" title="" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600"> Why Tuna LK </a>
               </li>
             </ul>
           </div>
@@ -148,13 +148,13 @@ const Footer = () => {
             <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
             <ul className="mt-6 space-y-4">
               <li>
-                <Link to="/delivery-area" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Areas </Link>
+                <Link to="/delivery-area" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600"> Delivery Areas </Link>
               </li>
               <li>
-                <Link to="/faq" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> FAQ </Link>
+                <Link to="/faq" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600"> FAQ </Link>
               </li>
               <li>
-                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600" onClick={() => setOpen(true)}> Privacy Policy </a>
+                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-teal-600 focus:text-blue-600" onClick={() => setOpen(true)}> Privacy Policy </a>
               </li>
             </ul>
           </div>

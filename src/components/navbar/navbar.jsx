@@ -153,14 +153,14 @@ const Navbar = ({ setShowLogin }) => {
                         className="sidebar"
                     >
                         <div className="sidebar-header">
+                            <div className="flex justify-between items-center">
+                                <div className="sidebarlogo">
+                                    <img src={assets.tunamain} alt=''/>
+                                </div>
+                            </div>
                             <button className="sidebar-close" onClick={toggleSidebar}>
                                 <MdClose /> 
                             </button>
-                            <div className="flex justify-between items-center">
-                                <div className="sidebarlogo">
-                                    <img src={assets.tunamain} alt='' width={90} height={90} />
-                                </div>
-                            </div>
                         </div>
                         <ul className="menu-list p-4">
                             <li className="icons">
@@ -172,7 +172,7 @@ const Navbar = ({ setShowLogin }) => {
                             </li>
                             <br />
                             <li className="icons">
-                                <Link to="/contact">Contact</Link>
+                                <Link to="/delivery-area">Delivery Areas</Link>
                             </li>
                             <br />
                             <li className="icons">

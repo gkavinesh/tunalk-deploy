@@ -1,5 +1,5 @@
 import paymentModel from '../models/paymentModel.js';
-import Payment from '../models/paymentModel.js';
+import orderModel from '../models/orderModel.js';
 
 // Handle payment confirmation
 const confirmPayment = async (req, res) => {
@@ -32,6 +32,7 @@ const confirmPayment = async (req, res) => {
         res.status(500).json({ success: false, message: "Error confirming payment" });
     }
 };
+
 
 export { confirmPayment };
 

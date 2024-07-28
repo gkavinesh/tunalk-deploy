@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets';
-import { useState, useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,14 +10,14 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const LoginPopup = ({ setShowLogin }) => {
   const { url, setToken } = useContext(StoreContext);
 
-  const [currentState, setCurrentState] = useState('Login');
+  const [currentState, setCurrentState] = useState('Login'); // Determine if user is logging in or registering
   const [data, setData] = useState({
     name: '',
     email: '',
     password: '',
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -33,6 +32,8 @@ const LoginPopup = ({ setShowLogin }) => {
   const onLogin = async (event) => {
     event.preventDefault();
     let newUrl = url;
+
+    // Determine API endpoint based on current state
     if (currentState === 'Login') {
       newUrl += '/api/user/login';
     } else {
@@ -45,24 +46,32 @@ const LoginPopup = ({ setShowLogin }) => {
       if (response.data.success) {
         setToken(response.data.token);
         localStorage.setItem('token', response.data.token);
-        setShowLogin(false);
 
         // Display success message
-        toast.success('Logged in successfully!');
+        toast.success('Logged in successfully!', {
+          autoClose: 3000, // Close toast after 3 seconds
+          onClose: () => setShowLogin(false), // Close the popup after the toast disappears
+        });
+
       } else {
         // Show error message as toast notification
-        toast.error(response.data.message);
+        toast.error(response.data.message, {
+          autoClose: 5000, // Keep error toast open longer
+        });
       }
     } catch (error) {
-      toast.error('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.', {
+        autoClose: 5000, // Keep error toast open longer
+      });
     }
   };
 
   return (
     <div className="login-popup">
+      {/* Place the ToastContainer inside the popup */}
       <ToastContainer
-        position="bottom-right" // Set the toast position to bottom right
-        autoClose={5000} // Automatically close after 5 seconds
+        position="top-center" // Set the toast position to top-center of the popup
+        autoClose={3000} // Automatically close after 3 seconds
         hideProgressBar={false} // Show progress bar
         newestOnTop={false} // Newest toast at the top
         closeOnClick // Close the toast when clicked
@@ -70,6 +79,7 @@ const LoginPopup = ({ setShowLogin }) => {
         pauseOnFocusLoss // Pause toast when window loses focus
         draggable // Allow toast to be draggable
         pauseOnHover // Pause toast on hover
+        style={{ zIndex: 1000 }} // Ensure the toast appears above other elements
       />
       <form onSubmit={onLogin} className="login-popup-container">
         <div className="login-popup-title">
@@ -119,7 +129,6 @@ const LoginPopup = ({ setShowLogin }) => {
           </div>
         </div>
         <button type="submit" className="final-btn">
-          {' '}
           {currentState === 'Sign Up' ? 'Create Account' : 'Login'}
         </button>
         <div className="login-popup-condition">
@@ -143,6 +152,8 @@ const LoginPopup = ({ setShowLogin }) => {
 };
 
 export default LoginPopup;
+
+
 
 
 

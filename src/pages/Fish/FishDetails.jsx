@@ -4,7 +4,8 @@ import { StoreContext } from '../../context/StoreContext';
 import Categories from '../../components/explore/maincat';
 import LoginPopup from '../../components/LoginPopup/LoginPopup'; // Adjust the import path if needed
 import Preloader from '../../components/preloadersub/preloader';
-import { toast } from 'react-toastify'; // Import toast
+import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer along with toast
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for styling
 
 const ProductPage = () => {
     const { state } = useLocation();
@@ -61,7 +62,7 @@ const ProductPage = () => {
             // If the second type is selected, use the third image
             setActiveImage(`${url}/images/${item.images[2]}`);
         } else if (typeIndex === 2 && item.images[3]) {
-            // If the second type is selected, use the fourth image
+            // If the third type is selected, use the fourth image
             setActiveImage(`${url}/images/${item.images[3]}`);
         }
     };
@@ -114,8 +115,13 @@ const ProductPage = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-white">
+            <ToastContainer /> {/* Add ToastContainer here */}
+
             {/* Categories Component */}
             <Categories />
+
+            {/* Login Popup */}
+            {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
 
             {/* Product Container */}
             <div className="w-11/12 md:w-9/12 p-8 bg-gray-100 rounded-lg shadow-lg mt-6 mx-auto">
@@ -262,14 +268,12 @@ const ProductPage = () => {
                 </div>
             </div>
             <br></br>
-
-            {/* Login Popup */}
-            {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
         </div>
     );
 };
 
 export default ProductPage;
+
 
 
 

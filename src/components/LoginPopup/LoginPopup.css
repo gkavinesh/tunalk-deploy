@@ -1,15 +1,19 @@
 .login-popup {
     position: fixed;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    z-index: 9999;
     width: 100%;
     height: 100%;
-    background-color: #0000004e;
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly more transparent for better UX */
     display: grid;
+    place-items: center; /* Centers the container both vertically and horizontally */
 }
 
 .login-popup-container {
-    place-self: center;
-    width: max(23vw, 330px);
+    width: min(90vw, 400px); /* Adjust the width for smaller screens */
+    max-width: 100%;
+    margin-top: -20rem;
     color: #808080;
     background-color: white;
     display: flex;
@@ -19,6 +23,7 @@
     border-radius: 8px;
     font-size: 14px;
     animation: fadeIn 0.5s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for better visibility */
 }
 
 .login-popup-title {
@@ -47,7 +52,7 @@
     box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
-.login-popup-container .final-btn{
+.login-popup-container .final-btn {
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -56,6 +61,7 @@
     font-size: 15px;
     cursor: pointer;
     margin-bottom: 10px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .login-popup-container .final-btn:hover {
@@ -123,8 +129,9 @@
 }
 
 .toastify-container {
-    z-index: 1; /* Ensure toast notifications appear above other content */
+    z-index: 2; /* Ensure toast notifications appear above other content */
 }
+
 
 
 

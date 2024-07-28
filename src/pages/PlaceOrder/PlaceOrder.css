@@ -1,10 +1,11 @@
+/* Main container styling */
 .place-order {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 50px;
     margin: 100px auto 10rem auto; /* Centering the form */
-    width: 72%; /* Setting the width to 75% */
+    width: 72%; /* Setting the width to 72% */
 }
 
 /* Style for the left side of the form */
@@ -98,100 +99,10 @@
     gap: 15px; /* Increased gap for better spacing */
 }
 
-.payment-options label {
+.payment-option {
     display: flex;
     align-items: center;
-    gap: 15px; /* Increased gap between radio button and text */
-    font-size: 16px;
-    padding: 10px; /* Padding around each option */
-    border-radius: 8px; /* Rounded corners for the options */
-    background-color: #ffffff; /* White background for each option */
-    border: 1px solid #c5c5c5; /* Border for the options */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
-}
-
-.payment-options label:hover {
-    background-color: #e6f9f0; /* Light teal background on hover */
-    border-color: #01B1A8; /* Teal border on hover */
-}
-
-.payment-options input {
-    margin-right: 10px; /* Space between radio button and text */
-}
-
-/* Submit button styling */
-.place-order .cart-total button {
-    width: 100%;
-    padding: 15px;
-    background-color: #01B1A8; /* Teal background color */
-    color: #fff; /* White text color */
-    border: none;
-    border-radius: 8px; /* Rounded corners */
-    font-size: 18px; /* Larger font size */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-}
-
-.place-order .cart-total button:hover {
-    background-color: #018f88; /* Darker teal on hover */
-    transform: scale(1.02); /* Slightly larger button on hover */
-}
-
-/* Button styling */
-.proceed {
-    width: 100%; /* Full width for consistency with the container */
-    padding: 15px; /* Ample padding for better clickability */
-    background-color: #01B1A8; /* Teal background color */
-    color: #fff; /* White text color */
-    border: none; /* No border for a cleaner look */
-    border-radius: 8px; /* Rounded corners for a modern appearance */
-    font-size: 18px; /* Larger font size for better readability */
-    font-weight: 600; /* Slightly bold text for emphasis */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.proceed:hover {
-    background-color: #018f88; /* Darker teal for hover effect */
-    transform: scale(1.02); /* Slightly larger button on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
-}
-
-.proceed:active {
-    background-color: #017a6f; /* Even darker teal for active state */
-    transform: scale(0.98); /* Slightly smaller button when clicked */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
-}
-
-/* Payment method section styling */
-.payment-method {
-    margin-top: 30px;
-    background-color: #f2f2f2; /* Light grey background for the section */
-    padding: 20px; /* Padding around the content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Title styling */
-.payment-method .title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #11484D;
-    margin-bottom: 20px;
-}
-
-.payment-options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Increased gap for better spacing */
-}
-
-/* Style for payment method labels with images */
-.payment-options label {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 15px; /* Space between the radio button and text */
     font-size: 16px;
     padding: 10px; /* Padding around each option */
@@ -199,17 +110,116 @@
     background-color: #ffffff; /* White background for each option */
     border: 1px solid #c5c5c5; /* Border for the options */
     transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+    cursor: pointer;
 }
 
-.payment-options label:hover {
+.payment-option.selected {
+    background-color: #e6f9f0; /* Light teal background for the selected option */
+    border-color: #01B1A8; /* Teal border for the selected option */
+}
+
+.payment-option:hover {
     background-color: #e6f9f0; /* Light teal background on hover */
     border-color: #01B1A8; /* Teal border on hover */
 }
 
-.payment-options img {
+.payment-option span {
+    font-weight: bold;
+}
+
+.payment-images {
+    display: flex;
+    gap: 5px;
+}
+
+.payment-images img {
     width: 40px; /* Size of the images */
     height: 40px; /* Size of the images */
 }
+
+/* Submit button styling */
+.place-order .cart-total button,
+.proceed {
+    width: 100%;
+    padding: 15px;
+    background-color: #01B1A8; /* Teal background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Larger font size */
+    font-weight: 600; /* Slightly bold text for emphasis */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.place-order .cart-total button:hover,
+.proceed:hover {
+    background-color: #018f88; /* Darker teal on hover */
+    transform: scale(1.02); /* Slightly larger button on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+}
+
+.place-order .cart-total button:active,
+.proceed:active {
+    background-color: #017a6f; /* Even darker teal for active state */
+    transform: scale(0.98); /* Slightly smaller button when clicked */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
+}
+
+/* Order Summary Styles */
+.order-summary {
+    margin-top: 30px; /* Add margin to separate from delivery info */
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 20px; /* Padding for inner content */
+    border-radius: 8px; /* Rounded corners for aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .order-summary h3 {
+    font-size: 24px;
+    color: #11484d; /* Dark teal for the title */
+    margin-bottom: 20px; /* Space below the title */
+  }
+  
+  .order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Space between items */
+    padding-bottom: 15px; /* Padding at bottom */
+    border-bottom: 1px solid #e0e0e0; /* Divider line between items */
+  }
+  
+  .order-item:last-child {
+    margin-bottom: 0; /* Remove margin for last item */
+    padding-bottom: 0; /* Remove padding for last item */
+    border-bottom: none; /* Remove border for last item */
+  }
+  
+  .order-item-image {
+    width: 60px; /* Image width */
+    height: 60px; /* Image height */
+    border-radius: 4px; /* Rounded corners for image */
+    object-fit: cover; /* Ensures aspect ratio is maintained */
+    margin-right: 15px; /* Space between image and details */
+  }
+  
+  .order-item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .order-item-name {
+    font-weight: bold;
+    font-size: 16px; /* Size of the item name */
+    color: #333333; /* Dark text color */
+  }
+  
+  .order-item-quantity {
+    font-size: 14px; /* Size of the quantity text */
+    color: #555555; /* Slightly lighter text color */
+    margin-top: 5px; /* Space between name and quantity */
+  }
 
 /* Responsive Styles */
 
@@ -325,6 +335,7 @@
         height: 30px;
     }
 }
+
 
 
 

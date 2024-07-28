@@ -29,6 +29,12 @@ const PlaceOrder = () => {
   // State for loading
   const [loading, setLoading] = useState(true);
 
+  // State for validation errors
+  const [errors, setErrors] = useState({
+    email: '',
+    phone: '',
+  });
+
   useEffect(() => {
     // Simulate a delay for loading
     const timer = setTimeout(() => {
@@ -45,6 +51,30 @@ const PlaceOrder = () => {
     setData((data) => ({ ...data, [name]: value }));
   };
 
+  const selectPaymentMethod = (method) => {
+    setData((data) => ({ ...data, paymentMethod: method }));
+    toast.info(`Selected Payment Method: ${method.charAt(0).toUpperCase() + method.slice(1)}`);
+  };
+
+  const validateEmail = (email) => {
+    // Simple regex for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    // Regex for Sri Lankan phone number validation (should be 10 digits starting with 0)
+    const phoneRegex = /^0\d{9}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const validateForm = () => {
+    const emailError = validateEmail(data.email) ? '' : 'Invalid email format.';
+    const phoneError = validatePhone(data.phone) ? '' : 'Phone number must be a 10-digit Sri Lankan number.';
+    setErrors({ email: emailError, phone: phoneError });
+    return !emailError && !phoneError;
+  };
+
   const generateOrderId = () => {
     // Simple order ID generator using timestamp and random number
     const timestamp = Date.now(); // Current timestamp in milliseconds
@@ -58,6 +88,11 @@ const PlaceOrder = () => {
 
     if (!data.paymentMethod) {
       toast.error('Please select a payment method.');
+      return;
+    }
+
+    if (!validateForm()) {
+      toast.error('Please correct the errors in the form.');
       return;
     }
 
@@ -129,6 +164,8 @@ const PlaceOrder = () => {
         });
         console.log('Response from backend:', response.data);
         if (response.data && response.data.session_url) {
+          // Handle OnePay session URL if applicable
+          window.location.href = response.data.session_url;
         } else {
           console.error('No session URL found in response.');
         }
@@ -136,7 +173,6 @@ const PlaceOrder = () => {
         console.error('Please select a payment method.');
       }
     } catch (error) {
-
     }
   };
 
@@ -144,6 +180,21 @@ const PlaceOrder = () => {
   if (loading) {
     return <Preloader />;
   }
+
+  const orderSummaryItems = Object.keys(cartItems)
+    .map((key) => {
+      const [itemId, type] = key.split('-');
+      const item = food_list.find((food) => food._id === itemId);
+      if (item) {
+        return {
+          itemId: item._id,
+          name: item.name,
+          quantity: cartItems[key].amount,
+        };
+      }
+      return null;
+    })
+    .filter((item) => item !== null);
 
   return (
     <>
@@ -202,6 +253,7 @@ const PlaceOrder = () => {
             type="email"
             placeholder="Email Address"
           />
+          {errors.email && <p className="error">{errors.email}</p>}
           <input
             required
             name="phone"
@@ -210,46 +262,56 @@ const PlaceOrder = () => {
             type="text"
             placeholder="Phone"
           />
+          {errors.phone && <p className="error">{errors.phone}</p>}
+          <div className="order-summary">
+            <h3>Order Summary</h3>
+            {orderSummaryItems.length === 0 ? (
+              <p>Your cart is empty.</p>
+            ) : (
+              orderSummaryItems.map((item) => (
+                <div key={item.itemId} className="order-item">
+                  <div className="order-item-details">
+                    <p className="order-item-name">{item.name}</p>
+                    <p className="order-item-quantity">Quantity: {item.quantity}</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
         <div className="place-order-right">
           <div className="payment-method">
             <p className="title">Payment Method</p>
             <div className="payment-options">
-              <label>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="onePay"
-                  onChange={onChangeHandler}
-                  checked={data.paymentMethod === 'onePay'}
-                />
-                OnePay
-                <img src={assets.card1} alt="OnePay" />
-                <img src={assets.card2} alt="OnePay" />
-                <img src={assets.card3} alt="OnePay" />
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="bankTransfer"
-                  onChange={onChangeHandler}
-                  checked={data.paymentMethod === 'bankTransfer'}
-                />
-                Bank Transfer
-                <img src={assets.bank} alt="Bank Transfer" />
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="paymentMethod"
-                  value="cashOnDelivery"
-                  onChange={onChangeHandler}
-                  checked={data.paymentMethod === 'cashOnDelivery'}
-                />
-                Cash on Delivery
-                <img src={assets.cod} alt="Cash on Delivery" />
-              </label>
+              <div
+                className={`payment-option ${data.paymentMethod === 'onePay' ? 'selected' : ''}`}
+                onClick={() => selectPaymentMethod('onePay')}
+              >
+                <span>OnePay</span>
+                <div className="payment-images">
+                  <img src={assets.card1} alt="OnePay" />
+                  <img src={assets.card2} alt="OnePay" />
+                  <img src={assets.card3} alt="OnePay" />
+                </div>
+              </div>
+              <div
+                className={`payment-option ${data.paymentMethod === 'bankTransfer' ? 'selected' : ''}`}
+                onClick={() => selectPaymentMethod('bankTransfer')}
+              >
+                <span>Bank Transfer</span>
+                <div className="payment-images">
+                  <img src={assets.bank} alt="Bank Transfer" />
+                </div>
+              </div>
+              <div
+                className={`payment-option ${data.paymentMethod === 'cashOnDelivery' ? 'selected' : ''}`}
+                onClick={() => selectPaymentMethod('cashOnDelivery')}
+              >
+                <span>Cash on Delivery</span>
+                <div className="payment-images">
+                  <img src={assets.cod} alt="Cash on Delivery" />
+                </div>
+              </div>
             </div>
           </div>
           <div className="cart-total">
@@ -282,16 +344,4 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
-
-
-
-
-
-
-
-
-
-
-
-
 

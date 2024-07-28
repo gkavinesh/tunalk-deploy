@@ -120,20 +120,17 @@ const App = () => {
               </p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
-                <EyeIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-600" />
 
                   <span>
                     <strong className="font-semibold text-gray-900">Our Vision</strong> To be the top online source for fresh, sustainable seafood, known for quality, customer satisfaction, and environmental care.
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                <RiMedalLine aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-600" />
                   <span>
                     <strong className="font-semibold text-gray-900">Our Mission</strong> We provide the freshest, highest-quality seafood from sustainable sources, enhancing culinary experiences with diverse products and exceptional online service.
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                <FaBook aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-600" />
                   <span>
                     <strong className="font-semibold text-gray-900">Our Values</strong> Committed to quality and sustainability, we exceed customer expectations with personalized service and integrity, continuously innovating for an outstanding shopping experience.
                   </span>
