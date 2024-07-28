@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Payment.css';
@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
-
+import Preloader from '..//..//components//preloadersub/preloader'
 
 const Payment = () => {
   const { url, token } = useContext(StoreContext);
@@ -17,6 +17,17 @@ const Payment = () => {
 
   const [image, setImage] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Simulate a delay to show the preloader for 6 seconds
+    const timer = setTimeout(() => {
+      setLoading(false); // Set loading to false after 6 seconds
+    }, 2000);
+
+    // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handler for image change
   const handleImageChange = (event) => {
@@ -26,12 +37,12 @@ const Payment = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (!image) {
-      toast.error("Please upload an image before submitting.");
+      toast.error('Please upload an image before submitting.');
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('receipt', image);
     formData.append('firstName', orderData.firstName);
@@ -39,17 +50,17 @@ const Payment = () => {
     formData.append('email', orderData.email);
     formData.append('phone', orderData.phone);
     formData.append('address', JSON.stringify(orderData.address));
-  
+
     try {
       const response = await axios.post(`${url}/api/payment/confirm`, formData, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
       });
-  
+
       if (response.data.success) {
-        toast.success("Submitted Successfully! Await your confirmation in the orders page.");
+        toast.success('Done! Await your confirmation in the orders page.');
         setSubmitted(true);
         setImage(null);
         // Wait for the toast to be visible, then navigate
@@ -57,24 +68,36 @@ const Payment = () => {
           navigate('/myorders');
         }, 3000); // Adjust the delay to match your toast display time
       } else {
-        toast.error(response.data.message || "Failed to submit payment confirmation.");
+        toast.error(response.data.message || 'Failed to submit payment confirmation.');
       }
     } catch (error) {
-      console.error("Error submitting payment confirmation:", error);
-      toast.error("An error occurred. Please try again.");
+      console.error('Error submitting payment confirmation:', error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
-  
+  // Render the preloader if loading
+  if (loading) {
+    return <Preloader />; // Use the Preloader component here
+  }
+
   return (
-    <div className='payment'>
-      <form className='payment-form' onSubmit={handleSubmit}>
+    <div className="payment">
+      <form className="payment-form" onSubmit={handleSubmit}>
         <div className="order-summary">
           <h3>Order Summary</h3>
-          <p><b>Name:</b> {orderData?.firstName} {orderData?.lastName}</p>
-          <p><b>Address:</b> {orderData?.address.address}, {orderData?.address.type}, {orderData?.address.postcode}</p>
-          <p><b>Email:</b> {orderData?.email}</p>
-          <p><b>Phone:</b> {orderData?.phone}</p>
+          <p>
+            <b>Name:</b> {orderData?.firstName} {orderData?.lastName}
+          </p>
+          <p>
+            <b>Address:</b> {orderData?.address.address}, {orderData?.address.type}, {orderData?.address.postcode}
+          </p>
+          <p>
+            <b>Email:</b> {orderData?.email}
+          </p>
+          <p>
+            <b>Phone:</b> {orderData?.phone}
+          </p>
         </div>
         <div className="image-upload-section">
           <p>Upload Payment Receipt</p>
@@ -87,21 +110,21 @@ const Payment = () => {
                   className="receipt-preview"
                 />
               ) : (
-                <img src={assets.upload} alt='Upload area' />
+                <img src={assets.upload} alt="Upload area" />
               )}
             </div>
           </label>
           <input
             onChange={handleImageChange}
-            type='file'
-            id='receipt'
+            type="file"
+            id="receipt"
             hidden
             accept="image/*"
             required
           />
         </div>
         <button type="submit" className="submit-btn" disabled={submitted}>
-          {submitted ? "Receipt Uploaded" : "Submit Confirmation"}
+          {submitted ? 'Receipt Uploaded' : 'Submit Confirmation'}
         </button>
       </form>
       <ToastContainer />
@@ -110,6 +133,8 @@ const Payment = () => {
 };
 
 export default Payment;
+
+
 
 
 

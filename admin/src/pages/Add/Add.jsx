@@ -12,7 +12,7 @@ const Add = ({ url }) => {
     description: "",
     category: "Fish"
   });
-  const [types, setTypes] = useState([{ type: "curry cut", price: "" }]);
+  const [types, setTypes] = useState([{ type: "Curry cut", price: "" }]);
 
   const typeOptions = [
     "Curry cut",
@@ -42,7 +42,7 @@ const Add = ({ url }) => {
   };
 
   const addTypeField = () => {
-    setTypes([...types, { type: "curry cut", price: "" }]);
+    setTypes([...types, { type: "Curry cut", price: "" }]);
   };
 
   const onSubmitHandler = async (event) => {

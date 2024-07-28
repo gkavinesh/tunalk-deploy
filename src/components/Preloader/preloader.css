@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(168, 255, 235);
+  background: rgb(203, 255, 243);
   z-index: 9999;
   transition: opacity 1s ease-in-out; /* Transition for fade effect */
   opacity: 1; /* Start fully visible */

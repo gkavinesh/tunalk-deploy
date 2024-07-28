@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import { MotionConfig, motion, AnimatePresence } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
+import Preloader from '../preloadersub/preloader';
 
 const AnimatedHamburgerButton = ({ isActive }) => {
     return (
@@ -86,11 +87,14 @@ const Navbar = ({ setShowLogin }) => {
 
     const logout = async () => {
         setLoading(true); // Show preloader
-        localStorage.removeItem('token');
-        setToken('');
-        await clearCart(); // Clear cart items on logout
-        setLoading(false); // Hide preloader
-        navigate('/');
+
+        setTimeout(async () => {
+            localStorage.removeItem('token');
+            setToken('');
+            await clearCart(); // Clear cart items on logout
+            setLoading(false); // Hide preloader
+            navigate('/');
+        }, 2000); // Preloader duration set to 2 seconds
     };
 
     const toggleSidebar = () => {
@@ -183,16 +187,13 @@ const Navbar = ({ setShowLogin }) => {
                 )}
             </AnimatePresence>
 
-            {loading && (
-                <div className="preloader">
-                    <div className="spinner"></div>
-                </div>
-            )}
+            {loading && <Preloader />}
         </div>
     );
 };
 
 export default Navbar;
+
 
 
 

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
+    orderId: {type:String, required: true},
     userId: { type: String, required: true},
     address: {
         address: { type: String, required: true },
@@ -20,6 +21,7 @@ const orderSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
+    paymentMethod: {type: String, required:true},
     status: { type: String, default: "Order Processing" },
     date: { type: Date, default: Date.now },
     payment: { type: Boolean, default: false }

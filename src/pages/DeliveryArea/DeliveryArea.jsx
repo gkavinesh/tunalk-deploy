@@ -1,7 +1,26 @@
-import { TruckIcon, MapIcon, PhoneIcon } from '@heroicons/react/20/solid'
-import { assets } from '../../assets/assets'
+import React, { useState, useEffect } from 'react';
+import { TbMotorbike } from "react-icons/tb";
+import { assets } from '../../assets/assets';
+import Preloader from '../../components/preloadersub/preloader'; // Ensure this is the correct path to the Preloader component
 
 export default function Example() {
+  const [loading, setLoading] = useState(true); // State for loading
+
+  useEffect(() => {
+    // Simulate a delay for loading
+    const timer = setTimeout(() => {
+      setLoading(false); // Set loading to false after 6 seconds
+    }, 3000);
+
+    // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Render preloader if loading
+  if (loading) {
+    return <Preloader />;
+  }
+
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -57,61 +76,61 @@ export default function Example() {
               </p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 1 - Fort</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 2 - Slave Island</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 3 - Kollupitiya</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 4 - Bambalapitiya</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 5 - Havelock Town</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 6 - Wellawatte</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 7 - Cinnamon Gardens</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 8 - Borella</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 9 - Dematagoda</strong>
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <TruckIcon aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
+                  <TbMotorbike aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-teal-400" />
                   <span>
                     <strong className="font-semibold text-gray-900">Colombo 10 - Maradana</strong>
                   </span>
@@ -132,6 +151,7 @@ export default function Example() {
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 

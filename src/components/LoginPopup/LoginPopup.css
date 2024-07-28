@@ -1,4 +1,4 @@
-.login-popup{
+.login-popup {
     position: fixed;
     z-index: 1;
     width: 100%;
@@ -7,9 +7,9 @@
     display: grid;
 }
 
-.login-popup-container{
+.login-popup-container {
     place-self: center;
-    width: max(23vw,330px);
+    width: max(23vw, 330px);
     color: #808080;
     background-color: white;
     display: flex;
@@ -21,31 +21,33 @@
     animation: fadeIn 0.5s;
 }
 
-.login-popup-title{
+.login-popup-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.login-popup-title img{
+.login-popup-title img {
     width: 16px;
     cursor: pointer;
 }
 
-.login-popup-input{
+.login-popup-input {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-popup-input input{
+.login-popup-input input {
     outline: none;
     border: 1px solid #c9c9c9;
     padding: 10px;
     border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
-.login-popup-container button{
+.login-popup-container .final-btn{
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -56,21 +58,74 @@
     margin-bottom: 10px;
 }
 
-.login-popup-condition{
+.login-popup-container .final-btn:hover {
+    background-color: #008c82; /* Slightly darker shade for hover effect */
+}
+
+.login-popup-condition {
     display: flex;
     align-items: start;
     gap: 8px;
     margin-top: -15px;
 }
 
-.login-popup-condition input{
+.login-popup-condition input {
     margin-top: 5px;
 }
 
-.login-popup p span{
+.login-popup p span {
     color: #00A49B;
     font-weight: 500;
     cursor: pointer;
 }
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container input[type="password"],
+.password-input-container input[type="text"] {
+    width: 100%; /* Ensures the input takes full width */
+    padding-right: 40px; /* Space for the toggle button */
+}
+
+.toggle-password-btn {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+
+.toggle-password-btn:focus {
+    outline: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.toastify-container {
+    z-index: 1; /* Ensure toast notifications appear above other content */
+}
+
+
 
 

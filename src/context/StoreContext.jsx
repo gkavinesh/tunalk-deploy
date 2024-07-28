@@ -26,18 +26,22 @@ const StoreContextProvider = (props) => {
         const [itemId, type] = cartKey.split('-');
 
         // Update quantity locally
-        setCartItems(prev => ({
+        setCartItems((prev) => ({
             ...prev,
             [cartKey]: {
                 ...prev[cartKey],
-                amount: newQuantity
-            }
+                amount: newQuantity,
+            },
         }));
 
         // Sync the quantity change with the server
         if (token) {
             try {
-                await axios.post(url + "/api/cart/update", { userId: getUserIdFromToken(token), itemId, quantity: newQuantity }, { headers: { Authorization: `Bearer ${token}` } });
+                await axios.post(
+                    url + "/api/cart/update",
+                    { userId: getUserIdFromToken(token), itemId, quantity: newQuantity },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
             } catch (error) {
                 console.error("Error updating item quantity:", error);
             }
@@ -50,26 +54,30 @@ const StoreContextProvider = (props) => {
             amount,
             type,
             price,
-            weight
+            weight,
         };
 
         const cartKey = `${itemId}-${type}`;
 
         if (!cartItems[cartKey]) {
-            setCartItems(prev => ({ ...prev, [cartKey]: itemDetails }));
+            setCartItems((prev) => ({ ...prev, [cartKey]: itemDetails }));
         } else {
-            setCartItems(prev => ({
+            setCartItems((prev) => ({
                 ...prev,
                 [cartKey]: {
                     ...prev[cartKey],
-                    amount: prev[cartKey].amount + amount
-                }
+                    amount: prev[cartKey].amount + amount,
+                },
             }));
         }
 
         if (token) {
             try {
-                await axios.post(url + "/api/cart/add", { userId: getUserIdFromToken(token), itemId, quantity: amount }, { headers: { Authorization: `Bearer ${token}` } });
+                await axios.post(
+                    url + "/api/cart/add",
+                    { userId: getUserIdFromToken(token), itemId, quantity: amount },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
             } catch (error) {
                 console.error("Error adding item to cart:", error);
             }
@@ -99,18 +107,22 @@ const StoreContextProvider = (props) => {
     // Function to load cart data from the server
     const loadCartData = async (token) => {
         try {
-            const response = await axios.post(url + "/api/cart/get", { userId: getUserIdFromToken(token) }, { headers: { Authorization: `Bearer ${token}` } });
+            const response = await axios.post(
+                url + "/api/cart/get",
+                { userId: getUserIdFromToken(token) },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             const cartData = response.data.cartData;
 
-            if (cartData && typeof cartData === 'object' && !Array.isArray(cartData)) {
+            if (cartData && typeof cartData === "object" && !Array.isArray(cartData)) {
                 const fetchedCartItems = Object.entries(cartData).reduce((acc, [key, amount]) => {
-                    const foodItem = food_list.find(food => food._id === key.split('-')[0]);
+                    const foodItem = food_list.find((food) => food._id === key.split("-")[0]);
                     if (foodItem) {
                         acc[key] = {
                             amount: amount,
-                            type: foodItem.type || '',
+                            type: foodItem.type || "",
                             price: foodItem.price || 0,
-                            weight: foodItem.weight || 0
+                            weight: foodItem.weight || 0,
                         };
                     }
                     return acc;
@@ -127,15 +139,19 @@ const StoreContextProvider = (props) => {
     // Function to remove item from cart
     const removeFromCart = async (cartKey) => {
         try {
-            const [itemId] = cartKey.split('-');
-            setCartItems(prev => {
+            const [itemId] = cartKey.split("-");
+            setCartItems((prev) => {
                 const updatedItems = { ...prev };
                 delete updatedItems[cartKey];
                 return updatedItems;
             });
 
             if (token) {
-                await axios.post(url + "/api/cart/remove", { userId: getUserIdFromToken(token), itemId }, { headers: { Authorization: `Bearer ${token}` } });
+                await axios.post(
+                    url + "/api/cart/remove",
+                    { userId: getUserIdFromToken(token), itemId },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
             }
         } catch (error) {
             console.error("Error removing item from cart:", error);
@@ -147,7 +163,11 @@ const StoreContextProvider = (props) => {
         try {
             setCartItems({});
             if (token) {
-                await axios.post(url + "/api/cart/clear", { userId: getUserIdFromToken(token) }, { headers: { Authorization: `Bearer ${token}` } });
+                await axios.post(
+                    url + "/api/cart/clear",
+                    { userId: getUserIdFromToken(token) },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
             }
         } catch (error) {
             console.error("Error clearing cart:", error);
@@ -177,7 +197,7 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        updateItemQuantity
+        updateItemQuantity,
     };
 
     return (
@@ -188,6 +208,7 @@ const StoreContextProvider = (props) => {
 };
 
 export default StoreContextProvider;
+
 
 
 

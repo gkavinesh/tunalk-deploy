@@ -1,11 +1,11 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Preloader from '../../components/preloadersub/preloader'; // Ensure this is the correct path to the Preloader component
 
 const Faq = () => {
     const [faq, setFaq] = useState([
         {
             question: 'How to track my orders?',
-            answer: 'Once signed in, go to your profile icon and click on orders. In the orders tab, you can view the status of the order such as "Order processing" ',
+            answer: 'Once signed in, go to your profile icon and click on orders. In the orders tab, you can view the status of the order such as "Order processing".',
             open: false
         },
         {
@@ -15,15 +15,27 @@ const Faq = () => {
         },
         {
             question: 'Can I cancel my order?',
-            answer: 'Yes, you can contact us through our contact details provided here. Make sure the status of the order is not "Out for delivery"',
+            answer: 'Yes, you can contact us through our contact details provided here. Make sure the status of the order is not "Out for delivery".',
             open: false
         },
         {
-            question: 'How can I reach to support if my delivery is not on time?',
-            answer: 'You can contact the dispatch team via contact details here',
+            question: 'How can I reach support if my delivery is not on time?',
+            answer: 'You can contact the dispatch team via contact details here.',
             open: false
         }
     ]);
+
+    const [loading, setLoading] = useState(true); // State for loading
+
+    useEffect(() => {
+        // Simulate a delay for loading
+        const timer = setTimeout(() => {
+            setLoading(false); // Set loading to false after 6 seconds
+        }, 3000);
+
+        // Cleanup timer on component unmount
+        return () => clearTimeout(timer);
+    }, []);
 
     const toggleFaq = (index) => {
         setFaq(faq.map((item, i) => {
@@ -35,6 +47,11 @@ const Faq = () => {
 
             return item;
         }));
+    };
+
+    // Render preloader if loading
+    if (loading) {
+        return <Preloader />;
     }
 
     return (
@@ -43,7 +60,6 @@ const Faq = () => {
                 <div className="flex justify-center items-center">
                     <h2 className="text-teal-500 text-7xl font-semibold mb-3">FAQ</h2>
                 </div>
-
 
                 <div className="max-w-3xl mx-auto mt-8 space-y-4 md:mt-16">
                     {faq.map((item, index) => (
@@ -57,16 +73,16 @@ const Faq = () => {
                             </button>
 
                             <div className={`${item.open ? 'block' : 'hidden'} px-4 pb-5 sm:px-6 sm:pb-6`}>
-                                <p dangerouslySetInnerHTML={{ __html: item.answer }}></p>
+                                <p>{item.answer}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <p className="text-center text-gray-600 textbase mt-9">Didn’t find the answer you are looking for? <a href="#footer" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact our support</a></p>
+                <p className="text-center text-gray-600 text-base mt-9">Didn’t find the answer you are looking for? <a href="#footer" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact our support</a></p>
             </div>
         </section>
     );
-}
+};
 
 export default Faq;
