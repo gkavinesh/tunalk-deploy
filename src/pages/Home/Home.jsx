@@ -24,6 +24,7 @@ const Home = () => {
       <About />
       <Poll />
       <Facts/>
+      <Testimonial/>
     </div>
   );
 };
