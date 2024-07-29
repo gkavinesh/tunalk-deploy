@@ -1,9 +1,7 @@
-
+import axios from "axios";
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import crypto from "crypto";
-import axios from "axios";
-
 
 // Load sensitive data from environment variables
 const frontendUrl = "https://tunalk-frontend.onrender.com";
@@ -51,7 +49,7 @@ const placeOrder = async (req, res) => {
             customer_last_name: lastName,
             customer_phone_number: phone,
             customer_email: email,
-            transaction_redirect_url: `"https://github.com/gkavinesh"`, // ensure this is set up correctly on the frontend
+            transaction_redirect_url: `${frontendUrl}/fish`, // ensure this is set up correctly on the frontend
             currency: "LKR",
             // Add these lines to ensure redirection happens properly
         };
