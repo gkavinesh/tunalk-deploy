@@ -52,7 +52,7 @@ const Carousel = () => {
           <button
             key={index}
             type="button"
-            className={`w-3 h-3 rounded-full ${index === currentSlide ? 'bg-gray-800' : 'bg-gray-300'}`}
+            className={`w-3 h-3 rounded-full`}
             aria-current={index === currentSlide}
             aria-label={`Slide ${index + 1}`}
             onClick={() => goToSlide(index)}
