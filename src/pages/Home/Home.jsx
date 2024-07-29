@@ -23,8 +23,7 @@ const Home = () => {
       <Step/>
       <About />
       <Poll />
-      <Testimonial/>
-
+      <Facts/>
     </div>
   );
 };

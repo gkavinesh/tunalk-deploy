@@ -15,6 +15,7 @@
   .ap {
 	width: 8em;
 	height: 16em;
+	margin-bottom: 6rem;
 }
 .ap__ring {
 	stroke: hsla(var(--hue),10%,10%,0.15);

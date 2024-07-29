@@ -110,8 +110,12 @@ import circle3 from './crab_circle.png';
 import circle4 from './deal_circle.png'; 
 import onepay from './onepay.png'
 import upload from './upload_area.png'
+import fact from './fact.png'
+import fact2 from './fact2.png'
 
 export const assets = {
+    fact2,
+    fact,
     upload,
     onepay,
     circle1,

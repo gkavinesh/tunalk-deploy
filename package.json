@@ -57,5 +57,9 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"
-  }
+  },
+  "description": "This is a prototype for a full stack E-Commerce Website using React, Express, MongoDB, NodeJS. Primary objective of developing this website is for a brand in Sri Lanka known as TunaLK who specializes in selling seafood.",
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC"
 }
