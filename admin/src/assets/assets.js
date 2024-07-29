@@ -7,8 +7,10 @@ import parcel_icon from './parcel_icon.png'
 import delete_icon from './delete.png'
 import update_icon from './refresh.png'
 import list_icon from './clipboard.png'
+import payment from './symbols.png'
 
 export const assets ={
+    payment,
     list_icon,
     update_icon,
     delete_icon,

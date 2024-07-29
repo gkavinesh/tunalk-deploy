@@ -80,7 +80,7 @@ const ExampleContent = () => (
       <br></br>
       <a
         href="https://www.healthline.com/nutrition/11-health-benefits-of-fish"
-        className="w-full rounded bg-teal-600 px-6 py-3 text-lg text-white transition-colors hover:bg-neutral-700 md:w-fit"
+        className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-teal-500 text-teal-500 hover:border-teal-400 hover:text-teal-400 focus:outline-none focus:border-teal-400 focus:text-teal-400 disabled:opacity-50 disabled:pointer-events-none"
         target="_blank"
         rel="noopener noreferrer"
       >

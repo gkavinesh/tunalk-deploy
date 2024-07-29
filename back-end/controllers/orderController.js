@@ -114,9 +114,49 @@ const userOrders = async (req, res) => {
     }
 };
 
+//Displaying Orders in Admin Panel
+const listOrders = async (req,res) => {
+    try {
+        const orders = await orderModel.find({});
+        res.json({success:true,data:orders})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false, message:"error"})
+    }
+}
+
+// Function to update order status and payment status
+const updateOrder = async (req, res) => {
+    const { orderId, status, payment } = req.body;
+    
+    try {
+        // Validate that orderId is provided
+        if (!orderId) {
+            return res.status(400).json({ success: false, message: "Order ID is required" });
+        }
+        
+        // Find and update the order
+        const updatedOrder = await orderModel.findByIdAndUpdate(
+            orderId,
+            { status, payment },
+            { new: true }
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+
+        res.json({ success: true, message: "Order updated successfully", data: updatedOrder });
+    } catch (error) {
+        console.error("Error updating order:", error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+};
 
 
-export { placeOrder, verifyOrder, userOrders };
+
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateOrder };
 
 
 

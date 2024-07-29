@@ -1,58 +1,64 @@
-.list-table-format {
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr 0.5fr; /* Added columns for Edit and Remove */
-    align-items: center;
-    gap: 10px;
-    padding: 12px 15px;
-    border: 1px solid #cacaca;
-    font-size: 13px;
-}
-
-.list-table-format.title {
-    background-color: #f9f9f9;
-    font-weight: bold;
-}
-
-.list-table-format img {
-    width: 50px;
-    height: auto; /* Maintain aspect ratio */
-}
-
-.type-price {
-    border-top: 1px solid #ffffff;
-    padding: 5px 0;
-}
-
-.list-table-format button {
-    border: 2px solid #01B1A8;
-    background-color: transparent;
-    color: #01B1A8;
+/* List.css */
+.list {
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .product-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .product-table th, .product-table td {
+    border: 1px solid #01B1A7;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .product-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .product-image {
+    max-width: 100px;
+  }
+  
+  .type-price {
+    margin-bottom: 5px;
+  }
+  
+  .edit-button, .save-button, .remove-button {
+    cursor: pointer;
+    border: none;
     padding: 5px 10px;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.list-table-format button:hover {
-    background-color: #01B1A8;
-    color: #ffffff;
-}
-
-@media (max-width: 600px) {
-    .list-table-format {
-        grid-template-columns: 1fr 2fr 1fr 1fr 1fr; /* Adjust for mobile */
-        gap: 15px;
-    }
-
-    .type-price {
-        font-size: 12px;
-    }
-
-    .list-table-format button {
-        padding: 4px 8px; /* Adjust padding for mobile */
-    }
-}
+  }
+  
+  .edit-button {
+    background-color: #01B1A7; /* Green */
+    color: white;
+  }
+  
+  .save-button {
+    background-color: #2196F3; /* Blue */
+    color: white;
+  }
+  
+  .remove-button {
+    background-color: #eeff0000; /* Red */
+    color: white;
+    border: 1px solid #01B1A7;
+  }
+  
 
 
 

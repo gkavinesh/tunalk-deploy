@@ -73,65 +73,76 @@ const List = ({ url }) => {
   }, []);
 
   return (
-    <div className="list add flex-col">
-      <p>Product List</p>
-      <div className="list-table">
-        <div className="list-table-format title">
-          <b>Image</b>
-          <b>Name</b>
-          <b>Category</b>
-          <b>Types and Prices</b>
-          <b>Edit</b>
-          <b>Remove</b>
-        </div>
-        {list.map((item, index) => (
-          <div key={index} className='list-table-format'>
-            <img src={`${url}/images/${item.images[0]}`} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.category}</p>
-            <div>
-              {item._id === editing ? (
-                updatedPrices.map((type, typeIndex) => (
-                  <div key={typeIndex} className='type-price'>
-                    <p>Type: {type.type}</p>
-                    <input
-                      type="number"
-                      value={type.price}
-                      onChange={(e) => handlePriceChange(typeIndex, e.target.value)}
-                    />
-                  </div>
-                ))
-              ) : (
-                item.types.map((type, typeIndex) => (
-                  <div key={typeIndex} className='type-price'>
-                    <p>Type: {type.type}</p>
-                    <p>Price: රු {type.price}</p>
-                  </div>
-                ))
-              )}
-            </div>
-            <div>
-              {item._id === editing ? (
-                <button onClick={() => savePrices(item._id)}>Save</button>
-              ) : (
-                <button onClick={() => startEditing(item)}>Edit Prices</button>
-              )}
-            </div>
-            <div>
-              {item._id !== editing && (
-                <button onClick={() => removeProduct(item._id)}>❌</button>
-              )}
-            </div>
-          </div>
-        ))}
+    <div className="list">
+      <h2 className="header">Product List</h2>
+      <div className="table-container">
+        <table className="product-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Types and Prices</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list.map((item) => (
+              <React.Fragment key={item._id}>
+                <tr>
+                  <td>
+                    <img src={`${url}/images/${item.images[0]}`} alt={item.name} className="product-image" />
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.category}</td>
+                  <td>
+                    {item._id === editing ? (
+                      updatedPrices.map((type, typeIndex) => (
+                        <div key={typeIndex} className='type-price'>
+                          <p>Type: {type.type}</p>
+                          <input
+                            type="number"
+                            value={type.price}
+                            onChange={(e) => handlePriceChange(typeIndex, e.target.value)}
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      item.types.map((type, typeIndex) => (
+                        <div key={typeIndex} className='type-price'>
+                          <p>Type: {type.type}</p>
+                          <p>Price: රු {type.price}</p>
+                        </div>
+                      ))
+                    )}
+                  </td>
+                  <td>
+                    {item._id === editing ? (
+                      <button className="save-button" onClick={() => savePrices(item._id)}>Save</button>
+                    ) : (
+                      <button className="edit-button" onClick={() => startEditing(item)}>Edit Prices</button>
+                    )}
+                  </td>
+                  <td>
+                    {item._id !== editing && (
+                      <button className="remove-button" onClick={() => removeProduct(item._id)}>❌</button>
+                    )}
+                  </td>
+                </tr>
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
       </div>
       <ToastContainer />
     </div>
-
   );
 };
 
 export default List;
+
+
 
 
 

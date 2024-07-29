@@ -1,15 +1,21 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 4%;
 }
 
-.navbar .logo{
-    width: max(15%,90px);
-
+.navbar .logo {
+    width: max(15%, 90px);
 }
 
-.navbar .profile{
+.navbar .profile {
     width: 40px;
+}
+
+.navbar .clock {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333;
+    margin-left: auto;
 }

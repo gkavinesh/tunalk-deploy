@@ -8,7 +8,7 @@ const Orders = () => {
   const { url, token } = useContext(StoreContext);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
 
   const fetchOrders = async () => {
     try {
@@ -20,12 +20,11 @@ const Orders = () => {
         }
       );
       setData(response.data.data);
-      console.log(response.data.data);
     } catch (error) {
       console.error("Error fetching orders:", error.response ? error.response.data : error.message);
       setError(error.response ? error.response.data : error.message);
     } finally {
-      setLoading(false); // Set loading to false after data fetch is complete
+      setLoading(false);
     }
   };
 
@@ -35,7 +34,6 @@ const Orders = () => {
     }
   }, [token]);
 
-  // Render preloader if loading
   if (loading) {
     return <Preloader />;
   }
@@ -73,7 +71,7 @@ const Orders = () => {
                               Order #{order._id}
                             </td>
                             <td rowSpan={order.items.length} className="px-6 py-4">
-                              <img src={assets.parcel_icon} alt="Parcel Icon" className="parcel-icon" />
+                              <img src={assets.parcel_icon} alt="Parcel Icon" className="parcel-icon w-8 h-8" />
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
                               {item.name}
@@ -111,6 +109,7 @@ const Orders = () => {
 };
 
 export default Orders;
+
 
 
 
