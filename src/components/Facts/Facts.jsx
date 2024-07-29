@@ -77,12 +77,10 @@ const ExampleContent = () => (
       <p className="mb-4 text-xl text-neutral-600 md:text-2xl">
       Fish offers numerous health benefits, including high-quality protein, essential omega-3 fatty acids, and vital nutrients like vitamin D, iodine, and selenium.
       </p>
-      <p className="mb-8 text-xl text-neutral-600 md:text-2xl">
-      Regular consumption supports heart health, brain function, and overall well-being.
-      </p>
-      <button className="w-full rounded bg-teal-600 px-9 py-4 text-xl text-white transition-colors hover:bg-neutral-700 md:w-fit">
+      <br></br>
+      <a href="https://www.healthline.com/nutrition/11-health-benefits-of-fish" className="w-full rounded bg-teal-600 px-9 py-4 text-xl text-white transition-colors hover:bg-neutral-700 md:w-fit">
         Learn more <FiArrowUpRight className="inline" />
-      </button>
+      </a>
     </div>
   </div>
 );
