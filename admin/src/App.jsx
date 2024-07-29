@@ -7,7 +7,6 @@ import {Routes,Route} from 'react-router-dom'
 import Add from "./pages/Add/Add"
 import Order from "./pages/Orders/Orders"
 import List from "./pages/List/List"
-import Kanban from "./pages/Kanban/kanban"
 import Payment from "./pages/Payments/payment"
 
 const App = () => {
