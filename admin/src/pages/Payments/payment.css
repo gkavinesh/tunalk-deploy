@@ -1,0 +1,97 @@
+.payment-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .payments-table th, .payments-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .payments-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .no-payments {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .view-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .view-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .date-filter {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .date-filter input {
+    margin: 0 10px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 90%;
+    max-height: 80%;
+  }
+  
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+  
+  

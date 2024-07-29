@@ -23,10 +23,6 @@ const Sidebar = () => {
                 <img src={assets.payment} alt=''/>
                 <p>Bank transfers</p>
             </NavLink>
-            <NavLink to='/kanban' className="sidebar-option">
-                <img src={assets.order_icon} alt=''/>
-                <p>Kanban</p>
-            </NavLink>
 
         </div>
       

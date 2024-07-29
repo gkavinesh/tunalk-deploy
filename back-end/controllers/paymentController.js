@@ -34,7 +34,19 @@ const confirmPayment = async (req, res) => {
 };
 
 
-export { confirmPayment };
+// Handle listing of payments
+const listPayment = async (req, res) => {
+    try {
+      const payments = await paymentModel.find();
+      res.json({ success: true, payments });
+    } catch (error) {
+      console.error('Error fetching payments:', error);
+      res.status(500).json({ success: false, message: "Error fetching payments" });
+    }
+  };
+  
+
+export { confirmPayment, listPayment };
 
 
 

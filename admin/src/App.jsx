@@ -26,7 +26,6 @@ const App = () => {
           <Route path='/list' element={<List url={url}/>}/>
           <Route path='/orders' element={<Order url={url}/>}/>
           <Route path='/payment' element={<Payment url={url}/>}/>
-          <Route path='/kanban' element={<Kanban url={url}/>}/>
         </Routes>
       </div>
     </div>

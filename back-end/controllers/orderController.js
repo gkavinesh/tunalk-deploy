@@ -1,10 +1,12 @@
-import axios from "axios";
+
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import crypto from "crypto";
+import axios from "axios";
+
 
 // Load sensitive data from environment variables
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+const frontendUrl = "http://localhost:5173";
 const onepayBaseUrl = process.env.ONEPAY_BASE_URL || "https://merchant-api-live-v2.onepay.lk/api/ipg/gateway/request-transaction/?hash=";
 const onepayAppId = process.env.ONEPAY_APP_ID || "FYUZ118E58041E1505AA3";
 const onepayHashSalt = process.env.ONEPAY_HASH_SALT || "OSFA118E58041E1505AC9";
@@ -49,13 +51,9 @@ const placeOrder = async (req, res) => {
             customer_last_name: lastName,
             customer_phone_number: phone,
             customer_email: email,
-            transaction_redirect_url: `${frontendUrl}/verify`, // ensure this is set up correctly on the frontend
+            transaction_redirect_url: `"https://github.com/gkavinesh"`, // ensure this is set up correctly on the frontend
             currency: "LKR",
             // Add these lines to ensure redirection happens properly
-            redirect: {
-                success: `${frontendUrl}/verify?success=true&orderId=${newOrder._id}`,
-                failure: `${frontendUrl}/verify?success=false&orderId=${newOrder._id}`
-            }
         };
 
         // Hash the transaction details

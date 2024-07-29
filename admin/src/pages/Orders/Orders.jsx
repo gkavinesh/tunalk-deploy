@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
-import { assets } from "../../assets/assets"; // Ensure this is the correct path to your assets
-import "./Orders.css"; // Import the CSS file
+import { toast, ToastContainer } from "react-toastify";
+import { assets } from "../../assets/assets";
+import "react-toastify/dist/ReactToastify.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./Orders.css";
 
 const AdminOrders = ({ url, token }) => {
   const [orders, setOrders] = useState([]);
@@ -11,6 +14,8 @@ const AdminOrders = ({ url, token }) => {
   const [orderStates, setOrderStates] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   // Fetch all orders
   const fetchOrders = async () => {
@@ -62,7 +67,7 @@ const AdminOrders = ({ url, token }) => {
     }
   };
 
-  // Filter orders based on search term and status
+  // Filter orders based on search term, status, and date range
   const filterOrders = () => {
     let filtered = orders;
 
@@ -76,12 +81,19 @@ const AdminOrders = ({ url, token }) => {
       filtered = filtered.filter(order => order.status === selectedStatus);
     }
 
+    if (startDate && endDate) {
+      filtered = filtered.filter(order => {
+        const orderDate = new Date(order.date); // Replace 'order.date' with your actual date field
+        return orderDate >= startDate && orderDate <= endDate;
+      });
+    }
+
     setFilteredOrders(filtered);
   };
 
   useEffect(() => {
     filterOrders();
-  }, [searchTerm, selectedStatus, orders]);
+  }, [searchTerm, selectedStatus, startDate, endDate, orders]);
 
   // Group orders by user ID
   const groupOrdersByUserId = (orders) => {
@@ -99,6 +111,7 @@ const AdminOrders = ({ url, token }) => {
 
   return (
     <div className="admin-orders">
+      <ToastContainer /> {/* Add this line to enable Toast notifications */}
       <div className="orders-container">
         <h2 className="header">Admin Orders</h2>
         {error && (
@@ -126,19 +139,22 @@ const AdminOrders = ({ url, token }) => {
           </select>
         </div>
 
+        {/* Date Range Picker */}
+
         {Object.keys(groupedOrders).length === 0 ? (
           <p className="no-orders">No orders found.</p>
         ) : (
           Object.keys(groupedOrders).map((userId) => (
             <div key={userId} className="user-orders">
               <h3 className="user-id">User ID: {userId}</h3>
-              
               <div className="table-container">
                 <table className="orders-table">
                   <thead>
                     <tr>
                       <th>Order ID</th>
                       <th>Parcel</th>
+                      <th>First Name</th>
+                      <th>Phone Number</th>
                       <th>Item Name</th>
                       <th>Quantity</th>
                       <th>Amount</th>
@@ -151,7 +167,8 @@ const AdminOrders = ({ url, token }) => {
                   </thead>
                   <tbody>
                     {groupedOrders[userId].map((order) => {
-                      const { status, payment } = orderStates[order._id] || {};
+                      const { status, payment } =
+                        orderStates[order._id] || {};
 
                       return (
                         <React.Fragment key={order._id}>
@@ -168,6 +185,12 @@ const AdminOrders = ({ url, token }) => {
                                       alt="Parcel Icon"
                                       className="parcel-icon"
                                     />
+                                  </td>
+                                  <td rowSpan={order.items.length}>
+                                    {order.firstName}
+                                  </td>
+                                  <td rowSpan={order.items.length}>
+                                    {order.phone}
                                   </td>
                                   <td>{item.name}</td>
                                   <td>{item.amount}</td>
@@ -190,11 +213,19 @@ const AdminOrders = ({ url, token }) => {
                                         }))
                                       }
                                     >
-                                      <option value="Processing">Processing</option>
-                                      <option value="Preparing Order">Preparing Order</option>
-                                      <option value="Out for delivery">Out for delivery</option>
+                                      <option value="Processing">
+                                        Processing
+                                      </option>
+                                      <option value="Preparing Order">
+                                        Preparing Order
+                                      </option>
+                                      <option value="Out for delivery">
+                                        Out for delivery
+                                      </option>
                                       <option value="Shipped">Delivered</option>
-                                      <option value="Cancelled">Cancelled</option>
+                                      <option value="Cancelled">
+                                        Cancelled
+                                      </option>
                                     </select>
                                   </td>
                                   <td rowSpan={order.items.length}>
@@ -205,7 +236,8 @@ const AdminOrders = ({ url, token }) => {
                                           ...prev,
                                           [order._id]: {
                                             ...prev[order._id],
-                                            payment: e.target.value === "Paid",
+                                            payment:
+                                              e.target.value === "Paid",
                                           },
                                         }))
                                       }
@@ -259,6 +291,9 @@ const AdminOrders = ({ url, token }) => {
 };
 
 export default AdminOrders;
+
+
+
 
 
 
