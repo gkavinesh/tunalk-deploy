@@ -99,9 +99,24 @@ const verifyOrder = async (req, res) => {
     }
 };
 
+// Function to get user orders
+const userOrders = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        if (!userId) {
+            return res.status(400).json({ success: false, message: "User ID is required" });
+        }
+        const orders = await orderModel.find({ userId });
+        res.json({ success: true, data: orders });
+    } catch (error) {
+        console.error("Error fetching user orders:", error);
+        res.status(500).json({ success: false, message: "Error fetching orders" });
+    }
+};
 
 
-export { placeOrder, verifyOrder };
+
+export { placeOrder, verifyOrder, userOrders };
 
 
 

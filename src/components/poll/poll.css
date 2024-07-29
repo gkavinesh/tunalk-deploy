@@ -15,7 +15,7 @@ h1:nth-child(1){
 
 
 .poll{
-    margin-top: -2rem;
+    margin-top: -2.5rem;
 }
 
 @media (max-width: 1024px) {
