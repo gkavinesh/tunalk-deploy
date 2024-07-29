@@ -72,15 +72,10 @@ const ExampleContent = () => (
       The Power of Fish
     </h2>
     <div className="col-span-1 md:col-span-8">
-      <p className="mb-4 text-lg text-neutral-600 md:text-xl">
-      Fish are a fantastic source of high-quality protein, omega-3 fatty acids, vitamins, and minerals. They support heart health, brain function, and reduce inflammation. Low in saturated fats, fish are a nutritious seafood choice, offering numerous health benefits in a delicious package.
-
-
-
-
-
-
-
+      <p className="mb-4 text-md text-neutral-600 md:text-xl">
+      Fish are a fantastic source of high-quality protein, omega-3 fatty acids, vitamins, and minerals. They support heart health, brain function, and reduce inflammation. 
+      </p>
+      <p className="mb-4 text-lg text-neutral-600 md:text-xl">Low in saturated fats, fish are a nutritious seafood choice, offering numerous health benefits in a delicious package.
       </p>
       <br></br>
       <a
