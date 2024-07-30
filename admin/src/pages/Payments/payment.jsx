@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,13 +17,19 @@ const Payment = ({ url, token }) => {
   // Fetch payments from the server
   const fetchPayments = async () => {
     try {
-      const response = await axios.post(`${url}/api/payment/list`, {}, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await fetch(`${url}/api/payment/list`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      if (response.data.success) {
-        setPayments(response.data.payments);
-        setFilteredPayments(response.data.payments); // Initialize with all payments
+      const data = await response.json();
+
+      if (data.success) {
+        setPayments(data.payments);
+        setFilteredPayments(data.payments); // Initialize with all payments
       } else {
         setError('Error fetching payments');
       }
@@ -52,13 +57,24 @@ const Payment = ({ url, token }) => {
   // Save updated prices
   const savePrices = async (id) => {
     try {
-      // Replace with your update request
-      await axios.put(`${url}/api/payment/update/${id}`, { updatedPrices }, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await fetch(`${url}/api/payment/update/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ updatedPrices }),
       });
-      toast.success('Prices updated successfully');
-      setEditing(null);
-      fetchPayments(); // Refresh payments list
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success('Prices updated successfully');
+        setEditing(null);
+        fetchPayments(); // Refresh payments list
+      } else {
+        toast.error('Error updating prices');
+      }
     } catch (error) {
       toast.error('Error updating prices');
       console.error('Error updating prices:', error);
@@ -81,11 +97,21 @@ const Payment = ({ url, token }) => {
   // Remove a payment
   const removeProduct = async (id) => {
     try {
-      await axios.delete(`${url}/api/payment/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      const response = await fetch(`${url}/api/payment/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      toast.success('Payment removed successfully');
-      fetchPayments(); // Refresh payments list
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success('Payment removed successfully');
+        fetchPayments(); // Refresh payments list
+      } else {
+        toast.error('Error removing payment');
+      }
     } catch (error) {
       toast.error('Error removing payment');
       console.error('Error removing payment:', error);
@@ -190,6 +216,7 @@ const Payment = ({ url, token }) => {
 };
 
 export default Payment;
+
 
 
 

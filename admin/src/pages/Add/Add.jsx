@@ -52,30 +52,41 @@ const Add = ({ url }) => {
     formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("types", JSON.stringify(types));
-
+  
     // Append all images to formData
     images.forEach(image => {
       formData.append("images", image);
     });
-
+  
     try {
-      const response = await axios.post(`${url}/api/product/add`, formData);
-      if (response.data.success) {
-        setData({
-          name: "",
-          description: "",
-          category: "Fish"
-        });
-        setImages([]);
-        setTypes([{ type: "curry cut", price: "" }]);
-        toast.success(response.data.message);
+      const response = await fetch(`${url}/api/product/add`, {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const result = await response.json();
+      
+      if (response.ok) {
+        if (result.success) {
+          setData({
+            name: "",
+            description: "",
+            category: "Fish"
+          });
+          setImages([]);
+          setTypes([{ type: "curry cut", price: "" }]);
+          toast.success(result.message);
+        } else {
+          toast.error(result.message);
+        }
       } else {
-        toast.error(response.data.message);
+        toast.error("An error occurred. Please try again.");
       }
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
   };
+  
 
   return (
     <div className='add'>

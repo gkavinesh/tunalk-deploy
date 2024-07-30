@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = "https://localhost:4000";
+  const url = "http://localhost:4000";
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
 
@@ -49,11 +48,22 @@ const StoreContextProvider = (props) => {
     // Sync the quantity change with the server
     if (token) {
       try {
-        await axios.post(
-          url + "/api/cart/update",
-          { userId: getUserIdFromToken(token), itemId, quantity: newQuantity },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const response = await fetch(`${url}/api/cart/update`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userId: getUserIdFromToken(token),
+            itemId,
+            quantity: newQuantity
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
       } catch (error) {
         console.error("Error updating item quantity:", error);
       }
@@ -90,11 +100,22 @@ const StoreContextProvider = (props) => {
 
     if (token) {
       try {
-        await axios.post(
-          url + "/api/cart/add",
-          { userId: getUserIdFromToken(token), itemId, quantity: amount },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const response = await fetch(`${url}/api/cart/add`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userId: getUserIdFromToken(token),
+            itemId,
+            quantity: amount
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
       } catch (error) {
         console.error("Error adding item to cart:", error);
       }
@@ -114,8 +135,12 @@ const StoreContextProvider = (props) => {
   // Function to fetch the food list
   const fetchFoodList = async () => {
     try {
-      const response = await axios.get(url + "/api/product/list");
-      setFoodList(response.data.data);
+      const response = await fetch(`${url}/api/product/list`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setFoodList(data.data);
     } catch (error) {
       console.error("Error fetching food list:", error);
     }
@@ -124,12 +149,21 @@ const StoreContextProvider = (props) => {
   // Function to load cart data from the server
   const loadCartData = async (token) => {
     try {
-      const response = await axios.post(
-        url + "/api/cart/get",
-        { userId: getUserIdFromToken(token) },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      const cartData = response.data.cartData;
+      const response = await fetch(`${url}/api/cart/get`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId: getUserIdFromToken(token) })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      const cartData = data.cartData;
 
       if (cartData && typeof cartData === "object" && !Array.isArray(cartData)) {
         const fetchedCartItems = Object.entries(cartData).reduce((acc, [key, amount]) => {
@@ -168,11 +202,21 @@ const StoreContextProvider = (props) => {
       });
 
       if (token) {
-        await axios.post(
-          url + "/api/cart/remove",
-          { userId: getUserIdFromToken(token), itemId },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const response = await fetch(`${url}/api/cart/remove`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userId: getUserIdFromToken(token),
+            itemId
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
       }
     } catch (error) {
       console.error("Error removing item from cart:", error);
@@ -185,11 +229,18 @@ const StoreContextProvider = (props) => {
       setCartItems({});
       localStorage.removeItem("cartItems"); // Clear cart from local storage
       if (token) {
-        await axios.post(
-          url + "/api/cart/clear",
-          { userId: getUserIdFromToken(token) },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const response = await fetch(`${url}/api/cart/clear`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ userId: getUserIdFromToken(token) })
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
       }
     } catch (error) {
       console.error("Error clearing cart:", error);
@@ -239,6 +290,7 @@ const StoreContextProvider = (props) => {
 };
 
 export default StoreContextProvider;
+
 
 
 

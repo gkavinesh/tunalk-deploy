@@ -24,6 +24,7 @@
 
 .add-product-name input,
 .add-product-description textarea {
+    border: 1px solid black;
     padding: 10px;
 }
 
@@ -34,6 +35,7 @@
 
 .add-category-price select,
 .add-category-price input {
+    border: 1px solid black;
     max-width: 120px;
     padding: 10px;
 }
@@ -72,6 +74,10 @@
     width: max(40%, 280px);
 }
 
+.add-types select{
+    border: 1px solid black;
+}
+
 .add-types p {
     margin-bottom: 10px;
     font-weight: normal;
@@ -90,16 +96,20 @@
 .add-type-btn {
     max-width: 120px;
     border-radius:10px;
-    padding: 10px;
+    padding: 5px;
     background-color: transparent;
     color: black;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     align-self: flex-start;
+    border: 3px solid teal;
 }
 
 .add-type-btn:hover {
     transform: scale(1.05);
+    border: 2px solid teal;
+    color: black;
+    background: transparent;
 }
 
   

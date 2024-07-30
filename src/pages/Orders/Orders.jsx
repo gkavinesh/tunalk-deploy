@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../context/StoreContext';
-import axios from 'axios';
 import { assets } from '../../assets/assets';
 import Preloader from '../../components/preloadersub/preloader'; // Ensure this is the correct path to the Preloader component
 
@@ -12,17 +11,23 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.post(
-        `${url}/api/order/userorders`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setData(response.data.data);
+      const response = await fetch(`${url}/api/order/userorders`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      setData(result.data);
     } catch (error) {
-      console.error("Error fetching orders:", error.response ? error.response.data : error.message);
-      setError(error.response ? error.response.data : error.message);
+      console.error("Error fetching orders:", error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -109,6 +114,7 @@ const Orders = () => {
 };
 
 export default Orders;
+
 
 
 

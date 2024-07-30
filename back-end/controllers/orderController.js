@@ -1,4 +1,3 @@
-import axios from "axios";
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import crypto from "crypto";
@@ -10,18 +9,14 @@ const onepayAppId = process.env.ONEPAY_APP_ID || "FYUZ118E58041E1505AA3";
 const onepayHashSalt = process.env.ONEPAY_HASH_SALT || "OSFA118E58041E1505AC9";
 const onepayToken = process.env.ONEPAY_TOKEN || "600a2bffbbbfa7782822add71cc80d91b4bec3ac28ee74eb0128f01c05aa569fef28ed5dddeff754.R11F118E58041E1505ADE";
 
-// Function to place an order
 const placeOrder = async (req, res) => {
     try {
-        // Destructure order details from the request body
         const { orderId, userId, address, items, firstName, lastName, email, phone, total, paymentMethod } = req.body;
 
-        // Validate required fields
         if (!userId || !address || !items || !total || !firstName || !lastName || !email || !phone) {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        // Create and save a new order
         const newOrder = new orderModel({
             orderId,
             userId,
@@ -36,48 +31,60 @@ const placeOrder = async (req, res) => {
         });
 
         await newOrder.save();
-
-        // Clear the user's cart
         await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
-        // Transaction details for Onepay
-        const transactionDetails = {
-            amount: total,
-            app_id: onepayAppId,
-            reference: newOrder._id.toString(),
-            customer_first_name: firstName,
-            customer_last_name: lastName,
-            customer_phone_number: phone,
-            customer_email: email,
-            transaction_redirect_url: `${frontendUrl}/fish`, // ensure this is set up correctly on the frontend
-            currency: "LKR",
-            // Add these lines to ensure redirection happens properly
-        };
+        if (paymentMethod === 'onePay') {
+            const transactionDetails = {
+                amount: total,
+                app_id: onepayAppId,
+                reference: orderId, // Use orderId as reference
+                customer_first_name: firstName,
+                customer_last_name: lastName,
+                customer_phone_number: phone,
+                customer_email: email,
+                transaction_redirect_url: `${frontendUrl}/payment-success`, // Redirect URL after payment
+                currency: "LKR",
+            };
 
-        // Hash the transaction details
-        const hashString = JSON.stringify(transactionDetails) + onepayHashSalt;
-        const hash = crypto.createHash('sha256').update(hashString).digest('hex');
+            // Generate hash key
+            const hashString = JSON.stringify(transactionDetails).replace(/\s/g, '') + onepayHashSalt;
+            const hash = crypto.createHash('sha256').update(hashString).digest('hex');
 
-        // Request to Onepay API
-        const response = await axios.post(`${onepayBaseUrl}${hash}`, transactionDetails, {
-            headers: {
-                'Authorization': onepayToken,
-                'Content-Type': 'application/json'
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Authorization': onepayToken,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(transactionDetails),
+            };
+
+            const response = await fetch(`${onepayBaseUrl}/request-payment-link/?hash=${hash}`, requestOptions);
+            const responseData = await response.json();
+
+            // Handle the response from Onepay
+            if (responseData.status === 1000 && responseData.data && responseData.data.gateway && responseData.data.gateway.redirect_url) {
+                // Optionally save IPG transaction ID and amount details to your order model
+                await orderModel.findByIdAndUpdate(orderId, {
+                    ipgTransactionId: responseData.data.ipg_transaction_id,
+                    amountDetails: responseData.data.amount
+                });
+
+                return res.json({ 
+                    success: true, 
+                    session_url: responseData.data.gateway.redirect_url 
+                });
+            } else {
+                return res.status(500).json({ success: false, message: "Failed to get redirect URL from Onepay" });
             }
-        });
-
-        // Handle the response from Onepay
-        if (response.data && response.data.data && response.data.data.gateway && response.data.data.gateway.redirect_url) {
-            return res.json({ success: true, session_url: response.data.data.gateway.redirect_url });
         } else {
-            return res.status(500).json({ success: false, message: "Failed to get redirect URL from Onepay" });
+            return res.json({ success: true, message: "Order placed successfully" });
         }
     } catch (error) {
         console.error("Error processing payment:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
-
 // Function to verify an order
 const verifyOrder = async (req, res) => {
     const { orderId, success } = req.body;
@@ -110,16 +117,16 @@ const userOrders = async (req, res) => {
     }
 };
 
-//Displaying Orders in Admin Panel
-const listOrders = async (req,res) => {
+// Displaying Orders in Admin Panel
+const listOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({});
-        res.json({success:true,data:orders})
+        res.json({ success: true, data: orders });
     } catch (error) {
         console.log(error);
-        res.json({success:false, message:"error"})
+        res.json({ success: false, message: "Error retrieving orders" });
     }
-}
+};
 
 // Function to update order status and payment status
 const updateOrder = async (req, res) => {
@@ -149,10 +156,8 @@ const updateOrder = async (req, res) => {
     }
 };
 
-
-
-
 export { placeOrder, verifyOrder, userOrders, listOrders, updateOrder };
+
 
 
 

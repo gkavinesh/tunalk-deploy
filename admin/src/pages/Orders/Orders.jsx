@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { assets } from "../../assets/assets";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,19 +19,24 @@ const AdminOrders = ({ url }) => {
   // Fetch all orders
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${url}/api/order/list`);
+      const response = await fetch(`${url}/api/order/list`);
+      const data = await response.json();
 
-      if (response.data.success) {
-        const ordersData = response.data.data;
-        setOrders(ordersData);
-        setFilteredOrders(ordersData); // Initialize filtered orders
+      if (response.ok) {
+        if (data.success) {
+          const ordersData = data.data;
+          setOrders(ordersData);
+          setFilteredOrders(ordersData); // Initialize filtered orders
 
-        // Initialize state for each order
-        const initialStates = ordersData.reduce((acc, order) => {
-          acc[order._id] = { status: order.status, payment: order.payment };
-          return acc;
-        }, {});
-        setOrderStates(initialStates);
+          // Initialize state for each order
+          const initialStates = ordersData.reduce((acc, order) => {
+            acc[order._id] = { status: order.status, payment: order.payment };
+            return acc;
+          }, {});
+          setOrderStates(initialStates);
+        } else {
+          toast.error("Error fetching orders");
+        }
       } else {
         toast.error("Error fetching orders");
       }
@@ -50,15 +54,26 @@ const AdminOrders = ({ url }) => {
   // Update order status and payment status in the database
   const updateOrder = async (orderId, status, payment) => {
     try {
-      const response = await axios.put(`${url}/api/order/update`, {
-        orderId,
-        status,
-        payment,
+      const response = await fetch(`${url}/api/order/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          orderId,
+          status,
+          payment,
+        }),
       });
+      const data = await response.json();
 
-      if (response.data.success) {
-        toast.success("Order updated successfully");
-        fetchOrders(); // Refresh orders
+      if (response.ok) {
+        if (data.success) {
+          toast.success("Order updated successfully");
+          fetchOrders(); // Refresh orders
+        } else {
+          toast.error("Error updating order");
+        }
       } else {
         toast.error("Error updating order");
       }
@@ -308,6 +323,7 @@ const AdminOrders = ({ url }) => {
 };
 
 export default AdminOrders;
+
 
 
 

@@ -4,7 +4,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
-import axios from 'axios';
 
 // Import images for payment methods
 import { assets } from '../../assets/assets';
@@ -139,33 +138,31 @@ const PlaceOrder = () => {
     try {
       let response;
 
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(orderData),
+      };
+
       if (data.paymentMethod === 'bankTransfer') {
         clearCart(); // Clear the cart when proceeding to payment
         navigate('/payment', { state: { orderData } });
-        response = await axios.post(`${url}/api/order/place`, orderData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        response = await fetch(`${url}/api/order/place`, requestOptions);
       } else if (data.paymentMethod === 'cashOnDelivery') {
         clearCart(); // Clear the cart when order is placed
         navigate('/myorders');
-        response = await axios.post(`${url}/api/order/place`, orderData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        response = await fetch(`${url}/api/order/place`, requestOptions);
       } else if (data.paymentMethod === 'onePay') {
         // Send order data to the backend for onePay
-        response = await axios.post(`${url}/api/order/place`, orderData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log('Response from backend:', response.data);
-        if (response.data && response.data.session_url) {
+        response = await fetch(`${url}/api/order/place`, requestOptions);
+        const data = await response.json();
+        console.log('Response from backend:', data);
+        if (data && data.session_url) {
           // Handle OnePay session URL if applicable
-          window.location.href = response.data.session_url;
+          window.location.href = data.session_url;
         } else {
           console.error('No session URL found in response.');
         }
@@ -173,6 +170,7 @@ const PlaceOrder = () => {
         console.error('Please select a payment method.');
       }
     } catch (error) {
+      console.error('Error placing order:', error);
     }
   };
 
@@ -344,4 +342,5 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
+
 

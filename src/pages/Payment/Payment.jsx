@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import './Payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
-import Preloader from '..//..//components//preloadersub/preloader'
+import Preloader from '../../components/preloadersub/preloader';
 
 const Payment = () => {
   const { url, token } = useContext(StoreContext);
@@ -20,9 +19,9 @@ const Payment = () => {
   const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
-    // Simulate a delay to show the preloader for 6 seconds
+    // Simulate a delay to show the preloader for 2 seconds
     const timer = setTimeout(() => {
-      setLoading(false); // Set loading to false after 6 seconds
+      setLoading(false); // Set loading to false after 2 seconds
     }, 2000);
 
     // Cleanup timer on component unmount
@@ -52,14 +51,22 @@ const Payment = () => {
     formData.append('address', JSON.stringify(orderData.address));
 
     try {
-      const response = await axios.post(`${url}/api/payment/confirm`, formData, {
+      const response = await fetch(`${url}/api/payment/confirm`, {
+        method: 'POST',
         headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
+          // Content-Type is not needed for FormData
         },
+        body: formData,
       });
 
-      if (response.data.success) {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
         toast.success('Done! Await your confirmation in the orders page.');
         setSubmitted(true);
         setImage(null);
@@ -68,7 +75,7 @@ const Payment = () => {
           navigate('/myorders');
         }, 3000); // Adjust the delay to match your toast display time
       } else {
-        toast.error(response.data.message || 'Failed to submit payment confirmation.');
+        toast.error(result.message || 'Failed to submit payment confirmation.');
       }
     } catch (error) {
       console.error('Error submitting payment confirmation:', error);
@@ -130,6 +137,7 @@ const Payment = () => {
 };
 
 export default Payment;
+
 
 
 

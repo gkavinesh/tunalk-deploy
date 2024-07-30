@@ -11,7 +11,7 @@ import Payment from "./pages/Payments/payment"
 
 const App = () => {
 
-  const url = "https://localhost:4000";
+  const url = "http://localhost:4000";
 
   return (
     <div>
