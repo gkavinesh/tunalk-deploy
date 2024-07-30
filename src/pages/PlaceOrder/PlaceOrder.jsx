@@ -138,31 +138,45 @@ const PlaceOrder = () => {
     try {
       let response;
 
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(orderData),
-      };
-
       if (data.paymentMethod === 'bankTransfer') {
         clearCart(); // Clear the cart when proceeding to payment
         navigate('/payment', { state: { orderData } });
-        response = await fetch(`${url}/api/order/place`, requestOptions);
+        response = await fetch(`${url}/api/order/place`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(orderData),
+        });
       } else if (data.paymentMethod === 'cashOnDelivery') {
         clearCart(); // Clear the cart when order is placed
         navigate('/myorders');
-        response = await fetch(`${url}/api/order/place`, requestOptions);
+        response = await fetch(`${url}/api/order/place`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(orderData),
+        });
       } else if (data.paymentMethod === 'onePay') {
         // Send order data to the backend for onePay
-        response = await fetch(`${url}/api/order/place`, requestOptions);
-        const data = await response.json();
-        console.log('Response from backend:', data);
-        if (data && data.session_url) {
+        response = await fetch(`${url}/api/order/place`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(orderData),
+        });
+
+        const responseData = await response.json();
+        console.log('Response from backend:', responseData);
+
+        if (responseData && responseData.session_url) {
           // Handle OnePay session URL if applicable
-          window.location.href = data.session_url;
+          window.location.href = responseData.session_url;
         } else {
           console.error('No session URL found in response.');
         }
@@ -171,6 +185,7 @@ const PlaceOrder = () => {
       }
     } catch (error) {
       console.error('Error placing order:', error);
+      toast.error('An error occurred while placing the order.');
     }
   };
 

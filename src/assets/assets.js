@@ -112,8 +112,10 @@ import onepay from './onepay.png'
 import upload from './upload_area.png'
 import fact from './fact.png'
 import fact2 from './fact2.png'
+import border from './border.png'
 
 export const assets = {
+    border,
     fact2,
     fact,
     upload,

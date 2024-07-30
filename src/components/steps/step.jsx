@@ -40,8 +40,8 @@ const StepsSection = () => {
         <section className="py-10 bg-white sm:py-16 lg:py-24">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" id='why'>
                 <div className="bubbly">
-                    <h2>Why Tuna LK</h2>
-                    <h2>Why Tuna LK</h2>
+                    <h2>Why Tuna.LK</h2>
+                    <h2>Why Tuna.LK</h2>
                 </div>
                 <br></br>
                 <br></br>

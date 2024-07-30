@@ -2,12 +2,9 @@
   "name": "back-end",
   "version": "1.0.0",
   "main": "server.js",
-  "engines":{
-    "node":"20.x"
-  },
   "type": "module",
   "scripts": {
-    "server": "node server.js"
+    "server": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

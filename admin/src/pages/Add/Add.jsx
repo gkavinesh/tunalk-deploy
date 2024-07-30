@@ -86,11 +86,10 @@ const Add = ({ url }) => {
       toast.error("An error occurred. Please try again.");
     }
   };
-  
 
   return (
     <div className='add'>
-      <form className='flex-col' onSubmit={onSubmitHandler}>
+      <form className='add-form' onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
           <p>Upload Images - <b> Add the main thumbnail image first and then the subsidiary images</b></p>
           <label htmlFor="images">
@@ -118,67 +117,73 @@ const Add = ({ url }) => {
             required
           />
         </div>
-        <div className="add-product-name flex-col">
-          <p>Product Name</p>
-          <input
-            onChange={onChangeHandler}
-            value={data.name}
-            type='text'
-            name='name'
-            placeholder='Name'
-          />
-        </div>
-        <div className='add-product-description flex-col'>
-          <p>Net Weight : <b>Use this format - Net Weight : XXXgms to XXXgms</b></p>
-          <textarea
-            onChange={onChangeHandler}
-            value={data.description}
-            name="description"
-            rows="2"
-            placeholder="Type in the net weight in the appropriate format here"
-          />
-        </div>
-        <div className="add-category-price">
-          <div className='add-category flex-col'>
-            <p>Product Category</p>
-            <select
-              name="category"
-              onChange={onChangeHandler}
-              value={data.category}
-            >
-              <option value="Fish">Fish</option>
-              <option value="Prawns">Prawns</option>
-              <option value="Crab">Crab</option>
-              <option value="Hot Deals">Hot Deals</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="add-types">
-          <p>Product Types and Prices</p>
-          {types.map((type, index) => (
-            <div key={index} className="type-price-row">
-              <select
-                name="type"
-                value={type.type}
-                onChange={event => onTypeChange(index, event)}
-              >
-                {typeOptions.map((option, i) => (
-                  <option key={i} value={option}>{option}</option>
-                ))}
-              </select>
+        
+        <div className="form-grid">
+          <div className="left-column">
+            <div className="add-product-name flex-col">
+              <p>Product Name</p>
               <input
-                type="number"
-                name="price"
-                value={type.price}
-                onChange={event => onTypeChange(index, event)}
-                placeholder="LKR 2000"
+                onChange={onChangeHandler}
+                value={data.name}
+                type='text'
+                name='name'
+                placeholder='Name'
               />
             </div>
-          ))}
-          <button type="button" onClick={addTypeField} className="add-type-btn">Add Type</button>
-        </div>
+            <div className='add-product-description flex-col'>
+              <p>Net Weight : <b>Use this format - Net Weight : XXXgms to XXXgms</b></p>
+              <textarea
+                onChange={onChangeHandler}
+                value={data.description}
+                name="description"
+                rows="4"
+                placeholder="Type in the net weight in the appropriate format here"
+              />
+            </div>
+          </div>
 
+          <div className="right-column">
+            <div className='add-category flex-col'>
+              <p>Product Category</p>
+              <select
+                name="category"
+                onChange={onChangeHandler}
+                value={data.category}
+              >
+                <option value="Fish">Fish</option>
+                <option value="Prawns">Prawns</option>
+                <option value="Crab">Crab</option>
+                <option value="Hot Deals">Hot Deals</option>
+              </select>
+            </div>
+
+            <div className="add-types flex-col">
+              <p>Product Types and Prices</p>
+              {types.map((type, index) => (
+                <div key={index} className="type-price-row">
+                  <select
+                    name="type"
+                    value={type.type}
+                    onChange={event => onTypeChange(index, event)}
+                  >
+                    {typeOptions.map((option, i) => (
+                      <option key={i} value={option}>{option}</option>
+                    ))}
+                  </select>
+                  <input
+                    type="number"
+                    name="price"
+                    value={type.price}
+                    onChange={event => onTypeChange(index, event)}
+                    placeholder="LKR 2000"
+                  />
+                </div>
+              ))}
+              <button type="button" onClick={addTypeField} className="add-type-btn">Add Type</button>
+            </div>
+          </div>
+        </div>
+        
         <button type="submit" className="add-btn">ADD</button>
       </form>
       <ToastContainer />
@@ -187,6 +192,8 @@ const Add = ({ url }) => {
 };
 
 export default Add;
+
+
 
 
 

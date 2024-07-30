@@ -152,7 +152,7 @@ const Navbar = ({ setShowLogin }) => {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ duration: 0.5 }}
-                        className="sidebar"
+                        className="bg-gray-100 sidebar"
                     >
                         <div className="sidebar-header">
                             <div className="flex justify-between items-center">

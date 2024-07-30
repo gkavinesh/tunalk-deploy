@@ -6,10 +6,9 @@
     font-size: 16px;
 }
 
-.add input{
-    border: 1px solid black;
-}
-.add form {
+.add-form {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -17,37 +16,41 @@
     width: 120px;
 }
 
-.add-product-name,
-.add-product-description {
-    width: max(40%, 280px);
+.add-img-upload {
+    margin-bottom: 30px;
 }
 
-.add-product-name input,
-.add-product-description textarea {
-    border: 1px solid black;
-    padding: 10px;
-}
-
-.add-category-price {
-    display: flex;
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
-.add-category-price select,
-.add-category-price input {
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-product-name input,
+.add-product-description textarea,
+.add-category select,
+.type-price-row input {
     border: 1px solid black;
-    max-width: 120px;
     padding: 10px;
+    width: 100%;
 }
 
 .add-btn {
-    max-width: 120px;
+    width: 160px;
     border-radius: 10px;
     padding: 10px;
     background-color: #0C979C;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
+    align-self: flex-start;
+    margin-top: 20px;
 }
 
 .add-btn:hover {
@@ -65,17 +68,17 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .add-types {
-    display: flex;
-    flex-direction: column;
     gap: 15px;
-    width: max(40%, 280px);
 }
 
-.add-types select{
+.add-types select {
     border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 .add-types p {
@@ -86,16 +89,12 @@
 .type-price-row {
     display: flex;
     gap: 10px;
-}
-
-.type-price-row input {
-    flex: 1;
-    padding: 10px;
+    height: 40px;
 }
 
 .add-type-btn {
     max-width: 120px;
-    border-radius:10px;
+    border-radius: 10px;
     padding: 5px;
     background-color: transparent;
     color: black;
@@ -111,5 +110,6 @@
     color: black;
     background: transparent;
 }
+
 
   

@@ -22,6 +22,11 @@ const Faq = () => {
             question: 'How can I reach support if my delivery is not on time?',
             answer: 'You can contact the dispatch team via contact details here.',
             open: false
+        },
+        {
+            question: 'How can I reach support if my delivery is not on time?',
+            answer: 'You can contact the dispatch team via contact details here.',
+            open: false
         }
     ]);
 
@@ -58,10 +63,10 @@ const Faq = () => {
         <section className="py-10 bg-white sm:py-16 lg:py-24 ">
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div className="flex justify-center items-center">
-                    <h2 className="text-teal-500 text-7xl font-semibold mb-3">FAQ</h2>
+                    <h2 className="text-teal-500 text-7xl font-semibold -mt-8">FAQ</h2>
                 </div>
 
-                <div className="max-w-3xl mx-auto mt-8 space-y-4 md:mt-16">
+                <div className="max-w-8xl mx-auto mt-8 space-y-4 md:mt-16">
                     {faq.map((item, index) => (
                         <div key={index} className="transition-all duration-200 bg-white border border-gray-200 cursor-pointer hover:bg-gray-50">
                             <button type="button" className="flex items-center justify-between w-full px-4 py-5 sm:p-6" onClick={() => toggleFaq(index)}>

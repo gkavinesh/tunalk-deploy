@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import './poll.css'
 import Image2 from './line2.png'
 import Image1 from './line1.png'
+import { assets } from "../../assets/assets";
 
 const BarPoll = () => {
   const [votes, setVotes] = useState([
@@ -24,7 +25,7 @@ const BarPoll = () => {
   ]);
 
   return (
-    <section className="bg-cyan-100 px-4 py-12 poll">
+    <section className="bg-teal-100 px-4 py-12 poll">
       <br></br>
       <div className="buby">
       <h1 className="heading-1">Time to have some fun?</h1>

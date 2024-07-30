@@ -236,10 +236,6 @@ const Footer = () => {
           </p>
           <h3 className="text-2xl font-bold text-teal-400 mt-6">Privacy Policy</h3>
           <p>
-            <strong>Introduction</strong><br />
-            At TunaLK, we value your privacy. This policy outlines how we collect, use, and protect your personal information.
-          </p>
-          <p>
             <strong>Information Collection</strong><br />
             We collect information you provide directly, such as your name, email address, and payment details. We also collect information about your interactions with our website.
           </p>

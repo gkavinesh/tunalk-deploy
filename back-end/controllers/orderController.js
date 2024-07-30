@@ -53,7 +53,7 @@ const placeOrder = async (req, res) => {
             const requestOptions = {
                 method: 'POST',
                 headers: {
-                    'Authorization': onepayToken,
+                    'Authorization': `Bearer ${onepayToken}`,
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(transactionDetails),
@@ -85,6 +85,7 @@ const placeOrder = async (req, res) => {
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
+
 // Function to verify an order
 const verifyOrder = async (req, res) => {
     const { orderId, success } = req.body;
@@ -157,6 +158,7 @@ const updateOrder = async (req, res) => {
 };
 
 export { placeOrder, verifyOrder, userOrders, listOrders, updateOrder };
+
 
 
 

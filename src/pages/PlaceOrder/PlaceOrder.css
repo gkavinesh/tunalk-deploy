@@ -174,52 +174,52 @@
     padding: 20px; /* Padding for inner content */
     border-radius: 8px; /* Rounded corners for aesthetics */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  
-  .order-summary h3 {
+}
+
+.order-summary h3 {
     font-size: 24px;
     color: #11484d; /* Dark teal for the title */
     margin-bottom: 20px; /* Space below the title */
-  }
-  
-  .order-item {
+}
+
+.order-item {
     display: flex;
     align-items: center;
     margin-bottom: 15px; /* Space between items */
     padding-bottom: 15px; /* Padding at bottom */
     border-bottom: 1px solid #e0e0e0; /* Divider line between items */
-  }
-  
-  .order-item:last-child {
+}
+
+.order-item:last-child {
     margin-bottom: 0; /* Remove margin for last item */
     padding-bottom: 0; /* Remove padding for last item */
     border-bottom: none; /* Remove border for last item */
-  }
-  
-  .order-item-image {
+}
+
+.order-item-image {
     width: 60px; /* Image width */
     height: 60px; /* Image height */
     border-radius: 4px; /* Rounded corners for image */
     object-fit: cover; /* Ensures aspect ratio is maintained */
     margin-right: 15px; /* Space between image and details */
-  }
-  
-  .order-item-details {
+}
+
+.order-item-details {
     display: flex;
     flex-direction: column;
-  }
-  
-  .order-item-name {
+}
+
+.order-item-name {
     font-weight: bold;
     font-size: 16px; /* Size of the item name */
     color: #333333; /* Dark text color */
-  }
-  
-  .order-item-quantity {
+}
+
+.order-item-quantity {
     font-size: 14px; /* Size of the quantity text */
     color: #555555; /* Slightly lighter text color */
     margin-top: 5px; /* Space between name and quantity */
-  }
+}
 
 /* Responsive Styles */
 
@@ -335,6 +335,7 @@
         height: 30px;
     }
 }
+
 
 
 
