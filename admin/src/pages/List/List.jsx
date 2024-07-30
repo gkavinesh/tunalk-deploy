@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './List.css';
-import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,28 +10,53 @@ const List = ({ url }) => {
 
   const fetchList = async () => {
     try {
-      const response = await axios.get(`${url}/api/product/list`);
-      if (response.data.success) {
-        setList(response.data.data);
+      console.log(`Fetching product list from ${url}/api/product/list`);
+      const response = await fetch(`${url}/api/product/list`);
+      
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('Product list data:', data);
+
+      if (data.success) {
+        setList(data.data);
       } else {
-        toast.error("Error fetching product list");
+        toast.error("Error fetching product list: " + (data.message || "Unknown error"));
       }
     } catch (error) {
-      toast.error("Error fetching product list");
+      console.error("Error in fetchList:", error);
+      toast.error("Error fetching product list: " + error.message);
     }
   };
 
   const removeProduct = async (productId) => {
     try {
-      const response = await axios.post(`${url}/api/product/remove`, { id: productId });
-      if (response.data.success) {
+      const response = await fetch(`${url}/api/product/remove`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: productId }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('Remove product response:', data);
+
+      if (data.success) {
         await fetchList();
-        toast.success(response.data.message);
+        toast.success(data.message);
       } else {
-        toast.error(response.data.message || "Error removing product");
+        toast.error(data.message || "Error removing product");
       }
     } catch (error) {
-      toast.error("Error removing product");
+      console.error("Error in removeProduct:", error);
+      toast.error("Error removing product: " + error.message);
     }
   };
 
@@ -52,19 +76,34 @@ const List = ({ url }) => {
 
   const savePrices = async (productId) => {
     try {
-      const response = await axios.put(`${url}/api/product/update-price`, {
-        id: productId,
-        types: updatedPrices
+      const response = await fetch(`${url}/api/product/update-price`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: productId,
+          types: updatedPrices,
+        }),
       });
-      if (response.data.success) {
+
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('Save prices response:', data);
+
+      if (data.success) {
         setEditing(null);
         await fetchList();
-        toast.success(response.data.message);
+        toast.success(data.message);
       } else {
-        toast.error(response.data.message || "Error updating prices");
+        toast.error(data.message || "Error updating prices");
       }
     } catch (error) {
-      toast.error("Error updating prices");
+      console.error("Error in savePrices:", error);
+      toast.error("Error updating prices: " + error.message);
     }
   };
 
@@ -141,6 +180,8 @@ const List = ({ url }) => {
 };
 
 export default List;
+
+
 
 
 

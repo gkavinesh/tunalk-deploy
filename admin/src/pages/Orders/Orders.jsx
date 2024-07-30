@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Orders.css";
 
-const AdminOrders = ({ url, token }) => {
+const AdminOrders = ({ url }) => {
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [error, setError] = useState(null);
@@ -20,14 +20,15 @@ const AdminOrders = ({ url, token }) => {
   // Fetch all orders
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`${url}/api/order/list`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(`${url}/api/order/list`);
+
       if (response.data.success) {
-        setOrders(response.data.data);
-        setFilteredOrders(response.data.data); // Initialize filtered orders
+        const ordersData = response.data.data;
+        setOrders(ordersData);
+        setFilteredOrders(ordersData); // Initialize filtered orders
+
         // Initialize state for each order
-        const initialStates = response.data.data.reduce((acc, order) => {
+        const initialStates = ordersData.reduce((acc, order) => {
           acc[order._id] = { status: order.status, payment: order.payment };
           return acc;
         }, {});
@@ -38,6 +39,7 @@ const AdminOrders = ({ url, token }) => {
     } catch (error) {
       setError(error.message);
       console.error("Error fetching orders:", error);
+      toast.error("Error fetching orders");
     }
   };
 
@@ -48,13 +50,12 @@ const AdminOrders = ({ url, token }) => {
   // Update order status and payment status in the database
   const updateOrder = async (orderId, status, payment) => {
     try {
-      const response = await axios.put(
-        `${url}/api/order/update`,
-        { orderId, status, payment },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await axios.put(`${url}/api/order/update`, {
+        orderId,
+        status,
+        payment,
+      });
+
       if (response.data.success) {
         toast.success("Order updated successfully");
         fetchOrders(); // Refresh orders
@@ -72,18 +73,18 @@ const AdminOrders = ({ url, token }) => {
     let filtered = orders;
 
     if (searchTerm) {
-      filtered = filtered.filter(order =>
+      filtered = filtered.filter((order) =>
         order._id.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
     if (selectedStatus !== "All") {
-      filtered = filtered.filter(order => order.status === selectedStatus);
+      filtered = filtered.filter((order) => order.status === selectedStatus);
     }
 
     if (startDate && endDate) {
-      filtered = filtered.filter(order => {
-        const orderDate = new Date(order.date); // Replace 'order.date' with your actual date field
+      filtered = filtered.filter((order) => {
+        const orderDate = new Date(order.date); // Ensure 'order.date' is the correct field
         return orderDate >= startDate && orderDate <= endDate;
       });
     }
@@ -111,12 +112,10 @@ const AdminOrders = ({ url, token }) => {
 
   return (
     <div className="admin-orders">
-      <ToastContainer /> {/* Add this line to enable Toast notifications */}
+      <ToastContainer /> {/* Enable Toast notifications */}
       <div className="orders-container">
         <h2 className="header">Admin Orders</h2>
-        {error && (
-          <p className="error-message">Error fetching orders: {error}</p>
-        )}
+        {error && <p className="error-message">Error: {error}</p>}
 
         {/* Search and Filter Section */}
         <div className="search-filter">
@@ -140,6 +139,25 @@ const AdminOrders = ({ url, token }) => {
         </div>
 
         {/* Date Range Picker */}
+        <div className="date-picker-container">
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            placeholderText="Start Date"
+          />
+          <DatePicker
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            placeholderText="End Date"
+          />
+        </div>
 
         {Object.keys(groupedOrders).length === 0 ? (
           <p className="no-orders">No orders found.</p>
@@ -167,8 +185,7 @@ const AdminOrders = ({ url, token }) => {
                   </thead>
                   <tbody>
                     {groupedOrders[userId].map((order) => {
-                      const { status, payment } =
-                        orderStates[order._id] || {};
+                      const { status, payment } = orderStates[order._id] || {};
 
                       return (
                         <React.Fragment key={order._id}>

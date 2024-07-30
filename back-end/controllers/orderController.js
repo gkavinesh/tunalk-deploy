@@ -4,7 +4,7 @@ import userModel from "../models/userModel.js";
 import crypto from "crypto";
 
 // Load sensitive data from environment variables
-const frontendUrl = "https://tunalk-frontend.onrender.com";
+const frontendUrl = "https://localhost:5173";
 const onepayBaseUrl = process.env.ONEPAY_BASE_URL || "https://merchant-api-live-v2.onepay.lk/api/ipg/gateway/request-transaction/?hash=";
 const onepayAppId = process.env.ONEPAY_APP_ID || "FYUZ118E58041E1505AA3";
 const onepayHashSalt = process.env.ONEPAY_HASH_SALT || "OSFA118E58041E1505AC9";
