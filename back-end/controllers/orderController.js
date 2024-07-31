@@ -11,110 +11,103 @@ const appToken = '77b5298f53d8cafcf66f43278718206f07d0f3006f12c1a470...'; // Kee
 const hashSalt = 'OSFA118E58041E1505AC9';
 
 
-// Helper function to generate hash
-const generateHash = (data) => {
-  const hash = crypto.createHash('sha256');
-  const hashString = data + hashSalt;
-  return hash.update(hashString, 'utf-8').digest('hex');
-};
 
 const placeOrder = async (req, res) => {
+    let requestData;  // Declare a variable to hold the request data
+
     try {
-      const {
-        orderId,
-        userId,
-        address,
-        items,
-        firstName,
-        lastName,
-        email,
-        phone,
-        total,
-        paymentMethod
-      } = req.body;
-  
-      if (!userId || !address || !items || !total || !firstName || !lastName || !email || !phone) {
-        return res.status(400).json({ success: false, message: "Missing required fields" });
-      }
-  
-      const newOrder = new orderModel({
-        orderId,
-        userId,
-        address,
-        items,
-        total,
-        firstName,
-        lastName,
-        email,
-        phone,
-        paymentMethod,
-      });
-  
-      await newOrder.save();
-      await userModel.findByIdAndUpdate(userId, { cartData: {} });
-  
-      // Handle OnePay payment
-      if (paymentMethod === 'onePay') {
-        const requestDataObject = {
-          amount: total,
-          app_id: appId,
-          reference: "tuna",
-          customer_first_name: firstName,
-          customer_last_name: lastName,
-          customer_phone_number: phone,
-          customer_email: email,
-          transaction_redirect_url: `${frontendUrl}/payment-success`,
-          currency: 'LKR', // Assuming LKR as the currency
-        };
-  
-        // Stringify without spaces
-        const requestData = JSON.stringify(requestDataObject, (key, value) => (typeof value === "string" ? value.trim() : value));
-  
-        // Log the data being hashed
-        console.log('Data for hashing:', requestData);
-  
-        const hash = generateHash(requestData);
-  
-        // Log the generated hash
-        console.log('Generated hash:', hash);
-  
-        try {
-          const response = await fetch(`${paymentUrl}${hash}`, {
-            method: 'POST',
-            headers: {
-              'Authorization': appToken,
-              'Content-Type': 'application/json',
-            },
-            body: requestData,
-          });
-  
-          const json_data = await response.json();
-  
-          if (json_data.status === 1000) {
-            // Send hash and redirect URL to the frontend
-            return res.json({
-              success: true,
-              paymentLink: json_data.data.gateway.redirect_url,
-              hash,
-            });
-          } else {
-            return res.status(400).json({ success: false, message: json_data.message });
-          }
-        } catch (error) {
-          console.error("Error processing payment:", error);
-          return res.status(500).json({ success: false, message: "Payment processing error" });
+        // Extracting data from request
+        const { orderId, userId, address, items, firstName, lastName, email, phone, total, paymentMethod } = req.body;
+        console.log('Received order data:', req.body);
+
+        if (!userId || !address || !items || !total || !firstName || !lastName || !email || !phone) {
+            return res.status(400).json({ success: false, message: "Missing required fields" });
         }
-      } else if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
-        return res.json({ success: true, message: "Order placed successfully" });
-      } else {
-        return res.status(400).json({ success: false, message: "Invalid payment method" });
-      }
-  
+
+        const requestDataObject = JSON.stringify({
+            amount: req.body.total,
+            app_id: "FYUZ118E58041E1505AA3",
+            reference: "tuna",
+            customer_first_name:firstName,
+            customer_last_name:lastName,
+            customer_phone_number:phone,
+            customer_email:email,
+            transaction_redirect_url: `https://tuna.lk`,
+            currency: 'LKR',
+        });
+
+        const newOrder = new orderModel({
+            orderId,
+            userId,
+            address,
+            items,
+            total,
+            firstName,
+            lastName,
+            email,
+            phone,
+            paymentMethod,
+        });
+
+        await newOrder.save();
+        await userModel.findByIdAndUpdate(userId, { cartData: {} });
+
+        if (paymentMethod === 'onePay') {
+
+            console.log(requestDataObject);
+
+            console.log('Data for hashing:', requestDataObject);
+
+            var hash = crypto.createHash('sha256');
+            hash_obj = requestDataObject + hashSalt
+            hash_obj = hash.update(hash_obj, 'utf-8')
+            gen_hash = hash_obj.digest('hex')
+
+            var options = {
+                'method':'get',
+                'url': paymentUrl + gen_hash,
+                'headers': {
+                    'Authorization':appToken,
+                    'Content-type': 'application/json'
+                },
+                body:requestDataObject
+            }
+
+            request(options,function(error,response){
+                if(error){
+                    console.log(error);
+                    res.sendStatus(400);
+                    res.end()
+                }else{
+                    console.log(response.body);
+
+                    const json_data = JSON.parse(response.body);
+                    if(json_data.success == 1000){
+                        res.redirect(json_data.data.gateway.redirect_url);
+                        res.end();
+                    }else{
+                        res.render(json_data.message)
+                        res.end();
+                    }
+                }
+            })
+        } else if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
+            return res.json({ success: true, message: "Order placed successfully" });
+        } else {
+            return res.status(400).json({ success: false, message: "Invalid payment method" });
+        }
     } catch (error) {
-      console.error("Error processing order:", error);
-      res.status(500).json({ success: false, message: "Internal server error" });
+        console.error("Error processing order:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            requestDataObject,  // Include requestData in the error response
+        });
     }
-  };
+};
+
+  
+
 
 // Verify Order Function
 const verifyOrder = async (req, res) => {

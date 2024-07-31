@@ -97,125 +97,102 @@ const PlaceOrder = () => {
   const placeOrder = async (event) => {
     event.preventDefault();
     console.log('Placing order with data:', data);
-  
+
     if (!data.paymentMethod) {
-      toast.error('Please select a payment method.');
-      return;
+        toast.error('Please select a payment method.');
+        return;
     }
-  
+
     if (!validateForm()) {
-      toast.error('Please correct the errors in the form.');
-      return;
+        toast.error('Please correct the errors in the form.');
+        return;
     }
-  
+
     const orderItems = Object.keys(cartItems)
-      .map((key) => {
-        const [itemId, type] = key.split('-');
-        const item = food_list.find((food) => food._id === itemId);
-        if (item) {
-          return {
-            itemId: item._id,
-            name: item.name,
-            type,
-            price: cartItems[key].price,
-            weight: cartItems[key].weight,
-            amount: cartItems[key].amount,
-          };
-        }
-        return null;
-      })
-      .filter((item) => item !== null);
-  
+        .map((key) => {
+            const [itemId, type] = key.split('-');
+            const item = food_list.find((food) => food._id === itemId);
+            if (item) {
+                return {
+                    itemId: item._id,
+                    name: item.name,
+                    type,
+                    price: cartItems[key].price,
+                    weight: cartItems[key].weight,
+                    amount: cartItems[key].amount,
+                };
+            }
+            return null;
+        })
+        .filter((item) => item !== null);
+
     // Generate a unique order ID
     const orderId = generateOrderId();
-  
+
     const orderData = {
-      orderId: String(orderId), // Make sure orderId is explicitly converted to a string
-      userId: token.userId, // Make sure token.userId is available
-      address: {
-        address: data.address,
-        type: data.type,
-        postcode: data.postcode,
-      },
-      items: orderItems,
-      total: getTotalCartAmount() + 200,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      phone: data.phone,
-      paymentMethod: data.paymentMethod, // Include payment method in order data
+        orderId: String(orderId), // Make sure orderId is explicitly converted to a string
+        userId: token.userId, // Make sure token.userId is available
+        address: {
+            address: data.address,
+            type: data.type,
+            postcode: data.postcode,
+        },
+        items: orderItems,
+        total: getTotalCartAmount() + 200,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        paymentMethod: data.paymentMethod, // Include payment method in order data
     };
-  
+
     console.log('Order data to be sent:', orderData);
-  
+
     try {
-      let response;
-  
-      if (data.paymentMethod === 'bankTransfer') {
+        let response;
+
+        // Making the API request depending on the payment method
         response = await fetch(`${url}/api/order/place`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(orderData),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(orderData),
         });
-  
+
         if (!response.ok) {
-          throw new Error(`Failed to place order for Bank Transfer. Status: ${response.status}`);
+            const errorResponse = await response.json();
+            throw new Error(`Failed to place order. Status: ${response.status}. Request Data Object: ${(errorResponse.requestDataObject)}`);
         }
-  
-        clearCart(); // Clear the cart when proceeding to payment
-        navigate('/payment', { state: { orderData } });
-        toast.success('Order placed successfully for Bank Transfer!');
-      } else if (data.paymentMethod === 'cashOnDelivery') {
-        response = await fetch(`${url}/api/order/place`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(orderData),
-        });
-  
-        if (!response.ok) {
-          throw new Error(`Failed to place order for Cash on Delivery. Status: ${response.status}`);
-        }
-  
-        clearCart(); // Clear the cart when order is placed
-        navigate('/myorders');
-        toast.success('Order placed successfully for Cash on Delivery!');
-      } else if (data.paymentMethod === 'onePay') {
-        response = await fetch(`${url}/api/order/place`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(orderData),
-        });
-  
-        if (!response.ok) {
-          throw new Error(`Failed to place order for OnePay. Status: ${response.status}`);
-        }
-  
+
         const result = await response.json();
-        console.log('OnePay response data:', result);
-        console.log('Received hash:', result.hash);
-  
-        if (result.success && result.paymentLink) {
-          clearCart(); // Clear the cart before redirecting
-          window.location.href = result.paymentLink; // Redirect to OnePay using the payment link from the backend
-          toast.success('Redirecting to OnePay for payment.');
-        } else {
-          throw new Error(result.message || 'Failed to retrieve OnePay payment link.');
+        console.log('Order placement response:', result);
+
+        // Handling responses based on payment method
+        if (data.paymentMethod === 'bankTransfer') {
+            clearCart(); // Clear the cart when proceeding to payment
+            navigate('/payment', { state: { orderData } });
+            toast.success('Order placed successfully for Bank Transfer!');
+        } else if (data.paymentMethod === 'cashOnDelivery') {
+            clearCart(); // Clear the cart when order is placed
+            navigate('/myorders');
+            toast.success('Order placed successfully for Cash on Delivery!');
+        } else if (data.paymentMethod === 'onePay') {
+            if (result.success && result.data && result.data.gateway && result.data.gateway.redirect_url) {
+                clearCart(); // Clear the cart before redirecting
+                window.location.href = result.data.gateway.redirect_url; // Redirect to OnePay using the payment link from the backend
+                toast.success('Redirecting to OnePay for payment.');
+            } else {
+                throw new Error(result.message || 'Failed to retrieve OnePay payment link.');
+            }
         }
-      }
     } catch (error) {
-      console.error('Error placing order:', error);
-      toast.error(`Failed to place order: ${error.message}`);
+        console.error('Error placing order:', error);
+        toast.error(`Failed to place order: ${error.message}`);
     }
-  };
+};
+
   
   
   
