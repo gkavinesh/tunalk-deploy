@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.js"
+      }
+    ],
+    "env": {
+      "ONEPAY_BASE_URL": "https://merchant-api-live-v2.onepay.lk/api/ipg/gateway/request-transaction/?hash=",
+      "ONEPAY_APP_ID": "FYUZ118E58041E1505AA3",
+      "ONEPAY_HASH_SALT": "OSFA118E58041E1505AC9",
+      "ONEPAY_TOKEN": "77b5298f53d8cafcf66f43278718206f07d0f3006f12c1a4702b24fdadd91487f88faecfb4e7de79.PWZH118E584D5815F6AA5",
+      "JWT_SECRET": "random#secret"
+    }
+  }
+  
