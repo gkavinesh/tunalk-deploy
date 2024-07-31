@@ -4,7 +4,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "build": "npm install"
   },
   "author": "",
   "license": "ISC",
@@ -23,3 +24,4 @@
     "validator": "^13.12.0"
   }
 }
+
