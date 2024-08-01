@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const paymentSchema = new mongoose.Schema({
-  receiptUrl: {
+  image: {
     type: String,
     required: true,
   },

@@ -4,18 +4,18 @@ import { confirmPayment,listPayment } from '../controllers/paymentController.js'
 
 const paymentRouter = express.Router();
 
-// Set up multer for file uploads
-const Storage = multer.diskStorage({
+// Image Storage engine
+const storage = multer.diskStorage({
   destination: "receipts",
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    return cb(null, `${Date.now()}${file.originalname}`);
   },
 });
 
-const upload = multer({ storage : Storage });
+const upload = multer({ storage : storage });
 
 // Route for confirming payment and uploading receipt
-paymentRouter.post('/confirm', upload.single('receipt'), confirmPayment);
+paymentRouter.post('/confirm', upload.single('image'), confirmPayment);
 paymentRouter.post('/list',listPayment)
 
 export default paymentRouter;
