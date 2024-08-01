@@ -23,76 +23,7 @@ const placeOrder = async (req, res) => {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        if (paymentMethod === 'onePay') {
-            // Prepare request data for OnePay
-            const requestDataObject = {
-                amount: total,
-                app_id: appId,
-                reference: orderId, // Using orderId as a unique reference
-                customer_first_name: firstName,
-                customer_last_name: lastName,
-                customer_phone_number: phone,
-                customer_email: email,
-                transaction_redirect_url: `${frontendUrl}/payment/success`, // Redirect URL after payment
-                currency: 'LKR',
-            };
-
-            // Log the request data object
-            console.log('Request Data Object:', requestDataObject);
-
-            // Convert the request data object to a JSON string
-            const requestDataString = JSON.stringify(requestDataObject);
-
-            // Generate hash
-            const hash = crypto.createHash('sha256');
-            const hashObj = hash.update(requestDataString + hashSalt, 'utf-8');
-            const genHash = hashObj.digest('hex');
-
-            // Construct the full payment URL with the hash
-            const paymentLink = `${paymentUrl}${genHash}`;
-
-            try {
-                // Make a GET request to the payment URL
-                const response = await axios.get(paymentLink, {
-                    headers: {
-                        'Authorization': appToken,
-                        'Content-Type': 'application/json'
-                    },
-                    data: requestDataObject
-                });
-
-                // Handle successful response from OnePay
-                if (response.data.success === 1000) {
-                    console.log('OnePay Response:', response.data);
-
-                    // Save the order to the database
-                    const newOrder = new orderModel({
-                        orderId,
-                        userId,
-                        address,
-                        items,
-                        total,
-                        firstName,
-                        lastName,
-                        email,
-                        phone,
-                        paymentMethod,
-                    });
-
-                    await newOrder.save();
-                    await userModel.findByIdAndUpdate(userId, { cartData: {} });
-
-                    // Redirect to the payment gateway
-                    return res.redirect(response.data.data.gateway.redirect_url);
-                } else {
-                    console.error('OnePay Error:', response.data.message);
-                    return res.status(400).json({ success: false, message: response.data.message });
-                }
-            } catch (error) {
-                console.error('Error with OnePay request:', error);
-                return res.status(500).json({ success: false, message: "Payment gateway error" });
-            }
-        } else if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
+        if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
             // Save the order to the database
             const newOrder = new orderModel({
                 orderId,

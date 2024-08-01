@@ -36,12 +36,12 @@ const Payment = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!image) {
       toast.error('Please upload an image before submitting.');
       return;
     }
-
+  
     const formData = new FormData();
     formData.append('receipt', image);
     formData.append('firstName', orderData.firstName);
@@ -49,7 +49,7 @@ const Payment = () => {
     formData.append('email', orderData.email);
     formData.append('phone', orderData.phone);
     formData.append('address', JSON.stringify(orderData.address));
-
+  
     try {
       const response = await fetch(`${url}/api/payment/confirm`, {
         method: 'POST',
@@ -59,20 +59,20 @@ const Payment = () => {
         },
         body: formData,
       });
-
+  
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
+  
       const result = await response.json();
-
+  
       if (result.success) {
-        toast.success('Done! Await your confirmation in the orders page.');
+        toast.success('Payment confirmation submitted successfully!');
         setSubmitted(true);
         setImage(null);
-        // Wait for the toast to be visible, then navigate
+        // Wait for the toast to be visible, then navigate with success message
         setTimeout(() => {
-          navigate('/myorders');
+          navigate('/myorders', { state: { successMessage: 'Your order has been placed successfully!' } }); // Pass success message as state
         }, 3000); // Adjust the delay to match your toast display time
       } else {
         toast.error(result.message || 'Failed to submit payment confirmation.');
