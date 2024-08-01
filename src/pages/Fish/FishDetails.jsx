@@ -24,11 +24,11 @@ const ProductPage = () => {
             const basePrice = selectedType.price;
             let weightMultiplier = 1;
 
-            if (selectedWeight === 0.5) {
+            if (selectedWeight === '0.5') {
                 weightMultiplier = 0.5;
-            } else if (selectedWeight === 2) {
+            } else if (selectedWeight === '2') {
                 weightMultiplier = 2;
-            } else if (selectedWeight === 3) {
+            } else if (selectedWeight === '3') {
                 weightMultiplier = 3;
             }
 
@@ -213,17 +213,15 @@ const ProductPage = () => {
                                         id="weight-select"
                                         value={selectedWeight}
                                         onChange={(e) =>
-                                            setSelectedWeight(
-                                                Number(e.target.value)
-                                            )
+                                            setSelectedWeight(e.target.value)
                                         }
                                         className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
                                         <option value="">Select</option> {/* Default empty option */}
-                                        <option value={0.5}>0.5 kg</option>
-                                        <option value={1}>1 kg</option>
-                                        <option value={2}>2 kg</option>
-                                        <option value={3}>3 kg</option>
+                                        <option value="0.5">0.5 kg</option>
+                                        <option value="1">1 kg</option>
+                                        <option value="2">2 kg</option>
+                                        <option value="3">3 kg</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col justify-center">
@@ -273,6 +271,7 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
+
 
 
 

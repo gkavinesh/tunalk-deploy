@@ -179,13 +179,8 @@ const PlaceOrder = () => {
             navigate('/myorders');
             toast.success('Order placed successfully for Cash on Delivery!');
         } else if (data.paymentMethod === 'onePay') {
-            if (result.success && result.data && result.data.gateway && result.data.gateway.redirect_url) {
-                clearCart(); // Clear the cart before redirecting
-                window.location.href = result.data.gateway.redirect_url; // Redirect to OnePay using the payment link from the backend
-                toast.success('Redirecting to OnePay for payment.');
-            } else {
-                throw new Error(result.message || 'Failed to retrieve OnePay payment link.');
-            }
+              clearCart(); 
+              toast.success('Redirecting to OnePay for payment.');
         }
     } catch (error) {
         console.error('Error placing order:', error);

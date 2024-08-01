@@ -1,6 +1,7 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import crypto from 'crypto';
+import axios from "axios";
 
 const frontendUrl = "https://localhost:5173";
 
@@ -11,87 +12,104 @@ const appToken = '77b5298f53d8cafcf66f43278718206f07d0f3006f12c1a470...'; // Kee
 const hashSalt = 'OSFA118E58041E1505AC9';
 
 
-
 const placeOrder = async (req, res) => {
-    let requestData;  // Declare a variable to hold the request data
-
     try {
         // Extracting data from request
         const { orderId, userId, address, items, firstName, lastName, email, phone, total, paymentMethod } = req.body;
         console.log('Received order data:', req.body);
 
+        // Validate required fields
         if (!userId || !address || !items || !total || !firstName || !lastName || !email || !phone) {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        const requestDataObject = JSON.stringify({
-            amount: req.body.total,
-            app_id: "FYUZ118E58041E1505AA3",
-            reference: "tuna",
-            customer_first_name:firstName,
-            customer_last_name:lastName,
-            customer_phone_number:phone,
-            customer_email:email,
-            transaction_redirect_url: `https://tuna.lk`,
-            currency: 'LKR',
-        });
-
-        const newOrder = new orderModel({
-            orderId,
-            userId,
-            address,
-            items,
-            total,
-            firstName,
-            lastName,
-            email,
-            phone,
-            paymentMethod,
-        });
-
-        await newOrder.save();
-        await userModel.findByIdAndUpdate(userId, { cartData: {} });
-
         if (paymentMethod === 'onePay') {
+            // Prepare request data for OnePay
+            const requestDataObject = {
+                amount: total,
+                app_id: appId,
+                reference: orderId, // Using orderId as a unique reference
+                customer_first_name: firstName,
+                customer_last_name: lastName,
+                customer_phone_number: phone,
+                customer_email: email,
+                transaction_redirect_url: `${frontendUrl}/payment/success`, // Redirect URL after payment
+                currency: 'LKR',
+            };
 
-            console.log(requestDataObject);
+            // Log the request data object
+            console.log('Request Data Object:', requestDataObject);
 
-            console.log('Data for hashing:', requestDataObject);
+            // Convert the request data object to a JSON string
+            const requestDataString = JSON.stringify(requestDataObject);
 
-            var hash = crypto.createHash('sha256');
-            hash_obj = requestDataObject + hashSalt
-            hash_obj = hash.update(hash_obj, 'utf-8')
-            gen_hash = hash_obj.digest('hex')
+            // Generate hash
+            const hash = crypto.createHash('sha256');
+            const hashObj = hash.update(requestDataString + hashSalt, 'utf-8');
+            const genHash = hashObj.digest('hex');
 
-            var options = {
-                'method':'get',
-                'url': paymentUrl + gen_hash,
-                'headers': {
-                    'Authorization':appToken,
-                    'Content-type': 'application/json'
-                },
-                body:requestDataObject
-            }
+            // Construct the full payment URL with the hash
+            const paymentLink = `${paymentUrl}${genHash}`;
 
-            request(options,function(error,response){
-                if(error){
-                    console.log(error);
-                    res.sendStatus(400);
-                    res.end()
-                }else{
-                    console.log(response.body);
+            try {
+                // Make a GET request to the payment URL
+                const response = await axios.get(paymentLink, {
+                    headers: {
+                        'Authorization': appToken,
+                        'Content-Type': 'application/json'
+                    },
+                    data: requestDataObject
+                });
 
-                    const json_data = JSON.parse(response.body);
-                    if(json_data.success == 1000){
-                        res.redirect(json_data.data.gateway.redirect_url);
-                        res.end();
-                    }else{
-                        res.render(json_data.message)
-                        res.end();
-                    }
+                // Handle successful response from OnePay
+                if (response.data.success === 1000) {
+                    console.log('OnePay Response:', response.data);
+
+                    // Save the order to the database
+                    const newOrder = new orderModel({
+                        orderId,
+                        userId,
+                        address,
+                        items,
+                        total,
+                        firstName,
+                        lastName,
+                        email,
+                        phone,
+                        paymentMethod,
+                    });
+
+                    await newOrder.save();
+                    await userModel.findByIdAndUpdate(userId, { cartData: {} });
+
+                    // Redirect to the payment gateway
+                    return res.redirect(response.data.data.gateway.redirect_url);
+                } else {
+                    console.error('OnePay Error:', response.data.message);
+                    return res.status(400).json({ success: false, message: response.data.message });
                 }
-            })
+            } catch (error) {
+                console.error('Error with OnePay request:', error);
+                return res.status(500).json({ success: false, message: "Payment gateway error" });
+            }
         } else if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
+            // Save the order to the database
+            const newOrder = new orderModel({
+                orderId,
+                userId,
+                address,
+                items,
+                total,
+                firstName,
+                lastName,
+                email,
+                phone,
+                paymentMethod,
+            });
+
+            await newOrder.save();
+            await userModel.findByIdAndUpdate(userId, { cartData: {} });
+
             return res.json({ success: true, message: "Order placed successfully" });
         } else {
             return res.status(400).json({ success: false, message: "Invalid payment method" });
@@ -100,15 +118,13 @@ const placeOrder = async (req, res) => {
         console.error("Error processing order:", error);
         return res.status(500).json({
             success: false,
-            message: "Internal server error",
-            requestDataObject,  // Include requestData in the error response
+            message: "Internal server error"
         });
     }
 };
 
+
   
-
-
 // Verify Order Function
 const verifyOrder = async (req, res) => {
   const { orderId, success } = req.body;
