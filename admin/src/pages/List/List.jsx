@@ -12,7 +12,7 @@ const List = ({ url }) => {
     try {
       console.log(`Fetching product list from ${url}/api/product/list`);
       const response = await fetch(`${url}/api/product/list`);
-      
+
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
       }
@@ -62,20 +62,24 @@ const List = ({ url }) => {
 
   const startEditing = (product) => {
     setEditing(product._id);
-    setUpdatedPrices(product.types.map(type => ({ type: type.type, price: type.price })));
+    setUpdatedPrices(product.types.map(type => ({ type: type.type, price: String(type.price) })));
   };
 
   const handlePriceChange = (index, newPrice) => {
     const newPrices = [...updatedPrices];
-    const price = parseFloat(newPrice); // Convert to number
-    if (!isNaN(price)) {
-      newPrices[index].price = price;
+    if (newPrice === '' || !isNaN(newPrice)) {
+      newPrices[index].price = newPrice; // Store as string
       setUpdatedPrices(newPrices);
     }
   };
 
   const savePrices = async (productId) => {
     try {
+      const convertedPrices = updatedPrices.map((type) => ({
+        type: type.type,
+        price: parseFloat(type.price) || 0, // Convert to number
+      }));
+
       const response = await fetch(`${url}/api/product/update-price`, {
         method: 'PUT',
         headers: {
@@ -83,7 +87,7 @@ const List = ({ url }) => {
         },
         body: JSON.stringify({
           id: productId,
-          types: updatedPrices,
+          types: convertedPrices,
         }),
       });
 

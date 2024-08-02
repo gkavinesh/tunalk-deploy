@@ -15,22 +15,32 @@ const ProductPage = () => {
     const [activeImg, setActiveImage] = useState(''); // Initially set to empty
     const [amount, setAmount] = useState(1);
     const [selectedType, setSelectedType] = useState(null); // Initially set to null
-    const [selectedWeight, setSelectedWeight] = useState(''); // Initially set to empty
+    const [selectedWeight, setSelectedWeight] = useState('0.5'); // Initially set to 500g
     const [price, setPrice] = useState(0);
     const [showLogin, setShowLogin] = useState(false); // State for showing login popup
     const [loading, setLoading] = useState(true); // Loading state
 
     useEffect(() => {
         if (selectedType && selectedType.price) {
-            const basePrice = selectedType.price;
-            let weightMultiplier = 1;
+            const basePrice = selectedType.price; // Assuming basePrice is for 500g
 
-            if (selectedWeight === '0.5') {
-                weightMultiplier = 0.5;
-            } else if (selectedWeight === '2') {
-                weightMultiplier = 2;
-            } else if (selectedWeight === '3') {
-                weightMultiplier = 3;
+            // Adjusting weightMultiplier based on the selected weight
+            let weightMultiplier = 1;
+            switch (selectedWeight) {
+                case '0.5':
+                    weightMultiplier = 1; // 500g is the base price
+                    break;
+                case '1':
+                    weightMultiplier = 2; // 1kg = 2 * 500g
+                    break;
+                case '2':
+                    weightMultiplier = 4; // 2kg = 4 * 500g
+                    break;
+                case '3':
+                    weightMultiplier = 6; // 3kg = 6 * 500g
+                    break;
+                default:
+                    weightMultiplier = 1;
             }
 
             setPrice(basePrice * weightMultiplier * amount); // Updated to include amount
@@ -216,58 +226,45 @@ const ProductPage = () => {
                                         }
                                         className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
-                                        <option value="">
-                                            Select
-                                        </option>{' '}
-                                        {/* Default empty option */}
-                                        <option value="0.5">0.5 kg</option>
-                                        <option value="1">1 kg</option>
-                                        <option value="2">2 kg</option>
-                                        <option value="3">3 kg</option>
+                                        <option value="0.5">500g</option>
+                                        <option value="1">1kg</option>
+                                        <option value="2">2kg</option>
+                                        <option value="3">3kg</option>
                                     </select>
                                 </div>
-                                <div className="flex flex-col justify-center">
-                                    <span className="text-2xl font-semibold text-gray-800">
-                                        Price: රු {price.toFixed(2)}
-                                    </span>
+                                <div className="flex flex-col gap-2 w-full lg:w-32">
+                                    <label
+                                        htmlFor="quantity-select"
+                                        className="font-semibold text-lg"
+                                    >
+                                        Quantity
+                                    </label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        value={amount}
+                                        onChange={(e) =>
+                                            setAmount(parseInt(e.target.value))
+                                        }
+                                        className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                    />
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4 mt-6">
-                                <div className="flex flex-row items-center gap-2">
-                                    <button
-                                        className="bg-gray-200 py-1 px-3 rounded-lg text-teal-800 text-lg hover:bg-teal-600 hover:text-white transition-colors duration-300"
-                                        onClick={() =>
-                                            setAmount((prev) =>
-                                                prev > 1 ? prev - 1 : 1
-                                            )
-                                        }
-                                    >
-                                        -
-                                    </button>
-                                    <span className="py-2 px-4 rounded-lg text-lg text-gray-800">
-                                        {amount}
-                                    </span>
-                                    <button
-                                        className="bg-gray-200 py-1 px-3 rounded-lg text-teal-800 text-lg hover:bg-teal-600 hover:text-white transition-colors duration-300"
-                                        onClick={() =>
-                                            setAmount((prev) => prev + 1)
-                                        }
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <button
-                                    className="transition ease-in-out duration-300 bg-teal-700 text-white font-semibold py-2 px-8 rounded-xl shadow-lg hover:bg-teal-800 transform hover:scale-105"
-                                    onClick={handleAddToCart} // Call the handler
-                                >
-                                    Add to Cart
-                                </button>
+                            <div className="mt-4">
+                                <span className="text-xl font-bold text-gray-800">
+                                    Total Price : රු {price}
+                                </span>
                             </div>
+                            <button
+                                onClick={handleAddToCart}
+                                className="mt-6 py-3 px-6 bg-teal-500 text-white rounded-lg shadow-md hover:bg-teal-600 transition-colors duration-300"
+                            >
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <br></br>
         </div>
     );
 };

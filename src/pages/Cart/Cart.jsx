@@ -106,13 +106,13 @@ const Cart = () => {
               </div>
               <hr />
               <div className="cart-total-details">
-                <p>Delivery Fee</p>
-                <p>LKR {getTotalCartAmount() === 0 ? 0 : 200}</p>
+                <p>Delivery</p>
+                <p>FREE</p>
               </div>
               <hr />
               <div className="cart-total-details">
                 <b>Total</b>
-                <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200}</b>
+                <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 0}</b>
               </div>
             </div>
             <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>

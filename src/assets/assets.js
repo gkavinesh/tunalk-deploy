@@ -116,7 +116,6 @@ import border from './border.png'
 import bg from './bg.jpg'
 
 export const assets = {
-    bg,
     border,
     fact2,
     fact,

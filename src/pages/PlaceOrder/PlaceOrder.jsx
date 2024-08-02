@@ -138,7 +138,7 @@ const PlaceOrder = () => {
         postcode: data.postcode,
       },
       items: orderItems,
-      total: getTotalCartAmount() + 200,
+      total: getTotalCartAmount() + 0,
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
