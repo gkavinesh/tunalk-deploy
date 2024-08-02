@@ -10,11 +10,11 @@ const TextParallaxContentExample = () => {
       <TextParallaxContent
         imgUrl={assets.fact}
       >
-        <ExampleContent />
-      </TextParallaxContent>
-      <TextParallaxContent
+        <TextParallaxContent
         imgUrl={assets.fact2}
       >
+        <ExampleContent />
+      </TextParallaxContent>
       </TextParallaxContent>
     </div>
   );
@@ -87,6 +87,8 @@ const ExampleContent = () => (
         Learn more <FiArrowUpRight className="inline" />
       </a>
     </div>
+    <br></br>
+    <br></br>
   </div>
 );
 

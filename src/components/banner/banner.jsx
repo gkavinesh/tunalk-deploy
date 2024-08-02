@@ -20,7 +20,7 @@ const Banner = ({ setShowLogin }) => {
           
         </ul>
         <div className="banner-right">
-        <a href="tel:077-529-1291" className='download-link-2'>
+        <a href="tel:0775-291-291" className='download-link-2'>
             <img src={assets.phone} alt='iOS' className='other-logo' />
             077-529-1291
         </a>

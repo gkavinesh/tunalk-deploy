@@ -20,12 +20,12 @@ const Faq = () => {
         },
         {
             question: 'How can I reach support if my delivery is not on time?',
-            answer: 'You can contact the dispatch team via contact details - 077-529-1291',
+            answer: 'You can contact the dispatch team via contact details - 0775-291-291',
             open: false
         },
         {
             question: 'Is every product displayed in the products page in stock?',
-            answer: 'Yes, every product displayed in the products page is in stock, if its not available then it wont be listed but you contact for further information at - 077-529-1291',
+            answer: 'Yes, every product displayed in the products page is in stock, if its not available then it wont be listed but you contact for further information at - 0775-291-291',
             open: false
         }
     ]);
@@ -84,7 +84,7 @@ const Faq = () => {
                     ))}
                 </div>
 
-                <p className="text-center text-gray-600 text-base mt-9">Didn’t find the answer you are looking for? <a href="#footer" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact our support</a></p>
+                <p className="text-center text-gray-600 text-base mt-9">Didn’t find the answer you are looking for? <a href="#footer" title="" className="font-medium text-teal-400 transition-all duration-200 hover:text-teal-400 focus:text-teal-400 hover:underline">Contact us - 0775-291-291</a></p>
             </div>
         </section>
     );
