@@ -58,7 +58,7 @@ const Orders = () => {
 
   return (
     <div className="min-h-screen py-8 bg-gray-50">
-      <div className="orders-container w-full max-w-7xl px-7 mx-auto">
+      <div className="orders-container w-full max-w-[75%] px-7 mx-auto">
         <h2 className="text-2xl font-bold text-left text-teal-700 mb-8">
           My Orders
         </h2>
