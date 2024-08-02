@@ -130,7 +130,6 @@ const Payment = ({ url, token }) => {
               <th>Postcode</th>
               <th>Receipt</th>
               <th>Created At</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -152,18 +151,6 @@ const Payment = ({ url, token }) => {
                     />
                   </td>
                   <td>{new Date(payment.createdAt).toLocaleString()}</td>
-                  <td>
-                    {payment._id === editing ? (
-                      <div>
-                        <button onClick={() => savePrices(payment._id)}>Save</button>
-                        <button onClick={() => setEditing(null)}>Cancel</button>
-                      </div>
-                    ) : (
-                      <div>
-                        <button onClick={() => removeProduct(payment._id)}>❌</button>
-                      </div>
-                    )}
-                  </td>
                 </tr>
               ))
             ) : (
