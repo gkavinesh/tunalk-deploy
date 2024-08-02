@@ -11,7 +11,7 @@ import Payment from "./pages/Payments/payment"
 
 const App = () => {
 
-  const url = "http://localhost:4000";
+  const url = "https://tunalk-backend-53lo.onrender.com";
 
   return (
     <div>

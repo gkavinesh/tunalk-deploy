@@ -22,4 +22,4 @@ export const assets ={
     parcel_icon
 }
 
-export const url = 'http://localhost:4000'
+export const url = 'https://tunalk-backend-53lo.onrender.com'
