@@ -10,19 +10,21 @@ const Banner = ({ setShowLogin }) => {
     <div className='back-1'>
       <div className='banner' id='banner'>
         <ul className="banner-menu">
-          <a href="https://ibb.co/Pc4sjdb" className="download-link" target="_blank" rel="noopener noreferrer">
+        <Link to='/download'>
+          <a href="#" className="download-link" target="_blank" rel="noopener noreferrer">
             Download our App - 
             <img src={assets.apple} alt='iOS' className='app-logo' />
             <img src={assets.android} alt='Android' className='app-logo' />
           </a>
+          </Link>
           <a href='#footer' >Support</a>
           <a href='#shop' >Offers</a>
           
         </ul>
         <div className="banner-right">
-        <a href="tel:0775-291-291" className='download-link-2'>
+        <a href="tel:077-529-1291" className='download-link-2'>
             <img src={assets.phone} alt='iOS' className='other-logo' />
-            077-529-1291
+            0775-291-291
         </a>
         <a href='#' className='download-link-2'>
             <img src={assets.fastdelivery} alt='iOS' className='other-logo' />

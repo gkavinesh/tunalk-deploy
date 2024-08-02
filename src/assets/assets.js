@@ -113,8 +113,10 @@ import upload from './upload_area.png'
 import fact from './fact.png'
 import fact2 from './fact2.png'
 import border from './border.png'
+import bg from './bg.jpg'
 
 export const assets = {
+    bg,
     border,
     fact2,
     fact,

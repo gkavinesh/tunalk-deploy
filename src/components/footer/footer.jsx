@@ -163,19 +163,10 @@ const Footer = () => {
 
             <ul className="flex items-center space-x-3 mt-6">
               <li>
-                <img src={assets.card2} alt="Visa" className="w-12 h-auto" />
+                <img src={assets.cod} alt="Cash on Delivery" className="w-16 h-auto" />
               </li>
               <li>
-                <img src={assets.card3} alt="MasterCard" className="w-12 h-auto" />
-              </li>
-              <li>
-                <img src={assets.card1} alt="American Express" className="w-12 h-auto" />
-              </li>
-              <li>
-                <img src={assets.cod} alt="Cash on Delivery" className="w-12 h-auto" />
-              </li>
-              <li>
-                <img src={assets.bank} alt="Bank Transfer" className="w-12 h-auto" />
+                <img src={assets.bank} alt="Bank Transfer" className="w-16 h-auto" />
               </li>
             </ul>
 

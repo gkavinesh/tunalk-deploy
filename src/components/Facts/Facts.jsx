@@ -13,9 +13,9 @@ const TextParallaxContentExample = () => {
         <TextParallaxContent
         imgUrl={assets.fact2}
       >
-        <ExampleContent />
       </TextParallaxContent>
       </TextParallaxContent>
+      <ExampleContent />
     </div>
   );
 };
@@ -24,7 +24,7 @@ const IMG_PADDING = 12;
 
 const TextParallaxContent = ({ imgUrl, children }) => {
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto cube2">
       <div className="relative h-[100vh]">
         <StickyImage imgUrl={imgUrl} />
       </div>

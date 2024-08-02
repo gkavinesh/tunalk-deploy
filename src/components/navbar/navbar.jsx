@@ -182,7 +182,9 @@ const Navbar = ({ setShowLogin }) => {
                             </li>
                         </ul>
                         <div className="sidebar-bottom">
-                            <a href="https://ibb.co/Pc4sjdb" className="call-button" target="_blank" rel="noopener noreferrer">Download our App</a>
+                            <Link to='/download'>
+                            <a href="#" className="call-button" target="_blank" rel="noopener noreferrer">Download our App</a>
+                            </Link>
                             <a href="tel:077-529-1291" className="call-button-2" target="_blank" rel="noopener noreferrer">Contact Us</a>
                         </div>
                     </motion.div>
