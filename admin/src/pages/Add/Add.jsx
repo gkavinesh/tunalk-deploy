@@ -21,7 +21,8 @@ const Add = ({ url }) => {
     "Peeled",
     "Tail on",
     "Ring cut",
-    "Fillet"
+    "Fillet",
+    "Frozen"
   ];
 
   const onChangeHandler = (event) => {
@@ -74,7 +75,7 @@ const Add = ({ url }) => {
             category: "Fish"
           });
           setImages([]);
-          setTypes([{ type: "curry cut", price: "" }]);
+          setTypes([{ type: "Curry cut", price: "" }]);
           toast.success(result.message);
         } else {
           toast.error(result.message);
