@@ -23,7 +23,7 @@ const placeOrder = async (req, res) => {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        if (paymentMethod === "bankTransfer" || paymentMethod === "cash") {
+        if (paymentMethod === "bankTransfer" || paymentMethod === "cashOnDelivery") {
             // Save the order to the database
             const newOrder = new orderModel({
                 orderId,
