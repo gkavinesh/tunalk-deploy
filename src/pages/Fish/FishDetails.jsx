@@ -9,7 +9,8 @@ import 'react-toastify/dist/ReactToastify.css'; // Import CSS for styling
 
 const ProductPage = () => {
     const { state } = useLocation();
-    const { item } = state || {};
+    const { item } = state || {}; // Get the item from state
+
     const { addToCart, url, token } = useContext(StoreContext);
     const [activeImg, setActiveImage] = useState(''); // Initially set to empty
     const [amount, setAmount] = useState(1);
@@ -48,9 +49,11 @@ const ProductPage = () => {
 
     const handleTypeChange = (e) => {
         const selectedTypeName = e.target.value;
-        const newType = item.types.find(
-            (type) => type.type === selectedTypeName
-        ) || { type: '', price: 0 };
+        const newType =
+            item.types.find((type) => type.type === selectedTypeName) || {
+                type: '',
+                price: 0,
+            };
         setSelectedType(newType);
 
         // Assuming the first type uses the second image, the second type uses the third image
@@ -71,35 +74,32 @@ const ProductPage = () => {
         if (!token) {
             setShowLogin(true); // Show login popup if not logged in
         } else if (!selectedType || !selectedWeight) {
-            toast.warn("Please select a type and weight before adding to cart.", {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored"
-            });
-        } else {
-            addToCart(
-                item._id,
-                amount,
-                selectedType.type,
-                price,
-                selectedWeight
+            toast.warn(
+                'Please select a type and weight before adding to cart.',
+                {
+                    position: 'bottom-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'colored',
+                }
             );
+        } else {
+            addToCart(item._id, amount, selectedType.type, price, selectedWeight);
 
             // Show toast notification when product is added to cart
             toast.success(`${item.name} added to cart!`, {
-                position: "bottom-right", // Display the toast at the bottom right corner
+                position: 'bottom-right', // Display the toast at the bottom right corner
                 autoClose: 3000, // Auto close the toast after 3 seconds
                 hideProgressBar: false, // Show the progress bar
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "colored"
+                theme: 'colored',
             });
         }
     };
@@ -141,8 +141,7 @@ const ProductPage = () => {
                                     src={`${url}/images/${image}`}
                                     alt={`Thumbnail ${index + 1}`}
                                     className={`w-24 h-24 rounded-md cursor-pointer object-cover flex-shrink-0 transition-transform duration-300 transform hover:scale-110 ${
-                                        activeImg ===
-                                        `${url}/images/${image}`
+                                        activeImg === `${url}/images/${image}`
                                             ? 'border-2 border-teal-500'
                                             : ''
                                     }`}
@@ -181,16 +180,16 @@ const ProductPage = () => {
                                                 name="type"
                                                 value={type.type}
                                                 checked={
-                                                    selectedType && selectedType.type ===
-                                                    type.type
+                                                    selectedType &&
+                                                    selectedType.type === type.type
                                                 }
                                                 onChange={handleTypeChange}
                                                 className="form-radio text-teal-700"
                                             />
                                             <span
                                                 className={`text-gray-800 px-3 py-1 rounded-full border ${
-                                                    selectedType && selectedType.type ===
-                                                    type.type
+                                                    selectedType &&
+                                                    selectedType.type === type.type
                                                         ? 'border-teal-500'
                                                         : 'border-gray-300'
                                                 } transition-all duration-200`}
@@ -217,7 +216,10 @@ const ProductPage = () => {
                                         }
                                         className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
-                                        <option value="">Select</option> {/* Default empty option */}
+                                        <option value="">
+                                            Select
+                                        </option>{' '}
+                                        {/* Default empty option */}
                                         <option value="0.5">0.5 kg</option>
                                         <option value="1">1 kg</option>
                                         <option value="2">2 kg</option>
@@ -271,6 +273,7 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
+
 
 
 

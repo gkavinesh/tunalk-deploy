@@ -19,7 +19,7 @@ const Home = () => {
     <div>
       <Categories/>
       <Header/>
-      <ShopBy/>
+      <ShopBy category="All"/>
       <Step/>
       <About />
       <Poll />
