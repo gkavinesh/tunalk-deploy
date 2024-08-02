@@ -19,6 +19,7 @@ const StoreContextProvider = (props) => {
       return null;
     }
   };
+  //conslo.log
 
   // Function to save cart items to local storage
   const saveCartToLocalStorage = (cartItems) => {
