@@ -4,13 +4,13 @@ import Preloader from '../../components/preloadersub/preloader'; // Ensure this 
 const Faq = () => {
     const [faq, setFaq] = useState([
         {
-            question: 'How to track my orders?',
-            answer: 'Once signed in, go to your profile icon and click on orders. In the orders tab, you can view the status of the order such as "Order processing".',
+            question: 'How to track my orders and status of payment?',
+            answer: 'Once signed in, go to your profile icon and click on orders. In the orders tab, you can view the status of the order and payment.',
             open: false
         },
         {
-            question: 'How can I make payment using Credit/Debit Cards?',
-            answer: 'Once you click proceed to payment, it will redirect you to a payment merchant to make card payments.',
+            question: 'What are the payment methods available ?',
+            answer: 'Bank transfer and Cash on Delivery are default payments. Card Payments will be coming online soon.',
             open: false
         },
         {
@@ -20,12 +20,12 @@ const Faq = () => {
         },
         {
             question: 'How can I reach support if my delivery is not on time?',
-            answer: 'You can contact the dispatch team via contact details here.',
+            answer: 'You can contact the dispatch team via contact details - 077-529-1291',
             open: false
         },
         {
-            question: 'How can I reach support if my delivery is not on time?',
-            answer: 'You can contact the dispatch team via contact details here.',
+            question: 'Is every product displayed in the products page in stock?',
+            answer: 'Yes, every product displayed in the products page is in stock, if its not available then it wont be listed but you contact for further information at - 077-529-1291',
             open: false
         }
     ]);

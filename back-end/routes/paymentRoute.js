@@ -8,7 +8,7 @@ const paymentRouter = express.Router();
 const storage = multer.diskStorage({
   destination: "receipts",
   filename: (req, file, cb) => {
-    return cb(null, `${Date.now()}${file.originalname}`);
+    return cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 

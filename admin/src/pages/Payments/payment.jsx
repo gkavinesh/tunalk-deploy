@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './payment.css';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Payment = ({ url, token }) => {
   const [payments, setPayments] = useState([]);
   const [filteredPayments, setFilteredPayments] = useState([]);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [editing, setEditing] = useState(null);
+  const [updatedPrices, setUpdatedPrices] = useState([]);
 
+  // Fetch payments from the server
   const fetchPayments = async () => {
     try {
-      console.log(`Fetching payments from ${url}/api/payment/list`);
       const response = await fetch(`${url}/api/payment/list`, {
         method: 'POST',
         headers: {
@@ -22,25 +25,21 @@ const Payment = ({ url, token }) => {
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.statusText}`);
-      }
-
       const data = await response.json();
-      console.log('Payments data:', data);
 
       if (data.success) {
         setPayments(data.payments);
         setFilteredPayments(data.payments); // Initialize with all payments
       } else {
-        toast.error("Error fetching payments: " + (data.message || "Unknown error"));
+        setError('Error fetching payments');
       }
     } catch (error) {
-      console.error("Error in fetchPayments:", error);
-      toast.error("Error fetching payments: " + error.message);
+      setError('Error fetching payments');
+      console.error('Error fetching payments:', error);
     }
   };
 
+  // Filter payments by date
   const filterPaymentsByDate = () => {
     const filtered = payments.filter(payment => {
       const createdAt = new Date(payment.createdAt);
@@ -49,36 +48,73 @@ const Payment = ({ url, token }) => {
     setFilteredPayments(filtered);
   };
 
+  // Show the modal with the receipt image
   const handleViewReceipt = (receiptUrl) => {
     setModalImageUrl(receiptUrl);
     setShowModal(true);
   };
 
-  const removePayment = async (paymentId) => {
+  // Save updated prices (assuming this part is still relevant)
+  const savePrices = async (id) => {
     try {
-      const response = await fetch(`${url}/api/payment/${paymentId}`, {
+      const response = await fetch(`${url}/api/payment/update/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ updatedPrices }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success('Prices updated successfully');
+        setEditing(null);
+        fetchPayments(); // Refresh payments list
+      } else {
+        toast.error('Error updating prices');
+      }
+    } catch (error) {
+      toast.error('Error updating prices');
+      console.error('Error updating prices:', error);
+    }
+  };
+
+  // Start editing the payment (assuming this part is still relevant)
+  const startEditing = (payment) => {
+    setEditing(payment._id);
+    setUpdatedPrices(payment.types.map(type => ({ ...type })));
+  };
+
+  // Handle price change (assuming this part is still relevant)
+  const handlePriceChange = (index, value) => {
+    const newPrices = [...updatedPrices];
+    newPrices[index].price = value;
+    setUpdatedPrices(newPrices);
+  };
+
+  // Remove a payment
+  const removeProduct = async (id) => {
+    try {
+      const response = await fetch(`${url}/api/payment/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.statusText}`);
-      }
-
       const data = await response.json();
-      console.log('Remove payment response:', data);
 
       if (data.success) {
-        await fetchPayments();
-        toast.success(data.message);
+        toast.success('Payment removed successfully');
+        fetchPayments(); // Refresh payments list
       } else {
-        toast.error(data.message || "Error removing payment");
+        toast.error('Error removing payment');
       }
     } catch (error) {
-      console.error("Error in removePayment:", error);
-      toast.error("Error removing payment: " + error.message);
+      toast.error('Error removing payment');
+      console.error('Error removing payment:', error);
     }
   };
 
@@ -93,6 +129,7 @@ const Payment = ({ url, token }) => {
   return (
     <div className="payment-container">
       <h2 className="header">Payments</h2>
+      {error && <p className="error-message">{error}</p>}
 
       <div className="date-filter">
         <input
@@ -111,13 +148,13 @@ const Payment = ({ url, token }) => {
         <table className="payments-table">
           <thead>
             <tr>
-              <th>Receipt</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
               <th>Phone</th>
               <th>Address</th>
               <th>Postcode</th>
+              <th>Receipt</th>
               <th>Created At</th>
               <th>Actions</th>
             </tr>
@@ -126,23 +163,32 @@ const Payment = ({ url, token }) => {
             {filteredPayments.length > 0 ? (
               filteredPayments.map((payment) => (
                 <tr key={payment._id}>
-                  <td>
-                    <img
-                      src={`${url}/receipts/${payment.image_filename}`}
-                      alt="Receipt"
-                      className="receipt-thumbnail"
-                      onClick={() => handleViewReceipt(`${url}/receipts/${payment.image_filename}`)}
-                    />
-                  </td>
                   <td>{payment.firstName}</td>
                   <td>{payment.lastName}</td>
                   <td>{payment.email}</td>
                   <td>{payment.phone}</td>
                   <td>{payment.address.address}</td>
                   <td>{payment.address.postcode}</td>
+                  <td>
+                    <img
+                      src={`${url}/receipts/${payment.receiptUrl}`}
+                      alt="Receipt"
+                      className="receipt-thumbnail"
+                      onClick={() => handleViewReceipt(`${url}/receipts/${payment.receiptUrl}`)}
+                    />
+                  </td>
                   <td>{new Date(payment.createdAt).toLocaleString()}</td>
                   <td>
-                    <button className="remove-button" onClick={() => removePayment(payment._id)}>❌</button>
+                    {payment._id === editing ? (
+                      <div>
+                        <button onClick={() => savePrices(payment._id)}>Save</button>
+                        <button onClick={() => setEditing(null)}>Cancel</button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button onClick={() => removeProduct(payment._id)}>❌</button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))
@@ -155,13 +201,21 @@ const Payment = ({ url, token }) => {
         </table>
       </div>
 
+      {/* Modal for viewing receipt image */}
+      {showModal && (
+        <div className="modal" onClick={() => setShowModal(false)}>
+          <div className="modal-content">
+            <img src={modalImageUrl} alt="Receipt" />
+          </div>
+        </div>
+      )}
+
       <ToastContainer />
     </div>
   );
 };
 
 export default Payment;
-
 
 
 

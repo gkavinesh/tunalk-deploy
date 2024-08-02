@@ -30,7 +30,7 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 app.use('/api/payment', paymentRouter);
-app.use('/image', express.static("receipts"));
+app.use('/receiptheroku logs --tail', express.static("receipts"));
 
 app.get('/', (req, res) => {
     res.send('API Working');

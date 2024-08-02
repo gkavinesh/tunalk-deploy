@@ -10,14 +10,14 @@ const confirmPayment = async (req, res) => {
         }
 
         // Extract filename(s) from uploaded file(s)
-        let image_filename = `${req.file.filenam}`;
+        const receiptUrl = req.file.filename ;
 
         // Parse address from request body
         const { firstName, lastName, email, phone, address } = req.body;
 
         // Create a new payment document
         const payment = new paymentModel({
-            image:image_filename,
+            receiptUrl,
             firstName,
             lastName,
             email,

@@ -1,3 +1,27 @@
+@media only screen and (max-width: 600px) {
+    .cube{
+        display: none;
+    }
+}
+
+/* Mobile Phones (Landscape) and Small Tablets */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/* Tablets (Portrait) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+
+}
+
+/* Tablets (Landscape) and Small Laptops */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
+
+
+/* Desktops and Larger Screens */
+@media only screen and (min-width: 1200px) {
+
+}
 
 
 
