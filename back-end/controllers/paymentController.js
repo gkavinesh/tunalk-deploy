@@ -10,7 +10,7 @@ const confirmPayment = async (req, res) => {
         }
 
         // Extract filename(s) from uploaded file(s)
-        const receiptUrl = req.file.filename ;
+        const receiptUrl = req.file.filename ? `/receipts/${req.file.filename}` : '';
 
         // Parse address from request body
         const { firstName, lastName, email, phone, address } = req.body;

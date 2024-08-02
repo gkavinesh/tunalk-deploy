@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,19 +18,13 @@ const Payment = ({ url, token }) => {
   // Fetch payments from the server
   const fetchPayments = async () => {
     try {
-      const response = await fetch(`${url}/api/payment/list`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await axios.post(`${url}/api/payment/list`, {}, {
+        headers: { Authorization: `Bearer ${token}` },
       });
 
-      const data = await response.json();
-
-      if (data.success) {
-        setPayments(data.payments);
-        setFilteredPayments(data.payments); // Initialize with all payments
+      if (response.data.success) {
+        setPayments(response.data.payments);
+        setFilteredPayments(response.data.payments); // Initialize with all payments
       } else {
         setError('Error fetching payments');
       }
@@ -54,40 +49,29 @@ const Payment = ({ url, token }) => {
     setShowModal(true);
   };
 
-  // Save updated prices (assuming this part is still relevant)
+  // Save updated prices
   const savePrices = async (id) => {
     try {
-      const response = await fetch(`${url}/api/payment/update/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ updatedPrices }),
+      // Replace with your update request
+      await axios.put(`${url}/api/payment/update/${id}`, { updatedPrices }, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        toast.success('Prices updated successfully');
-        setEditing(null);
-        fetchPayments(); // Refresh payments list
-      } else {
-        toast.error('Error updating prices');
-      }
+      toast.success('Prices updated successfully');
+      setEditing(null);
+      fetchPayments(); // Refresh payments list
     } catch (error) {
       toast.error('Error updating prices');
       console.error('Error updating prices:', error);
     }
   };
 
-  // Start editing the payment (assuming this part is still relevant)
+  // Start editing the payment
   const startEditing = (payment) => {
     setEditing(payment._id);
     setUpdatedPrices(payment.types.map(type => ({ ...type })));
   };
 
-  // Handle price change (assuming this part is still relevant)
+  // Handle price change
   const handlePriceChange = (index, value) => {
     const newPrices = [...updatedPrices];
     newPrices[index].price = value;
@@ -97,21 +81,11 @@ const Payment = ({ url, token }) => {
   // Remove a payment
   const removeProduct = async (id) => {
     try {
-      const response = await fetch(`${url}/api/payment/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      await axios.delete(`${url}/api/payment/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        toast.success('Payment removed successfully');
-        fetchPayments(); // Refresh payments list
-      } else {
-        toast.error('Error removing payment');
-      }
+      toast.success('Payment removed successfully');
+      fetchPayments(); // Refresh payments list
     } catch (error) {
       toast.error('Error removing payment');
       console.error('Error removing payment:', error);
@@ -171,10 +145,10 @@ const Payment = ({ url, token }) => {
                   <td>{payment.address.postcode}</td>
                   <td>
                     <img
-                      src={`${url}/receipts/${payment.receiptUrl}`}
+                      src={`${url}/receipt/${payment.receiptUrl}`}
                       alt="Receipt"
                       className="receipt-thumbnail"
-                      onClick={() => handleViewReceipt(`${url}/receipts/${payment.receiptUrl}`)}
+                      onClick={() => handleViewReceipt(`${url}/receipt/${payment.receiptUrl}`)}
                     />
                   </td>
                   <td>{new Date(payment.createdAt).toLocaleString()}</td>
@@ -216,6 +190,10 @@ const Payment = ({ url, token }) => {
 };
 
 export default Payment;
+
+
+
+
 
 
 

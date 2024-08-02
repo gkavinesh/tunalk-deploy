@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import './Payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
-import Preloader from '../../components/preloadersub/preloader';
+import Preloader from '..//..//components//preloadersub/preloader'
 
 const Payment = () => {
   const { url, token } = useContext(StoreContext);
@@ -19,9 +20,9 @@ const Payment = () => {
   const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
-    // Simulate a delay to show the preloader for 2 seconds
+    // Simulate a delay to show the preloader for 6 seconds
     const timer = setTimeout(() => {
-      setLoading(false); // Set loading to false after 2 seconds
+      setLoading(false); // Set loading to false after 6 seconds
     }, 2000);
 
     // Cleanup timer on component unmount
@@ -36,12 +37,12 @@ const Payment = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     if (!image) {
       toast.error('Please upload an image before submitting.');
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('receipt', image);
     formData.append('firstName', orderData.firstName);
@@ -49,33 +50,25 @@ const Payment = () => {
     formData.append('email', orderData.email);
     formData.append('phone', orderData.phone);
     formData.append('address', JSON.stringify(orderData.address));
-  
+
     try {
-      const response = await fetch(`${url}/api/payment/confirm`, {
-        method: 'POST',
+      const response = await axios.post(`${url}/api/payment/confirm`, formData, {
         headers: {
-          'Authorization': `Bearer ${token}`,
-          // Content-Type is not needed for FormData
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         },
-        body: formData,
       });
-  
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-  
-      const result = await response.json();
-  
-      if (result.success) {
-        toast.success('Payment confirmation submitted successfully!');
+
+      if (response.data.success) {
+        toast.success('Done! Await your confirmation in the orders page.');
         setSubmitted(true);
         setImage(null);
-        // Wait for the toast to be visible, then navigate with success message
+        // Wait for the toast to be visible, then navigate
         setTimeout(() => {
-          navigate('/myorders', { state: { successMessage: 'Your order has been placed successfully!' } }); // Pass success message as state
+          navigate('/myorders');
         }, 3000); // Adjust the delay to match your toast display time
       } else {
-        toast.error(result.message || 'Failed to submit payment confirmation.');
+        toast.error(response.data.message || 'Failed to submit payment confirmation.');
       }
     } catch (error) {
       console.error('Error submitting payment confirmation:', error);
@@ -137,6 +130,15 @@ const Payment = () => {
 };
 
 export default Payment;
+
+
+
+
+
+
+
+
+
 
 
 
