@@ -55,9 +55,9 @@ const AdminOrders = ({ url }) => {
   const updateOrder = async (orderId, status, payment) => {
     try {
       const response = await fetch(`${url}/api/order/update`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           orderId,
@@ -190,6 +190,7 @@ const AdminOrders = ({ url }) => {
                       <th>Phone Number</th>
                       <th>Item Name</th>
                       <th>Quantity</th>
+                      <th>Weight (Kg)</th>
                       <th>Amount</th>
                       <th>Payment Method</th>
                       <th>Order Status</th>
@@ -226,6 +227,7 @@ const AdminOrders = ({ url }) => {
                                   </td>
                                   <td>{item.name}</td>
                                   <td>{item.amount}</td>
+                                  <td>{parseFloat(item.weight || 0).toFixed(2)}</td>
                                   <td>
                                     {(item.price * item.amount).toFixed(2)}
                                   </td>
@@ -262,20 +264,19 @@ const AdminOrders = ({ url }) => {
                                   </td>
                                   <td rowSpan={order.items.length}>
                                     <select
-                                      value={payment ? "Paid" : "Pending"}
+                                      value={payment || "Pending"}
                                       onChange={(e) =>
                                         setOrderStates((prev) => ({
                                           ...prev,
                                           [order._id]: {
                                             ...prev[order._id],
-                                            payment:
-                                              e.target.value === "Paid",
+                                            payment: e.target.value,
                                           },
                                         }))
                                       }
                                     >
-                                      <option value="Paid">Paid</option>
                                       <option value="Pending">Pending</option>
+                                      <option value="Paid">Paid</option>
                                     </select>
                                   </td>
                                   <td rowSpan={order.items.length}>
@@ -301,6 +302,7 @@ const AdminOrders = ({ url }) => {
                                 <>
                                   <td>{item.name}</td>
                                   <td>{item.amount}</td>
+                                  <td>{parseFloat(item.weight || 0).toFixed(2)}</td>
                                   <td>
                                     {(item.price * item.amount).toFixed(2)}
                                   </td>
