@@ -92,7 +92,7 @@ const Add = ({ url }) => {
     <div className='add'>
       <form className='add-form' onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
-          <p>Upload Images - <b> Add the main thumbnail image first and then the subsidiary images</b></p>
+          <p>Upload Images -  Add the main thumbnail image first and then the subsidiary images</p>
           <label htmlFor="images">
             <div className="image-previews">
               {images.length > 0 ? (
@@ -132,7 +132,7 @@ const Add = ({ url }) => {
               />
             </div>
             <div className='add-product-description flex-col'>
-              <p>Net Weight : <b>Use this format - Net Weight : XXXgms to XXXgms</b></p>
+              <p>Net Weight : Use this format - Net Weight : XXXgms to XXXgms</p>
               <textarea
                 onChange={onChangeHandler}
                 value={data.description}

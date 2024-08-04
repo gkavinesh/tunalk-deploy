@@ -8,8 +8,12 @@ import delete_icon from './delete.png'
 import update_icon from './refresh.png'
 import list_icon from './clipboard.png'
 import payment from './symbols.png'
+import cart from './shopping-cart (3).png'
+import customer from './people.png'
 
 export const assets ={
+    customer,
+    cart,
     payment,
     list_icon,
     update_icon,

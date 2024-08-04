@@ -1,63 +1,95 @@
-/* List.css */
 .list {
-    padding: 20px;
-    width: 100%;
-  }
-  
-  .header {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .table-container {
-    overflow-x: auto;
-  }
-  
-  .product-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .product-table th, .product-table td {
-    border: 1px solid #01B1A7;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .product-table th {
-    background-color: #f4f4f4;
-  }
-  
-  .product-image {
-    max-width: 100px;
-  }
-  
-  .type-price {
-    margin-bottom: 5px;
-  }
-  
-  .edit-button, .save-button, .remove-button {
-    cursor: pointer;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .edit-button {
-    background-color: #01B1A7; /* Green */
-    color: white;
-  }
-  
-  .save-button {
-    background-color: #01b1a8be; /* Blue */
-    color: white;
-  }
-  
-  .remove-button {
-    background-color: #eeff0000; /* Red */
-    color: white;
-    border: 1px solid #01B1A7;
-  }
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  height: 100vh; /* Make the list component take full height */
+  display: flex;
+  flex-direction: column; /* Stack header and table-container */
+}
+
+.header {
+  font-size: 24px;
+  margin: 20px 0; /* Adjust top and bottom margins as needed */
+  text-align: left; /* Align heading text to the left */
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.table-container {
+  flex-grow: 1; /* Allow table-container to expand to fill available space */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+/* Custom Scrollbar CSS */
+.table-container::-webkit-scrollbar {
+  width: 15px; /* Width of the scrollbar */
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-color: #ffffff; /* Color of the scrollbar track */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: rgb(42, 195, 195); /* Color of the scrollbar handle */
+  border-radius: 10px; /* Rounded corners for the handle */
+  border: 5px solid transparent; /* Space around the handle */
+  background-clip: content-box; /* Ensures background does not overlap border */
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse; /* Fix border issues on collapse */
+  table-layout: fixed; /* Ensures table columns are fixed */
+}
+
+.product-table th,
+.product-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.466);
+  padding: 8px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #f4f4f4;
+}
+
+.product-image {
+  max-width: 100px;
+}
+
+.type-price {
+  margin-bottom: 5px;
+}
+
+.edit-button,
+.save-button,
+.remove-button {
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px; /* Add margin between buttons */
+}
+
+.edit-button {
+  background-color: #01B1A7; /* Green */
+  color: white;
+}
+
+.save-button {
+  background-color: #01B1A7; /* Green */
+  color: white;
+}
+
+.remove-button {
+  background-color: #ff0000; /* Red */
+  color: white;
+}
+
+
+
+
+
   
 
 

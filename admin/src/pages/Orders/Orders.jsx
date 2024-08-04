@@ -129,7 +129,7 @@ const AdminOrders = ({ url }) => {
     <div className="admin-orders">
       <ToastContainer /> {/* Enable Toast notifications */}
       <div className="orders-container">
-        <h2 className="header">Admin Orders</h2>
+        <h2 className="header">Orders</h2>
         {error && <p className="error-message">Error: {error}</p>}
 
         {/* Search and Filter Section */}
@@ -180,7 +180,7 @@ const AdminOrders = ({ url }) => {
           Object.keys(groupedOrders).map((userId) => (
             <div key={userId} className="user-orders">
               <h3 className="user-id">User ID: {userId}</h3>
-              <div className="table-container">
+              <div className="table-container2">
                 <table className="orders-table">
                   <thead>
                     <tr>
@@ -196,7 +196,7 @@ const AdminOrders = ({ url }) => {
                       <th>Order Status</th>
                       <th>Payment Status</th>
                       <th>Total Amount</th>
-                      <th>Actions</th>
+                      <th>Update Status</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -1,7 +1,7 @@
 .sidebar-2{
-    width: 18%;
+    width: 15%;
     min-height: 100vh;
-    border: 1.5px solid #a9a9a9;
+    border: 3px solid rgba(0, 128, 128, 0.616);
     border-top: 0;
     font-size: max(1vw,10px)
 }
@@ -23,6 +23,15 @@
     padding: 8px 10px;
     border-radius: 3px 0px 0px 3px;
     cursor: pointer;
+}
+
+.sidebar-option p{
+    font-size: 14px;
+}
+
+.sidebar-option img{
+    width:20px ;
+    height:20px ;
 }
 
 .sidebar-option.active{

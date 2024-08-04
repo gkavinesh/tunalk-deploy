@@ -1,7 +1,8 @@
 .admin-orders {
   padding: 20px;
   background-color: #f9f9f9;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .orders-container {
@@ -58,11 +59,27 @@
   font-weight: bold; /* Emphasize the user ID */
 }
 
-.table-container {
+.table-container2 {
   max-height: 400px; /* Limit the height of the table */
   overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: auto; /* Enable horizontal scrolling if needed */
   margin-bottom: 20px; /* Space between tables */
+}
+
+/* Custom Scrollbar CSS for .table-container */
+.table-container2::-webkit-scrollbar {
+  width: 15px; /* Width of the scrollbar */
+}
+
+.table-container2::-webkit-scrollbar-track {
+  background-color: #ffffff; /* Color of the scrollbar track */
+}
+
+.table-container2::-webkit-scrollbar-thumb {
+  background: rgba(0, 210, 210, 0.589); /* Gradient for the scrollbar handle */
+  border-radius: 10px; /* Rounded corners for the handle */
+  border: 7px solid transparent; /* Space around the handle */
+  background-clip: content-box; /* Ensures background does not overlap border */
 }
 
 .orders-table {
@@ -101,9 +118,3 @@
   height: 20px;
 }
 
-.date-picker-container {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-  

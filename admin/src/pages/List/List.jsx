@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './List.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CiEdit } from "react-icons/ci";
 
 const List = ({ url }) => {
   const [list, setList] = useState([]);
@@ -126,8 +127,7 @@ const List = ({ url }) => {
               <th>Name</th>
               <th>Category</th>
               <th>Types and Prices</th>
-              <th>Edit</th>
-              <th>Remove</th>
+              <th>Edit Price / Remove Product</th>
             </tr>
           </thead>
           <tbody>
@@ -166,11 +166,7 @@ const List = ({ url }) => {
                     ) : (
                       <button className="edit-button" onClick={() => startEditing(item)}>Edit Prices</button>
                     )}
-                  </td>
-                  <td>
-                    {item._id !== editing && (
-                      <button className="remove-button" onClick={() => removeProduct(item._id)}>❌</button>
-                    )}
+                    <button className="remove-button" onClick={() => removeProduct(item._id)}>Remove </button>
                   </td>
                 </tr>
               </React.Fragment>
@@ -184,6 +180,7 @@ const List = ({ url }) => {
 };
 
 export default List;
+
 
 
 
