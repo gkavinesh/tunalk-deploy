@@ -4,18 +4,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 3%;
-    border: 3px solid rgba(0, 128, 128, 0.616);
+    padding: 10px 1.5%;
+    border: 2px solid rgba(0, 128, 128, 0.616);
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .navbar .logo {
-    width: max(10%, 80px);
+    width: max(13%, 80px);
 }
 
 
 .navbar .clock {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     color: #333;
     margin-left: auto;
 }

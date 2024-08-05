@@ -1,55 +1,59 @@
-import React, { useState } from "react";
+// src/pages/Login/Login.js
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 
-function App() {
-    const [signIn, toggle] = useState(true);
-    return (
-        <div className="container">
-            <div className={`sign-up-container ${!signIn ? 'show' : ''}`}>
-                <form className="form">
-                    <h1 className="title">Create Account</h1>
-                    <input className="input" type='text' placeholder='Name' />
-                    <input className="input" type='email' placeholder='Email' />
-                    <input className="input" type='password' placeholder='Password' />
-                    <button className="button">Sign Up</button>
-                </form>
-            </div>
+const Login = ({ url }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-            <div className={`sign-in-container ${signIn ? 'show' : ''}`}>
-                <form className="form">
-                    <h1 className="title">Sign In</h1>
-                    <input className="input" type='email' placeholder='Email' />
-                    <input className="input" type='password' placeholder='Password' />
-                    <a href='#' className="anchor">Forgot your password?</a>
-                    <button className="button">Sign In</button>
-                </form>
-            </div>
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${url}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        navigate('/panel');
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error('Login failed. Please try again.');
+    }
+  };
 
-            <div className={`overlay-container ${!signIn ? 'show' : ''}`}>
-                <div className={`overlay ${!signIn ? 'show' : ''}`}>
-                    <div className={`left-overlay-panel ${!signIn ? 'show' : ''}`}>
-                        <h1 className="title">Welcome Back!</h1>
-                        <p className="paragraph">
-                            To keep connected with us please login with your personal info
-                        </p>
-                        <button className="ghost-button" onClick={() => toggle(true)}>
-                            Sign In
-                        </button>
-                    </div>
+  return (
+    <div className="login-container">
+      <ToastContainer />
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
 
-                    <div className={`right-overlay-panel ${signIn ? 'show' : ''}`}>
-                        <h1 className="title">Hello, Friend!</h1>
-                        <p className="paragraph">
-                            Enter Your personal details and start journey with us
-                        </p>
-                        <button className="ghost-button" onClick={() => toggle(false)}>
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+export default Login;
 
-export default App;

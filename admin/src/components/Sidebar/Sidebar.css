@@ -1,37 +1,42 @@
 .sidebar-2{
-    width: 15%;
+    width: 14%;
     min-height: 100vh;
-    border: 3px solid rgba(0, 128, 128, 0.616);
-    border-top: 0;
-    font-size: max(1vw,10px)
+    border-right: 2px solid rgba(0, 128, 128, 0.616);
+    border-left: 2px solid rgba(0, 128, 128, 0.616);
+    border-bottom: 2px solid rgba(0, 128, 128, 0.616);
+    font-size: max(1vw,10px);
+    margin-top: 0px;
+    border-radius: 0px 0px 0px 15px;
+    margin-left: 10px;
 }
 
 .sidebar-options{
-    padding-top: 50px;
-    padding-left: 20%;
+    padding-top: 30px;
+    padding-left: 10%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .sidebar-option{
     display: flex;
     align-items: center;
     gap: 12px;
-    border: 1px solid #a9a9a9;
+    border: 3px solid rgba(0, 128, 128, 0.34);
     border-right: 0;
-    padding: 8px 10px;
-    border-radius: 3px 0px 0px 3px;
+    padding: 10px 10px;
+    border-radius: 10px 0px 0px 10px;
     cursor: pointer;
 }
 
 .sidebar-option p{
     font-size: 14px;
+    font-weight: 600;
 }
 
 .sidebar-option img{
-    width:20px ;
-    height:20px ;
+    width:25px ;
+    height:25px ;
 }
 
 .sidebar-option.active{

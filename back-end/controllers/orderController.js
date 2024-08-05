@@ -102,35 +102,28 @@ const listOrders = async (req, res) => {
   }
 };
 
-// Function to update order status and payment status
-const updateOrder = async (req, res) => {
+const updateOrder= async (req, res) => {
   const { orderId, status, payment } = req.body;
 
   try {
-    // Validate that orderId is provided
-    if (!orderId) {
-      return res.status(400).json({ success: false, message: "Order ID is required" });
-    }
-
-    // Find and update the order
-    const updatedOrder = await orderModel.findByIdAndUpdate(
-      orderId,
-      { status, payment },
-      { new: true }
-    );
-
-    if (!updatedOrder) {
+    // Find the order by ID
+    const order = await orderModel.findById(orderId);
+    if (!order) {
       return res.status(404).json({ success: false, message: "Order not found" });
     }
 
-    res.json({
-      success: true,
-      message: "Order updated successfully",
-      data: updatedOrder,
-    });
+    // Update the order's status and payment status
+    order.status = status;
+    order.payment = payment;
+
+    // Save the updated order
+    await order.save();
+
+    // Send a success response
+    res.json({ success: true, message: "Order updated successfully" });
   } catch (error) {
     console.error("Error updating order:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({ success: false, message: "Error updating order" });
   }
 };
 

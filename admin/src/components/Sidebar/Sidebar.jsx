@@ -21,7 +21,7 @@ const Sidebar = () => {
             </NavLink>
             <NavLink to='/payment' className="sidebar-option">
                 <img src={assets.payment} alt=''/>
-                <p>Payments</p>
+                <p>Bank Transfers</p>
             </NavLink>
             <NavLink to='/checkout' className="sidebar-option">
                 <img src={assets.cart} alt=''/>

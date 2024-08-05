@@ -13,8 +13,7 @@ const AdminOrders = ({ url }) => {
   const [orderStates, setOrderStates] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   // Fetch all orders
   const fetchOrders = async () => {
@@ -83,7 +82,7 @@ const AdminOrders = ({ url }) => {
     }
   };
 
-  // Filter orders based on search term, status, and date range
+  // Filter orders based on search term, status, and date
   const filterOrders = () => {
     let filtered = orders;
 
@@ -97,10 +96,14 @@ const AdminOrders = ({ url }) => {
       filtered = filtered.filter((order) => order.status === selectedStatus);
     }
 
-    if (startDate && endDate) {
+    if (selectedDate) {
+      const selectedDateStart = new Date(selectedDate);
+      const selectedDateEnd = new Date(selectedDateStart);
+      selectedDateEnd.setDate(selectedDateStart.getDate() + 1);
+
       filtered = filtered.filter((order) => {
         const orderDate = new Date(order.date); // Ensure 'order.date' is the correct field
-        return orderDate >= startDate && orderDate <= endDate;
+        return orderDate >= selectedDateStart && orderDate < selectedDateEnd;
       });
     }
 
@@ -109,7 +112,12 @@ const AdminOrders = ({ url }) => {
 
   useEffect(() => {
     filterOrders();
-  }, [searchTerm, selectedStatus, startDate, endDate, orders]);
+  }, [searchTerm, selectedStatus, selectedDate, orders]);
+
+  // Calculate total amount dynamically
+  const calculateTotalAmount = (items) => {
+    return items.reduce((total, item) => total + (item.price * item.amount || 0), 0);
+  };
 
   // Group orders by user ID
   const groupOrdersByUserId = (orders) => {
@@ -134,43 +142,26 @@ const AdminOrders = ({ url }) => {
 
         {/* Search and Filter Section */}
         <div className="search-filter">
-          <input
-            type="text"
-            placeholder="Last two digits of order ID"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
           >
-            <option value="All">All Statuses</option>
+            <option value="All">Order Status</option>
             <option value="Processing">Processing</option>
             <option value="Preparing Order">Preparing Order</option>
             <option value="Out for delivery">Out for delivery</option>
-            <option value="Shipped">Delivered</option>
+            <option value="Delivered">Delivered</option>
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
 
-        {/* Date Range Picker */}
+        {/* Date Picker */}
         <div className="date-picker-container">
           <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            placeholderText="Start Date"
-          />
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            placeholderText="End Date"
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="Filter Order Date"
           />
         </div>
 
@@ -202,6 +193,9 @@ const AdminOrders = ({ url }) => {
                   <tbody>
                     {groupedOrders[userId].map((order) => {
                       const { status, payment } = orderStates[order._id] || {};
+
+                      // Calculate total amount dynamically
+                      const totalAmount = calculateTotalAmount(order.items);
 
                       return (
                         <React.Fragment key={order._id}>
@@ -256,7 +250,7 @@ const AdminOrders = ({ url }) => {
                                       <option value="Out for delivery">
                                         Out for delivery
                                       </option>
-                                      <option value="Shipped">Delivered</option>
+                                      <option value="Delivered">Delivered</option>
                                       <option value="Cancelled">
                                         Cancelled
                                       </option>
@@ -280,16 +274,15 @@ const AdminOrders = ({ url }) => {
                                     </select>
                                   </td>
                                   <td rowSpan={order.items.length}>
-                                    LKR {order.total.toFixed(2)}
+                                    {totalAmount.toFixed(2)}
                                   </td>
                                   <td rowSpan={order.items.length}>
-                                    <button
-                                      className="update-button"
+                                    <button className="btn-update"
                                       onClick={() =>
                                         updateOrder(
                                           order._id,
-                                          orderStates[order._id]?.status,
-                                          orderStates[order._id]?.payment
+                                          orderStates[order._id].status,
+                                          orderStates[order._id].payment
                                         )
                                       }
                                     >
@@ -298,7 +291,7 @@ const AdminOrders = ({ url }) => {
                                   </td>
                                 </>
                               )}
-                              {itemIndex > 0 && (
+                              {itemIndex !== 0 && (
                                 <>
                                   <td>{item.name}</td>
                                   <td>{item.amount}</td>
@@ -325,6 +318,9 @@ const AdminOrders = ({ url }) => {
 };
 
 export default AdminOrders;
+
+
+
 
 
 

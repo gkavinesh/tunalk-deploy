@@ -33,10 +33,20 @@
   border-radius: 4px;
 }
 
+.btn-update{
+  background-color: #01B1A7; /* Green */
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .date-picker-container {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.479);
+  max-width:fit-content;
+  padding: 5px;
 }
 
 .no-orders {

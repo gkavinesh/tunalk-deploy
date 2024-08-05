@@ -24,7 +24,7 @@ const orderSchema = new mongoose.Schema({
     paymentMethod: {type: String, required:true},
     status: { type: String, default: "Order Processing" },
     date: { type: Date, default: Date.now },
-    payment: { type: Boolean, default: false }
+    payment: { type: String, default: "Pending" }
 });
 
 const orderModel = mongoose.models.order || mongoose.model("order", orderSchema);

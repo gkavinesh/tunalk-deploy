@@ -14,11 +14,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div>
       <div className="navbar">
         <img className='logo' src={assets.logo} alt='logo'/>
         <div className='clock'>{time}</div>
-      </div>
     </div>
   );
 }
