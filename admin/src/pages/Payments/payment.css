@@ -1,9 +1,8 @@
 .payment-container {
-  width: 100%;
-  max-width: 1300px;
+  width: 75%;
   margin: 0 auto;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   background-color: #fff;
 }
 
@@ -27,6 +26,7 @@
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
+  font-size: 13px;
 }
 
 .payments-table th {
@@ -60,7 +60,9 @@
 
 .date-filter {
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.313);
+  width: max-content;
 }
 
 .date-filter input {

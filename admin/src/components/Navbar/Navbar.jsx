@@ -1,6 +1,7 @@
+// src/components/Navbar/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { assets } from '../../assets/assets';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -13,13 +14,19 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    window.location.href = '/'; // Redirect to login page
+  };
+
   return (
-      <div className="navbar">
-        <img className='logo' src={assets.logo} alt='logo'/>
-        <div className='clock'>{time}</div>
+    <div className="navbar">
+      <div className="clock">{time}</div>
+      <FaSignOutAlt className="logout-icon" onClick={handleLogout} />
     </div>
   );
-}
+};
 
 export default Navbar;
+
 

@@ -7,13 +7,6 @@
   flex-direction: column; /* Stack header and table-container */
 }
 
-.header {
-  font-size: 24px;
-  margin: 20px 0; /* Adjust top and bottom margins as needed */
-  text-align: left; /* Align heading text to the left */
-  flex-shrink: 0; /* Prevent header from shrinking */
-}
-
 .table-container {
   flex-grow: 1; /* Allow table-container to expand to fill available space */
   overflow-y: auto; /* Enable vertical scrolling if content overflows */
@@ -61,6 +54,10 @@
   margin-bottom: 5px;
 }
 
+.type-price-box{
+  border: 1px solid black;
+}
+
 .edit-button,
 .save-button,
 .remove-button {
@@ -72,18 +69,51 @@
 }
 
 .edit-button {
-  background-color: #01B1A7; /* Green */
-  color: white;
+  padding: 4px 8px;
+  margin-left: 10px;
+  background-color: #007bff00; /* Transparent background color */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.6s ease; /* Smooth transition for background color */
+}
+
+.edit-button:hover{
+  background-color: rgba(0, 128, 128, 0.498);
 }
 
 .save-button {
-  background-color: #01B1A7; /* Green */
-  color: white;
+  padding: 4px 8px;
+  margin-left: 10px;
+  background-color: #007bff00; /* Transparent background color */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.6s ease; /* Smooth transition for background color */
+}
+
+.save-button:hover{
+  background-color: rgba(0, 128, 128, 0.495);
 }
 
 .remove-button {
-  background-color: #ff0000; /* Red */
-  color: white;
+  padding: 4px 8px;
+  margin-left: 10px;
+  background-color: #007bff00; /* Transparent background color */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.6s ease; /* Smooth transition for background color */
+}
+
+.remove-button:hover{
+  background-color: rgba(255, 0, 0, 0.491);
 }
 
 

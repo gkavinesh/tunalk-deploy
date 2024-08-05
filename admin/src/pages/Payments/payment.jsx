@@ -10,8 +10,7 @@ const Payment = ({ url, token }) => {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
   const [editing, setEditing] = useState(null);
   const [updatedPrices, setUpdatedPrices] = useState([]);
 
@@ -34,11 +33,11 @@ const Payment = ({ url, token }) => {
     }
   };
 
-  // Filter payments by date
+  // Filter payments by selected date
   const filterPaymentsByDate = () => {
     const filtered = payments.filter(payment => {
       const createdAt = new Date(payment.createdAt);
-      return (!startDate || createdAt >= new Date(startDate)) && (!endDate || createdAt <= new Date(endDate));
+      return !selectedDate || createdAt.toDateString() === new Date(selectedDate).toDateString();
     });
     setFilteredPayments(filtered);
   };
@@ -98,23 +97,17 @@ const Payment = ({ url, token }) => {
 
   useEffect(() => {
     filterPaymentsByDate();
-  }, [startDate, endDate, payments]);
+  }, [selectedDate, payments]);
 
   return (
     <div className="payment-container">
-      <h2 className="header">Payments</h2>
       {error && <p className="error-message">{error}</p>}
 
       <div className="date-filter">
         <input
           type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
         />
       </div>
 
@@ -177,6 +170,7 @@ const Payment = ({ url, token }) => {
 };
 
 export default Payment;
+
 
 
 

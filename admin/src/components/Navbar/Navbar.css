@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+/* src/components/Navbar/Navbar.css */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 1.5%;
-    border: 2px solid rgba(0, 128, 128, 0.616);
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 10px 10px 0px 0px;
-}
-
-.navbar .logo {
-    width: max(13%, 80px);
-}
-
-
-.navbar .clock {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 25px;
-    color: #333;
-    margin-left: auto;
-}
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    background-color: rgba(0, 128, 128, 0.637);
+    color: #fff;
+  }
+  
+  .clock {
+    font-size: 18px;
+  }
+  
+  .logout-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  
+  .logout-icon:hover {
+    color: #f00;
+  }
+  

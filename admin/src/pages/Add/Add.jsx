@@ -165,6 +165,7 @@ const Add = ({ url }) => {
                   <select
                     name="type"
                     value={type.type}
+                    className='cut-type'
                     onChange={event => onTypeChange(index, event)}
                   >
                     {typeOptions.map((option, i) => (

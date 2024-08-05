@@ -13,11 +13,11 @@
 }
 
 .add-img-upload img {
-    width: 120px;
+    width: 150px;
 }
 
 .add-img-upload {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .form-grid {
@@ -36,25 +36,25 @@
 .add-product-description textarea,
 .add-category select,
 .type-price-row input {
-    border: 1px solid black;
+    border: 2px solid rgba(0, 0, 0, 0.402);
     padding: 10px;
     width: 100%;
 }
 
 .add-btn {
-    width: 160px;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #0C979C;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    align-self: flex-start;
-    margin-top: 20px;
+    padding: 8px 16px;
+  width: 20%;
+  background-color: #007bff00; /* Transparent background color */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.6s ease; /* Smooth transition for background color */
 }
 
 .add-btn:hover {
-    transform: scale(1.05);
+    background-color: rgba(0, 128, 128, 0.484);
 }
 
 .image-previews {
@@ -93,22 +93,24 @@
 }
 
 .add-type-btn {
-    max-width: 120px;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: transparent;
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    align-self: flex-start;
-    border: 3px solid teal;
+    padding: 8px 16px;
+  background-color: #007bff00; /* Transparent background color */
+  width: 15.5%;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.6s ease; /* Smooth transition for background color */
 }
 
 .add-type-btn:hover {
-    transform: scale(1.05);
-    border: 2px solid teal;
-    color: black;
-    background: transparent;
+    background-color: rgba(0, 128, 128, 0.518);
+}
+
+.cut-type{
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.402);
 }
 
 

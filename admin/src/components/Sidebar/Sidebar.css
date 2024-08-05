@@ -7,7 +7,6 @@
     font-size: max(1vw,10px);
     margin-top: 0px;
     border-radius: 0px 0px 0px 15px;
-    margin-left: 10px;
 }
 
 .sidebar-options{
@@ -16,6 +15,10 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+.sidebar-options img{
+    width: 180px;
 }
 
 .sidebar-option{
@@ -30,8 +33,8 @@
 }
 
 .sidebar-option p{
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .sidebar-option img{
@@ -40,7 +43,7 @@
 }
 
 .sidebar-option.active{
-    background-color: #C6EDF4;
+    background-color: #c6edf4a9;
     border-color: #0C979C;
 }
 

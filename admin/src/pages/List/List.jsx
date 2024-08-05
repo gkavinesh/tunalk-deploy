@@ -118,7 +118,6 @@ const List = ({ url }) => {
 
   return (
     <div className="list">
-      <h2 className="header">Product List</h2>
       <div className="table-container">
         <table className="product-table">
           <thead>
@@ -145,6 +144,7 @@ const List = ({ url }) => {
                         <div key={typeIndex} className='type-price'>
                           <p>Type: {type.type}</p>
                           <input
+                          className='type-price-box'
                             type="number"
                             value={type.price}
                             onChange={(e) => handlePriceChange(typeIndex, e.target.value)}
