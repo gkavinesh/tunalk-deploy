@@ -28,10 +28,6 @@ const Sidebar = () => {
                 <img src={assets.cart} alt=''/>
                 <p>Manual Checkout</p>
             </NavLink>
-            <NavLink to='/database' className="sidebar-option">
-                <img src={assets.customer} alt=''/>
-                <p>Customer Database</p>
-            </NavLink>
         </div>
       
     </div>

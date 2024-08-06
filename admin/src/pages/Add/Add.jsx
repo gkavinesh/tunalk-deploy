@@ -1,34 +1,46 @@
-import React, { useState } from 'react';
+// src/pages/Add/Add.jsx
+
+import React, { useState, useEffect } from 'react';
 import './Add.css';
-import axios from "axios";
 import { assets } from '../../assets/assets';
-import { ToastContainer } from 'react-toastify';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Add = ({ url }) => {
   const [images, setImages] = useState([]);
   const [data, setData] = useState({
-    name: "",
-    description: "",
-    category: "Fish"
+    name: '',
+    description: '',
+    category: 'Fish',
   });
-  const [types, setTypes] = useState([{ type: "Curry cut", price: "" }]);
+  const [types, setTypes] = useState([{ type: 'Curry cut', price: '' }]);
+
+  // Get the location object from react-router-dom
+  const location = useLocation();
+
+  // Show a success toast message if provided in the location state
+  useEffect(() => {
+    if (location.state && location.state.message) {
+      toast.success(location.state.message);
+    }
+  }, [location]);
 
   const typeOptions = [
-    "Curry cut",
-    "Cleaned",
-    "Steaks",
-    "Peeled",
-    "Tail on",
-    "Ring cut",
-    "Fillet",
-    "Frozen"
+    'Curry cut',
+    'Cleaned',
+    'Steaks',
+    'Peeled',
+    'Tail on',
+    'Ring cut',
+    'Fillet',
+    'Frozen',
   ];
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data => ({ ...data, [name]: value }));
+    setData((data) => ({ ...data, [name]: value }));
   };
 
   const onImageChange = (event) => {
@@ -43,58 +55,72 @@ const Add = ({ url }) => {
   };
 
   const addTypeField = () => {
-    setTypes([...types, { type: "Curry cut", price: "" }]);
+    setTypes([...types, { type: 'Curry cut', price: '' }]);
   };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("description", data.description);
-    formData.append("category", data.category);
-    formData.append("types", JSON.stringify(types));
-  
+    formData.append('name', data.name);
+    formData.append('description', data.description);
+    formData.append('category', data.category);
+    formData.append('types', JSON.stringify(types));
+
     // Append all images to formData
-    images.forEach(image => {
-      formData.append("images", image);
+    images.forEach((image) => {
+      formData.append('images', image);
     });
-  
+
     try {
       const response = await fetch(`${url}/api/product/add`, {
         method: 'POST',
         body: formData,
       });
-  
+
       const result = await response.json();
-      
+
       if (response.ok) {
         if (result.success) {
           setData({
-            name: "",
-            description: "",
-            category: "Fish"
+            name: '',
+            description: '',
+            category: 'Fish',
           });
           setImages([]);
-          setTypes([{ type: "Curry cut", price: "" }]);
+          setTypes([{ type: 'Curry cut', price: '' }]);
           toast.success(result.message);
         } else {
           toast.error(result.message);
         }
       } else {
-        toast.error("An error occurred. Please try again.");
+        toast.error('An error occurred. Please try again.');
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div className='add'>
+    <div className="add">
+      <ToastContainer
+        position="bottom-right" // Set the position to bottom-right
+        autoClose={5000} // Adjust the duration as needed
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <h2>Add Products</h2>
-      <br></br>
-      <form className='add-form' onSubmit={onSubmitHandler}>
+      <br />
+      <form className="add-form" onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
-          <p>Upload Images -  Add the main thumbnail image first and then the subsidiary images</p>
+          <p>
+            Upload Images - Add the main thumbnail image first and then the
+            subsidiary images
+          </p>
           <label htmlFor="images">
             <div className="image-previews">
               {images.length > 0 ? (
@@ -107,20 +133,20 @@ const Add = ({ url }) => {
                   />
                 ))
               ) : (
-                <img src={assets.upload_area} alt='Upload area' />
+                <img src={assets.upload_area} alt="Upload area" />
               )}
             </div>
           </label>
           <input
             onChange={onImageChange}
-            type='file'
-            id='images'
+            type="file"
+            id="images"
             hidden
             multiple
             required
           />
         </div>
-        
+
         <div className="form-grid">
           <div className="left-column">
             <div className="add-product-name flex-col">
@@ -128,12 +154,12 @@ const Add = ({ url }) => {
               <input
                 onChange={onChangeHandler}
                 value={data.name}
-                type='text'
-                name='name'
-                placeholder='Name'
+                type="text"
+                name="name"
+                placeholder="Name"
               />
             </div>
-            <div className='add-product-description flex-col'>
+            <div className="add-product-description flex-col">
               <p>Net Weight : Use this format - Net Weight : XXXgms to XXXgms</p>
               <textarea
                 onChange={onChangeHandler}
@@ -146,7 +172,7 @@ const Add = ({ url }) => {
           </div>
 
           <div className="right-column">
-            <div className='add-category flex-col'>
+            <div className="add-category flex-col">
               <p>Product Category</p>
               <select
                 name="category"
@@ -167,35 +193,42 @@ const Add = ({ url }) => {
                   <select
                     name="type"
                     value={type.type}
-                    className='cut-type'
-                    onChange={event => onTypeChange(index, event)}
+                    className="cut-type"
+                    onChange={(event) => onTypeChange(index, event)}
                   >
                     {typeOptions.map((option, i) => (
-                      <option key={i} value={option}>{option}</option>
+                      <option key={i} value={option}>
+                        {option}
+                      </option>
                     ))}
                   </select>
                   <input
                     type="number"
                     name="price"
                     value={type.price}
-                    onChange={event => onTypeChange(index, event)}
-                    placeholder="LKR 2000"
+                    onChange={(event) => onTypeChange(index, event)}
+                    placeholder="Price"
                   />
                 </div>
               ))}
-              <button type="button" onClick={addTypeField} className="add-type-btn">Add Type</button>
+              <button type="button" className="add-type-button" onClick={addTypeField}>
+                Add Type
+              </button>
             </div>
           </div>
         </div>
-        
-        <button type="submit" className="add-btn">ADD</button>
+
+        <button type="submit" className="add-product-button">
+          Add Product
+        </button>
       </form>
-      <ToastContainer />
     </div>
   );
 };
 
 export default Add;
+
+
 
 
 

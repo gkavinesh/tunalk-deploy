@@ -1,38 +1,43 @@
-import React from 'react'
+// src/App.jsx
+
+import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
+import { Routes, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from './components/Navbar/Navbar'
-import Sidebar from './components/Sidebar/Sidebar'
-import {Routes,Route} from 'react-router-dom'
-import Add from "./pages/Add/Add"
-import Order from "./pages/Orders/Orders"
-import List from "./pages/List/List"
-import Payment from "./pages/Payments/payment"
-import Login from "./pages/Login/Login"
-import Checkout from "./pages/Checkout/Checkout"
+import Homepage from './pages/Homepage/Homepage';
+import Login from './pages/Login/Login';
 
 const App = () => {
-
-  const url = "https://tunalk-backend-53lo.onrender.com";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const url = 'https://tunalk-backend-53lo.onrender.com';
 
   return (
     <div>
-      <ToastContainer/>
-      <Navbar/>
-      <div className='app-content'>
-        <Sidebar/>
-        <Routes>
-          <Route path='/add' element={<Add url={url}/>}/>
-          <Route path='/list' element={<List url={url}/>}/>
-          <Route path='/orders' element={<Order url={url}/>}/>
-          <Route path='/payment' element={<Payment url={url}/>}/>
-          <Route path='/checkout' element={<Checkout url={url}/>}/>
-        </Routes>
-      </div>
+      <ToastContainer />
+      <Routes>
+        {/* Render Login component if not authenticated */}
+        <Route
+          path='/login'
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
+        {/* Redirect all other paths to Homepage if authenticated */}
+        <Route
+          path='/*'
+          element={
+            isAuthenticated ? (
+              <Homepage url={url} />
+            ) : (
+              // If not authenticated, redirect to Login
+              <Login setIsAuthenticated={setIsAuthenticated} />
+            )
+          }
+        />
+      </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
 
 
