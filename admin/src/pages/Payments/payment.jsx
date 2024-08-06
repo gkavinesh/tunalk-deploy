@@ -3,6 +3,7 @@ import axios from 'axios';
 import './payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DatePicker from "react-datepicker";
 
 const Payment = ({ url, token }) => {
   const [payments, setPayments] = useState([]);
@@ -101,14 +102,16 @@ const Payment = ({ url, token }) => {
 
   return (
     <div className="payment-container">
+      <h2>Bank Transfers</h2>
       {error && <p className="error-message">{error}</p>}
-
+      <br></br>
       <div className="date-filter">
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        />
+      <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat="yyyy-MM-dd"
+            placeholderText="Filter Order Date"
+          />
       </div>
 
       <div className="table-container">

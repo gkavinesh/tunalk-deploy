@@ -1,13 +1,23 @@
 .admin-orders {
   padding: 20px;
-  background-color: #f9f9f9;
-  width: 80%;
+  background-color: #ffffff;
+  width: 75%;
   margin: 0 auto;
 }
+
 
 .orders-container {
   max-width: 1400px;
   margin: 0 auto;
+  background-color: white;
+}
+
+.orders-container h2{
+  margin-top: 1rem;
+  color: teal;
+    stroke: #218838;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .header {
@@ -110,7 +120,7 @@
 .orders-table th,
 .orders-table td {
   padding: 10px;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid teal;
   text-align: left;
   font-size: 12px;
 }

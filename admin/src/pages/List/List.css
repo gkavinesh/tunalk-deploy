@@ -1,16 +1,25 @@
 .list {
   padding: 20px;
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
   height: 100vh; /* Make the list component take full height */
   display: flex;
   flex-direction: column; /* Stack header and table-container */
+  font-size: 14px;
 }
 
 .table-container {
   flex-grow: 1; /* Allow table-container to expand to fill available space */
   overflow-y: auto; /* Enable vertical scrolling if content overflows */
   overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+.list h2{
+  margin-top: 1rem;
+  color: teal;
+    stroke: #218838;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 /* Custom Scrollbar CSS */
@@ -37,7 +46,7 @@
 
 .product-table th,
 .product-table td {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.466);
+  border-bottom: 1px solid teal;
   padding: 8px;
   text-align: left;
 }

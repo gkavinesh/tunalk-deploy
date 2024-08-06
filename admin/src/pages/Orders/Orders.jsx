@@ -14,6 +14,7 @@ const AdminOrders = ({ url }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [selectedDate, setSelectedDate] = useState(null);
+  const [firstNameSearch, setFirstNameSearch] = useState("");
 
   // Fetch all orders
   const fetchOrders = async () => {
@@ -82,13 +83,19 @@ const AdminOrders = ({ url }) => {
     }
   };
 
-  // Filter orders based on search term, status, and date
+  // Filter orders based on search term, first name, status, and date
   const filterOrders = () => {
     let filtered = orders;
 
     if (searchTerm) {
       filtered = filtered.filter((order) =>
         order._id.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (firstNameSearch) {
+      filtered = filtered.filter((order) =>
+        order.firstName.toLowerCase().includes(firstNameSearch.toLowerCase())
       );
     }
 
@@ -112,7 +119,7 @@ const AdminOrders = ({ url }) => {
 
   useEffect(() => {
     filterOrders();
-  }, [searchTerm, selectedStatus, selectedDate, orders]);
+  }, [searchTerm, firstNameSearch, selectedStatus, selectedDate, orders]);
 
   // Calculate total amount dynamically
   const calculateTotalAmount = (items) => {
@@ -148,6 +155,8 @@ const AdminOrders = ({ url }) => {
     <div className="admin-orders">
       <ToastContainer /> {/* Enable Toast notifications */}
       <div className="orders-container">
+        <h2>Orders</h2>
+        <br></br>
         {error && <p className="error-message">Error: {error}</p>}
 
         {/* Search and Filter Section */}
@@ -159,12 +168,19 @@ const AdminOrders = ({ url }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
+          <input
+            type="text"
+            placeholder="Search First Name"
+            value={firstNameSearch}
+            onChange={(e) => setFirstNameSearch(e.target.value)}
+            className="search-input"
+          />
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
             className="status-select"
           >
-            <option value="All">Order Status</option>
+            <option value="All">Filter Order Status</option>
             <option value="Processing">Processing</option>
             <option value="Preparing Order">Preparing Order</option>
             <option value="Out for delivery">Out for delivery</option>

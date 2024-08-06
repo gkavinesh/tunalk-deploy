@@ -90,6 +90,8 @@ const Add = ({ url }) => {
 
   return (
     <div className='add'>
+      <h2>Add Products</h2>
+      <br></br>
       <form className='add-form' onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
           <p>Upload Images -  Add the main thumbnail image first and then the subsidiary images</p>

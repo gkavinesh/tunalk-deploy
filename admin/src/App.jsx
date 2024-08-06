@@ -9,6 +9,7 @@ import Order from "./pages/Orders/Orders"
 import List from "./pages/List/List"
 import Payment from "./pages/Payments/payment"
 import Login from "./pages/Login/Login"
+import Checkout from "./pages/Checkout/Checkout"
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/list' element={<List url={url}/>}/>
           <Route path='/orders' element={<Order url={url}/>}/>
           <Route path='/payment' element={<Payment url={url}/>}/>
+          <Route path='/checkout' element={<Checkout url={url}/>}/>
         </Routes>
       </div>
     </div>

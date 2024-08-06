@@ -118,7 +118,10 @@ const List = ({ url }) => {
 
   return (
     <div className="list">
+      <h2>Product List</h2>
+      <br></br>
       <div className="table-container">
+        
         <table className="product-table">
           <thead>
             <tr>

@@ -6,11 +6,14 @@
   background-color: #fff;
 }
 
-.header {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
+.payment-container h2{
+  color: teal;
+    stroke: #218838;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 1rem;
 }
+
 
 .table-container {
   overflow-x: auto;
@@ -25,7 +28,7 @@
 .payments-table th, .payments-table td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid teal;
   font-size: 13px;
 }
 
