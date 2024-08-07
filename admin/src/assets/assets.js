@@ -10,8 +10,10 @@ import list_icon from './clipboard.png'
 import payment from './symbols.png'
 import cart from './shopping-cart (3).png'
 import customer from './people.png'
+import tuna from './tuna.png'
 
 export const assets ={
+    tuna,
     customer,
     cart,
     payment,

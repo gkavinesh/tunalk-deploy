@@ -1,46 +1,19 @@
-/* Custom styles for carousel thumbnails and arrows */
 
-.thumbnail-image {
-    width: 80px; /* Adjust width as needed */
-    height: 80px; /* Adjust height as needed */
-    object-fit: cover;
-    border-radius: 8px; /* Optional: for rounded corners */
+
+.btn-cart{
+    padding: 6px 10px;
+  background-color: #F48613; /* Transparent background color */
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 209, 43);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.8s ease;
 }
 
-.slick-dots {
-    bottom: -40px; /* Adjust position if needed */
-}
-
-.slick-dots .slick-active a {
-    opacity: 1; /* Make active dot more visible */
-}
-
-.slick-prev, .slick-next {
-    color: black; /* Change arrow color to black */
-    font-size: 24px; /* Adjust size if needed */
-    z-index: 1; /* Ensure arrows are above other content */
-}
-
-.slick-prev {
-    left: 10px; /* Position arrow on the left */
-}
-
-.slick-next {
-    right: 10px; /* Position arrow on the right */
-}
-
-/* Ensure dropdown and options are visible */
-select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    background-color: #fff;
-    color: #000000;
-}
-
-option {
-    padding: 0.5rem;
+.btn-cart:hover{
+    background-color: transparent;
+    color: #F48613;
 }
 
 

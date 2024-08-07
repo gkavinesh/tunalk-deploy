@@ -78,17 +78,20 @@
 }
 
 .customize-button {
-    background-color: #F48613;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    padding: 6px 10px;
+  background-color: #F48613; /* Transparent background color */
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 209, 43);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.8s ease;
 }
 
 .customize-button:hover {
     transform: scale(1.05);
+    background-color: transparent;
+    color: #F48613;
 }
 
 /* Responsive styles */

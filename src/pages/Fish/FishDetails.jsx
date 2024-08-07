@@ -6,6 +6,8 @@ import LoginPopup from '../../components/LoginPopup/LoginPopup'; // Adjust the i
 import Preloader from '../../components/preloadersub/preloader';
 import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer along with toast
 import 'react-toastify/dist/ReactToastify.css'; // Import CSS for styling
+import './FishDetails.css'
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const ProductPage = () => {
     const { state } = useLocation();
@@ -16,36 +18,22 @@ const ProductPage = () => {
     const [amount, setAmount] = useState(1);
     const [selectedType, setSelectedType] = useState(null); // Initially set to null
     const [selectedWeight, setSelectedWeight] = useState('0.5'); // Initially set to 500g
+    const [manualWeight, setManualWeight] = useState(""); // State for manual weight input
     const [price, setPrice] = useState(0);
     const [showLogin, setShowLogin] = useState(false); // State for showing login popup
     const [loading, setLoading] = useState(true); // Loading state
 
     useEffect(() => {
-        if (selectedType && selectedType.price) {
+        if (selectedType) {
             const basePrice = selectedType.price; // Assuming basePrice is for 500g
 
             // Adjusting weightMultiplier based on the selected weight
-            let weightMultiplier = 1;
-            switch (selectedWeight) {
-                case '0.5':
-                    weightMultiplier = 1; // 500g is the base price
-                    break;
-                case '1':
-                    weightMultiplier = 2; // 1kg = 2 * 500g
-                    break;
-                case '2':
-                    weightMultiplier = 4; // 2kg = 4 * 500g
-                    break;
-                case '3':
-                    weightMultiplier = 6; // 3kg = 6 * 500g
-                    break;
-                default:
-                    weightMultiplier = 1;
-            }
+            let weightMultiplier = selectedWeight === 'manual' ? parseFloat(manualWeight) / 0.5 : parseFloat(selectedWeight) / 0.5;
+            if (isNaN(weightMultiplier)) weightMultiplier = 1; // Default to 1 if input is invalid
 
             setPrice(basePrice * weightMultiplier * amount); // Updated to include amount
         }
-    }, [selectedType, selectedWeight, amount]);
+    }, [selectedType, selectedWeight, amount, manualWeight]);
 
     // Simulate a delay to show the preloader for 1 second
     useEffect(() => {
@@ -83,7 +71,7 @@ const ProductPage = () => {
     const handleAddToCart = () => {
         if (!token) {
             setShowLogin(true); // Show login popup if not logged in
-        } else if (!selectedType || !selectedWeight) {
+        } else if (!selectedType || (!selectedWeight && !manualWeight)) {
             toast.warn(
                 'Please select a type and weight before adding to cart.',
                 {
@@ -98,7 +86,8 @@ const ProductPage = () => {
                 }
             );
         } else {
-            addToCart(item._id, amount, selectedType.type, price, selectedWeight);
+            const weightToUse = selectedWeight === 'manual' ? parseFloat(manualWeight) : parseFloat(selectedWeight);
+            addToCart(item._id, amount, selectedType.type, price, weightToUse);
 
             // Show toast notification when product is added to cart
             toast.success(`${item.name} added to cart!`, {
@@ -150,11 +139,10 @@ const ProductPage = () => {
                                     key={index}
                                     src={`${url}/images/${image}`}
                                     alt={`Thumbnail ${index + 1}`}
-                                    className={`w-24 h-24 rounded-md cursor-pointer object-cover flex-shrink-0 transition-transform duration-300 transform hover:scale-110 ${
-                                        activeImg === `${url}/images/${image}`
-                                            ? 'border-2 border-teal-500'
-                                            : ''
-                                    }`}
+                                    className={`w-24 h-24 rounded-md cursor-pointer object-cover flex-shrink-0 transition-transform duration-300 transform hover:scale-110 ${activeImg === `${url}/images/${image}`
+                                        ? 'border-2 border-teal-500'
+                                        : ''
+                                        }`}
                                     onClick={() =>
                                         setActiveImage(`${url}/images/${image}`)
                                     }
@@ -171,13 +159,13 @@ const ProductPage = () => {
                                 {item.name}
                             </h1>
                         </div>
-                        <p className="text-gray-700 text-lg mt-4">
+                        <p className="text-gray-700 text-lg mt-1">
                             {item.description}
                         </p>
-                        <div className="flex flex-col gap-4 mt-6">
+                        <div className="flex flex-col gap-4 mt-2">
                             <div className="flex flex-col gap-2">
                                 <label className="font-semibold text-lg">
-                                    Select Type
+                                    Type
                                 </label>
                                 <div className="flex flex-wrap gap-4">
                                     {item.types.map((type, index) => (
@@ -196,68 +184,79 @@ const ProductPage = () => {
                                                 onChange={handleTypeChange}
                                                 className="form-radio text-teal-700"
                                             />
-                                            <span
-                                                className={`text-gray-800 px-3 py-1 rounded-full border ${
-                                                    selectedType &&
-                                                    selectedType.type === type.type
-                                                        ? 'border-teal-500'
-                                                        : 'border-gray-300'
-                                                } transition-all duration-200`}
-                                            >
-                                                {type.type}
-                                            </span>
+                                            <span>{type.type}</span>
                                         </label>
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex flex-col lg:flex-row items-center gap-6 mt-4">
-                                <div className="flex flex-col gap-2 w-full lg:w-32">
-                                    <label
-                                        htmlFor="weight-select"
-                                        className="font-semibold text-lg"
-                                    >
-                                        Select Weight
-                                    </label>
+                            <div className="flex flex-col gap-2 mt-4">
+                                <label className="font-semibold text-lg">
+                                    Weight
+                                </label>
+                                <div className="flex gap-4">
                                     <select
-                                        id="weight-select"
                                         value={selectedWeight}
-                                        onChange={(e) =>
-                                            setSelectedWeight(e.target.value)
-                                        }
-                                        className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                        onChange={(e) => {
+                                            setSelectedWeight(e.target.value);
+                                            if (e.target.value !== 'manual') {
+                                                setManualWeight(""); // Reset manual weight input if not manual
+                                            }
+                                        }}
+                                        className="border rounded-lg p-2 w-32"
                                     >
-                                        <option value="0.5">500g</option>
-                                        <option value="1">1kg</option>
-                                        <option value="2">2kg</option>
-                                        <option value="3">3kg</option>
+                                        <option value="0.5">0.5 kg</option>
+                                        <option value="1">1 kg</option>
+                                        <option value="2">2 kg</option>
+                                        <option value="3">3 kg</option>
+                                        <option value="manual">Enter Weight</option>
                                     </select>
+                                    {selectedWeight === 'manual' && (
+                                        <input
+                                            type="number"
+                                            value={manualWeight}
+                                            onChange={(e) => setManualWeight(e.target.value)}
+                                            placeholder="Enter weight in kg"
+                                            className="border rounded-lg p-2 w-32"
+                                        />
+                                    )}
                                 </div>
-                                <div className="flex flex-col gap-2 w-full lg:w-32">
-                                    <label
-                                        htmlFor="quantity-select"
-                                        className="font-semibold text-lg"
+                            </div>
+                            <div className="flex flex-col gap-2 mt-4">
+                                <label className="font-semibold text-lg">
+                                    Quantity
+                                </label>
+                                <div className="flex items-center border rounded-lg w-32">
+                                    <button
+                                        onClick={() => setAmount(amount - 1)}
+                                        className="p-2 text-gray-700 hover:bg-gray-200"
+                                        disabled={amount <= 1}
                                     >
-                                        Quantity
-                                    </label>
+                                        <FaMinus />
+                                    </button>
                                     <input
                                         type="number"
-                                        min="1"
                                         value={amount}
-                                        onChange={(e) =>
-                                            setAmount(parseInt(e.target.value))
-                                        }
-                                        className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                        onChange={(e) => setAmount(parseInt(e.target.value))}
+                                        className="border-none p-2 w-16 text-center"
+                                        min="1"
                                     />
+                                    <button
+                                        onClick={() => setAmount(amount + 1)}
+                                        className="p-2 text-gray-700 hover:bg-gray-200"
+                                    >
+                                        <FaPlus />
+                                    </button>
                                 </div>
                             </div>
-                            <div className="mt-4">
-                                <span className="text-xl font-bold text-gray-800">
-                                    Total Price : රු {price}
+                            <div className="flex flex-col gap-2 text-right">
+                                <span className="text-xl font-semibold text-black-500">
+                                    Total Price: රු {price.toFixed(2)}
                                 </span>
                             </div>
+
                             <button
                                 onClick={handleAddToCart}
-                                className="mt-6 py-3 px-6 bg-teal-500 text-white rounded-lg shadow-md hover:bg-teal-600 transition-colors duration-300"
+                                className="btn-cart w-36 ml-auto"
                             >
                                 Add to Cart
                             </button>
@@ -270,6 +269,7 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
+
 
 
 

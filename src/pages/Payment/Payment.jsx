@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Payment.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
-import { useNavigate } from 'react-router-dom';
-import Preloader from '..//..//components//preloadersub/preloader'
+import Preloader from '../../components/preloadersub/preloader';
 
 const Payment = () => {
   const { url, token } = useContext(StoreContext);
@@ -83,53 +82,55 @@ const Payment = () => {
 
   return (
     <div className="payment">
-      <form className="payment-form" onSubmit={handleSubmit}>
-        <div className="order-summary">
-          <h3>Your Details</h3>
-          <p>
-            <b>Name:</b> {orderData?.firstName} {orderData?.lastName}
-          </p>
-          <p>
-            <b>Address:</b> {orderData?.address.address}, {orderData?.address.type}, {orderData?.address.postcode}
-          </p>
-          <p>
-            <b>Phone:</b> {orderData?.phone}
-          </p>
+      <div className="payment-container">
+        <div className="payment-details">
+          <h3>Payment Details</h3>
+          <p><b>ACCOUNT NO:</b> 009010500546</p>
+          <p><b>NAME:</b> Daily Fresh Colombo Pvt Ltd</p>
+          <p><b>BANK:</b> HNB Bank, Colombo 06</p>
+          <p><b>SWIFT CODE:</b> HBLILKLX</p>
+          <p><b>BANK CODE:</b> 7083</p>
+          <p><b>BRANCH CODE:</b> 009</p>
         </div>
         <div className="image-upload-section">
-          <p>Upload Payment Receipt</p>
-          <label htmlFor="receipt">
-            <div className="image-preview">
-              {image ? (
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt="Receipt Preview"
-                  className="receipt-preview"
-                />
-              ) : (
-                <img src={assets.upload} alt="Upload area" />
-              )}
-            </div>
-          </label>
-          <input
-            onChange={handleImageChange}
-            type="file"
-            id="receipt"
-            hidden
-            accept="image/*"
-            required
-          />
+          <h3>Upload Payment Receipt</h3>
+          <br></br>
+          <form className="payment-form" onSubmit={handleSubmit}>
+            <label htmlFor="receipt">
+              <div className="image-preview">
+                {image ? (
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="Receipt Preview"
+                    className="receipt-preview"
+                  />
+                ) : (
+                  <img src={assets.upload} alt="Upload area" />
+                )}
+              </div>
+            </label>
+            <input
+              onChange={handleImageChange}
+              type="file"
+              id="receipt"
+              hidden
+              accept="image/*"
+              required
+            />
+            <br></br>
+            <button type="submit" className="submit-btn" disabled={submitted}>
+              {submitted ? 'Receipt Uploaded' : 'Submit Confirmation'}
+            </button>
+          </form>
         </div>
-        <button type="submit" className="submit-btn" disabled={submitted}>
-          {submitted ? 'Receipt Uploaded' : 'Submit Confirmation'}
-        </button>
-      </form>
+      </div>
       <ToastContainer />
     </div>
   );
 };
 
 export default Payment;
+
 
 
 
