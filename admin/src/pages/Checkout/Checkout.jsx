@@ -119,7 +119,7 @@ const Checkout = ({ url }) => {
 
     try {
       console.log(`Placing order to ${url}/api/orders/place`);
-      const response = await fetch(`${url}/api/orders/adminplace`, {
+      const response = await fetch(`${url}/api/order/adminplace`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

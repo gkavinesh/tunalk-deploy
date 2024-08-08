@@ -99,7 +99,7 @@ import thirteen from './13.jpg';
 import thumb1 from './cuttle.jpg';
 import thumb2 from './prawnmain.jpg';
 import thumb3 from './scad.jpg';
-import thumb4 from './dealicon.png';
+import thumb4 from './deal.png';
 import thumb5 from './tuna.jpg';
 import thumb6 from './seer.jpg';
 import thumb7 from './crabmain.jpg';

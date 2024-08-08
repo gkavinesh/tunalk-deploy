@@ -26,7 +26,7 @@ const ComponentName = () => {
         {
             id: 4,
             image: assets.thumb4,
-            title: "Hot Deals",
+            title: "Special Offers",
             link: "/fish", // Add link for redirection
         },
         {

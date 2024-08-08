@@ -88,10 +88,9 @@ const PlaceOrder = () => {
   };
 
   const generateOrderId = () => {
-    // Simple order ID generator using timestamp and random number
-    const timestamp = Date.now(); // Current timestamp in milliseconds
-    const randomNumber = Math.floor(Math.random() * 1000000); // Random number between 0 and 999999
-    return `ORD-${timestamp}-${randomNumber}`; // Ensure this is returned as a string
+    // Simple order ID generator using a random number
+    const randomNumber = Math.floor(100000 + Math.random() * 900000); // Random number between 100000 and 999999
+    return `ORD-${randomNumber}`; // Return as a string with 'ORD-' prefix
   };
 
   const placeOrder = async (event) => {
@@ -179,6 +178,9 @@ const PlaceOrder = () => {
       } else if (data.paymentMethod === 'cashOnDelivery') {
         clearCart(); // Clear the cart when the order is placed
         navigate('/myorders', { state: { successMessage: 'Order placed successfully !' } }); // Pass success message as state
+      } else if (data.paymentMethod === 'onePay'){
+        clearCart();
+        navigate('/redirect')
       }
     } catch (error) {
       console.error('Error placing order:', error);
@@ -303,6 +305,17 @@ const PlaceOrder = () => {
           <div className="payment-method">
             <p className="title">Payment Method</p>
             <div className="payment-options">
+            <div
+                className={`payment-option ${data.paymentMethod === 'onePay' ? 'selected' : ''}`}
+                onClick={() => selectPaymentMethod('onePay')}
+              >
+                <span>OnePay</span>
+                <div className="payment-images">
+                  <img src={assets.card1} alt="OnePay" />
+                  <img src={assets.card2} alt="OnePay" />
+                  <img src={assets.card3} alt="OnePay" />
+                </div>
+              </div>
               <div
                 className={`payment-option ${data.paymentMethod === 'bankTransfer' ? 'selected' : ''}`}
                 onClick={() => selectPaymentMethod('bankTransfer')}
@@ -333,12 +346,12 @@ const PlaceOrder = () => {
               <hr />
               <div className="cart-total-details">
                 <p>Delivery Fee</p>
-                <p>LKR {getTotalCartAmount() === 0 ? 0 : 200}</p>
+                <p>FREE</p>
               </div>
               <hr />
               <div className="cart-total-details">
                 <b>Total</b>
-                <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 200}</b>
+                <b>LKR {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 0}</b>
               </div>
               <button type="submit" className="btn" disabled={getTotalCartAmount() === 0}>
                 Place Order

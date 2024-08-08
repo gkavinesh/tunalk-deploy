@@ -17,6 +17,7 @@ import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import Preloader from './components/Preloader/preloader';
 import Verify from './pages/Verify/Verify';
 import Apple from './pages/Phone/Download';
+import Redirect from './pages/Redirect/Redirect';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -55,6 +56,7 @@ const App = () => {
           <Route path='/myorders' element={<Orders />} />
           <Route path='/verify' element={<Verify />} />
           <Route path='/download' element={<Apple/>}/>
+          <Route path='/redirect' element={<Redirect/>}/>
         </Routes>
       </div>
       <Footer />

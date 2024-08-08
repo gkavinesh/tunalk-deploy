@@ -3,29 +3,28 @@ import './Cart.css';
 import { StoreContext } from '../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa';
-import Preloader from '../../components/preloadersub/preloader'; // Import the Preloader component
-import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer and toast
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import Preloader from '../../components/preloadersub/preloader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoginPopup from '../../components/LoginPopup/LoginPopup'; // Adjust the import path if needed
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, updateItemQuantity, getTotalCartAmount, url } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, updateItemQuantity, getTotalCartAmount, url, token } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
+  const [showLogin, setShowLogin] = useState(false); // State for showing login popup
 
-  // Simulate a data fetch or other async operations
   useEffect(() => {
-    // Simulate an async operation like data fetching
     setTimeout(() => {
-      setLoading(false); // Set loading to false once data is ready
-    }, 2000); // Simulate a 4-second loading time
-  }, []); // Empty dependency array to run only once on mount
+      setLoading(false);
+    }, 2000);
+  }, []);
 
-  // Show a toast notification if the cart is empty and the component mounts
   useEffect(() => {
     if (Object.keys(cartItems).length === 0) {
       toast.info('Your cart is currently empty.');
     }
-  }, [cartItems]); // Dependency array includes cartItems to react to cart changes
+  }, [cartItems]);
 
   const handleQuantityChange = (itemId, type, event) => {
     const newQuantity = parseInt(event.target.value, 10);
@@ -35,7 +34,9 @@ const Cart = () => {
   };
 
   const handleProceedToCheckout = () => {
-    if (Object.keys(cartItems).length === 0) {
+    if (!token) {
+      setShowLogin(true); // Show login popup if not logged in
+    } else if (Object.keys(cartItems).length === 0) {
       toast.error('Please add items to the cart before proceeding to checkout.');
     } else {
       navigate('/order');
@@ -43,12 +44,13 @@ const Cart = () => {
   };
 
   if (loading) {
-    return <Preloader />; // Render Preloader when loading is true
+    return <Preloader />;
   }
 
   return (
     <>
-      <ToastContainer /> {/* Render ToastContainer for Toastify messages */}
+      <ToastContainer />
+      {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className='cart'>
         <div className="cart-items">
           <div className="cart-items-title">
@@ -133,6 +135,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
 
 
