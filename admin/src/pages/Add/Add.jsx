@@ -211,14 +211,14 @@ const Add = ({ url }) => {
                   />
                 </div>
               ))}
-              <button type="button" className="add-type-button" onClick={addTypeField}>
+              <button type="button" className="add-type-button-2" onClick={addTypeField}>
                 Add Type
               </button>
             </div>
           </div>
         </div>
 
-        <button type="submit" className="add-product-button">
+        <button type="submit" className="add-product-button-2">
           Add Product
         </button>
       </form>

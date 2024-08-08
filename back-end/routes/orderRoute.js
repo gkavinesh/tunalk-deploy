@@ -5,6 +5,7 @@ import { placeOrder, userOrders, verifyOrder, listOrders, updateOrder } from "..
 const orderRouter = express.Router();
 
 orderRouter.post("/place", authMiddleware, placeOrder);
+orderRouter.post("/adminplace",placeOrder)
 orderRouter.post("/verify", authMiddleware, verifyOrder);
 orderRouter.post("/userorders", authMiddleware, userOrders);
 orderRouter.get("/list", listOrders)

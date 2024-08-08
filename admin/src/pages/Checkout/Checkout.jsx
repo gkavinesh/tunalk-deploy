@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Checkout.css";
 
 const generateOrderId = () => {
@@ -16,7 +18,7 @@ const Checkout = ({ url }) => {
   const [weight, setWeight] = useState("0.5");
   const [quantity, setQuantity] = useState(1);
   const [checkoutItems, setCheckoutItems] = useState([]);
-  const [userId, setUserId] = useState(generateUserId());
+  const [userId] = useState(generateUserId()); // Keep user ID consistent
   const [address, setAddress] = useState("");
   const [addressType, setAddressType] = useState("Home");
   const [postcode, setPostcode] = useState("");
@@ -38,9 +40,11 @@ const Checkout = ({ url }) => {
           setProducts(data.data);
         } else {
           console.error("Error fetching products:", data.message);
+          toast.error("Error fetching products");
         }
       } catch (error) {
         console.error("Error fetching products:", error);
+        toast.error("Error fetching products");
       }
     };
 
@@ -49,11 +53,11 @@ const Checkout = ({ url }) => {
 
   const addToCheckout = () => {
     const actualWeight = manualWeight ? parseFloat(manualWeight) : parseFloat(weight);
-  
+
     if (selectedProduct && selectedType && actualWeight && quantity) {
       // Calculate price per kg from price per 0.5 kg
       const pricePerKg = selectedType.price * 2; // because price is for 0.5 kg
-  
+
       const item = {
         itemId: selectedProduct._id,
         name: selectedProduct.name,
@@ -63,7 +67,7 @@ const Checkout = ({ url }) => {
         quantity: parseInt(quantity),
         totalPrice: pricePerKg * actualWeight * parseInt(quantity),
       };
-  
+
       setCheckoutItems([...checkoutItems, item]);
       setSelectedProduct(null);
       setSelectedType(null);
@@ -71,7 +75,7 @@ const Checkout = ({ url }) => {
       setManualWeight("");
       setQuantity(1);
     } else {
-      alert("Please select a product, type, enter a weight, and quantity.");
+      toast.error("Please select a product, type, enter a weight, and quantity.");
     }
   };
 
@@ -85,17 +89,17 @@ const Checkout = ({ url }) => {
       !email ||
       !phone
     ) {
-      alert("Please fill out all required fields.");
+      toast.error("Please fill out all required fields.");
       return;
     }
 
     const orderData = {
       orderId: generateOrderId(),
-      userId,
+      userId, // Use the consistent user ID
       address: {
-        address,
+        address: address,
         type: addressType,
-        postcode,
+        postcode: postcode,
       },
       items: checkoutItems.map((item) => ({
         itemId: item.itemId,
@@ -115,7 +119,7 @@ const Checkout = ({ url }) => {
 
     try {
       console.log(`Placing order to ${url}/api/orders/place`);
-      const response = await fetch(`${url}/api/orders/place`, {
+      const response = await fetch(`${url}/api/orders/adminplace`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -126,19 +130,33 @@ const Checkout = ({ url }) => {
       const result = await response.json();
 
       if (result.success) {
-        alert("Order placed successfully!");
+        toast.success("Order placed successfully!");
+
+        // Reset fields after successful order
         setCheckoutItems([]);
+        setAddress("");
+        setPostcode("");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setSelectedProduct(null);
+        setSelectedType(null);
+        setWeight("0.5");
+        setManualWeight("");
+        setQuantity(1);
       } else {
-        alert("Error placing order: " + result.message);
+        toast.error("Error placing order: " + result.message);
       }
     } catch (error) {
       console.error("Error placing order:", error);
-      alert("Error placing order");
+      toast.error("Error placing order");
     }
   };
 
   return (
     <div className="checkout">
+      <ToastContainer position="bottom-right" />
       <div className="checkout-container">
         <div className="user-info">
         <h2>Customer Information</h2>
@@ -314,7 +332,7 @@ const Checkout = ({ url }) => {
               className="hot"
             >
               <option value="bankTransfer">Bank Transfer</option>
-              <option value="cash">Cash on Delivery</option>
+              <option value="cashOnDelivery">Cash on Delivery</option>
             </select>
             <br></br>
             <br></br>
