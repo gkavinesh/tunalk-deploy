@@ -127,9 +127,42 @@ const updateOrder= async (req, res) => {
   }
 };
 
+const placeAdminOrder = async (req, res) => {
+  try {
+    const { orderId, userId, address, items, firstName, lastName, email, phone, total, paymentMethod } = req.body;
 
+    // Validate required fields
+    if (!userId || !address || !items || !total || !firstName || !lastName || !email || !phone) {
+      return res.status(400).json({ success: false, message: "Missing required fields" });
+    }
 
-export { placeOrder, verifyOrder, userOrders, listOrders, updateOrder};
+    // Save the order to the database
+    const newOrder = new orderModel({
+      orderId,
+      userId,
+      address,
+      items,
+      total,
+      firstName,
+      lastName,
+      email,
+      phone,
+      paymentMethod,
+    });
+
+    await newOrder.save();
+
+    return res.json({ success: true, message: "Order placed successfully" });
+  } catch (error) {
+    console.error("Error placing admin order:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error"
+    });
+  }
+};
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateOrder, placeAdminOrder};
 
 
 
